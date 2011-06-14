@@ -117,6 +117,18 @@ h1, h2, h3, h4 {
 	.content ol ol ol {
 		list-style: lower-roman;
 	}
+	
+	.content dl {
+		padding: 0 0 12px 0;
+	}
+	
+	.content dl dt {
+		padding-bottom: 2px;
+		height: 18px;
+		font-weight: 600;
+		color: #4F4F4F;
+		text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
+	}
 
 	.content table {
 		margin: 0 0 12px 0;
@@ -195,7 +207,7 @@ h1, h2, h3, h4 {
 	visibility: hidden;
 }
 
-.visuallyhidden {
+.visuallyHidden {
 	position: absolute !important;
 	clip: rect(1px 1px 1px 1px);
 	clip: rect(1px, 1px, 1px, 1px);
