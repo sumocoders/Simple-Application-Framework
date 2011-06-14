@@ -141,11 +141,7 @@ class SpoonFormMultiCheckbox extends SpoonFormElement
 	 */
 	public function getChecked()
 	{
-		// when submitted
-		if($this->isSubmitted()) return $this->getValue();
-
-		// default values
-		else return $this->checked;
+		return ($this->isSubmitted()) ? $this->getValue() : $this->checked;
 	}
 
 
@@ -359,6 +355,9 @@ class SpoonFormMultiCheckbox extends SpoonFormElement
 		// loop values
 		foreach($values as $value)
 		{
+			// additional array check
+			if(!is_array($value)) throw new SpoonFormException('Each value should be an associative array with a "label" and "value" key.');
+
 			// label is not set
 			if(!isset($value['label'])) throw new SpoonFormException('Each element in this array should contain a key "label".');
 

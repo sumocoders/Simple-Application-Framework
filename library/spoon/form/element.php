@@ -56,7 +56,7 @@ class SpoonFormElement
 	 *
 	 * @var	array
 	 */
-	protected $reservedAttributes = array('type', 'name', 'value');
+	protected $reservedAttributes = array('name', 'value');
 
 
 	/**
