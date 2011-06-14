@@ -79,6 +79,9 @@ class Init
 		// remove prefix
 		if($class != 'site' && substr($class, 0, 4) == 'site') $class = substr($class, 4);
 
+		// datagrid
+		if(substr($class, 0, 8) == 'datagrid') $class = 'datagrid';
+
 		// rebuild filename
 		$filename = $class . '.php';
 
