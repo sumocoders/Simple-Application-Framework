@@ -110,12 +110,6 @@ class SiteURL
 	}
 
 
-	public function getDomain()
-	{
-		return str_replace(array('cp.', 'www.'), '', $this->getHost());
-	}
-
-
 	/**
 	 * Get the host
 	 *
@@ -204,7 +198,7 @@ class SiteURL
 
 				// invalid type
 				default:
-					throw new BackendException('Invalid type (' . $type . '). Possible values are: ' . implode(', ', $aAllowedTypes)) . '.';
+					throw new Exception('Invalid type (' . $type . '). Possible values are: ' . implode(', ', $aAllowedTypes)) . '.';
 			}
 		}
 

@@ -25,7 +25,10 @@ class Site
 		$url = new SiteURL();
 
 		// create new template
-		new SiteTemplate();
+		$tpl = new SiteTemplate();
+
+		// assign selected state
+		$tpl->assign(SpoonFilter::toCamelCase($url->getModule() . '_' . $url->getAction()), true);
 
 		// create action
 		new SiteAction($url->getAction(), $url->getModule());
@@ -62,7 +65,7 @@ class Site
 	public static function getUTCTimestamp(SpoonFormDate $date, SpoonFormTime $time = null)
 	{
 		// validate date/time object
-		if(!$date->isValid() || ($time !== null && !$time->isValid())) throw new BackendException('You need to provide two objects that actaully contain valid data.');
+		if(!$date->isValid() || ($time !== null && !$time->isValid())) throw new Exception('You need to provide two objects that actaully contain valid data.');
 
 		// init vars
 		$year = gmdate('Y', $date->getTimestamp());

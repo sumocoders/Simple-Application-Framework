@@ -189,7 +189,14 @@ class SiteLocale extends SpoonTemplate
 	 */
 	public static function setLocale($language)
 	{
+		// set language
 		self::$language = (string) $language;
+
+		// initialize vars
+		$act = array();
+		$err = array();
+		$lbl = array();
+		$msg = array();
 
 		// require the file
 		require_once CACHE_PATH . '/locale/' . self::$language . '.php';

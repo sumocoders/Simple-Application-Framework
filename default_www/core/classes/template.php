@@ -227,8 +227,11 @@ class SiteTemplateModifiers
 		// invalid timestamp
 		if($var == 0) return '';
 
+		// get url
+		$url = Spoon::get('url');
+
 		// return
-		return '<abbr title="' . SpoonDate::getDate(FrontendModel::getModuleSetting('core', 'date_format_long') . ', ' . FrontendModel::getModuleSetting('core', 'time_format'), $var, FRONTEND_LANGUAGE) . '">' . SpoonDate::getTimeAgo($var, FRONTEND_LANGUAGE) . '</abbr>';
+		return '<abbr title="' . SpoonDate::getDate('l j F Y H:i:s', $var,  $url->getLanguage()) . '">' . SpoonDate::getTimeAgo($var, $url->getLanguage()) . '</abbr>';
 	}
 
 

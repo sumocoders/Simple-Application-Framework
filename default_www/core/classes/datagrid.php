@@ -233,9 +233,9 @@ class SiteDatagridPaging implements iSpoonDataGridPaging
 		$tpl->assign('pagination', $pagination);
 
 		// assign labels
-		$tpl->assign('previousLabel', BL::lbl('PreviousPage'));
-		$tpl->assign('nextLabel', BL::lbl('NextPage'));
-		$tpl->assign('goToLabel', BL::lbl('GoToPage'));
+		$tpl->assign('previousLabel', SiteLocale::lbl('PreviousPage'));
+		$tpl->assign('nextLabel', SiteLocale::lbl('NextPage'));
+		$tpl->assign('goToLabel', SiteLocale::lbl('GoToPage'));
 
 		// cough it up
 		return $tpl->getContent(BACKEND_CORE_PATH . '/layout/templates/datagrid_paging.tpl');
@@ -396,28 +396,6 @@ class SiteDataGridFunctions
 
 
 	/**
-	 * Format a date as a long representation according the users' settings
-	 *
-	 * @return	string
-	 * @param	int $timestamp		The UNIX-timestamp to format as a human readable date.
-	 */
-	public static function getLongDate($timestamp)
-	{
-		// redefine
-		$timestamp = (int) $timestamp;
-
-		// if invalid timestamp return an empty string
-		if($timestamp <= 0) return '';
-
-		// get user setting for long dates
-		$format = SiteAuthentication::getUser()->getSetting('datetime_format');
-
-		// format the date according the user his settings
-		return SpoonDate::getDate($format, $timestamp, BL::getInterfaceLanguage());
-	}
-
-
-	/**
 	 * Get time ago as a string for use in a datagrid
 	 *
 	 * @return	string
@@ -428,47 +406,14 @@ class SiteDataGridFunctions
 		// redefine
 		$timestamp = (int) $timestamp;
 
-		// get user setting for long dates
-		$format = SiteAuthentication::getUser()->getSetting('datetime_format');
+		// invalid timestamp
+		if($timestamp == 0) return '';
 
-		// get the time ago as a string
-		$timeAgo = SpoonDate::getTimeAgo($timestamp, BL::getInterfaceLanguage(), $format);
-
-		// return
-		return '<abbr title="' . SpoonDate::getDate($format, $timestamp, BL::getInterfaceLanguage()) . '">' . $timeAgo . '</abbr>';
-	}
-
-
-	/**
-	 * Get the HTML for a user to use in a datagrid
-	 *
-	 * @return	string
-	 * @param	int $id		The Id of the user.
-	 */
-	public static function getUser($id)
-	{
-		// redefine
-		$id = (int) $id;
-
-		// create user instance
-		$user = new SiteUser($id);
-
-		// get settings
-		$avatar = $user->getSetting('avatar', 'no-avatar.gif');
-		$nickname = $user->getSetting('nickname');
-
-		// build html
-		$html = '<div class="datagridAvatar">' . "\n";
-		$html .= '	<div class="avatar av24">' . "\n";
-		$html .= '		<a href="' . SiteModel::createURLForAction('edit', 'users') . '&amp;id=' . $id . '">' . "\n";
-		$html .= '			<img src="' . FRONTEND_FILES_URL . '/backend_users/avatars/32x32/' . $avatar . '" width="24" height="24" alt="' . $nickname . '" />' . "\n";
-		$html .= '		</a>' . "\n";
-		$html .= '	</div>';
-		$html .= '	<p><a href="' . SiteModel::createURLForAction('edit', 'users') . '&amp;id=' . $id . '">' . $nickname . '</a></p>' . "\n";
-		$html .= '</div>';
+		// get url
+		$url = Spoon::get('url');
 
 		// return
-		return $html;
+		return '<abbr title="' . SpoonDate::getDate('l j F Y H:i:s', $timestamp,  $url->getLanguage()) . '">' . SpoonDate::getTimeAgo($timestamp, $url->getLanguage()) . '</abbr>';
 	}
 
 
