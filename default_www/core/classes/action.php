@@ -225,11 +225,7 @@ class SiteBaseAction
 		// if no template is specified we have to build the path ourself
 		if($template === null)
 		{
-			// template overwrite
-			$themePath = PATH_WWW . '/themes/' . $this->url->getDomain() . '/modules/' . $this->url->getModule() . '/layout/templates/' . $this->url->getAction() . '.tpl';
-
-			if(SpoonFile::exists($themePath)) $template = $themePath;
-			else $template = PATH_WWW . '/modules/' . $this->url->getModule() . '/layout/templates/' . $this->url->getAction() . '.tpl';
+			$template = PATH_WWW . '/modules/' . $this->url->getModule() . '/layout/templates/' . $this->url->getAction() . '.tpl';
 		}
 
 		// redirect to eror page
