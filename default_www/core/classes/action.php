@@ -223,10 +223,7 @@ class SiteBaseAction
 	public function display($template = null)
 	{
 		// if no template is specified we have to build the path ourself
-		if($template === null)
-		{
-			$template = PATH_WWW . '/modules/' . $this->url->getModule() . '/layout/templates/' . $this->url->getAction() . '.tpl';
-		}
+		if($template === null) $template = PATH_WWW . '/modules/' . $this->url->getModule() . '/layout/templates/' . $this->url->getAction() . '.tpl';
 
 		// redirect to eror page
 		if(!SpoonFile::exists($template)) $this->redirect('/error', 301);
