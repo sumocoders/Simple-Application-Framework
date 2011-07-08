@@ -58,6 +58,10 @@ class SiteDataGrid extends SpoonDataGrid
 
 		// set paging class
 		$this->setPagingClass('SiteDatagridPaging');
+		$this->setPagingLimit(25);
+
+		// disable paging
+		$this->setPaging(false);
 	}
 
 
@@ -77,6 +81,27 @@ class SiteDataGrid extends SpoonDataGrid
 		// execute parent
 		return parent::getContent();
 	}
+
+
+	/**
+	 * Defines the default URL.
+	 *
+	 * @return	void
+	 * @param	string $URL		The URL to use.
+	 */
+	public function setURL($URL)
+	{
+		// redefine
+		$URL = (string) $URL;
+
+		// append sort stuff
+		if(strpos($URL, '?') > 0) $URL .= '&offset=[offset]&order=[order]&sort=[sort]';
+		else $URL .= '?offset=[offset]&order=[order]&sort=[sort]';
+
+		// store
+		parent::setURL($URL);
+	}
+
 }
 
 
@@ -238,7 +263,7 @@ class SiteDatagridPaging implements iSpoonDataGridPaging
 		$tpl->assign('goToLabel', SiteLocale::lbl('GoToPage'));
 
 		// cough it up
-		return $tpl->getContent(BACKEND_CORE_PATH . '/layout/templates/datagrid_paging.tpl');
+		return $tpl->getContent(PATH_WWW . '/core/layout/templates/datagrid_paging.tpl');
 	}
 }
 
@@ -297,7 +322,7 @@ class SiteDataGridDB extends SiteDataGrid
 		$results = ($resultsQuery !== null) ? array($resultsQuery, $resultsParameters) : null;
 
 		// create a new source-object
-		$source = new SpoonDataGridSourceDB(Spoon::get('database'), array($query, (array) $parameters), $results);
+		$source = new SpoonDataGridSourceDB(Site::getDB(), array($query, (array) $parameters), $results);
 
 		// call the parent, as in create a new datagrid with the created source
 		parent::__construct($source);

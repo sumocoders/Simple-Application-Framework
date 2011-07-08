@@ -79,6 +79,7 @@ class SiteTemplate extends SpoonTemplate
 		$this->mapModifier('formatdate', array('SiteTemplateModifiers', 'formatDate'));
 		$this->mapModifier('timeago', array('SiteTemplateModifiers', 'timeAgo'));
 		$this->mapModifier('truncate', array('SiteTemplateModifiers', 'truncate'));
+		$this->mapModifier('url', array('SiteTemplateModifiers', 'buildUrl'));
 		$this->mapModifier('sprintf', 'sprintf');
 	}
 
@@ -124,6 +125,7 @@ class SiteTemplate extends SpoonTemplate
 
 		//
 		$this->assign('timestamp', time());
+		$this->assign('var', '');
 	}
 
 
@@ -153,6 +155,28 @@ class SiteTemplate extends SpoonTemplate
  */
 class SiteTemplateModifiers
 {
+	/**
+	 * Build an url
+	 *
+	 * @return	string
+	 * @param	string $var					A placeholder.
+	 * @param	string[optional] $action	The action.
+	 * @param	string[optional] $module	The module, if not provided the current module will be used.
+	 */
+	public static function buildUrl($var, $action = null, $module = null)
+	{
+		// reset if needed
+		if($action == '') $action = null;
+		if($module == '') $module = null;
+
+		// get the url instance
+		$url = Spoon::get('url');
+
+		// return
+		return $url->buildUrl($action, $module);
+	}
+
+
 	/**
 	 * Formats plain text as HTML, links will be detected, paragraphs will be inserted
 	 * 	syntax: {$var|cleanupPlainText}

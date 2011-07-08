@@ -100,6 +100,50 @@ class SiteURL
 
 
 	/**
+	 * Build an url
+	 *
+	 * @return	string
+	 * @param	string[optional] $action		The action.
+	 * @param	string[optional] $module		The module.
+	 * @param	string[optional] $append		String that will be appended.
+	 * @param	array[optional] $parameters		GET-parameters.
+	 * @param	bool[optional] $ignorePaging	Should we ignore the existing paging parameters?
+	 */
+	public function buildUrl($action = null, $module = null, $append = '', $parameters = null, $ignorePaging = false)
+	{
+		// redefine
+		$action = ($action !== null) ? (string) $action : $this->getAction();
+		$module = ($module !== null) ? (string) $module : $this->getModule();
+		$append = (string) $append;
+		$parameters = ($parameters !== null) ? (array) $parameters : null;
+		$ignorePaging = (bool) $ignorePaging;
+
+		if(!$ignorePaging)
+		{
+			// paging stuff?
+			if(isset($_GET['offset'])) $parameters['offset'] = (int) $_GET['offset'];
+			if(isset($_GET['order'])) $parameters['order'] = (string) $_GET['order'];
+			if(isset($_GET['sort'])) $parameters['sort'] = SpoonFilter::getGetValue('sort', array('asc', 'desc'), 'asc');
+		}
+
+		// build urls
+		$url = '/' . $this->getLanguage() . '/' . $module . '/' . $action;
+
+		// append stuff
+		if($append != '') $url .= '/' . $append;
+
+		if($parameters != null)
+		{
+			if(strpos($url, '?') > 0) $url .= '&' . http_build_query($parameters);
+			else $url .= '?' . http_build_query($parameters);
+		}
+
+		// return
+		return $url;
+	}
+
+
+	/**
 	 * Get the current action found in the url
 	 *
 	 * @return	string
@@ -265,7 +309,7 @@ class SiteURL
 		$this->setLanguage((isset($chunks[0]) && $chunks[0] != '') ? $chunks[0] : SiteLocale::getPreferedLanguage());
 
 		// get the module, null will be the default
-		$this->setModule((isset($chunks[1]) && $chunks[1] != '') ? $chunks[1] : 'example');
+		$this->setModule((isset($chunks[1]) && $chunks[1] != '') ? $chunks[1] : 'example'); // @todo
 
 		// get the requested action, index will be our default action
 		$this->setAction((isset($chunks[2]) && $chunks[2] != '') ? $chunks[2] : 'index');
