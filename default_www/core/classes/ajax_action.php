@@ -43,6 +43,9 @@ class AjaxAction
 		$this->setModule((string) $module);
 		$this->setAction((string) $action);
 
+		// require the model if it exists
+		if(SpoonFile::exists(PATH_WWW . '/modules/' . $this->getModule() . '/model/model.php')) require_once PATH_WWW . '/modules/' . $this->getModule() . '/model/model.php';
+
 		// execute the action
 		$this->execute();
 	}
@@ -82,8 +85,6 @@ class AjaxAction
 
 		// create action-object
 		$object = new $actionClassName();
-		$object->setModule($this->getModule());
-		$object->setAction($this->getAction());
 
 		// call the execute method of the real action (defined in the module)
 		$object->execute();
@@ -153,74 +154,12 @@ class AjaxAction
 class AjaxBaseAction
 {
 	/**
-	 * The current action
-	 *
-	 * @var	string
-	 */
-	protected $action;
-
-
-	/**
-	 * The current module
-	 *
-	 * @var	string
-	 */
-	protected $module;
-
-
-	/**
 	 * Execute the action
 	 *
 	 * @return	void
 	 */
 	public function execute()
 	{
-	}
-
-
-	/**
-	 * Get the action
-	 *
-	 * @return	string
-	 */
-	public function getAction()
-	{
-		return (string) $this->action;
-	}
-
-
-	/**
-	 * Get the module
-	 *
-	 * @return	string
-	 */
-	public function getModule()
-	{
-		return (string) $this->module;
-	}
-
-
-	/**
-	 * Set the action, for later use
-	 *
-	 * @return	void
-	 * @param	string $action	The action.
-	 */
-	public function setAction($action)
-	{
-		$this->action = (string) $action;
-	}
-
-
-	/**
-	 * Set the module, for later use
-	 *
-	 * @return	void
-	 * @param	string $module	The module.
-	 */
-	public function setModule($module)
-	{
-		$this->module = (string) $module;
 	}
 }
 
