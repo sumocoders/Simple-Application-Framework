@@ -90,6 +90,15 @@ class Init
 
 		// load the class if it exists
 		if(file_exists($path)) require_once $path;
+
+		else
+		{
+			// build external path
+			$path = PATH_LIBRARY .'/external/'. $filename;
+
+			// load the class if it exists
+			if(file_exists($path)) require_once $path;
+		}
 	}
 }
 
