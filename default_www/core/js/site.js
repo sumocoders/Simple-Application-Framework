@@ -8,7 +8,7 @@ if(!jsSite) { var jsSite = new Object(); }
 jsSite =
 {
 	// datamembers
-	debug: true,
+	debug: false,
 	current:
 	{
 		module: null,
