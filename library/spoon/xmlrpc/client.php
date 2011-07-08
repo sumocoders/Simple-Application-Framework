@@ -201,7 +201,7 @@ class SpoonXMLRPCClient
 			$xml .= '	<params>' . "\n";
 
 			// loop parameters and build parameters
-			foreach($parameters as $parameter) $xml .= '		<param><value>' . $this->buildValueXML($parameter) . '</value></param>' . "\n";
+			foreach($parameters as $parameter) $xml .= '		<param>' . $this->buildValueXML($parameter) . '</param>' . "\n";
 
 			// end parameters
 			$xml .= '	</params>' . "\n";
@@ -211,7 +211,7 @@ class SpoonXMLRPCClient
 		$xml .= '</methodCall>' . "\n";
 
 		// return
-		return trim($xml);
+		return $xml;
 	}
 
 
@@ -283,10 +283,7 @@ class SpoonXMLRPCClient
 					$return = array();
 
 					// loop members
-					foreach($element->data->value as $data)
-					{
-						$return[] = $this->decodeValue($data);
-					}
+					foreach($element->data as $data) $return[] = $this->decodeValue($data->value);
 
 					// return
 					return $return;
@@ -432,14 +429,20 @@ class SpoonXMLRPCClient
 		$options[CURLOPT_USERAGENT] = $this->getUserAgent();
 		$options[CURLOPT_TIMEOUT] = $this->getTimeout();
 		$options[CURLOPT_RETURNTRANSFER] = true;
-		$options[CURLOPT_POST] = true;
-		$options[CURLOPT_POSTFIELDS] = $xml;
+		$options[CURLOPT_CUSTOMREQUEST] = 'POST';
+		$options[CURLOPT_SSL_VERIFYPEER] = false;
 
 		// get headers
 		$headers = $this->getCustomHeaders();
 
-		// set correct content)type
+		// set correct content type
 		$headers[] = 'Content-type: text/xml';
+
+		// set content-length
+		$headers[] = 'Content-length: ' . strlen($xml) . "\r\n";
+
+		// add XML
+		$headers[] = $xml;
 
 		// set headers
 		$options[CURLOPT_HTTPHEADER] = $headers;
@@ -474,10 +477,10 @@ class SpoonXMLRPCClient
 		if($xml === false) throw new SpoonXMLRPCException('Invalid response.');
 
 		// validate response, if it is an XMLRPC-error we'll throw it as an exception
-		if(isset($xml->fault))
+		if($xml->getName() == 'fault')
 		{
 			// decode the fault
-			$response = $this->decodeFaultXML($xml->fault);
+			$response = $this->decodeFaultXML($xml);
 
 			// validate if the response was decoded, and it tye needed values are available
 			if($response === false || !isset($response['faultString'])) throw new SpoonXMLRPCException('Unknown fault.');
