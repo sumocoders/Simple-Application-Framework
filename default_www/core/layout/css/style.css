@@ -34,7 +34,7 @@ a:focus { overflow: hidden; }
 body {
 	font-size: 13px;
 	line-height: 1.5;
-	font-family: Arial, sans-serif;
+	font-family: Helvetica, Arial, sans-serif;
 	color: #444;
 	position: relative;
 }
@@ -393,10 +393,14 @@ label,
 	color: #D00C00;
 	display: block;
 	height: 18px;
-	overflow: hidden;
 	white-space: nowrap;
 	clear: left;
 	text-overflow: ellipsis;
+}
+
+.alignBlocks .formError {
+	white-space: normal;
+	height: auto;
 }
 
 .helpTxt {
@@ -473,6 +477,7 @@ label,
 
 	.mediumInput select,
 	.alignBlocks p.mediumInput,
+	.alignBlocks .mediumInput .formError,
 	.alignFields p.mediumInput,
 	.alignFields .mediumInput .helpTxt {
 		width: 206px;
@@ -947,6 +952,32 @@ button[disabled]:active {
 			border-color: #000;
 		}
 
+/* Pagination */	
+.pagination {
+	text-align: center;
+}
+	.pagination li {
+		display: inline-block;
+		width: 16px;
+		list-style: none;
+		margin-left: 4px;
+	}
+		.pagination li.previousPage, .pagination li.previousPage a { width: auto !important; }
+		.pagination li.nextPage, .pagination li.nextPage a { width: auto !important; }
+		.pagination li.selected { font-weight: 700; border-bottom: 1px solid #313131; }
+	
+		.pagination li a {
+			display: block;
+			width: 16px;
+			height: 16px;
+			text-align: center;
+			border: none;
+			text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
+			color: #4F4F4F;
+		}
+			.pagination li a a:hover { color: #313131; }
+
+		
 /* IE6 warning */
 #ie6 {
 	position: absolute;
@@ -966,6 +997,7 @@ button[disabled]:active {
 		margin-bottom: 12px;
 	}	
 
+/* Errors */
 #error.index {
 	margin-top: 50px;
 	padding-top: 380px;
