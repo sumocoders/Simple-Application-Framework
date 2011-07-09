@@ -34,7 +34,7 @@ class ErrorIndex extends SiteBaseAction
 	private function parse()
 	{
 		// build the key
-		$key = SpoonFilter::toCamelCase($this->url->getParameter('msg'), '-');
+		$key = SpoonFilter::toCamelCase($this->url->getParameter('message'), '-');
 
 		// reset if needed
 		if($key == '') $key = 'GeneralError';
