@@ -94,10 +94,19 @@ class Init
 		else
 		{
 			// build external path
-			$path = PATH_LIBRARY .'/external/'. $filename;
+			$path = PATH_LIBRARY . '/external/' . $filename;
 
 			// load the class if it exists
 			if(file_exists($path)) require_once $path;
+
+			else
+			{
+				// build path
+				$path = PATH_WWW . '/modules/' . $class . 's/model/model.php';
+
+				// load the class if it exists
+				if(file_exists($path)) require_once $path;
+			}
 		}
 	}
 }

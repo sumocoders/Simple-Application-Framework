@@ -198,6 +198,14 @@ class SiteBaseAction
 
 
 	/**
+	 * The current user.
+	 *
+	 * @var	User
+	 */
+	protected $currentUser;
+
+
+	/**
 	 * The current module
 	 *
 	 * @var	string
@@ -232,6 +240,16 @@ class SiteBaseAction
 		// get objects from the reference so they are accessable from the action-object
 		$this->tpl = Spoon::get('template');
 		$this->url = Spoon::get('url');
+
+		// do the login magic
+		$this->currentUser = Authentication::getLoggedInUser();
+
+		// assign if there is a valid user
+		if($this->currentUser != false)
+		{
+			// assign
+			$this->tpl->assign('currentUser', $this->currentUser->toArray());
+		}
 
 		// store the current module and action (we grab them from the url)
 		$this->setModule($this->url->getModule());

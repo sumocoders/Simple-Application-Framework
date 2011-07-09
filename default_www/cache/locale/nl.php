@@ -13,17 +13,31 @@ $act = array();
 
 // init var
 $err = array();
+$err['EmailIsInvalid'] = 'Dit is een ongeldig emailadres.';
 $err['FieldIsRequired'] = 'Dit veld is verplicht.';
+$err['Forbidden'] = 'Je hebt niet voldoende rechten.';
 $err['GeneralError'] = 'Er ging iets mis.';
+$err['GeneralFormError'] = 'Er ging iets mis, kijk de gemarkeerde velden na.';
 $err['InvalidModule'] = 'Helaas, deze module kunnen we niet terugvinden.';
 
 // init var
 $lbl = array();
+$lbl['Add'] = 'toevoegen';
 $lbl['Close'] = 'sluiten';
+$lbl['Edit'] = 'bewerken';
+$lbl['Email'] = 'emailadres';
 $lbl['Footer'] = 'footer';
+$lbl['Name'] = 'naam';
 $lbl['Navigation'] = 'navigatie';
 $lbl['Next'] = 'volgende';
+$lbl['Login'] = 'gebruikersnaam';
+$lbl['Password'] = 'wachtwoord';
 $lbl['Previous'] = 'vorige';
+$lbl['Save'] = 'opslaan';
+$lbl['SignIn'] = 'aanmelden';
+$lbl['SignOff'] = 'afmelden';
+$lbl['Type'] = 'type';
+$lbl['Users'] = 'gebruikers';
 
 // init var
 $msg = array();
@@ -73,5 +87,13 @@ $msg['DatepickerShortOctober'] = 'okt';
 $msg['DatepickerShortNovember'] = 'nov';
 $msg['DatepickerShortDecember'] = 'dec';
 $msg['OldBrowserWarning'] = '<strong>Opgelet:</strong> Je gebruikt een verouderde browser. Indien je de website wil zien zoals deze bedoeld is, kan je beter een nieuwe versie downloaden of een degelijke browser zoals <a href="http://www.getfirefox.com">Firefox</a> installeren.';
+$msg['Required'] = 'Verplicht in te vullen.';
+$msg['UsersAdd'] = 'Gebruiker toevoegen';
+$msg['UsersAdded'] = 'De gebruiker <em>%1$s</em> werd toegevoegd.';
+$msg['UsersEdit'] = 'Gebruiker <em>%1$s</em> bewerken';
+$msg['UsersEdited'] = 'De gebruiker <em>%1$s</em> werd opgeslagen.';
+$msg['UsersLogin'] = 'Aanmelden';
+$msg['UsersLoggedInAs'] = 'Je bent aangemeld als <em>%1$s</em>.';
+$msg['UsersLoggedOut'] = 'Je bent afgemeld.';
 
 ?>
