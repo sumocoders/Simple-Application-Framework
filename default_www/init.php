@@ -52,9 +52,6 @@ class Init
 
 		// disable magic quotes
 		SpoonFilter::disableMagicQuotes();
-
-		// start session
-		SpoonSession::start();
 	}
 
 

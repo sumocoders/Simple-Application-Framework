@@ -120,38 +120,6 @@ class SiteAction
 
 
 	/**
-	 * Get the database instance
-	 *
-	 * @return	SpoonDatabase
-	 * @param	bool[optional] $write	Should we return the write connection?
-	 */
-	public function getDB($write = false)
-	{
-		// build the name
-		$name = ((bool) $write) ? 'database_write' : 'database_read';
-
-		// does it exists?
-		if(!Spoon::exists($name))
-		{
-			// check if neede info is available
-			if(!defined('DB_TYPE') || !defined('DB_HOSTNAME') || !defined('DB_USERNAME') || !defined('DB_PASSWORD') || !defined('DB_DATABASE')) throw new Exception('No DB-credentials available');
-
-			// create database instance
-			$db = new SpoonDatabase(DB_TYPE, DB_HOSTNAME, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
-
-			// make sure we are using UTF-8
-			$db->execute('SET CHARACTER SET utf8, NAMES utf8, time_zone = "+0:00";');
-
-			// store
-			Spoon::set($name, $db);
-		}
-
-		// return the instance
-		return Spoon::get($name);
-	}
-
-
-	/**
 	 * Set the action
 	 *
 	 * @return	void
@@ -312,6 +280,30 @@ class SiteBaseAction
 	public function getModule()
 	{
 		return (string) $this->module;
+	}
+
+
+	/**
+	 * Parse reports
+	 *
+	 * @return	void
+	 */
+	public function parseReports()
+	{
+		// report provided in url?
+		$report = SpoonFilter::getGetValue('report', null, '');
+		if($report != '')
+		{
+			// get message
+			$message = SiteLocale::msg(SpoonFilter::toCamelCase($this->url->getModule() . '-' . $report , '-'));
+
+			// any vars?
+			$var = SpoonFilter::getGetValue('var', null, '');
+			if($var != '') $message = vsprintf($message, $var);
+
+			// assign
+			$this->tpl->assign('report', $message);
+		}
 	}
 
 

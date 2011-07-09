@@ -74,6 +74,7 @@ class SiteTemplate extends SpoonTemplate
 	 */
 	private function mapCustomModifiers()
 	{
+		$this->mapModifier('buildurl', array('SiteTemplateModifiers', 'buildurl'));
 		$this->mapModifier('cleanupplaintext', array('SiteTemplateModifiers', 'cleanupPlainText'));
 		$this->mapModifier('dump', array('SiteTemplateModifiers', 'dump'));
 		$this->mapModifier('formatdate', array('SiteTemplateModifiers', 'formatDate'));
