@@ -24,7 +24,7 @@
 
 				<fieldset class="visibleFieldset">
 					<p class="mediumInput{option:txtPassError} errorArea{/option:txtPassError}">
-						<label for="pass">{$lblPassword|ucfirst}<abbr title="{$msgRequired}">*</abbr></label>
+						<label for="password">{$lblPassword|ucfirst}<abbr title="{$msgRequired}">*</abbr></label>
 						{$txtPassword} {$txtPasswordError}
 					</p>
 					<p class="mediumInput{option:ddmTypeError} errorArea{/option:ddmTypeError}">
