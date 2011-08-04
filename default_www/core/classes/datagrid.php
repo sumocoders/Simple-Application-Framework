@@ -62,6 +62,9 @@ class SiteDataGrid extends SpoonDataGrid
 
 		// disable paging
 		$this->setPaging(false);
+
+		// set default template
+		$this->setTemplate(PATH_WWW . '/core/layout/templates/datagrid.tpl');
 	}
 
 
