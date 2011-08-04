@@ -36,7 +36,7 @@ class SiteDataGrid extends SpoonDataGrid
 		$this->setCompileDirectory(CACHE_PATH . '/compiled');
 
 		// set attributes for the datagrid
-		$this->setAttributes(array('class' => 'datagrid', 'cellspacing' => 0, 'cellpadding' => 0, 'border' => 0));
+		$this->setAttributes(array('class' => 'datagrid'));
 
 		// hide the id by default
 		if(in_array('id', $this->getColumns())) $this->setColumnsHidden('id');
