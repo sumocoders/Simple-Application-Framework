@@ -68,6 +68,21 @@ class Site
 
 
 	/**
+	 * Get the available languages
+	 *
+	 * @return	array
+	 */
+	public static function getLanguages()
+	{
+		return array(
+			'nl' => ucfirst(SiteLocale::lbl('Dutch')),
+			'en' => ucfirst(SiteLocale::lbl('English')),
+			'fr' => ucfirst(SiteLocale::lbl('French'))
+		);
+	}
+
+
+	/**
 	 * Get the UTC date in a specific format. Use this method when inserting dates in the database!
 	 *
 	 * @return	string
