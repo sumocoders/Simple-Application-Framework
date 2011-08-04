@@ -88,7 +88,7 @@ class UsersEdit extends SiteBaseAction
 		$this->frm->addText('email', $this->item->email)->setAttributes(array('type' => 'email', 'required' => null));
 		$this->frm->addText('name', $this->item->name)->setAttributes(array('required' => null));
 		$this->frm->addPassword('password')->setAttributes(array('autocomplete' => 'off'));
-		$this->frm->addDropdown('type', array('user' => 'user', 'admin' => 'admin'), $this->item->type));
+		$this->frm->addDropdown('type', array('user' => 'user', 'admin' => 'admin'), $this->item->type);
 	}
 
 
