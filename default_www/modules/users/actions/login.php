@@ -14,7 +14,7 @@ class UsersLogin extends SiteBaseAction
 	/**
 	 * Form instance
 	 *
-	 * @var	SpoonForm
+	 * @var	SiteForm
 	 */
 	private $frm;
 
@@ -51,7 +51,7 @@ class UsersLogin extends SiteBaseAction
 	private function loadForm()
 	{
 		// create form
-		$this->frm = new SpoonForm('login');
+		$this->frm = new SiteForm('login');
 
 		// create elements
 		$this->frm->addText('login')->setAttributes(array('type' => 'email', 'required' => null));

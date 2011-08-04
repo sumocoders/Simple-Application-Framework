@@ -14,7 +14,7 @@ class UsersEdit extends SiteBaseAction
 	/**
 	 * The form
 	 *
-	 * @var	SpoonForm
+	 * @var	SiteForm
 	 */
 	private $frm;
 
@@ -30,7 +30,7 @@ class UsersEdit extends SiteBaseAction
 	/**
 	 * The item
 	 *
-	 * @var	array
+	 * @var	User
 	 */
 	private $item;
 
@@ -66,6 +66,7 @@ class UsersEdit extends SiteBaseAction
 		// parse
 		$this->frm->parse($this->tpl);
 
+		// assign
 		$this->tpl->assign('item', $this->item->toArray());
 
 		// display the page
@@ -81,13 +82,13 @@ class UsersEdit extends SiteBaseAction
 	private function loadForm()
 	{
 		// create form
-		$this->frm = new SpoonForm('edit');
+		$this->frm = new SiteForm('edit');
 
 		// create elements
 		$this->frm->addText('email', $this->item->email)->setAttributes(array('type' => 'email', 'required' => null));
 		$this->frm->addText('name', $this->item->name)->setAttributes(array('required' => null));
 		$this->frm->addPassword('password')->setAttributes(array('autocomplete' => 'off'));
-		$this->frm->addDropdown('type', array('user' => 'user', 'admin' => 'admin'))->setAttributes(array('required' => null));
+		$this->frm->addDropdown('type', array('user' => 'user', 'admin' => 'admin'), $this->item->type));
 	}
 
 

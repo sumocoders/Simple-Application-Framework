@@ -14,7 +14,7 @@ class UsersAdd extends SiteBaseAction
 	/**
 	 * The form
 	 *
-	 * @var	SpoonForm
+	 * @var	SiteForm
 	 */
 	private $frm;
 
@@ -51,13 +51,13 @@ class UsersAdd extends SiteBaseAction
 	private function loadForm()
 	{
 		// create form
-		$this->frm = new SpoonForm('add');
+		$this->frm = new SiteForm('add');
 
 		// create elements
 		$this->frm->addText('email')->setAttributes(array('type' => 'email', 'required' => null));
 		$this->frm->addText('name')->setAttributes(array('required' => null));
 		$this->frm->addPassword('password')->setAttributes(array('autocomplete' => 'off', 'required' => null));
-		$this->frm->addDropdown('type', array('user' => 'user', 'admin' => 'admin'))->setAttributes(array('required' => null));
+		$this->frm->addDropdown('type', array('user' => 'user', 'admin' => 'admin'), 'user');
 	}
 
 
@@ -85,9 +85,9 @@ class UsersAdd extends SiteBaseAction
 				// set properties
 				$item->name = $this->frm->getField('name')->getValue();
 				$item->email = $this->frm->getField('email')->getValue();
+				$item->type = $this->frm->getField('type')->getValue();
 				$item->secret = md5(uniqid());
 				$item->rawPassword = $this->frm->getField('password')->getValue();
-				$item->type = $this->frm->getField('type')->getValue();
 
 				// save
 				$item->save();

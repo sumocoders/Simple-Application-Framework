@@ -25,7 +25,7 @@ class Authentication
 		$db->delete('users_sessions', 'edited_on < ?', array(Site::getUTCDate(null, (time() - (2 * 60 * 60)))));
 
 		// search for session
-		$data = $db->getRecord('SELECT u.id, u.name, u.email, u.secret, u.type
+		$data = $db->getRecord('SELECT u.id, u.name, u.email, u.secret, u.type, u.data
 								FROM users_sessions AS i
 								INNER JOIN users AS u ON i.user_id = u.id
 								WHERE i.session_id = ? AND i.edited_on > ?',

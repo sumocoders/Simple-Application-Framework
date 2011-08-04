@@ -34,6 +34,14 @@ class User
 
 
 	/**
+	 * Array properties
+	 *
+	 * @var	array
+	 */
+	private $settings = array();
+
+
+	/**
 	 * Get a user
 	 *
 	 * @return	User
@@ -45,7 +53,7 @@ class User
 		$id = (int) $id;
 
 		// get data
-		$data = Site::getDB()->getRecord('SELECT i.id, i.name, i.email, i.secret, i.type
+		$data = Site::getDB()->getRecord('SELECT i.id, i.name, i.email, i.secret, i.type, i.data
 											FROM users AS i
 											WHERE i.id = ?',
 											array($id));
@@ -65,6 +73,32 @@ class User
 
 
 	/**
+	 * Get all users for usage in a dropdown
+	 *
+	 * @return	array
+	 */
+	public static function getForDropdown()
+	{
+		return Site::getDB()->getPairs('SELECT i.id, i.name
+										FROM users AS i
+										ORDER BY i.name');
+	}
+
+
+	/**
+	 * Get a setting
+	 *
+	 * @return	mixed
+	 * @param	string $key		The key whereunder the value is stored.
+	 */
+	public function getSetting($key)
+	{
+		if(!isset($this->settings[$key])) return null;
+		else return $this->settings[$key];
+	}
+
+
+	/**
 	 * Initialize the object.
 	 *
 	 * @return	User
@@ -77,7 +111,11 @@ class User
 		if(isset($data['email'])) $this->email = (string) $data['email'];
 		if(isset($data['secret'])) $this->secret = (string) $data['secret'];
 		if(isset($data['type'])) $this->type = (string) $data['type'];
-
+		if(isset($data['data']))
+		{
+			$data['data'] = unserialize($data['data']);
+			if(isset($data['data']['settings'])) $this->settings = $data['data']['settings'];
+		}
 		if($this->type == 'admin') $this->isAdmin = true;
 	}
 
@@ -94,6 +132,7 @@ class User
 		$item['email'] = $this->email;
 		$item['secret'] = $this->secret;
 		$item['type'] = $this->type;
+		$item['data'] = serialize(array('settings' => $this->settings));
 
 		// new password?
 		if($this->rawPassword != null) $item['password'] = sha1(md5($this->rawPassword) . $this->secret);
@@ -104,6 +143,19 @@ class User
 
 		// return
 		return true;
+	}
+
+
+	/**
+	 * Store a setting
+	 *
+	 * @return	void
+	 * @param	string $key		The key whereunder the value will be stored.
+	 * @param	mixed $value	The value to store.
+	 */
+	public function setSetting($key, $value)
+	{
+		$this->settings[(string) $key] = $value;
 	}
 
 
