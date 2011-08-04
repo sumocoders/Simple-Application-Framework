@@ -26,10 +26,16 @@
 
 	<link rel="stylesheet" href="/core/layout/css/jquery_ui/jquery_ui.css">
 	<link rel="stylesheet" href="/core/layout/css/style.css">
+	{option:css}
+		{iteration:css}<script src="{$css.url}"></script>{/iteration:css}
+	{/option:css}
 
 	<script src="/core/js/modernizr.js"></script>
 	<script src="/core/js/jquery.js"></script>
 	<script src="/core/js/jquery.ui.js"></script>
+	{option:javascript}
+		{iteration:javascript}<script src="{$javascript.url}"></script>{/iteration:javascript}
+	{/option:javascript}
 	<script src="/js.php?module=core&file=site.js&language={$LANGUAGE}"></script>
 </head>
 

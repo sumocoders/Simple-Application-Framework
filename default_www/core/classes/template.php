@@ -17,6 +17,22 @@
 class SiteTemplate extends SpoonTemplate
 {
 	/**
+	 * The CSS files
+	 *
+	 * @var	array
+	 */
+	private $cssFiles = array();
+
+
+	/**
+	 * The JS files
+	 *
+	 * @var	array
+	 */
+	private $javascriptFiles = array();
+
+
+	/**
 	 * Default constructor
 	 * The constructor will store the instance in the reference, preset some settings and map the custom modifiers.
 	 *
@@ -42,6 +58,49 @@ class SiteTemplate extends SpoonTemplate
 
 
 	/**
+	 * Add a css-file
+	 *
+	 * @return	void
+	 * @param	string $url		The url of the css-file.
+	 */
+	public function addCssFile($url)
+	{
+		// redefine
+		$url = (string) $url;
+
+		// append timestamp
+		if(substr_count($url, '?') > 0) $url .= '&t=' . LAST_MODIFIED;
+		else $url .= '?t=' . LAST_MODIFIED;
+
+		// add if needed
+		if(!in_array($url, $this->cssFiles)) $this->cssFiles[] = $url;
+	}
+
+
+	/**
+	 * Add a javascript file
+	 *
+	 * @return	void
+	 * @param	string $url	The url of the js-file.
+	 */
+	public function addJavascriptFile($url)
+	{
+		// redefine
+		$url = (string) $url;
+
+		// append timestamp if it isn't a parsed file
+		if(substr_count($url, '/js.php') == 0)
+		{
+			if(substr_count($url, '?') > 0) $url .= '&t=' . LAST_MODIFIED;
+			else $url .= '?t=' . LAST_MODIFIED;
+		}
+
+		// add if needed
+		if(!in_array($url, $this->javascriptFiles)) $this->javascriptFiles[] = $url;
+	}
+
+
+	/**
 	 * Output the template into the browser
 	 * Will also assign the interfacelabels and all user-defined constants.
 	 *
@@ -61,6 +120,9 @@ class SiteTemplate extends SpoonTemplate
 
 		// parse locale
 		$this->parseLocale();
+
+		// parse Javascript
+		$this->parseExternalFiles();
 
 		// call the parent
 		parent::display($template);
@@ -127,6 +189,41 @@ class SiteTemplate extends SpoonTemplate
 		//
 		$this->assign('timestamp', time());
 		$this->assign('var', '');
+	}
+
+
+	/**
+	 * Parse the external loaded files into the header
+	 *
+	 * @return	void
+	 */
+	private function parseExternalFiles()
+	{
+		// any JS-files?
+		if(!empty($this->javascriptFiles))
+		{
+			// init var
+			$js = array();
+
+			// loop and add
+			foreach($this->javascriptFiles as $url) $js[] = array('url' => $url);
+
+			// assign
+			$this->assign('javascript', $js);
+		}
+
+		// any CSS-files?
+		if(!empty($this->cssFiles))
+		{
+			// init var
+			$css = array();
+
+			// loop and add
+			foreach($this->cssFiles as $url) $css[] = array('url' => $url);
+
+			// assign
+			$this->assign('css', $css);
+		}
 	}
 
 
