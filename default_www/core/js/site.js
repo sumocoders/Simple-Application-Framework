@@ -77,12 +77,12 @@ jsSite =
 				// get real message
 				if(typeof XMLHttpRequest.responseText != 'undefined') textStatus = $.parseJSON(XMLHttpRequest.responseText).message;
 
-				// show message	@todo	find a better way to do this.
+				// show message
 				$('#generalError').html('<p>'+ textStatus + '</p>').slideDown();
 			}
 		});
 
-		// spinner stuff	@todo	find a better way to do this.
+		// spinner stuff
 		$(document).ajaxStart(function() { $('#ajaxSpinner').show(); });
 		$(document).ajaxStop(function() { $('#ajaxSpinner').hide(); });
 	},
