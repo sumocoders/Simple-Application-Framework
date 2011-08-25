@@ -102,7 +102,10 @@ class UsersLogin extends SiteBaseAction
 				$item['edited_on'] = Site::getUTCDate();
 
 				// insert new session
-				$db->insert('users_sessions', $item);
+				$db->execute('INSERT INTO users_sessions(session_id, id, edited_on)
+								VALUES(:session_id, :id, :edited_on)
+								ON DUPLICATE KEY UPDATE edited_on = :edited_on',
+								$item);
 
 				// redirect
 				$this->redirect(SpoonFilter::getGetValue('redirect', null, '/'));
