@@ -22,91 +22,11 @@ class SiteForm extends SpoonForm
 	 */
 	public function __construct($name, $action = null, $method = 'post', $useToken = false)
 	{
-		// required field
-		$this->setName($name);
-		$this->add(new SpoonFormHidden('form', $this->name));
-		if(SPOON_CHARSET == 'utf-8') $this->add(new SpoonFormHidden('_utf8', '&#9731;'));
-		$this->objects['form']->setAttribute('id', SpoonFilter::toCamelCase('form_' . $this->name, '_', true));
-
 		// no acion provided?
 		if($action == null) $action = $_SERVER['REQUEST_URI'];
 
-		// optional fields
-		$this->setAction($action);
-		$this->setMethod($method);
-		$this->setUseToken($useToken);
-
-		// using a token?
-		if($this->getUseToken())
-		{
-			// add a hidden field
-			$this->add(new SpoonFormHidden('form_token', $this->getToken()));
-			$this->objects['form_token']->setAttribute('id', SpoonFilter::toCamelCase('form_token_' . $this->name, '_', true));
-		}
-	}
-
-	/**
-	 * Adds a single textarea.
-	 *
-	 * @return	SpoonFormTextarea
-	 * @param	string $name					The name.
-	 * @param	string[optional] $value			The initial value.
-	 * @param	string[optional] $valueType		The type of the value.
-	 * @param	string[optional] $class			The CSS-class to be used.
-	 * @param	string[optional] $classError	The CSS-class to be used when there is an error.
-	 */
-	public function addEditor($name, $value = null, $valueType = 'html', $class = 'inputEditor', $classError = 'inputEditor inputTextareaError')
-	{
-		// get the logged in user
-		$user = Authentication::getLoggedInUser();
-
-		if($user != false)
-		{
-			// get the template instance
-			/**
-			 * @var	SiteTemplate
-			 */
-			$tpl = Spoon::get('template');
-
-			// get the editor type
-			$editorType = $user->getSetting('editor_type');
-
-			switch($editorType)
-			{
-				case 'none':
-					// @todo	convert
-					if($valueType != 'html')
-					{
-						// convert it
-					}
-				break;
-
-				case 'markdown':
-					// @todo	convert
-					if($valueType != 'markdown')
-					{
-						// convert it
-					}
-
-					$tpl->addCssFile('/core/js/markitup/sets/markdown/style.css');
-					$tpl->addJavascriptFile('/core/js/markitup/sets/markdown/set.js');
-				break;
-
-				default:
-					// @todo	convert
-					if($valueType != 'html')
-					{
-						// convert it
-					}
-
-					$tpl->addCssFile('/core/js/markitup/sets/html/style.css');
-					$tpl->addJavascriptFile('/core/js/markitup/sets/html/set.js');
-				break;
-			}
-		}
-
-		// return
-		return $this->addTextarea($name, $value, $class, $classError, true);
+		// call parent
+		parent::__construct($name, $action, $method, $useToken);
 	}
 }
 
