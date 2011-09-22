@@ -307,6 +307,21 @@ class SiteBaseAction
 			// assign
 			$this->tpl->assign('report', $message);
 		}
+
+		// error provided in url?
+		$error = SpoonFilter::getGetValue('error', null, '');
+		if($error != '')
+		{
+			// get message
+			$message = SiteLocale::err(SpoonFilter::toCamelCase($error , '-'));
+
+			// any vars?
+			$var = SpoonFilter::getGetValue('var', null, '');
+			if($var != '') $message = vsprintf($message, $var);
+
+			// assign
+			$this->tpl->assign('error', $message);
+		}
 	}
 
 
