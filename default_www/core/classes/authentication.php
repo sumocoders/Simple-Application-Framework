@@ -31,7 +31,7 @@ class Authentication
 								WHERE i.session_id = ? AND i.edited_on > ?',
 								array(SpoonSession::getSessionId(), Site::getUTCDate(null, (time() - (2 * 60 * 60)))));
 
-		// no data, so redirect to login
+		// any data?
 		if($data !== null)
 		{
 			// create instance
@@ -44,6 +44,7 @@ class Authentication
 			return $user;
 		}
 
+		// no data, so redirect to login
 		else
 		{
 			// reset session

@@ -55,7 +55,7 @@ class SiteAction
 		$this->setAction((string) $action);
 
 		// show module
-		$this->tpl->assign('is'. SpoonFilter::toCamelCase($module), true);
+		$this->tpl->assign('is' . SpoonFilter::toCamelCase($module), true);
 
 		// execute the action
 		$this->execute();
