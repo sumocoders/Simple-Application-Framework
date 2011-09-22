@@ -441,7 +441,7 @@ class SiteDataGridFunctions
 		$url = Spoon::get('url');
 
 		// return
-		return '<abbr title="' . SpoonDate::getDate('l j F Y H:i:s', $timestamp,  $url->getLanguage()) . '">' . SpoonDate::getTimeAgo($timestamp, $url->getLanguage()) . '</abbr>';
+		return '<abbr title="' . SpoonDate::getDate('l j F Y H:i:s', $timestamp,  $url->getLanguage()) . '"><time datetime="' . SpoonDate::getDate('Y-m-d\TH:i:s') . '">' . SpoonDate::getTimeAgo($timestamp, $url->getLanguage()) . '</time></abbr>';
 	}
 
 
