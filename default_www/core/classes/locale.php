@@ -30,14 +30,12 @@ class SiteLocale extends SpoonTemplate
 				$msg = array();
 
 
-
 	/**
 	 * Possible languages
 	 *
 	 * @var	array
 	 */
 	public static $possibleLanguages = array('nl');
-
 
 
 	/**
@@ -105,6 +103,9 @@ class SiteLocale extends SpoonTemplate
 	 */
 	public static function getPreferedLanguage()
 	{
+		// init var
+		$foundALanguage = false;
+
 		// available in cookie?
 		if(SpoonCookie::exists('language') && SpoonCookie::get('language'))
 		{
