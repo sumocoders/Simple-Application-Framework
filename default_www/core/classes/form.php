@@ -23,7 +23,7 @@ class SiteForm extends SpoonForm
 	public function __construct($name, $action = null, $method = 'post', $useToken = false)
 	{
 		// no acion provided?
-		if($action == null) $action = $_SERVER['REQUEST_URI'];
+		$action = ($action === null) ? '/' . trim((string) $_SERVER['REQUEST_URI'], '/') : (string) $action;
 
 		// call parent
 		parent::__construct($name, $action, $method, $useToken);
