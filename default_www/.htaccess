@@ -29,6 +29,12 @@ Options +FollowSymlinks
 RewriteEngine On
 RewriteBase /
 
+# only one base url
+#RewriteCond %{HTTP_HOST} !^url\.ld [NC]
+#RewriteCond %{HTTP_HOST} !.*\.local [NC]
+#RewriteCond %{HTTP_HOST} !.*\.dev [NC]
+#RewriteRule ^(.*)$ http://url.ld/$1 [R=301,L]
+
 # handle urls
 RewriteCond %{REQUEST_URI} !^$
 RewriteCond %{REQUEST_FILENAME} !-f
