@@ -8,7 +8,7 @@
  * @package		site
  * @subpackage	core
  *
- * @author 		Tijs Verkoyen <tijs@sumocoders.be>
+ * @author Tijs Verkoyen <tijs@sumocoders.be>
  * @since		1.0
  */
 class AjaxAction
@@ -20,14 +20,12 @@ class AjaxAction
 	 */
 	private $action;
 
-
 	/**
 	 * The current module
 	 *
 	 * @var	string
 	 */
 	private $module;
-
 
 	/**
 	 * Default constructor
@@ -49,7 +47,6 @@ class AjaxAction
 		// execute the action
 		$this->execute();
 	}
-
 
 	/**
 	 * Execute the action
@@ -90,7 +87,6 @@ class AjaxAction
 		$object->execute();
 	}
 
-
 	/**
 	 * Get the current action
 	 * REMARK: You should not use this method from your code, but it has to be public so we can access it later on in the core-code
@@ -101,7 +97,6 @@ class AjaxAction
 	{
 		return (string) $this->action;
 	}
-
 
 	/**
 	 * Get the current module
@@ -114,7 +109,6 @@ class AjaxAction
 		return (string) $this->module;
 	}
 
-
 	/**
 	 * Set the action
 	 *
@@ -125,7 +119,6 @@ class AjaxAction
 	{
 		$this->action = (string) $action;
 	}
-
 
 	/**
 	 * Set the module
@@ -153,6 +146,11 @@ class AjaxAction
  */
 class AjaxBaseAction
 {
+	const OK = 200;
+	const BAD_REQUEST = 400;
+	const FORBIDDEN = 403;
+	const ERROR = 500;
+
 	/**
 	 * Execute the action
 	 *
@@ -160,6 +158,32 @@ class AjaxBaseAction
 	 */
 	public function execute()
 	{
+	}
+
+	/**
+	 * Output an answer to the browser
+	 *
+	 * @param int $statusCode The status code for the response, use the available constants. (self::OK, self::BAD_REQUEST, self::FORBIDDEN, self::ERROR).
+	 * @param mixed[optional] $data The data to output.
+	 * @param string[optional] $message The text-message to send.
+	 * @return void
+	 */
+	public function output($statusCode, $data = null, $message = null)
+	{
+		// redefine
+		$statusCode = (int) $statusCode;
+		if($message !== null) $message = (string) $message;
+
+		// create response array
+		$response = array('code' => $statusCode, 'data' => $data, 'message' => $message);
+
+		// set correct headers
+		SpoonHTTP::setHeadersByCode($statusCode);
+		SpoonHTTP::setHeaders('content-type: application/json');
+
+		// output JSON to the browser
+		echo json_encode($response);
+		exit;
 	}
 }
 
