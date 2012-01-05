@@ -14,7 +14,7 @@ class UsersLogout extends SiteBaseAction
 	/**
 	 * Execute the action
 	 *
-	 * @return	void
+	 * @return void
 	 */
 	public function execute()
 	{
@@ -25,5 +25,3 @@ class UsersLogout extends SiteBaseAction
 		$this->redirect($this->url->buildUrl('login', 'users', null, array('report' => 'logged-out')));
 	}
 }
-
-?>

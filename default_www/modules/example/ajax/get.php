@@ -14,7 +14,7 @@ class AjaxExampleGet extends AjaxBaseAction
 	/**
 	 * Execute the action
 	 *
-	 * @return	void
+	 * @return void
 	 */
 	public function execute()
 	{
@@ -43,5 +43,3 @@ class AjaxExampleGet extends AjaxBaseAction
 		exit;
 	}
 }
-
-?>

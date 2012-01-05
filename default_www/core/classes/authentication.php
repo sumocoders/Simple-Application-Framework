@@ -14,7 +14,7 @@ class Authentication
 	/**
 	 * Get the logged in user.
 	 *
-	 * @return	User
+	 * @return User
 	 */
 	public static function getLoggedInUser()
 	{
@@ -64,11 +64,10 @@ class Authentication
 		}
 	}
 
-
 	/**
 	 * Log out the user
 	 *
-	 * @return	void
+	 * @return void
 	 */
 	public static function logout()
 	{
@@ -80,5 +79,3 @@ class Authentication
 		session_regenerate_id(true);
 	}
 }
-
-?>

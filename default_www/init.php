@@ -15,7 +15,7 @@ class Init
 	/**
 	 * Default constructor
 	 *
-	 * @return	void
+	 * @return void
 	 */
 	public function __construct()
 	{
@@ -54,12 +54,11 @@ class Init
 		SpoonFilter::disableMagicQuotes();
 	}
 
-
 	/**
 	 * AutoLoader
 	 *
-	 * @return	void
 	 * @param	string $class	The class that should be loaded.
+	 * @return void
 	 */
 	public static function autoLoader($class)
 	{
@@ -107,5 +106,3 @@ class Init
 		}
 	}
 }
-
-?>

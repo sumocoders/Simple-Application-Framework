@@ -21,8 +21,8 @@ class SiteDataGrid extends SpoonDataGrid
 	/**
 	 * Default constructor
 	 *
-	 * @return	void
 	 * @param	SpoonDataGridSource $source	The datasource.
+	 * @return void
 	 */
 	public function __construct(SpoonDataGridSource $source)
 	{
@@ -67,11 +67,10 @@ class SiteDataGrid extends SpoonDataGrid
 		$this->setTemplate(PATH_WWW . '/core/layout/templates/datagrid.tpl');
 	}
 
-
 	/**
 	 * Retrieve the parsed output.
 	 *
-	 * @return	string
+	 * @return string
 	 */
 	public function getContent()
 	{
@@ -85,12 +84,11 @@ class SiteDataGrid extends SpoonDataGrid
 		return parent::getContent();
 	}
 
-
 	/**
 	 * Defines the default URL.
 	 *
-	 * @return	void
 	 * @param	string $URL		The URL to use.
+	 * @return void
 	 */
 	public function setURL($URL)
 	{
@@ -107,7 +105,6 @@ class SiteDataGrid extends SpoonDataGrid
 
 }
 
-
 /**
  * This is our implementation of iSpoonDatagridPaging
  *
@@ -123,7 +120,6 @@ class SiteDatagridPaging implements iSpoonDataGridPaging
 	/**
 	 * Builds & returns the pagination
 	 *
-	 * @return	string
 	 * @param	string $URL								The URL.
 	 * @param	int $offset								The calculated offset.
 	 * @param	string $order							The name of the column to sort on.
@@ -132,6 +128,7 @@ class SiteDatagridPaging implements iSpoonDataGridPaging
 	 * @param	int $numPerPage							The items per page.
 	 * @param	bool[optional] $debug					Should debugging be enabled?
 	 * @param	string[optional] $compileDirectory		The director for compiled templates.
+	 * @return string
 	 */
 	public static function getContent($URL, $offset, $order, $sort, $numResults, $numPerPage, $debug = true, $compileDirectory = null)
 	{
@@ -270,7 +267,6 @@ class SiteDatagridPaging implements iSpoonDataGridPaging
 	}
 }
 
-
 /**
  * A datagrid with an array as source
  *
@@ -285,8 +281,8 @@ class SiteDataGridArray extends SiteDataGrid
 	/**
 	 * Default constructor
 	 *
-	 * @return	void
 	 * @param	array $array	The data.
+	 * @return void
 	 */
 	public function __construct(array $array)
 	{
@@ -297,7 +293,6 @@ class SiteDataGridArray extends SiteDataGrid
 		parent::__construct($source);
 	}
 }
-
 
 /**
  * A datagrid with a DB-connection as source
@@ -313,11 +308,11 @@ class SiteDataGridDB extends SiteDataGrid
 	/**
 	 * Default constructor
 	 *
-	 * @return	void
 	 * @param	string $query						The query to retrieve the data.
 	 * @param	array[optional] $parameters			The parameters to be used inside the query.
 	 * @param	string[optional] $resultsQuery		The optional count query, used to calculate the number of results.
 	 * @param	array[optional] $resultsParameters 	Theh parameters to be used inside the results query.
+	 * @return void
 	 */
 	public function __construct($query, $parameters = array(), $resultsQuery = null, $resultsParameters = array())
 	{
@@ -331,7 +326,6 @@ class SiteDataGridDB extends SiteDataGrid
 		parent::__construct($source);
 	}
 }
-
 
 /**
  * A set of common used functions that will be applied on rows or columns
@@ -347,8 +341,8 @@ class SiteDataGridFunctions
 	/**
 	 * Formats plain text as HTML, links will be detected, paragraphs will be inserted
 	 *
-	 * @return	string
 	 * @param	string $var		The data to cleanup.
+	 * @return string
 	 */
 	public static function cleanupPlainText($var)
 	{
@@ -389,12 +383,11 @@ class SiteDataGridFunctions
 		return $var;
 	}
 
-
 	/**
 	 * Concat the arguments
 	 *
-	 * @return	string
 	 * @param	string $x	...
+	 * @return string
 	 */
 	public static function concat($x)
 	{
@@ -405,13 +398,12 @@ class SiteDataGridFunctions
 		return implode('', $args);
 	}
 
-
 	/**
 	 * Format a number as a float
 	 *
-	 * @return	string
 	 * @param	float $number				The number to format.
 	 * @param	int[optional] $decimals		The number of decimals.
+	 * @return string
 	 */
 	public static function formatFloat($number, $decimals = 2)
 	{
@@ -422,12 +414,11 @@ class SiteDataGridFunctions
 		return number_format($number, $decimals, '.', ' ');
 	}
 
-
 	/**
 	 * Get time ago as a string for use in a datagrid
 	 *
-	 * @return	string
 	 * @param	int $timestamp		The UNIX-timestamp to convert in a time-ago-string.
+	 * @return string
 	 */
 	public static function getTimeAgo($timestamp)
 	{
@@ -444,14 +435,13 @@ class SiteDataGridFunctions
 		return '<abbr title="' . SpoonDate::getDate('l j F Y H:i:s', $timestamp,  $url->getLanguage()) . '"><time datetime="' . SpoonDate::getDate('Y-m-d\TH:i:s') . '">' . SpoonDate::getTimeAgo($timestamp, $url->getLanguage()) . '</time></abbr>';
 	}
 
-
 	/**
 	 * Returns an image tag
 	 *
-	 * @return	string
 	 * @param	string $path				The path to the image.
 	 * @param	string $image				The filename of the image.
 	 * @param	string[optional] $title		The title (will be used as alt).
+	 * @return string
 	 */
 	public static function showImage($path, $image, $title = '')
 	{
@@ -464,14 +454,13 @@ class SiteDataGridFunctions
 		return '<img src="' . $path . '/' . $image . '" alt="' . $title . '" />';
 	}
 
-
 	/**
 	 * Truncate a string
 	 *
-	 * @return	string
 	 * @param	string[optional] $string	The string to truncate.
 	 * @param	int $length					The maximumlength for the string.
 	 * @param	bool[optional] $useHellip	Should a hellip be appended?
+	 * @return string
 	 */
 	public static function truncate($string = null, $length, $useHellip = true)
 	{
@@ -498,5 +487,3 @@ class SiteDataGridFunctions
 		}
 	}
 }
-
-?>

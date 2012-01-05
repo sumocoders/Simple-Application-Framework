@@ -31,9 +31,9 @@ class AjaxAction
 	 * Default constructor
 	 * You have to specify the action and module so we know what to do with this instance
 	 *
-	 * @return	void
 	 * @param	string $action	The action.
 	 * @param	string $module	The module.
+	 * @return void
 	 */
 	public function __construct($action, $module)
 	{
@@ -52,7 +52,7 @@ class AjaxAction
 	 * Execute the action
 	 * We will build the classname, require the class and call the execute method.
 	 *
-	 * @return	void
+	 * @return void
 	 */
 	public function execute()
 	{
@@ -91,7 +91,7 @@ class AjaxAction
 	 * Get the current action
 	 * REMARK: You should not use this method from your code, but it has to be public so we can access it later on in the core-code
 	 *
-	 * @return	string
+	 * @return string
 	 */
 	public function getAction()
 	{
@@ -102,7 +102,7 @@ class AjaxAction
 	 * Get the current module
 	 * REMARK: You should not use this method from your code, but it has to be public so we can access it later on in the core-code
 	 *
-	 * @return	string
+	 * @return string
 	 */
 	public function getModule()
 	{
@@ -112,8 +112,8 @@ class AjaxAction
 	/**
 	 * Set the action
 	 *
-	 * @return	void
 	 * @param	string $action	The action.
+	 * @return void
 	 */
 	private function setAction($action)
 	{
@@ -123,15 +123,14 @@ class AjaxAction
 	/**
 	 * Set the module
 	 *
-	 * @return	void
 	 * @param	string $module	The module.
+	 * @return void
 	 */
 	private function setModule($module)
 	{
 		$this->module = (string) $module;
 	}
 }
-
 
 /**
  * BaseAction
@@ -154,7 +153,7 @@ class AjaxBaseAction
 	/**
 	 * Execute the action
 	 *
-	 * @return	void
+	 * @return void
 	 */
 	public function execute()
 	{
@@ -186,5 +185,3 @@ class AjaxBaseAction
 		exit;
 	}
 }
-
-?>

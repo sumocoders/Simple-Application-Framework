@@ -14,7 +14,7 @@ class ErrorIndex extends SiteBaseAction
 	/**
 	 * Execute the action
 	 *
-	 * @return	void
+	 * @return void
 	 */
 	public function execute()
 	{
@@ -25,11 +25,10 @@ class ErrorIndex extends SiteBaseAction
 		$this->display();
 	}
 
-
 	/**
 	 * Parse the page
 	 *
-	 * @return	void
+	 * @return void
 	 */
 	private function parse()
 	{
@@ -46,5 +45,3 @@ class ErrorIndex extends SiteBaseAction
 		SpoonHTTP::setHeadersByCode(SpoonFilter::getGetValue('code', null, 500));
 	}
 }
-
-?>

@@ -16,7 +16,7 @@ class JS
 	/**
 	 * Default constructor
 	 *
-	 * @return	void
+	 * @return void
 	 */
 	public function __construct()
 	{
@@ -55,5 +55,3 @@ class JS
 		$tpl->display($path);
 	}
 }
-
-?>

@@ -41,9 +41,9 @@ class SiteAction
 	 * Default constructor
 	 * You have to specify the action and module so we know what to do with this instance
 	 *
-	 * @return	void
 	 * @param	string $action		The action.
 	 * @param	string $module		The module.
+	 * @return void
 	 */
 	public function __construct($action, $module)
 	{
@@ -61,12 +61,11 @@ class SiteAction
 		$this->execute();
 	}
 
-
 	/**
 	 * Execute the action
 	 * We will build the classname, require the class and call the execute method.
 	 *
-	 * @return	void
+	 * @return void
 	 */
 	public function execute()
 	{
@@ -97,55 +96,50 @@ class SiteAction
 		$object->execute();
 	}
 
-
 	/**
 	 * Get the current action
 	 * REMARK: You should not use this method from your code, but it has to be public so we can access it later on in the core-code
 	 *
-	 * @return	string
+	 * @return string
 	 */
 	public function getAction()
 	{
 		return (string) $this->action;
 	}
 
-
 	/**
 	 * Get the current module
 	 * REMARK: You should not use this method from your code, but it has to be public so we can access it later on in the core-code
 	 *
-	 * @return	string
+	 * @return string
 	 */
 	public function getModule()
 	{
 		return (string) $this->module;
 	}
 
-
 	/**
 	 * Set the action
 	 *
-	 * @return	void
 	 * @param	string $action	The action.
+	 * @return void
 	 */
 	private function setAction($action)
 	{
 		$this->action = (string) $action;
 	}
 
-
 	/**
 	 * Set the module
 	 *
-	 * @return	void
 	 * @param	string $module	The module.
+	 * @return void
 	 */
 	private function setModule($module)
 	{
 		$this->module = (string) $module;
 	}
 }
-
 
 /**
  * BaseAction
@@ -204,7 +198,7 @@ class SiteBaseAction
 	 * Default constructor
 	 * The constructor will set some properties. It populates the parameter array with urldecoded values for easy-use.
 	 *
-	 * @return	void
+	 * @return void
 	 */
 	public function __construct()
 	{
@@ -233,13 +227,12 @@ class SiteBaseAction
 		if(SpoonFile::exists(PATH_WWW . '/modules/' . $this->getModule() . '/model/model.php')) require_once PATH_WWW . '/modules/' . $this->getModule() . '/model/model.php';
 	}
 
-
 	/**
 	 * Display, this wil output the template to the browser
 	 * If no template is specified we build the path form the current module and action
 	 *
-	 * @return	void
 	 * @param	string[optional] $template	The template to display.
+	 * @return void
 	 */
 	public function display($template = null)
 	{
@@ -253,43 +246,39 @@ class SiteBaseAction
 		$this->tpl->display($template);
 	}
 
-
 	/**
 	 * Execute the action
 	 *
-	 * @return	void
+	 * @return void
 	 */
 	public function execute()
 	{
 	}
 
-
 	/**
 	 * Get the action
 	 *
-	 * @return	string
+	 * @return string
 	 */
 	public function getAction()
 	{
 		return (string) $this->action;
 	}
 
-
 	/**
 	 * Get the module
 	 *
-	 * @return	string
+	 * @return string
 	 */
 	public function getModule()
 	{
 		return (string) $this->module;
 	}
 
-
 	/**
 	 * Parse reports
 	 *
-	 * @return	void
+	 * @return void
 	 */
 	public function parseReports()
 	{
@@ -324,42 +313,37 @@ class SiteBaseAction
 		}
 	}
 
-
 	/**
 	 * Redirect to a given url
 	 *
-	 * @return	void
 	 * @param	string $url				The URL to redirect to.
 	 * @param	int[optional] $code		The redirect code, default is 307 (temporary), other possibilities are: 301 (permanent), 302 (found).
+	 * @return void
 	 */
 	public function redirect($url, $code = 307)
 	{
 		SpoonHTTP::redirect((string) $url, (int) $code);
 	}
 
-
 	/**
 	 * Set the action, for later use
 	 *
-	 * @return	void
 	 * @param	string $action	The action.
+	 * @return void
 	 */
 	private function setAction($action)
 	{
 		$this->action = (string) $action;
 	}
 
-
 	/**
 	 * Set the module, for later use
 	 *
-	 * @return	void
 	 * @param	string $module	The module.
+	 * @return void
 	 */
 	private function setModule($module)
 	{
 		$this->module = (string) $module;
 	}
 }
-
-?>

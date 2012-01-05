@@ -95,5 +95,3 @@ $msg['UsersEdited'] = 'De gebruiker <em>%1$s</em> werd opgeslagen.';
 $msg['UsersLogin'] = 'Aanmelden';
 $msg['UsersLoggedInAs'] = 'Je bent aangemeld als <em>%1$s</em>.';
 $msg['UsersLoggedOut'] = 'Je bent afgemeld.';
-
-?>

@@ -18,7 +18,6 @@ class SiteLocale extends SpoonTemplate
 	 */
 	public static $language;
 
-
 	/**
 	 * The locale
 	 *
@@ -29,7 +28,6 @@ class SiteLocale extends SpoonTemplate
 				$lbl = array(),
 				$msg = array();
 
-
 	/**
 	 * Possible languages
 	 *
@@ -37,24 +35,22 @@ class SiteLocale extends SpoonTemplate
 	 */
 	public static $possibleLanguages = array('nl');
 
-
 	/**
 	 * Get an action
 	 *
-	 * @return	string
 	 * @param	string $key		The key.
+	 * @return string
 	 */
 	public static function act($key)
 	{
 		return (isset(self::$act[$key])) ? self::$act[$key] : '{$act' . $key . '}';
 	}
 
-
 	/**
 	 * Convert the errors from the CP into readable ones
 	 *
-	 * @return	string
 	 * @param	string $message		The message to convert.
+	 * @return string
 	 */
 	public static function callError($message)
 	{
@@ -72,34 +68,31 @@ class SiteLocale extends SpoonTemplate
 		throw new Exception('Missing message: ' . $key);
 	}
 
-
 	/**
 	 * Get an error
 	 *
-	 * @return	string
 	 * @param	string $key		The key.
+	 * @return string
 	 */
 	public static function err($key)
 	{
 		return (isset(self::$err[$key])) ? self::$err[$key] : '{$err' . $key . '}';
 	}
 
-
 	/**
 	 * Get the current language
 	 *
-	 * @return	string
+	 * @return string
 	 */
 	public static function getLanguage()
 	{
 		return self::$language;
 	}
 
-
 	/**
 	 * Determine the prefered language
 	 *
-	 * @return	void
+	 * @return void
 	 */
 	public static function getPreferedLanguage()
 	{
@@ -157,36 +150,33 @@ class SiteLocale extends SpoonTemplate
 		return $language;
 	}
 
-
 	/**
 	 * Get a label
 	 *
-	 * @return	string
 	 * @param	string $key		The key.
+	 * @return string
 	 */
 	public static function lbl($key)
 	{
 		return (isset(self::$lbl[$key])) ? self::$lbl[$key] : '{$lbl' . $key . '}';
 	}
 
-
 	/**
 	 * Get a message
 	 *
-	 * @return	string
 	 * @param	string $key		The key.
+	 * @return string
 	 */
 	public static function msg($key)
 	{
 		return (isset(self::$msg[$key])) ? self::$msg[$key] : '{$msg' . $key . '}';
 	}
 
-
 	/**
 	 * Set the locale
 	 *
-	 * @return	void
 	 * @param	string $language	The language.
+	 * @return void
 	 */
 	public static function setLocale($language)
 	{
@@ -209,5 +199,3 @@ class SiteLocale extends SpoonTemplate
 		self::$msg = $msg;
 	}
 }
-
-?>

@@ -8,5 +8,3 @@ new Init();
 
 // create site
 new Site();
-
-?>

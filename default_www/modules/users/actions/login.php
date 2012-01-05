@@ -22,7 +22,7 @@ class UsersLogin extends SiteBaseAction
 	/**
 	 * Execute the action
 	 *
-	 * @return	void
+	 * @return void
 	 */
 	public function execute()
 	{
@@ -42,11 +42,10 @@ class UsersLogin extends SiteBaseAction
 		$this->display();
 	}
 
-
 	/**
 	 * Load the form
 	 *
-	 * @return	void
+	 * @return void
 	 */
 	private function loadForm()
 	{
@@ -58,11 +57,10 @@ class UsersLogin extends SiteBaseAction
 		$this->frm->addPassword('password')->setAttributes(array('required' => null));
 	}
 
-
 	/**
 	 * Validate the form
 	 *
-	 * @return	void
+	 * @return void
 	 */
 	private function validateForm()
 	{
@@ -113,5 +111,3 @@ class UsersLogin extends SiteBaseAction
 		}
 	}
 }
-
-?>

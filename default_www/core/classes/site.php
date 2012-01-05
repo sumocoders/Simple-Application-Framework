@@ -17,7 +17,7 @@ class Site
 	/**
 	 * Default constructor
 	 *
-	 * @return	void
+	 * @return void
 	 */
 	public function __construct()
 	{
@@ -34,12 +34,11 @@ class Site
 		new SiteAction($url->getAction(), $url->getModule());
 	}
 
-
 	/**
 	 * Add a number to the string
 	 *
-	 * @return	string
 	 * @param	string $string	The string where the number will be appended to.
+	 * @return string
 	 */
 	public static function addNumber($string)
 	{
@@ -69,12 +68,11 @@ class Site
 		return $string;
 	}
 
-
 	/**
 	 * Get the database instance
 	 *
-	 * @return	SpoonDatabase
 	 * @param	bool[optional] $write	Should we return the write connection?
+	 * @return SpoonDatabase
 	 */
 	public static function getDB($write = false)
 	{
@@ -101,11 +99,10 @@ class Site
 		return Spoon::get($name);
 	}
 
-
 	/**
 	 * Get the available languages
 	 *
-	 * @return	array
+	 * @return array
 	 */
 	public static function getLanguages()
 	{
@@ -116,13 +113,12 @@ class Site
 		);
 	}
 
-
 	/**
 	 * Get the UTC date in a specific format. Use this method when inserting dates in the database!
 	 *
-	 * @return	string
 	 * @param	string[optional] $format	The format to return the timestamp in. Default is MySQL datetime format.
 	 * @param	int[optional] $timestamp	The timestamp to use, if not provided the current time will be used.
+	 * @return string
 	 */
 	public static function getUTCDate($format = null, $timestamp = null)
 	{
@@ -136,13 +132,12 @@ class Site
 		return gmdate($format, (int) $timestamp);
 	}
 
-
 	/**
 	 * Get the UTC timestamp for a date/time object combination.
 	 *
-	 * @return	int
 	 * @param	SpoonFormDate $date					An instance of SpoonFormDate.
 	 * @param	SpoonFormTime[optional] $time		An instance of SpoonFormTime.
+	 * @return int
 	 */
 	public static function getUTCTimestamp(SpoonFormDate $date, SpoonFormTime $time = null)
 	{
@@ -172,5 +167,3 @@ class Site
 		return mktime($hour, $minute, 0, $month, $day, $year);
 	}
 }
-
-?>

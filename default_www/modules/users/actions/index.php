@@ -14,7 +14,7 @@ class UsersIndex extends SiteBaseAction
 	/**
 	 * Execute the action
 	 *
-	 * @return	void
+	 * @return void
 	 */
 	public function execute()
 	{
@@ -28,11 +28,10 @@ class UsersIndex extends SiteBaseAction
 		$this->display();
 	}
 
-
 	/**
 	 * Parse
 	 *
-	 * @return	void
+	 * @return void
 	 */
 	private function parse()
 	{
@@ -51,5 +50,3 @@ class UsersIndex extends SiteBaseAction
 		if($datagrid->getContent() != '') $this->tpl->assign('datagrid', $datagrid->getContent());
 	}
 }
-
-?>

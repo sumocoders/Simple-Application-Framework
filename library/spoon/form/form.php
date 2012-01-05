@@ -642,8 +642,9 @@ class SpoonForm
 	 */
 	public function getAction()
 	{
-		// protect against XSS
+		// prevent against xss
 		$action = (SPOON_CHARSET == 'utf-8') ? SpoonFilter::htmlspecialchars($this->action) : SpoonFilter::htmlentities($this->action);
+
 		return $action;
 	}
 
@@ -693,8 +694,9 @@ class SpoonForm
 	 */
 	public function getMethod()
 	{
-		// protect against XSS
+		// prevent against xss
 		$method = (SPOON_CHARSET == 'utf-8') ? SpoonFilter::htmlspecialchars($this->method) : SpoonFilter::htmlentities($this->method);
+
 		return $method;
 	}
 

@@ -64,7 +64,7 @@ class SiteURL
 	/**
 	 * Default constructor
 	 *
-	 * @return	void
+	 * @return void
 	 */
 	public function __construct()
 	{
@@ -81,13 +81,12 @@ class SiteURL
 		$this->processQueryString();
 	}
 
-
 	/**
 	 * Add a parameter
 	 *
-	 * @return	void
 	 * @param	string $value			The value to add.
 	 * @param	string[optional] $key	The key to add the value for.
+	 * @return void
 	 */
 	private function addParameter($value, $key = null)
 	{
@@ -98,16 +97,15 @@ class SiteURL
 		else $this->parameters[] = $value;
 	}
 
-
 	/**
 	 * Build an url
 	 *
-	 * @return	string
 	 * @param	string[optional] $action		The action.
 	 * @param	string[optional] $module		The module.
 	 * @param	string[optional] $append		String that will be appended.
 	 * @param	array[optional] $parameters		GET-parameters.
 	 * @param	bool[optional] $ignorePaging	Should we ignore the existing paging parameters?
+	 * @return string
 	 */
 	public function buildUrl($action = null, $module = null, $append = '', $parameters = null, $ignorePaging = false)
 	{
@@ -142,50 +140,45 @@ class SiteURL
 		return $url;
 	}
 
-
 	/**
 	 * Get the current action found in the url
 	 *
-	 * @return	string
+	 * @return string
 	 */
 	public function getAction()
 	{
 		return str_replace('-', '_', $this->action);
 	}
 
-
 	/**
 	 * Get the host
 	 *
-	 * @return	string
+	 * @return string
 	 */
 	public function getHost()
 	{
 		return $this->host;
 	}
 
-
 	/**
 	 * Get the language
 	 *
-	 * @return	void
+	 * @return void
 	 */
 	public function getLanguage()
 	{
 		return $this->language;
 	}
 
-
 	/**
 	 * Get the current module found in the url
 	 *
-	 * @return	string
+	 * @return string
 	 */
 	public function getModule()
 	{
 		return $this->module;
 	}
-
 
 	/**
 	 * Get a parameter for a given key
@@ -194,9 +187,9 @@ class SiteURL
 	 * By default we will cast the return value into a string, if you want something else specify it by passing the wanted type.
 	 * Possible values are: bool, boolean, int, integer, float, double, string, array
 	 *
-	 * @return	mixed
 	 * @param	string $key					The index/name of the parameter.
 	 * @param	string[optional] $type		The type we should cast to, default is string.
+	 * @return mixed
 	 */
 	public function getParameter($key, $type = 'string')
 	{
@@ -250,33 +243,30 @@ class SiteURL
 		return null;
 	}
 
-
 	/**
 	 * Get the parameters
 	 *
-	 * @return	array
+	 * @return array
 	 */
 	public function getParameters()
 	{
 		return $this->parameters;
 	}
 
-
 	/**
 	 * Get the full querystring
 	 *
-	 * @return	string
+	 * @return string
 	 */
 	public function getQueryString()
 	{
 		return $this->queryString;
 	}
 
-
 	/**
 	 * Process the querystring
 	 *
-	 * @return	void
+	 * @return void
 	 */
 	private function processQueryString()
 	{
@@ -321,36 +311,33 @@ class SiteURL
 		}
 	}
 
-
 	/**
 	 * Set the current action
 	 *
-	 * @return	void
 	 * @param	string $action	The action.
+	 * @return void
 	 */
 	private function setAction($action)
 	{
 		$this->action = (string) $action;
 	}
 
-
 	/**
 	 * Set the host
 	 *
-	 * @return	void
 	 * @param	string $host	The host.
+	 * @return void
 	 */
 	private function setHost($host)
 	{
 		$this->host = (string) $host;
 	}
 
-
 	/**
 	 * Set the language
 	 *
-	 * @return	void
 	 * @param	string $language	The language.
+	 * @return void
 	 */
 	public function setLanguage($language)
 	{
@@ -364,12 +351,11 @@ class SiteURL
 		SiteLocale::setLocale($language);
 	}
 
-
 	/**
 	 * Set the current module
 	 *
-	 * @return	void
 	 * @param	string $module	The module.
+	 * @return void
 	 */
 	public function setModule($module)
 	{
@@ -379,17 +365,14 @@ class SiteURL
 		$this->module = (string) $module;
 	}
 
-
 	/**
 	 * Set the querystring
 	 *
-	 * @return	void
 	 * @param	string $queryString		The full querystring.
+	 * @return void
 	 */
 	private function setQueryString($queryString)
 	{
 		$this->queryString = trim((string) $queryString, '/');
 	}
 }
-
-?>

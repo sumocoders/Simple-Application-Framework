@@ -14,7 +14,7 @@ class ExampleIndex extends SiteBaseAction
 	/**
 	 * Execute the action
 	 *
-	 * @return	void
+	 * @return void
 	 */
 	public function execute()
 	{
@@ -25,15 +25,12 @@ class ExampleIndex extends SiteBaseAction
 		$this->display();
 	}
 
-
 	/**
 	 * Parse the page
 	 *
-	 * @return	void
+	 * @return void
 	 */
 	private function parse()
 	{
 	}
 }
-
-?>

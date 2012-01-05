@@ -23,7 +23,6 @@ class SiteTemplate extends SpoonTemplate
 	 */
 	private $cssFiles = array();
 
-
 	/**
 	 * The JS files
 	 *
@@ -31,12 +30,11 @@ class SiteTemplate extends SpoonTemplate
 	 */
 	private $javascriptFiles = array();
 
-
 	/**
 	 * Default constructor
 	 * The constructor will store the instance in the reference, preset some settings and map the custom modifiers.
 	 *
-	 * @return	void
+	 * @return void
 	 */
 	public function __construct()
 	{
@@ -56,12 +54,11 @@ class SiteTemplate extends SpoonTemplate
 		$this->mapCustomModifiers();
 	}
 
-
 	/**
 	 * Add a css-file
 	 *
-	 * @return	void
 	 * @param	string $url		The url of the css-file.
+	 * @return void
 	 */
 	public function addCssFile($url)
 	{
@@ -76,12 +73,11 @@ class SiteTemplate extends SpoonTemplate
 		if(!in_array($url, $this->cssFiles)) $this->cssFiles[] = $url;
 	}
 
-
 	/**
 	 * Add a javascript file
 	 *
-	 * @return	void
 	 * @param	string $url	The url of the js-file.
+	 * @return void
 	 */
 	public function addJavascriptFile($url)
 	{
@@ -99,13 +95,12 @@ class SiteTemplate extends SpoonTemplate
 		if(!in_array($url, $this->javascriptFiles)) $this->javascriptFiles[] = $url;
 	}
 
-
 	/**
 	 * Output the template into the browser
 	 * Will also assign the interfacelabels and all user-defined constants.
 	 *
-	 * @return	void
 	 * @param	string $template	The template to display.
+	 * @return void
 	 */
 	public function display($template)
 	{
@@ -128,11 +123,10 @@ class SiteTemplate extends SpoonTemplate
 		parent::display($template);
 	}
 
-
 	/**
 	 * Map the fork-specific modifiers
 	 *
-	 * @return	void
+	 * @return void
 	 */
 	private function mapCustomModifiers()
 	{
@@ -146,11 +140,10 @@ class SiteTemplate extends SpoonTemplate
 		$this->mapModifier('sprintf', 'sprintf');
 	}
 
-
 	/**
 	 * Parse all user-defined constants
 	 *
-	 * @return	void
+	 * @return void
 	 */
 	private function parseConstants()
 	{
@@ -186,16 +179,14 @@ class SiteTemplate extends SpoonTemplate
 			$this->assign('LANGUAGE', $url->getLanguage());
 		}
 
-		//
 		$this->assign('timestamp', time());
 		$this->assign('var', '');
 	}
 
-
 	/**
 	 * Parse the external loaded files into the header
 	 *
-	 * @return	void
+	 * @return void
 	 */
 	private function parseExternalFiles()
 	{
@@ -226,11 +217,10 @@ class SiteTemplate extends SpoonTemplate
 		}
 	}
 
-
 	/**
 	 * Parse the locale
 	 *
-	 * @return	void
+	 * @return void
 	 */
 	private function parseLocale()
 	{
@@ -240,7 +230,6 @@ class SiteTemplate extends SpoonTemplate
 		$this->assignArray(SiteLocale::$msg, 'msg');
 	}
 }
-
 
 /**
  * SiteTemplateModiefiers, a collection of modifiers that will be available.
@@ -256,10 +245,10 @@ class SiteTemplateModifiers
 	/**
 	 * Build an url
 	 *
-	 * @return	string
 	 * @param	string $var					A placeholder.
 	 * @param	string[optional] $action	The action.
 	 * @param	string[optional] $module	The module, if not provided the current module will be used.
+	 * @return string
 	 */
 	public static function buildUrl($var, $action = null, $module = null)
 	{
@@ -274,13 +263,12 @@ class SiteTemplateModifiers
 		return $url->buildUrl($action, $module);
 	}
 
-
 	/**
 	 * Formats plain text as HTML, links will be detected, paragraphs will be inserted
 	 * 	syntax: {$var|cleanupPlainText}
 	 *
-	 * @return	string
 	 * @param	string $var		The text to cleanup.
+	 * @return string
 	 */
 	public static function cleanupPlainText($var)
 	{
@@ -305,27 +293,25 @@ class SiteTemplateModifiers
 		return $var;
 	}
 
-
 	/**
 	 * Dumps the data
 	 * 	syntax: {$var|dump}
 	 *
-	 * @return	string
 	 * @param	string $var		The variable to dump.
+	 * @return string
 	 */
 	public static function dump($var)
 	{
 		Spoon::dump($var, false);
 	}
 
-
 	/**
 	 * Format a UNIX-timestamp as a date
 	 * 	syntax: {$var|formatdate}
 	 *
-	 * @return	string
 	 * @param	int $var	The UNIX-timestamp to format.
 	 * @param	int $format	The format to display the date in.
+	 * @return string
 	 */
 	public static function formatDate($var, $format)
 	{
@@ -333,13 +319,12 @@ class SiteTemplateModifiers
 		return SpoonDate::getDate((string) $format, (int) $var, 'nl');
 	}
 
-
 	/**
 	 * Formats a timestamp as a string that indicates the time ago
 	 * 	syntax: {$var|timeAgo}
 	 *
-	 * @return	string
 	 * @param	string[optional] $var		A UNIX-timestamp that will be formated as a time-ago-string.
+	 * @return string
 	 */
 	public static function timeAgo($var = null)
 	{
@@ -356,15 +341,14 @@ class SiteTemplateModifiers
 		return '<abbr title="' . SpoonDate::getDate('l j F Y H:i:s', $var,  $url->getLanguage()) . '">' . SpoonDate::getTimeAgo($var, $url->getLanguage()) . '</abbr>';
 	}
 
-
 	/**
 	 * Truncate a string
 	 * 	syntax: {$var|truncate:<max-length>[:<append-hellip>]}
 	 *
-	 * @return	string
 	 * @param	string[optional] $var		The string passed from the template.
 	 * @param	int $length					The maximum length of the truncated string.
 	 * @param	bool[optional] $useHellip	Should a hellip be appended if the length exceeds the requested length?
+	 * @return string
 	 */
 	public static function truncate($var = null, $length, $useHellip = true)
 	{
@@ -394,6 +378,3 @@ class SiteTemplateModifiers
 		}
 	}
 }
-
-
-?>

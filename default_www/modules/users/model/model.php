@@ -44,8 +44,8 @@ class User
 	/**
 	 * Get a user
 	 *
-	 * @return	User
 	 * @param	int $id		The id of the user.
+	 * @return User
 	 */
 	public static function get($id)
 	{
@@ -71,11 +71,10 @@ class User
 		return $item;
 	}
 
-
 	/**
 	 * Get all users for usage in a dropdown
 	 *
-	 * @return	array
+	 * @return array
 	 */
 	public static function getForDropdown()
 	{
@@ -84,12 +83,11 @@ class User
 										ORDER BY i.name');
 	}
 
-
 	/**
 	 * Get a setting
 	 *
-	 * @return	mixed
 	 * @param	string $key		The key whereunder the value is stored.
+	 * @return mixed
 	 */
 	public function getSetting($key)
 	{
@@ -97,12 +95,11 @@ class User
 		else return $this->settings[$key];
 	}
 
-
 	/**
 	 * Initialize the object.
 	 *
-	 * @return	User
 	 * @param	array $data		The data in an array.
+	 * @return User
 	 */
 	public function initialize($data)
 	{
@@ -119,11 +116,10 @@ class User
 		if($this->type == 'admin') $this->isAdmin = true;
 	}
 
-
 	/**
 	 * Save the user
 	 *
-	 * @return	bool
+	 * @return bool
 	 */
 	public function save()
 	{
@@ -145,24 +141,22 @@ class User
 		return true;
 	}
 
-
 	/**
 	 * Store a setting
 	 *
-	 * @return	void
 	 * @param	string $key		The key whereunder the value will be stored.
 	 * @param	mixed $value	The value to store.
+	 * @return void
 	 */
 	public function setSetting($key, $value)
 	{
 		$this->settings[(string) $key] = $value;
 	}
 
-
 	/**
 	 * Return the object as an array
 	 *
-	 * @return	array
+	 * @return array
 	 */
 	public function toArray()
 	{
@@ -176,5 +170,3 @@ class User
 		return $item;
 	}
 }
-
-?>
