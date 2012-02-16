@@ -13,6 +13,7 @@ $act = array();
 
 // init var
 $err = array();
+$err['AuthenticationError'] = 'Incorrecte login gegevens.';
 $err['EmailIsInvalid'] = 'Dit is een ongeldig emailadres.';
 $err['FieldIsRequired'] = 'Dit veld is verplicht.';
 $err['Forbidden'] = 'Je hebt niet voldoende rechten.';
