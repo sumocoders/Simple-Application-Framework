@@ -136,6 +136,7 @@ class SiteLocale extends SpoonTemplate
 					{
 						$language = $languageAbbreviation;
 						$foundALanguage = true;
+						break;
 					}
 				}
 			}
