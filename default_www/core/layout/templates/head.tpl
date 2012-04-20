@@ -32,6 +32,7 @@
 
 	<script src="/core/js/modernizr.js"></script>
 	<script src="/core/js/jquery.js"></script>
+	<script src="/core/js/html2canvas.js"></script>
 	<script src="/core/js/jquery.ui.js"></script>
 	{option:javascript}
 		{iteration:javascript}<script src="{$javascript.url}"></script>{/iteration:javascript}

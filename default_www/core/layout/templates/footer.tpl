@@ -10,4 +10,7 @@
 			</a>
 		</small>
 	</p>
+	
+	<a href="#" id="reportBug">#bug</a>
+	
 </footer>

@@ -33,6 +33,7 @@ jsSite =
 
 		// init stuff
 		jsSite.initAjax();
+		jsSite.bugs.init();
 		jsSite.forms.init();
 
 		try
@@ -92,6 +93,94 @@ jsSite =
 	eoo: true
 }
 
+jsSite.bugs = 
+{
+	options: {},
+		
+	init: function()
+	{
+		jsSite.bugs.options = 
+		{ 
+			complete: jsSite.bugs.onCompletePreload,
+			elements: $('body'),
+			flashcanvas: '/core/js/external/flashcanvas.js'
+		};
+		
+		$('#reportBug').on('click', jsSite.bugs.click);
+		$('#reportBugNext').on('click', jsSite.bugs.next);
+		$('#reportBugSave').on('click', jsSite.bugs.save);
+	},
+	
+	click: function(e)
+	{
+		// show box for description
+		$('#reportBugBox').show();
+		
+	},
+	
+	next: function(e)
+	{
+		// hide previous errors
+		$('#reportBugDescriptionError').hide();
+		
+		// init var
+		var noErrors = true;
+		
+		// validate
+		if($('#reportBugDescription').val().length == 0) 
+		{
+			noErrors = false;
+			$('#reportBugDescriptionError').show();
+		}
+		
+		// no errors
+		if(noErrors)
+		{
+			// enable submit
+			$('#reportBugSubmit').removeClass('disabled').prop('disabled', false);
+			
+			// show spinner
+			$('#reportBugSubmitSpinner').show();
+			
+			// create screenshot 
+			html2canvas.Preload($('body')[0], jsSite.bugs.options);
+		}
+		else $('#reportBugSubmit').addClass('disabled').prop('disabled', true);
+		
+	},
+	
+	onCompletePreload: function(images)
+	{
+		// init var
+		var queue = html2canvas.Parse($('body')[0], images, jsSite.bugs.options);
+		var $canvas = $(html2canvas.Renderer(queue, jsSite.bugs.options));
+
+		// hide spinner
+		$('#reportBugSubmitSpinner').hide();
+		
+		// show highlight button
+		$('#reportBugSubmitHilight').show();
+		
+		// show the canvas, above the the current content
+//		$canvas.css({ position: 'absolute', left: 0, top: 0 }).appendTo(document.body);
+		
+		// @todo	enable highlight
+		
+		// show box above
+		console.log($canvas[0].toDataURL());
+	},
+	
+	save: function()
+	{
+		// build data
+		var data = {};
+		
+		$.ajax({});
+		
+		
+		// send to ajax
+	}
+}
 
 /**
  * Forms
