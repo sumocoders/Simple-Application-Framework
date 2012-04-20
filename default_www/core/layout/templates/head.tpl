@@ -32,7 +32,7 @@
 	<script src="/core/js/jquery.js"></script>
 	<script src="/core/js/jquery.ui.js"></script>
 	{option:javascript}{iteration:javascript}<script src="{$javascript.url}"></script>{/iteration:javascript}{/option:javascript}
-	<script src="/js.php?module=core&file=site.js&language={$LANGUAGE}&m={$LAST_MODIFIED}"></script>
+	<script src="/js.php?module=core&amp;file=site.js&amp;language={$LANGUAGE}&amp;m={$LAST_MODIFIED}"></script>
 </head>
 
 <!-- Target IE browsers specifically without extra http requests. -->
