@@ -46,11 +46,6 @@ define('SITE_URL', 'http://' . SITE_DOMAIN);
 
 
 /**
- * Version configuration
- */
-define('LAST_MODIFIED', time());
-
-/**
  * Path configuration
  *
  * Depends on the server layout

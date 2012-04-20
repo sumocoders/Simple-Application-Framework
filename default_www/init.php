@@ -37,11 +37,13 @@ class Init
 		{
 			error_reporting(E_ALL | E_STRICT);
 			ini_set('display_errors', 'On');
+			define('LAST_MODIFIED', time());
 		}
 		else
 		{
 			error_reporting(0);
 			ini_set('display_errors', 'Off');
+			define('LAST_MODIFIED', filemtime('../library/globals.php'));
 		}
 
 		// require spoon
