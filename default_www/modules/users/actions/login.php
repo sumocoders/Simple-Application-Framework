@@ -107,7 +107,7 @@ class UsersLogin extends SiteBaseAction
 
 				// redirect
 				$this->redirect(SpoonFilter::getGetValue('redirect', null, '/'));
-//			}
+			}
 		}
 	}
 }
