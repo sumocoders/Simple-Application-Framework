@@ -1,7 +1,4 @@
 <footer id="footer">
-	<header class="visuallyHidden">
-		<h2>{$lblFooter|ucfirst}</h2>
-	</header>
 	<p>
 		© COMPANY -
 		<small>

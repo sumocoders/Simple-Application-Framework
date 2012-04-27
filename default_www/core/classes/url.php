@@ -289,8 +289,8 @@ class SiteURL
 		$queryString = trim($queryString, '/');
 
 		// split into chunks, a url will always look like /<language>/<module>/<action>(?GET)
-		if($queryString == '') $aChunks = array();
-		else $chunks = (array) explode('/', $queryString);
+		if(!isset($chunks[0]) || $chunks[0] == '') $chunks = array();
+		else $chunks = (array) explode('/', $chunks[0]);
 
 		// nothing provided
 		if(empty($chunks)) SpoonHTTP::redirect('/' . SiteLocale::getPreferedLanguage(), 301);

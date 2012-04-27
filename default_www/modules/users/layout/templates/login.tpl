@@ -26,6 +26,7 @@
 					<span class="logo"></span>
 				</fieldset>
 			{/form:login}
+		</section>
 		{include:'{$CORE_PATH}/layout/templates/footer.tpl'}
 	</div>
 </body>

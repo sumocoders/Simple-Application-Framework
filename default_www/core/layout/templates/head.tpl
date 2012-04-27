@@ -24,20 +24,16 @@
 	<!--  icon for facebook -->
 	<link rel="image_src" href="/image_src.png" />
 
-	<link rel="stylesheet" href="/core/layout/css/jquery_ui/jquery_ui.css">
-	<link rel="stylesheet" href="/core/layout/css/style.css">
-	{option:css}
-		{iteration:css}<script src="{$css.url}"></script>{/iteration:css}
-	{/option:css}
+	<link rel="stylesheet" href="/core/layout/css/jquery_ui/jquery_ui.css?m={$LAST_MODIFIED}">
+	<link rel="stylesheet" href="/core/layout/css/style.css?m={$LAST_MODIFIED}">
+	{option:css}{iteration:css}<script src="{$css.url}"></script>{/iteration:css}{/option:css}
 
 	<script src="/core/js/modernizr.js"></script>
 	<script src="/core/js/jquery.js"></script>
 	<script src="/core/js/html2canvas.js"></script>
 	<script src="/core/js/jquery.ui.js"></script>
-	{option:javascript}
-		{iteration:javascript}<script src="{$javascript.url}"></script>{/iteration:javascript}
-	{/option:javascript}
-	<script src="/js.php?module=core&file=site.js&language={$LANGUAGE}"></script>
+	{option:javascript}{iteration:javascript}<script src="{$javascript.url}"></script>{/iteration:javascript}{/option:javascript}
+	<script src="/js.php?module=core&amp;file=site.js&amp;language={$LANGUAGE}&amp;m={$LAST_MODIFIED}"></script>
 </head>
 
 <!-- Target IE browsers specifically without extra http requests. -->
