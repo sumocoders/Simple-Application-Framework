@@ -1,2 +1,4 @@
-Default user: accounts@sumocoders.be 
-pw: internet
+# Authentication
+
+user: accounts@sumocoders.be
+pass: internet
