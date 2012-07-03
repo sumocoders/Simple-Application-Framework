@@ -1,7 +1,14 @@
 {include:'{$CORE_PATH}/layout/templates/head.tpl'}
-	<div id="container">
-		{include:'{$CORE_PATH}/layout/templates/header.tpl'}
-		{include:'{$CORE_PATH}/layout/templates/nav.tpl'}
+	{include:'{$CORE_PATH}/layout/templates/header.tpl'}
+
+	<div class="container-fluid">
+		<section id="users" class="index" class="row-fluid">
+			<div class="span4 offset4">
+
+
+			</div>
+		</section>
+
 
 		<section id="users" class="index content">
 			<header class="header buttonHolderRight clearfix">
