@@ -40,7 +40,7 @@ define('DB_PASSWORD', '<database_password>');
 // the domain (without http)
 define('SITE_DOMAIN', isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : '<url>');	// @todo provide correct url
 // the default title
-define('SITE_DEFAULT_TITLE', '<name>'); // @todo	correct url
+define('SITE_DEFAULT_TITLE', '<name>'); // @todo	correct title
 // the url
 define('SITE_URL', 'http://' . SITE_DOMAIN);
 
@@ -51,7 +51,7 @@ define('SITE_URL', 'http://' . SITE_DOMAIN);
  * Depends on the server layout
  */
 // path to the website itself
-define('PATH_WWW', realpath(dirname(__FILE__) . '/../default_www'));
+define('PATH_WWW', realpath(dirname(__FILE__) . '/../'));
 // path to the library
 define('PATH_LIBRARY', realpath(dirname(__FILE__)));
 

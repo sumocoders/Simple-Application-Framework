@@ -23,7 +23,7 @@ class Init
 		if(ini_get('date.timezone') == '') date_default_timezone_set('Europe/Brussels');
 
 		// require globals
-		require_once '../library/globals.php';
+		require_once './library/globals.php';
 
 		// define constants
 		define('CACHE_PATH', PATH_WWW . '/cache');
