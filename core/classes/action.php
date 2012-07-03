@@ -318,10 +318,10 @@ class SiteBaseAction
 	 * Redirect to a given url
 	 *
 	 * @param	string $url				The URL to redirect to.
-	 * @param	int[optional] $code		The redirect code, default is 307 (temporary), other possibilities are: 301 (permanent), 302 (found).
+	 * @param	int[optional] $code		The redirect code, default is 302 (found), other possibilities are: 301 (permanent), 302 (found).
 	 * @return void
 	 */
-	public function redirect($url, $code = 307)
+	public function redirect($url, $code = 302)
 	{
 		SpoonHTTP::redirect((string) $url, (int) $code);
 	}
