@@ -96,6 +96,7 @@ jsSite =
 jsSite.bugs = 
 {
 	options: {},
+	screenshot: null,
 		
 	init: function()
 	{
@@ -108,18 +109,37 @@ jsSite.bugs =
 		
 		$('#reportBug').on('click', jsSite.bugs.click);
 		$('#reportBugNext').on('click', jsSite.bugs.next);
-		$('#reportBugSave').on('click', jsSite.bugs.save);
+		$('#reportBugPrevious').on('click', jsSite.bugs.previous);
+		$('#reportBugSubmit').on('click', jsSite.bugs.save);
+		$('#reportBugBox a.close').on('click', jsSite.bugs.close);
 	},
 	
 	click: function(e)
 	{
+		$('#reportBugBox .step1').show();
+		$('#reportBugBox .step2').hide();
+		$('#reportBugBox .step3').hide();
+
+		$('#reportBugNext').show();
+
 		// show box for description
-		$('#reportBugBox').show();
+		$('#reportBugBox').fadeIn();
+	},
+	
+	close: function(e)
+	{
+		// prevent default behaviour
+		e.preventDefault();
 		
+		// hide box
+		$('#reportBugBox').fadeOut();
 	},
 	
 	next: function(e)
 	{
+		// prevent default behaviour
+		e.preventDefault();
+		
 		// hide previous errors
 		$('#reportBugDescriptionError').hide();
 		
@@ -141,8 +161,15 @@ jsSite.bugs =
 			
 			// show spinner
 			$('#reportBugSubmitSpinner').show();
+		
+			$('#reportBugBox .step1').hide();
+			$('#reportBugBox .step2').show();
+			$('#reportBugBox .step3').hide();
+			$('#reportBugNext').hide();
+			$('#reportBugPrevious').show();
 			
-			// create screenshot 
+			// create screenshot
+			$('#reportBugHolder').hide();
 			html2canvas.Preload($('body')[0], jsSite.bugs.options);
 		}
 		else $('#reportBugSubmit').addClass('disabled').prop('disabled', true);
@@ -153,29 +180,67 @@ jsSite.bugs =
 	{
 		// init var
 		var queue = html2canvas.Parse($('body')[0], images, jsSite.bugs.options);
+		if(queue.backgroundColor == 'transparent') queue.backgroundColor = '#FFF';
 		var $canvas = $(html2canvas.Renderer(queue, jsSite.bugs.options));
-
+		$('#reportBugHolder').show();
+		jsSite.bugs.screenshot = $canvas[0].toDataURL();
+		
 		// hide spinner
 		$('#reportBugSubmitSpinner').hide();
-		
+
 		// show highlight button
-		$('#reportBugSubmitHilight').show();
-		
-		// show the canvas, above the the current content
-//		$canvas.css({ position: 'absolute', left: 0, top: 0 }).appendTo(document.body);
+		$('#reportBugSubmit').show();
 		
 		// @todo	enable highlight
 		
-		// show box above
-		console.log($canvas[0].toDataURL());
 	},
 	
-	save: function()
+	previous: function(e) 
+	{
+		// prevent default behaviour
+		e.preventDefault();
+		
+		$('#reportBugBox .step1').show();
+		$('#reportBugBox .step2').hide();
+		$('#reportBugBox .step3').hide();
+		$('#reportBugNext').show();
+		$('#reportBugPrevious').hide();
+		$('#reportBugSubmit').hide();
+	},
+	
+	save: function(e)
 	{
 		// build data
-		var data = {};
+		var data = {
+			description: $('#reportBugDescription').val(),
+			screenshot: jsSite.bugs.screenshot,
+			currentUser: currentUser,
+			data: {
+				url: document.location.href
+			}
+		};
 		
-		$.ajax({});
+		$.ajax({
+			url: '/ajax.php?module=core&action=bug&language=' + jsSite.current.language,
+			data: data,
+			success: function(data, textStatus, jqXHR)
+			{
+				if(data.code == 200)
+				{
+					$('#reportBugBox .step1').hide();
+					$('#reportBugBox .step2').hide();
+					$('#reportBugBox .step3').show();
+					$('#reportBugNext').hide();
+					$('#reportBugPrevious').hide();
+					$('#reportBugSubmit').hide();
+
+					// clear info
+					$('#reportBugDescription').val('');
+				}
+
+				else alert(data.message);
+			}
+		});
 		
 		
 		// send to ajax

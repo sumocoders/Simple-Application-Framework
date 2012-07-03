@@ -25,8 +25,10 @@ $err['InvalidModule'] = 'Helaas, deze module kunnen we niet terugvinden.';
 $lbl = array();
 $lbl['Add'] = 'toevoegen';
 $lbl['Close'] = 'sluiten';
+$lbl['Description'] = 'omschrijving';
 $lbl['Edit'] = 'bewerken';
 $lbl['Email'] = 'emailadres';
+$lbl['Feedback'] = 'feedback';
 $lbl['Footer'] = 'footer';
 $lbl['Name'] = 'naam';
 $lbl['Navigation'] = 'navigatie';
@@ -37,11 +39,15 @@ $lbl['Previous'] = 'vorige';
 $lbl['Save'] = 'opslaan';
 $lbl['SignIn'] = 'aanmelden';
 $lbl['SignOff'] = 'afmelden';
+$lbl['Thanks'] = 'bedankt';
 $lbl['Type'] = 'type';
 $lbl['Users'] = 'gebruikers';
 
 // init var
 $msg = array();
+$msg['BugReportStep1'] = 'Rapporteer een bug. Omschrijf het probleem en het verwachte resultaat zo bondig mogelijk.';
+$msg['BugReportStep2'] = 'We verzamelen nu enkele gegevens om ons te helpen het probleem te analyseren.';
+$msg['BugReportStep3'] = 'Bedankt, de informatie werd doorgestuurd.';
 $msg['DatepickerFullSunday'] = 'zondag';
 $msg['DatepickerFullMonday'] = 'maandag';
 $msg['DatepickerFullTuesday'] = 'dinsdag';
