@@ -59,8 +59,11 @@ class AjaxAction
 		// build action-class-name
 		$actionClassName = SpoonFilter::toCamelCase('ajax_' . $this->getModule() . '_' . $this->getAction());
 
+		if($this->getModule() == 'core') $path = PATH_WWW . '/core/ajax/' . $this->getAction() . '.php';
+		else $path = PATH_WWW . '/modules/' . $this->getModule() . '/ajax/' . $this->getAction() . '.php';
+
 		// check if this is a possible action
-		if(!SpoonFile::exists(PATH_WWW . '/modules/' . $this->getModule() . '/ajax/' . $this->getAction() . '.php'))
+		if(!SpoonFile::exists($path))
 		{
 			// set headers
 			SpoonHTTP::setHeadersByCode(404);
@@ -75,7 +78,7 @@ class AjaxAction
 		}
 
 		// require the config file, we know it is there because we validated it before (possible actions are defined by existance off the file).
-		require_once PATH_WWW . '/modules/' . $this->getModule() . '/ajax/' . $this->getAction() . '.php';
+		require_once $path;
 
 		// validate if class exists (aka has correct name)
 		if(!class_exists($actionClassName)) throw new Exception('The actionfile is present, but the classname should be: ' . $actionClassName . '.');
