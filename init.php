@@ -37,7 +37,7 @@ class Init
 		{
 			error_reporting(E_ALL | E_STRICT);
 			ini_set('display_errors', 'On');
-			define('LAST_MODIFIED', time());
+			define('LAST_MODIFIED', microtime(true));
 		}
 		else
 		{
