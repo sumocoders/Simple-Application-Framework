@@ -20,14 +20,14 @@
 					</div>
 				{/option:report}
 
-				{option:datagrid}
-					{$datagrid}
-				{/option:datagrid}
-				{option:!datagrid}
+				{option:dataGrid}
+					{$dataGrid}
+				{/option:dataGrid}
+				{option:!dataGrid}
 					<div class="alert">
 						{$msgUsersNoItems}
 					</div>
-				{/option:!datagrid}
+				{/option:!dataGrid}
 			</div>
 		</section>
 
