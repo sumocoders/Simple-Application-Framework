@@ -60,6 +60,9 @@ class SiteDataGrid extends SpoonDataGrid
 		$this->setPagingClass('SiteDatagridPaging');
 		$this->setPagingLimit(25);
 
+		$url = Spoon::get('url');
+		$this->setURL($url->buildUrl());
+
 		// disable paging
 		$this->setPaging(false);
 
