@@ -11,7 +11,7 @@
 	- paging / whether pagination is enabled
 *}
 
-<table class="table table-striped"{option:summary} summary="{$summary}"{/option:summary}{$attributes}>
+<table {option:summary} summary="{$summary}"{/option:summary}{$attributes}>
 	{option:caption}<caption>{$caption}</caption>{/option:caption}
 	<thead>
 		<tr>

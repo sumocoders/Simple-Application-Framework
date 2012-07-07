@@ -36,7 +36,7 @@ class SiteDataGrid extends SpoonDataGrid
 		$this->setCompileDirectory(CACHE_PATH . '/compiled');
 
 		// set attributes for the datagrid
-		$this->setAttributes(array('class' => 'datagrid'));
+		$this->setAttributes(array('class' => 'datagrid table table-striped'));
 
 		// hide the id by default
 		if(in_array('id', $this->getColumns())) $this->setColumnsHidden('id');
@@ -94,7 +94,7 @@ class SiteDataGrid extends SpoonDataGrid
 		if($isButton)
 		{
 			$value = '<a href="' . $URL . '" class="btn btn-mini">' . $value . '</a>';
-			$URL = '';
+			$URL = null;
 			$class .= ' action';
 		}
 
