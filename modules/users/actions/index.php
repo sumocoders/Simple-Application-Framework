@@ -43,8 +43,7 @@ class UsersIndex extends SiteBaseAction
 										FROM users');
 
 		// add columns
-		$datagrid->addColumn('edit', '', SiteLocale::lbl('Edit'), $this->url->buildUrl('edit', null, '[id]'));
-			$datagrid->setColumnAttributes('edit', array('class' => 'action icon edit'));
+		$datagrid->addColumn('edit', '', ucfirst(SiteLocale::lbl('Edit')), $this->url->buildUrl('edit', null, '[id]'), null, null, null, true);
 
 		// assign
 		if($datagrid->getContent() != '') $this->tpl->assign('datagrid', $datagrid->getContent());

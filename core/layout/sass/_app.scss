@@ -1,0 +1,13 @@
+/* Styling for forms */
+.formError {
+	@extend .help-inline;
+}
+
+/* Styling for datagrids */
+td.action {
+	width: 90px;
+	text-align: center;
+}
+
+/* Styling for users */
+@import '_users';
