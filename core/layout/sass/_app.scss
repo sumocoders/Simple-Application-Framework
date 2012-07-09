@@ -17,12 +17,6 @@
 	"normal"
 );
 
-
-/* Basic app styling */
-body {
-	background: #F4F4F6 url("../img/background.jpg") repeat top left;
-}
-
 /* header */
 #header {
 	background: #4F4E4E url("../img/header_background.jpg") repeat top left;
@@ -46,16 +40,17 @@ body {
 	}
 }
 
+/* user */
 #user {
 	color: #FFFFFF;
 	margin-top: 28px;
 
-	> p {
-		font-family: "Dosis Medium";
+	p {
 		text-align: right;
 	}
 }
 
+/* navigation */
 #navBar {
 	.row-fluid {
 		margin: 30px 0;
@@ -83,6 +78,7 @@ body {
 	}
 }
 
+/* search */
 #search {
 	margin-top: 7px;
 	text-align: right;
@@ -93,7 +89,12 @@ body {
 	}
 }
 
-
+/* footer */
+#footer {
+	.legal p {
+		font-size: 13px;
+	}
+}
 
 /* Styling for forms */
 .formError {

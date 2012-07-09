@@ -1,9 +1,9 @@
+/* configuration */
+@import "_variables.scss";
+
 /* Some imports */
-@import 'compass_twitter_bootstrap';
-@import 'compass_twitter_bootstrap/responsive-768px-979px';
-@import 'compass_twitter_bootstrap/responsive-1200px-min';
-
-@import 'compass/css3';
-@import 'compass/typography';
-
-/* Default config */
+@import "compass_twitter_bootstrap";
+@import "compass_twitter_bootstrap/responsive-768px-979px";
+@import "compass_twitter_bootstrap/responsive-1200px-min";
+@import "compass/css3";
+@import "compass/typography";
