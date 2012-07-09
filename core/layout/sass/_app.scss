@@ -1,3 +1,100 @@
+/* fonts */
+@include font-face(
+	"Dosis Bold",
+	font-files(
+		"/core/layout/fonts/dosis-bold.woff", "/core/layout/fonts/dosis-bold.ttf", "/core/layout/fonts/dosis-bold.svg"
+	),
+	"/core/layout/fonts/dosis-bold.eot",
+	"normal"
+);
+
+@include font-face(
+	"Dosis Medium",
+	font-files(
+		"/core/layout/fonts/dosis-medium.woff", "/core/layout/fonts/dosis-medium.ttf", "/core/layout/fonts/dosis-medium.svg"
+	),
+	"/core/layout/fonts/dosis-medium.eot",
+	"normal"
+);
+
+
+/* Basic app styling */
+body {
+	background: #F4F4F6 url("../img/background.jpg") repeat top left;
+}
+
+/* header */
+#header {
+	background: #4F4E4E url("../img/header_background.jpg") repeat top left;
+	color: #FFFFFF;
+	@include single-box-shadow(rgba(32, 31, 31, 0.75), 0, 0, 2px, 2px, true);
+	@include single-text-shadow(rgba(27, 27, 26, 0.75), 1px, 1px, 2px);
+
+	.row-fluid {
+		height: 65px;
+	}
+
+	h1 {
+		font-family: "Dosis Bold";
+		font-size: 26px;
+		font-weight: normal;
+		padding: 15px 0;
+	}
+
+	a {
+		@include link-colors(#FFF);
+	}
+}
+
+#user {
+	color: #FFFFFF;
+	margin-top: 28px;
+
+	> p {
+		font-family: "Dosis Medium";
+		text-align: right;
+	}
+}
+
+#navBar {
+	.row-fluid {
+		margin: 30px 0;
+		border-bottom: 1px solid #9A9999;
+	}
+
+	#nav {
+		font-family: "Dosis Medium";
+		font-size: 18px;
+		text-transform: uppercase;
+
+		ul {
+			@include inline-block-list;
+
+			li {
+				margin: 2px;
+
+				a {
+					padding: 10px;
+					@include border-radius;
+					@include link-colors(#313020);
+				}
+			}
+		}
+	}
+}
+
+#search {
+	margin-top: 7px;
+	text-align: right;
+
+	input.searchField {
+		float: left;
+		width: 120px;
+	}
+}
+
+
+
 /* Styling for forms */
 .formError {
 	@extend .help-inline;
@@ -10,4 +107,4 @@ td.action {
 }
 
 /* Styling for users */
-@import '_users';
+@import "_users";

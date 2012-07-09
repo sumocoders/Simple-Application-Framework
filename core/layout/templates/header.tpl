@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div id="header" class="container-fluid">
 	<div class="row-fluid">
 		<div class="span8">
 			<h1>

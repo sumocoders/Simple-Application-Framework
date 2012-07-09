@@ -95,6 +95,6 @@ $msg['UsersAdded'] = 'De gebruiker <em>%1$s</em> werd toegevoegd.';
 $msg['UsersEdit'] = 'Gebruiker <em>%1$s</em> bewerken';
 $msg['UsersEdited'] = 'De gebruiker <em>%1$s</em> werd opgeslagen.';
 $msg['UsersLogin'] = 'Aanmelden';
-$msg['UsersLoggedInAs'] = 'Je bent aangemeld als <em>%1$s</em>.';
+$msg['UsersLoggedInAs'] = 'Je bent aangemeld als <strong>%1$s</strong>';
 $msg['UsersLoggedOut'] = 'Je bent afgemeld.';
 $msg['UsersNoItems'] = 'Er zijn nog geen gebruikers aangemaakt.';
