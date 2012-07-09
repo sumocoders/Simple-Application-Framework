@@ -34,6 +34,7 @@ $lbl['Login'] = 'gebruikersnaam';
 $lbl['Password'] = 'wachtwoord';
 $lbl['Previous'] = 'vorige';
 $lbl['Save'] = 'opslaan';
+$lbl['Search'] = 'zoeken';
 $lbl['SignIn'] = 'aanmelden';
 $lbl['SignOff'] = 'afmelden';
 $lbl['Type'] = 'type';
