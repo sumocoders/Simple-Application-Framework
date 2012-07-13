@@ -116,10 +116,20 @@ a {
 
 				a {
 					padding: 10px;
-					@include border-radius;
+					border: none;
+					@include border-radius(5px);
 					@include link-colors(#313020);
+
+					&:hover {
+						background-color: shade($bodyBackground, 7%);
+					}
 				}
 			}
+
+			li.selected a {
+				background-color: shade($bodyBackground, 10%);
+			}
+
 		}
 	}
 }
