@@ -1,10 +1,10 @@
 {include:'{$CORE_PATH}/layout/templates/head.tpl'}
 {include:'{$CORE_PATH}/layout/templates/header.tpl'}
 
-	<div class="container-fluid">
+	<div id="content" class="container-fluid">
 		<section id="users" class="login row-fluid">
 			<div class="span12">
-				<header class="header">
+				<header class="header hide">
 					<h2>{$msgUsersLogin}</h2>
 				</header>
 
@@ -27,10 +27,8 @@
 							</div>
 						</div>
 
-						<div class="control-group">
-							<div class="controls">
-								<button type="submit" class="btn btn-primary">{$lblSignIn|ucfirst}</button>
-							</div>
+						<div class="form-actions">
+							<button type="submit" class="btn btn-primary">{$lblSignIn|ucfirst}</button>
 						</div>
 					</fieldset>
 				{/form:login}

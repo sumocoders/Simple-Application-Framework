@@ -55,6 +55,7 @@ a {
 
 /* header */
 #header {
+	margin-bottom: 20px;
 	background: #4F4E4E image-url("header_background.jpg") repeat top left;
 	color: #FFFFFF;
 	@include single-box-shadow(rgba(32, 31, 31, 0.75), 0, 0, 2px, 2px, true);
@@ -90,7 +91,7 @@ a {
 /* navigation */
 #navBar {
 	.row-fluid {
-		margin: 30px 0;
+		margin: 10px 0 30px;
 		border-bottom: 1px solid #9A9999;
 	}
 
@@ -176,9 +177,7 @@ a {
 }
 
 /* Styling for forms */
-.formError {
-	@extend .help-inline;
-}
+@import "_forms";
 
 /* Styling for datagrids */
 td.action {
