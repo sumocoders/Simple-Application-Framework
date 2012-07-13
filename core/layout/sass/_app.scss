@@ -74,7 +74,15 @@ a {
 	}
 
 	a {
-		@include link-colors(#FFF);
+		@include link-colors(#FFFFFF);
+
+		&:hover {
+			color: shade(#FFFFFF, 25%);
+			border: none;
+			@include transition-property("color");
+			@include transition-duration(500ms);
+			@include transition-timing-function(ease-in);
+		}
 	}
 }
 
