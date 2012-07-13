@@ -2,8 +2,8 @@
 {include:'{$CORE_PATH}/layout/templates/header.tpl'}
 {include:'{$CORE_PATH}/layout/templates/nav.tpl'}
 
-	<div class="container-fluid">
-		<section id="example" class="index row-fluid">
+	<div id="content" class="container-fluid">
+		<section id="{$MODULE}" class="{$ACTION} row-fluid">
 			<div class="span12">
 				<p>
 					Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Sed posuere consectetur est at lobortis. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Aenean lacinia bibendum nulla sed consectetur.

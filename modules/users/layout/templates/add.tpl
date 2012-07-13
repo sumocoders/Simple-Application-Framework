@@ -2,8 +2,8 @@
 {include:'{$CORE_PATH}/layout/templates/header.tpl'}
 {include:'{$CORE_PATH}/layout/templates/nav.tpl'}
 
-	<div class="container-fluid">
-		<section id="users" class="add row-fluid">
+	<div id="content" class="container-fluid">
+		<section id="{$MODULE}" class="{$ACTION} row-fluid">
 			<div class="span12">
 				<header class="header">
 					<h2>{$msgUsersAdd}</h2>

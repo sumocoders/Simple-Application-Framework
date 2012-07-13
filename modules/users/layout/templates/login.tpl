@@ -2,7 +2,7 @@
 {include:'{$CORE_PATH}/layout/templates/header.tpl'}
 
 	<div id="content" class="container-fluid">
-		<section id="users" class="login row-fluid">
+		<section id="{$MODULE}" class="{$ACTION} row-fluid">
 			<div class="span12">
 				<header class="header hide">
 					<h2>{$msgUsersLogin}</h2>

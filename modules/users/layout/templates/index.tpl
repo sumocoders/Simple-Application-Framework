@@ -2,8 +2,8 @@
 {include:'{$CORE_PATH}/layout/templates/header.tpl'}
 {include:'{$CORE_PATH}/layout/templates/nav.tpl'}
 
-	<div class="container-fluid">
-		<section id="users" class="index row-fluid">
+	<div id="content" class="container-fluid">
+		<section id="{$MODULE}" class="{$ACTION} row-fluid">
 			<div class="span12">
 				<header class="header buttonHolderRight clearfix">
 					<h2>{$lblUsers|ucfirst}</h2>
