@@ -2,6 +2,10 @@
 $bodyBackground: #F4F4F6;
 $textColor: #61615E;
 
+/* Links */
+$textLinkColor: #A73E15;
+$textLinkColorHover: darken($textLinkColor, 15%);
+
 /* Typography */
 $sansFontFamily: "Dosis Medium", Helvetica, Arial, sans-serif;
 $serifFontFamily: Georgia, "Times New Roman", Times, serif;
@@ -9,5 +13,9 @@ $monoFontFamily: Menlo, Monaco, Consolas, "Courier New", monospace;
 
 $baseFontSize: 14px;
 $baseFontFamily: $sansFontFamily;
-$baseLineHeight: 18px;
+$baseLineHeight: 1.5;
 $altFontFamily: $serifFontFamily;
+
+/* Sprite icons path */
+$iconSpritePath: image-url("glyphicons-halflings.png", true);
+$iconWhiteSpritePath: image-url("glyphicons-halflings-white.png", true);
