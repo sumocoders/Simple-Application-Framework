@@ -87,6 +87,7 @@ $msg['DatepickerShortSeptember'] = 'sep';
 $msg['DatepickerShortOctober'] = 'okt';
 $msg['DatepickerShortNovember'] = 'nov';
 $msg['DatepickerShortDecember'] = 'dec';
+$msg['FooterDisclaimer'] = '<p>Deze applicatie is een product van SumoCoders BVBA, wenst u ook een applicatie op maat: neem dan contact met ons op: <br /><a href="mailto:i-want-an-app@sumocoders.be">i-want-an-app@sumocoders.be</a> - <a href="http://www.sumocoders.be">www.sumocoders.be</a></p>';
 $msg['OldBrowserWarning'] = '<strong>Opgelet:</strong> Je gebruikt een verouderde browser. Indien je de website wil zien zoals deze bedoeld is, kan je beter een nieuwe versie downloaden of een degelijke browser zoals <a href="http://www.getfirefox.com">Firefox</a> installeren.';
 $msg['Required'] = 'Verplicht in te vullen.';
 $msg['ReportBug'] = 'Meld een bug';

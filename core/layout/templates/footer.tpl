@@ -9,12 +9,7 @@
 		</div>
 
 		<div id="legal" class="span4">
-			<p>
-				Lorem <a href="http://site-{$timestamp}.be">ipsum</a>, <a href="http://www.sumocoders.be">visited</a> dolor sit amet, consectetur adipiscing elit. In tellus diam, blandit ac dictum sit amet, pellentesque quis risus. Quisque rutrum, metus vel auctor dignissim.
-			</p>
-			<p>
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tellus diam, blandit ac dictum sit amet, pellentesque quis risus. Quisque rutrum, metus vel auctor dignissim.
-			</p>
+			{$msgFooterDisclaimer}
 		</div>
 
 		<div id="feedback" class="span2">
