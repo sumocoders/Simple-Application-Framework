@@ -21,6 +21,9 @@
 	"normal"
 );
 
+body {
+	background: $bodyBackground image-url("background.jpg") repeat top left;
+}
 /* header */
 #header {
 	background: #4F4E4E image-url("header_background.jpg") repeat top left;
