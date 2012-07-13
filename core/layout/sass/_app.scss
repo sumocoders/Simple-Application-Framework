@@ -127,8 +127,50 @@ a {
 
 /* footer */
 #footer {
-	.legal p {
+	background: transparent inline-image("footer_border.png") repeat-x top left;
+	margin-top: 40px;
+	padding: 20px 0 0 0;
+
+	#credits {
+		width: 260px;
+		padding: 45px 22px 0 0;
+		min-height: 138px;
+		background: transparent inline-image("footer_shadow.png") no-repeat top right;
+
+		a {
+			display: block;
+			width: 220px;
+			height: 35px;
+			@include replace-text("sprite.png", 0, 0);
+		}
+	}
+
+	#legal p {
 		font-size: 13px;
+	}
+
+	#feedback {
+		float: right;
+		text-align: right;
+
+		a.bug {
+			line-height: 18px;
+			font-size: 16px;
+			@include link-colors($grayLight, shade($grayLight, 25%));
+
+			&:hover {
+				border: none;
+			}
+
+			i.icon-bug {
+				display: inline-block;
+				width: 18px;
+				height: 18px;
+				line-height: 18px;
+				vertical-align: top;
+				background: transparent image-url('sprite.png') no-repeat 0 -37px;
+			}
+		}
 	}
 }
 
