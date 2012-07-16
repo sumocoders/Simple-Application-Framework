@@ -4,7 +4,7 @@
 
 	<div id="content" class="container-fluid">
 		<section id="{$MODULE}" class="{$ACTION} row-fluid">
-			<div class="span12">
+			<div class="span12 content">
 				<p>
 					Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Sed posuere consectetur est at lobortis. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Aenean lacinia bibendum nulla sed consectetur.
 				</p>

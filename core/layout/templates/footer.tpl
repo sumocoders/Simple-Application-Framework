@@ -8,7 +8,7 @@
 			© {$timestamp|date:'Y'} SumoCoders BVBA
 		</div>
 
-		<div id="legal" class="span4">
+		<div id="legal" class="span4 content">
 			{$msgFooterDisclaimer}
 		</div>
 

@@ -24,17 +24,15 @@ body {
 	background: $bodyBackground image-url("background.jpg") repeat top left;
 }
 
-a {
-	color: $textLinkColor;
+.content a {
+	@include link-colors($textLinkColor, $textLinkColorHover, $textLinkColor, darken($textLinkColor, 7%), $textLinkColorHover);
 	padding: 1px;
 
 	&:visited {
-		color: darken($textLinkColor, 7%);
 		border-bottom: 1px solid darken($textLinkColor, 7%);
 	}
 
 	&:hover {
-		color: $textLinkColorHover;
 		text-decoration: none;
 		border-bottom: 1px solid $textLinkColorHover;
 
