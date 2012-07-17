@@ -90,20 +90,11 @@ var jsSite =
 
 jsSite.bugs =
 {
-	options: {},
 	screenshot: null,
 
 	init: function()
 	{
 		$('#reportBugModal').modal({ show: false, backdrop: false });
-
-		jsSite.bugs.options =
-		{
-			complete: jsSite.bugs.onCompletePreload,
-			elements: $('body'),
-			flashcanvas: '/core/js/external/flashcanvas.js'
-		};
-
 		$('#reportBug').on('click', jsSite.bugs.click);
 		$('#reportBugNext').on('click', jsSite.bugs.next);
 		$('#reportBugPrevious').on('click', jsSite.bugs.previous);
@@ -180,7 +171,18 @@ jsSite.bugs =
 
 	onCompletePreload: function(canvas)
 	{
-		jsSite.bugs.screenshot = canvas.toDataURL();
+		if(typeof FlashCanvas != "undefined") {
+			FlashCanvas.initElement(canvas);
+		}
+
+		try
+		{
+			jsSite.bugs.screenshot = canvas.toDataURL();
+		}
+		catch(e)
+		{
+
+		}
 
 		$('#reportBugModal').show();
 		$('#reportBugSubmitSpinner').hide();

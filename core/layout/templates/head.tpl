@@ -13,7 +13,6 @@
 	<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
 	<!--[if lt IE 9]>
 		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-		<script src="/core/js/flashcanvas.js?m={$LAST_MODIFIED}"></script>
 	<![endif]-->
 
 	<link rel="stylesheet" href="/core/layout/css/style.css?m={$LAST_MODIFIED}">
