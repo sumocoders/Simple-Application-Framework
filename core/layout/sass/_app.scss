@@ -24,6 +24,13 @@ body, #navBar.fixed {
 	background: $bodyBackground image-url("background.jpg") repeat top left;
 }
 
+/* Fixes */
+// because we use a custom font, something is off with the icons
+.btn [class^="icon-"], .btn [class*=" icon-"] { margin-top: 3px; }
+.btn-mini [class^="icon-"], .btn-mini [class*=" icon-"] { margin-top: 1px; }
+.btn-large [class^="icon-"], .btn-large [class*=" icon-"] { margin-top: 4px; }
+
+/* IE6-warning */
 #ie6.alert {
 	margin-bottom: 0;
 }
@@ -126,10 +133,6 @@ body, #navBar.fixed {
 
 	button {
 		float: right;
-
-		i {
-			margin-top: 3px;
-		}
 	}
 }
 
