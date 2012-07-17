@@ -27,6 +27,8 @@ var jsSite =
 		jsSite.current.action = chunks[3];
 		jsSite.current.language = chunks[1];
 
+		jsSite.layout.init();
+
 		try
 		{
 			// build method
@@ -39,6 +41,31 @@ var jsSite =
 		{
 			if(jsSite.debug) console.log(e);
 		}
+	}
+}
+
+jsSite.layout =
+{
+	init: function()
+	{
+		if(
+			!(navigator.userAgent.match(/iPhone/i)) &&
+			!(navigator.userAgent.match(/iPod/i)) &&
+			!(navigator.userAgent.match(/iPad/i))
+		)
+		{
+			$(document).on('scroll', jsSite.layout.onScroll);
+		}
+	},
+
+	onScroll: function(e)
+	{
+		var $this = $(this);
+		var $header = $('#header');
+		var $navBar = $('#navBar');
+
+		if($this.scrollTop() >= $header.height()) $navBar.addClass('fixed').css('width', ($('#header').width()));
+		if($this.scrollTop() < $header.height()) $navBar.removeClass('fixed').css('width', 'auto');
 	}
 }
 

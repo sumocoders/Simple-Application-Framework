@@ -20,7 +20,7 @@
 	"normal"
 );
 
-body {
+body, #navBar.fixed {
 	background: $bodyBackground image-url("background.jpg") repeat top left;
 }
 
@@ -99,6 +99,16 @@ body {
 	.row-fluid {
 		margin: 10px 0 30px;
 		border-bottom: 1px solid #9A9999;
+	}
+
+	&.fixed {
+		position: fixed;
+		top: 0;
+		left: 0;
+
+		.row-fluid {
+			margin-bottom: 1px;
+		}
 	}
 
 	#nav {
