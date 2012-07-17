@@ -54,7 +54,7 @@ class UsersIndex extends SiteBaseAction
 		$dataGrid->addColumn(
 			'edit', '', ucfirst(SiteLocale::lbl('Edit')),
 			$this->url->buildUrl('edit', null, '[id]'),
-			null, null, null, true
+			null, 'icon-pencil', null, true
 		);
 
 		// assign
