@@ -5,9 +5,9 @@
 				<a href="/" rel="home">
 					{$SITE_DEFAULT_TITLE}
 				</a>
-				<div id="ajaxSpinner">
+				<span id="ajaxSpinner">
 					{$lblLoading|ucfirst}…
-				</div>
+				</span>
 			</h1>
 		</div>
 
