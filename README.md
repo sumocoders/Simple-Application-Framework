@@ -1,16 +1,25 @@
-# Authentication
+# README
 
-user: accounts@sumocoders.be
-pass: internet
+This is the SumoCoders mini-framework, it should allow you to build applications without much hasle.
 
-# Use SCSS
+## Authentication
 
-compass create --bare --css-dir "css" --javascripts-dir "../js" --images-dir "../images"
+In the default dump there is one user:
 
-https://github.com/vwall/compass-twitter-bootstrap/
+* user: accounts@sumocoders.be
+* pass: internet
 
-# Twitter Bootstrap
+## Layout
 
-* http://twitter.github.com/bootstrap
-* http://addyosmani.github.com/jquery-ui-bootstrap
-* http://www.extendingfireworks.com/?p=133
+The markup uses [Twitter BootStrap](http://twitter.github.com/bootstrap), so it should be pretty easy to extend
+it and just have a nice looking application.
+
+### SCSS/Compass
+
+We used the Compass-framework in conjuction with the [Twitter Bootstrap compass-port of vwall](https://github.com/vwall/compass-twitter-bootstrap) 
+to be able to style everything.
+
+If you want to use compass yourself:
+
+	cd ./core/layout
+	compass watch ./
