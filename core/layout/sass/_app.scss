@@ -31,7 +31,7 @@ body, #navBar.fixed {
 .btn-large [class^="icon-"], .btn-large [class*=" icon-"] { margin-top: 4px; }
 
 /* IE6-warning */
-#ie6.alert {
+#ie6.alert, .alert.noMargin {
 	margin-bottom: 0;
 }
 
@@ -53,6 +53,10 @@ body, #navBar.fixed {
 		font-weight: normal;
 		padding: 15px 0;
 		line-height: 1;
+
+		a {
+			float: left;
+		}
 	}
 
 	a {
@@ -66,12 +70,21 @@ body, #navBar.fixed {
 			@include transition-timing-function(ease-in);
 		}
 	}
+
+	#ajaxSpinner {
+		display: none;
+		float: left;
+		margin: 10px 0 0 6px;
+		width: 16px;
+		height: 12px;
+		@include replace-text(inline-image("spinner.gif"));
+	}
 }
 
 /* user */
 #user {
 	color: #FFFFFF;
-	margin-top: 28px;
+	margin-top: 22px;
 
 	p {
 		text-align: right;

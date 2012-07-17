@@ -21,6 +21,8 @@ class AjaxExampleGet extends AjaxBaseAction
 		// get the term
 		$id = SpoonFilter::getPostValue('id', null, '');
 
+		sleep(2);
+
 		if($id == '')
 		{
 			SpoonHTTP::setHeadersByCode(400);

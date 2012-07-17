@@ -26,6 +26,9 @@ var jsSite =
 		jsSite.current.action = chunks[3];
 		jsSite.current.language = chunks[1];
 
+		// init the ajax-configuration
+		jsSite.initAjax();
+
 		jsSite.layout.init();
 		jsSite.links.init();
 
@@ -41,6 +44,45 @@ var jsSite =
 		{
 			if(jsSite.debug) console.log(e);
 		}
+	},
+
+	initAjax: function()
+	{
+		// set defaults for AJAX
+		$.ajaxSetup(
+		{
+			cache: false,
+			type: 'POST',
+			dataType: 'json',
+			timeout: 5000
+		});
+
+		// global error handler
+		$(document).ajaxError(function(event, XMLHttpRequest, ajaxOptions)
+		{
+			// 403 means we aren't authenticated anymore, so reload the page
+			if(XMLHttpRequest.status == 403) window.location.reload();
+
+			// check if a custom errorhandler is used
+			if(typeof ajaxOptions.error == 'undefined')
+			{
+				var textStatus = 'General error';
+
+				// get errormessage for AJAX-call
+				if(typeof XMLHttpRequest.responseText != 'undefined')
+				{
+					var json = $.parseJSON(XMLHttpRequest.responseText);
+					if(typeof json.message != 'undefined') textStatus = json.message;
+					else textStatus = XMLHttpRequest.responseText;
+				}
+
+				$('body').prepend('<div class="alert alert-error noMargin"><a href="#" class="close" data-dismiss="alert">x</a>' + textStatus + '</div>');
+			}
+		});
+
+		// spinner stuff
+		$(document).ajaxStart(function() { $('#ajaxSpinner').show(); });
+		$(document).ajaxStop(function() { $('#ajaxSpinner').hide(); });
 	}
 }
 

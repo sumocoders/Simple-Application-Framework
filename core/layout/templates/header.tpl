@@ -5,6 +5,7 @@
 				<a href="/" rel="home">
 					{$SITE_DEFAULT_TITLE}
 				</a>
+				<div id="ajaxSpinner">Loading</div>
 			</h1>
 		</div>
 
