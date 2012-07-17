@@ -1,0 +1,25 @@
+.content a {
+	@include link-colors($textLinkColor, $textLinkColorHover, $textLinkColor, darken($textLinkColor, 7%), $textLinkColorHover);
+	padding: 1px;
+
+	&:visited {
+		border-bottom: 1px solid darken($textLinkColor, 7%);
+	}
+
+	&:hover {
+		text-decoration: none;
+		border-bottom: 1px solid $textLinkColorHover;
+
+		@include transition-property("color, border");
+		@include transition-duration(500ms);
+		@include transition-timing-function(ease-in);
+	}
+
+	&:focus {
+		@include border-radius(3px);
+		background-color: shade($bodyBackground, 10%);
+		@include transition-property(background);
+		@include transition-duration(500ms);
+		@include transition-timing-function(ease-in);
+	}
+}
