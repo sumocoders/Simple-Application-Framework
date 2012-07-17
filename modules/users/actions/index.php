@@ -36,17 +36,28 @@ class UsersIndex extends SiteBaseAction
 	private function parse()
 	{
 		// check if admin
-		if(!$this->currentUser->isAdmin) $this->redirect($this->url->buildUrl('index', 'error', null, array('code' => 403, 'message' => 'forbidden')), 403);
+		if(!$this->currentUser->isAdmin)
+		{
+			$this->redirect(
+				$this->url->buildUrl('index', 'error', null, array('code' => 403, 'message' => 'forbidden')),
+				403
+			);
+		}
 
-		// create datagrid
-		$datagrid = new SiteDataGridDB('SELECT id, email, name
-										FROM users');
+		// create data grid
+		$dataGrid = new SiteDataGridDB(
+			'SELECT id, email, name
+			 FROM users'
+		);
 
 		// add columns
-		$datagrid->addColumn('edit', '', SiteLocale::lbl('Edit'), $this->url->buildUrl('edit', null, '[id]'));
-			$datagrid->setColumnAttributes('edit', array('class' => 'action icon edit'));
+		$dataGrid->addColumn(
+			'edit', '', ucfirst(SiteLocale::lbl('Edit')),
+			$this->url->buildUrl('edit', null, '[id]'),
+			null, 'icon-pencil', null, true
+		);
 
 		// assign
-		if($datagrid->getContent() != '') $this->tpl->assign('datagrid', $datagrid->getContent());
+		if($dataGrid->getContent() != '') $this->tpl->assign('dataGrid', $dataGrid->getContent());
 	}
 }

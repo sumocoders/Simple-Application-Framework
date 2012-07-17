@@ -28,8 +28,16 @@ class Ajax
 		// validate incoming parameters
 		if($module == '' || $action == '' || $language == '')
 		{
-			SpoonHTTP::setHeadersByCode(500);
-			exit('invalid parameters');
+			// set headers
+			SpoonHTTP::setHeadersByCode(400);
+
+			// build correct array
+			$response['code'] = 400;
+			$response['message'] = 'Invalid parameters';
+
+			// output
+			echo json_encode($response);
+			exit;
 		}
 
 		// set locale
@@ -43,6 +51,9 @@ class Ajax
 
 		catch(Exception $e)
 		{
+			// set headers
+			SpoonHTTP::setHeadersByCode(400);
+
 			// build correct array
 			$response['code'] = 400;
 			$response['message'] = $e->getMessage();

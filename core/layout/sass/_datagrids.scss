@@ -1,0 +1,9 @@
+/* Styling for datagrids */
+td.action {
+	width: 90px;
+	text-align: center;
+
+	&.actionSmall {
+		width: 25px;
+	}
+}

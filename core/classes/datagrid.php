@@ -36,7 +36,7 @@ class SiteDataGrid extends SpoonDataGrid
 		$this->setCompileDirectory(CACHE_PATH . '/compiled');
 
 		// set attributes for the datagrid
-		$this->setAttributes(array('class' => 'datagrid'));
+		$this->setAttributes(array('class' => 'datagrid table table-striped'));
 
 		// hide the id by default
 		if(in_array('id', $this->getColumns())) $this->setColumnsHidden('id');
@@ -60,11 +60,75 @@ class SiteDataGrid extends SpoonDataGrid
 		$this->setPagingClass('SiteDatagridPaging');
 		$this->setPagingLimit(25);
 
+		$url = Spoon::get('url');
+		$this->setURL($url->buildUrl());
+
 		// disable paging
 		$this->setPaging(false);
 
 		// set default template
 		$this->setTemplate(PATH_WWW . '/core/layout/templates/datagrid.tpl');
+	}
+
+	/**
+	 * Adds a new column with a couple of options such as title, URL, image, ...
+	 *
+	 * @param	string $name				The name for this column, later used to refer to this column.
+	 * @param	string[optional] $label		The label that will be displayed in the header cell.
+	 * @param	string[optional] $value		The value you wish to display.
+	 * @param	string[optional] $URL		The URL to refer to.
+	 * @param	string[optional] $title		The title tag, in case you've provided a URL.
+	 * @param	string[optional] $image		The location to an image, used to fill the column.
+	 * @param	int[optional] $sequence		The sequence for this column, by default it will be added at the back.
+	 * @param	bool[optional] $isButton	Will this column contain a button?
+	 */
+	public function addColumn($name, $label = null, $value = null, $URL = null, $title = null, $image = null, $sequence = null, $isButton = false)
+	{
+		// redefine name
+		$name = (string) $name;
+		$class = $name;
+
+		// column already exists
+		if(isset($this->columns[$name])) throw new SpoonDatagridException('A column with the name "' . $name . '" already exists.');
+
+		// redefine sequence
+		if($sequence === null) $sequence = count($this->columns) + 1;
+
+		if($isButton)
+		{
+			// add class for column
+			$class .= ' action';
+
+			// rebuild value
+			$html = '<a href="' . $URL . '" class="btn btn-mini">';
+
+			if($image != '')
+			{
+				$html .= '<span class="add-on"><i class="' . $image . '"></i></span>';
+				$html .= '<span class="hide">';
+
+				// reset the image because we added it ourself
+				$image = null;
+
+				$class .= ' actionSmall';
+			}
+
+			$html .= $value;
+			$html .= '</a>';
+
+			$value = $html;
+
+			if($image != '') $html .= '</span>';
+
+			// reset url
+			$URL = null;
+		}
+
+		// new column
+		$this->columns[$name] = new SpoonDatagridColumn($name, $label, $value, $URL, $title, $image, $sequence);
+
+		// add the class as an attribute to this column
+		$this->columns[$name]->setAttributes(array('class' => $class));
 	}
 
 	/**

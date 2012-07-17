@@ -3,17 +3,24 @@
 <head>
 	<meta charset="utf-8">
 
-	<!-- Faster page load hack, when using conditional comments it will block further downloads, it is solved by putting an empty conditional before other ones. -->
-	<!--[if IE]><![endif]-->
+	<title>{$SITE_DEFAULT_TITLE}</title>
 
-	<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
-	<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><![endif]-->
-
-	<title>TITLE</title>
-
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="">
 	<meta name="keywords" content="">
 	<meta name="author" content="SumoCoders">
+
+	<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+	<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<link rel="stylesheet" href="/core/layout/css/style.css?m={$LAST_MODIFIED}">
+	{option:css}
+		{iteration:css}
+			<link rel="stylesheet" href="{$css.url}">
+		{/iteration:css}
+	{/option:css}
 
 	<!-- icon in the URL-bar -->
 	<link rel="shortcut icon" href="/favicon.ico">
@@ -24,30 +31,18 @@
 	<!--  icon for facebook -->
 	<link rel="image_src" href="/image_src.png" />
 
-	<link rel="stylesheet" href="/core/layout/css/jquery_ui/jquery_ui.css?m={$LAST_MODIFIED}">
-	<link rel="stylesheet" href="/core/layout/css/style.css?m={$LAST_MODIFIED}">
-	{option:css}{iteration:css}<script src="{$css.url}"></script>{/iteration:css}{/option:css}
-
-	<script src="/core/js/modernizr.js"></script>
-	<script src="/core/js/jquery.js"></script>
-	<script src="/core/js/html2canvas.js"></script>
-	<script src="/core/js/jquery.ui.js"></script>
-	{option:javascript}{iteration:javascript}<script src="{$javascript.url}"></script>{/iteration:javascript}{/option:javascript}
-	<script src="/js.php?module=core&amp;file=site.js&amp;language={$LANGUAGE}&amp;m={$LAST_MODIFIED}"></script>
+	<script src="/core/js/lib.js?m={$LAST_MODIFIED}"></script>
+	<script src="/core/js/script.js?m={$LAST_MODIFIED}"></script>
+	{option:javascript}
+		{iteration:javascript}
+			<script src="{$javascript.url}"></script>
+		{/iteration:javascript}
+	{/option:javascript}
 </head>
-
-<!-- Target IE browsers specifically without extra http requests. -->
-<!--[if lt IE 7 ]><body class="ie6"><![endif]-->
-<!--[if IE 7 ]><body class="ie7"><![endif]-->
-<!--[if IE 8 ]><body class="ie8"><![endif]-->
-<!--[if IE 9 ]><body class="ie9"><![endif]-->
-<!--[if (gt IE 9)|!(IE)]><!--> <body> <!--<![endif]-->
-
-<!-- Warning for people that still use IE6 -->
-<!--[if lt IE 7 ]>
-	<div id="ie6" class="notice">
-		<p>
+<body>
+	<!--[if lt IE 7 ]>
+		<div id="ie6" class="alert alert-block">
+			<a href="#" class="close" data-dismiss="alert">x</a>
 			{$msgOldBrowserWarning}
-		</p>
-	</div>
-<![endif]-->
+		</div>
+	<![endif]-->
