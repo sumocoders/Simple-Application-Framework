@@ -116,11 +116,10 @@ jsSite.bugs =
 		$('#reportBugBox .step1').show();
 		$('#reportBugBox .step2').hide();
 		$('#reportBugBox .step3').hide();
-
 		$('#reportBugNext').show();
 
-		// show box for description
 		$('#reportBugModal').modal('show');
+		$('#reportBugDescription').focus();
 	},
 
 	close: function(e)
@@ -171,25 +170,20 @@ jsSite.bugs =
 
 			// create screen shot
 			$('#reportBugModal').hide();
-			html2canvas.Preload($('body')[0], jsSite.bugs.options);
+			html2canvas($('body'), {
+				onrendered: jsSite.bugs.onCompletePreload
+			});
 		}
 		else $('#reportBugSubmit').addClass('disabled').prop('disabled', true);
 
 	},
 
-	onCompletePreload: function(images)
+	onCompletePreload: function(canvas)
 	{
-		// init var
-		var queue = html2canvas.Parse($('body')[0], images, jsSite.bugs.options);
-		if(queue.backgroundColor == 'transparent') queue.backgroundColor = '#FFF';
-		var $canvas = $(html2canvas.Renderer(queue, jsSite.bugs.options));
+		jsSite.bugs.screenshot = canvas.toDataURL();
+
 		$('#reportBugModal').show();
-		jsSite.bugs.screenshot = $canvas[0].toDataURL();
-
-		// hide spinner
 		$('#reportBugSubmitSpinner').hide();
-
-		// show highlight button
 		$('#reportBugSubmit').removeClass('disabled');
 
 		// @later	enable highlight
@@ -295,6 +289,5 @@ jsSite.links =
 		$('#confirmModal').modal('show');
 	}
 }
-
 
 $(jsSite.init);
