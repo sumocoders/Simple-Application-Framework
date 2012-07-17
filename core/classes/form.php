@@ -32,11 +32,11 @@ class SiteForm extends SpoonForm
 	/**
 	 * Adds a single button.
 	 *
-	 * @return	SpoonFormButton
-	 * @param	string $name				The name of the button.
-	 * @param	string $value				The text that should appear on the button.
-	 * @param	string[optional] $type		The type of button.
-	 * @param	string[optional] $class		The CSS-class for the button.
+	 * @param string $name				The name of the button.
+	 * @param string $value				The text that should appear on the button.
+	 * @param string[optional] $type		The type of button.
+	 * @param string[optional] $class		The CSS-class for the button.
+	 * @return SpoonFormButton
 	 */
 	public function addButton($name, $value, $type = null, $class = 'inputButton btn')
 	{
@@ -50,7 +50,7 @@ class SiteForm extends SpoonForm
 	/**
 	 * Generates an example template, based on the elements already added.
 	 *
-	 * @return	string
+	 * @return string
 	 */
 	public function getTemplateExample()
 	{
@@ -185,7 +185,7 @@ class SiteForm extends SpoonForm
 		}
 
 		// close form tag
-		$value .= '	</div>' ."\n";
+		$value .= '	</div>' . "\n";
 		$value .= '{/form:' . $this->getName() . '}';
 
 		return $value;

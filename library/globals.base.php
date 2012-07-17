@@ -54,5 +54,3 @@ define('SITE_URL', 'http://' . SITE_DOMAIN);
 define('PATH_WWW', realpath(dirname(__FILE__) . '/../'));
 // path to the library
 define('PATH_LIBRARY', realpath(dirname(__FILE__)));
-
-?>

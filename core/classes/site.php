@@ -97,7 +97,6 @@ class Site
 		}
 	}
 
-
 	/**
 	 * Get the database instance
 	 *
@@ -185,7 +184,6 @@ class Site
 
 		return $return;
 	}
-
 
 	/**
 	 * Get the UTC date in a specific format. Use this method when inserting dates in the database!

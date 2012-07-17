@@ -45,7 +45,7 @@ class SiteTemplate extends SpoonTemplate
 		$this->setCacheDirectory(CACHE_PATH . '/cached');
 
 		// set compile directory
-		$this->setCompileDirectory(CACHE_PATH . '/compiled');
+		$this->setCompileDirectory(CACHE_PATH . '/compiled_templates');
 
 		// when debugging the template should be recompiled every time
 		$this->setForceCompile(SPOON_DEBUG);

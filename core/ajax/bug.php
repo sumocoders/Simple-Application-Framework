@@ -97,7 +97,7 @@ class AjaxCoreBug extends AjaxBaseAction
 																<th width="110px" style="vertical-align: top; text-align: left; font-weight: 700; padding: 0 0 0 10px; font-family: Verdana, Tahoma, Arial; font-size: 10px; color: #000000;">URL</th>
 																<td style="vertical-align: top; font-family: Verdana, Tahoma, Arial; font-size: 10px; color: #000000;">' . "\n";
 			// request URL
-			$output .= '											<a href="'. $data['url'] .'">'. $data['url'] .'</a>' . "\n";
+			$output .= '											<a href="' . $data['url'] . '">' . $data['url'] . '</a>' . "\n";
 			$output .= '										</td>
 															</tr>
 															<tr>
