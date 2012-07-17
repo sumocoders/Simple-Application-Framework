@@ -24,6 +24,10 @@ body, #navBar.fixed {
 	background: $bodyBackground image-url("background.jpg") repeat top left;
 }
 
+#ie6.alert {
+	margin-bottom: 0;
+}
+
 /* header */
 #header {
 	margin-bottom: 20px;
