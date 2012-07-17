@@ -24,13 +24,16 @@ $err['InvalidModule'] = 'Helaas, deze module kunnen we niet terugvinden.';
 // init var
 $lbl = array();
 $lbl['Add'] = 'toevoegen';
+$lbl['Cancel'] = 'annuleer';
 $lbl['Close'] = 'sluiten';
+$lbl['Delete'] = 'verwijder';
 $lbl['Edit'] = 'bewerken';
 $lbl['Email'] = 'emailadres';
 $lbl['Home'] = 'home';
 $lbl['Name'] = 'naam';
 $lbl['Next'] = 'volgende';
 $lbl['Login'] = 'gebruikersnaam';
+$lbl['Ok'] = 'Ok';
 $lbl['Password'] = 'wachtwoord';
 $lbl['Previous'] = 'vorige';
 $lbl['Save'] = 'opslaan';
@@ -42,6 +45,7 @@ $lbl['Users'] = 'gebruikers';
 
 // init var
 $msg = array();
+$msg['AreYouSure'] = 'Ben je zeker?';
 $msg['DatepickerFullSunday'] = 'zondag';
 $msg['DatepickerFullMonday'] = 'maandag';
 $msg['DatepickerFullTuesday'] = 'dinsdag';

@@ -2,7 +2,6 @@
  * Frontend related objects
  *
  * @author	Tijs Verkoyen <tijs@sumocoders.be>
- * @author	Thomas Deceuninck <thomasdeceuninck@netlash.com>
  */
 var jsSite =
 {
@@ -28,6 +27,7 @@ var jsSite =
 		jsSite.current.language = chunks[1];
 
 		jsSite.layout.init();
+		jsSite.links.init();
 
 		try
 		{
@@ -68,5 +68,26 @@ jsSite.layout =
 		if($this.scrollTop() < $header.height()) $navBar.removeClass('fixed').css('width', 'auto');
 	}
 }
+
+jsSite.links =
+{
+	init: function()
+	{
+		$('a.confirm').on('click', jsSite.links.confirm);
+		$('#confirmModal').modal({ show: false });
+	},
+
+	confirm: function(e)
+	{
+		e.preventDefault();
+
+		var $this = $(this);
+
+		$('#confirmModalOk').attr('href', $this.attr('href'));
+		$('#confirmModalMessage').html($this.data('message'));
+		$('#confirmModal').modal('show');
+	}
+}
+
 
 $(jsSite.init);
