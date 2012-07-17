@@ -38,11 +38,15 @@ class AjaxCoreBug extends AjaxBaseAction
 			// remove screen shot from POST
 			unset($_POST['screenshot']);
 
+			if(SPOON_DEBUG_EMAIL != '') $to = SPOON_DEBUG_EMAIL;
+			else $to = 'bugs@sumocoders.be';
+
+
 			// build mail
 			$email = new SpoonEmail();
 			$email->setTemplateCompileDirectory(PATH_WWW . '/cache/compiled_templates');
 			$email->setFrom('no-reply@sumocoders.be', SITE_DEFAULT_TITLE);
-			$email->addRecipient(SPOON_DEBUG_EMAIL, SITE_DEFAULT_TITLE);
+			$email->addRecipient($to, SITE_DEFAULT_TITLE);
 			$email->setSubject(SITE_DEFAULT_TITLE . ': bugreport');
 
  			// add current user info if provided
