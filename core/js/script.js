@@ -29,6 +29,7 @@ var jsSite =
 		// init the ajax-configuration
 		jsSite.initAjax();
 
+		jsSite.forms.init();
 		jsSite.layout.init();
 		jsSite.links.init();
 
@@ -84,6 +85,11 @@ var jsSite =
 		$(document).ajaxStart(function() { $('#ajaxSpinner').show(); });
 		$(document).ajaxStop(function() { $('#ajaxSpinner').hide(); });
 	}
+}
+
+jsSite.forms =
+{
+	init: function() {}
 }
 
 jsSite.layout =

@@ -31,14 +31,13 @@
 	<!--  icon for facebook -->
 	<link rel="image_src" href="/image_src.png" />
 
-	<script src="/core/js/jquery.js"></script>
-	<script src="/core/js/bootstrap.js"></script>
+	<script src="/core/js/lib.js?m={$LAST_MODIFIED}"></script>
+	<script src="/core/js/script.js?m={$LAST_MODIFIED}"></script>
 	{option:javascript}
 		{iteration:javascript}
 			<script src="{$javascript.url}"></script>
 		{/iteration:javascript}
 	{/option:javascript}
-	<script src="/core/js/script.js?m={$LAST_MODIFIED}"></script>
 </head>
 <body>
 	<!--[if lt IE 7 ]>
