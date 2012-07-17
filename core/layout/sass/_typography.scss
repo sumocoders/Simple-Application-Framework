@@ -23,3 +23,13 @@
 		@include transition-timing-function(ease-in);
 	}
 }
+
+h1 {
+	color: #A73E15;
+	font-size: 24px;
+	font-weight: normal;
+}
+	h2 { @extend h1; }
+	h3 { @extend h1; font-size: 20px; }
+	h4 { @extend h1; font-size: 18px; }
+	h5 { @extend h1; font-size: 16px; }
