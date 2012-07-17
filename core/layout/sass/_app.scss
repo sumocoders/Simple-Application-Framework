@@ -147,9 +147,12 @@ body, #navBar.fixed {
 	margin-top: 7px;
 	text-align: right;
 
-	input.searchField {
-		float: left;
-		width: 120px;
+	button {
+		float: right;
+
+		i {
+			margin-top: 3px;
+		}
 	}
 }
 

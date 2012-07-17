@@ -8,11 +8,17 @@
 		</nav>
 
 		<div id="search" class="span3">
-			<form class="form-horizontal">
+			<form class="form-search">
 				<div class="control-group">
-					<div class="input-append">
-						<input type="search" placeholder="{$lblSearch|ucfirst}" class="span2 searchField">
-						<button type="button" class="btn">{$lblSearch|ucfirst}</button>
+					<label for="searchQuery" class="hide control-label">{$lblSearch|ucfirst}</label>
+					<div class="controls">
+						<div class="input-append">
+							<input id="searchQuery" name="q" type="search" placeholder="{$lblSearch|ucfirst}" class="input-medium">
+							<button type="submit" class="btn hidden-phone hidden-tablet">
+								<i class="icon-search"></i>
+								<span class="hide">{$lblSearch|ucfirst}</span>
+							</button>
+						</div>
 					</div>
 				</div>
 			</form>
