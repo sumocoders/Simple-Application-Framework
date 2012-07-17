@@ -38,6 +38,13 @@
 			<script src="{$javascript.url}"></script>
 		{/iteration:javascript}
 	{/option:javascript}
+	<script>
+		var currentUser = {};
+		{option:currentUser}
+		currentUser.name = '{$currentUser.name|addslashes}';
+		currentUser.email = '{$currentUser.email|addslashes}';
+		{/option:currentUser}
+	</script>
 </head>
 <body>
 	<!--[if lt IE 7 ]>

@@ -20,7 +20,7 @@ class AjaxCoreBug extends AjaxBaseAction
 	{
 		// get the term
 		$description = SpoonFilter::getPostValue('description', null, '');
-		$screenshot = SpoonFilter::getPostValue('screenshot', null, '');
+		$screenShot = SpoonFilter::getPostValue('screenshot', null, '');
 		$currentUser = SpoonFilter::getPostValue('currentUser', null, '', 'array');
 		$data = (array) SpoonFilter::getPostValue('data', null, '', 'array');
 
@@ -49,13 +49,13 @@ class AjaxCoreBug extends AjaxBaseAction
  			}
 
 			// screenshot provided?
-			if($screenshot != '')
+			if($screenShot != '')
 			{
-				$screenshot = base64_decode(substr($screenshot, strpos($screenshot, ',') + 1));
+				$screenShot = base64_decode(substr($screenShot, strpos($screenShot, ',') + 1));
 
 				// store in tempfile
 				$filename = tempnam(sys_get_temp_dir(), 'screenshot');
-				file_put_contents($filename, $screenshot);
+				file_put_contents($filename, $screenShot);
 
 				$email->addAttachment($filename, date('YmdHis') . '.png');
 			}
@@ -72,7 +72,7 @@ class AjaxCoreBug extends AjaxBaseAction
 			// User agent
 			if(isset($_SERVER['HTTP_USER_AGENT']))
 			{
-				$html .= '<dt>' . $key . '</dt><dd><pre>'. var_export($_SERVER['HTTP_USER_AGENT'], true)  .'</pre></dd>';
+				$html .= '<dt>User agent</dt><dd><pre>'. var_export($_SERVER['HTTP_USER_AGENT'], true)  .'</pre></dd>';
 			}
 
 			// loop the data that was passes

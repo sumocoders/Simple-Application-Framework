@@ -219,7 +219,10 @@ body, #navBar.fixed {
 @import "_datagrids";
 
 /* Typography */
-@import "_typography.scss";
+@import "_typography";
+
+/* Styling for the bug-reporting */
+@import "_bugs";
 
 /* Styling for users */
 @import "_users";

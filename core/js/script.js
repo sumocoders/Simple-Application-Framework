@@ -29,6 +29,7 @@ var jsSite =
 		// init the ajax-configuration
 		jsSite.initAjax();
 
+		jsSite.bugs.init();
 		jsSite.forms.init();
 		jsSite.layout.init();
 		jsSite.links.init();
@@ -94,6 +95,8 @@ jsSite.bugs =
 
 	init: function()
 	{
+		$('#reportBugModal').modal({ show: false, backdrop: false });
+
 		jsSite.bugs.options =
 		{
 			complete: jsSite.bugs.onCompletePreload,
@@ -117,7 +120,7 @@ jsSite.bugs =
 		$('#reportBugNext').show();
 
 		// show box for description
-		$('#reportBugBox').fadeIn();
+		$('#reportBugModal').modal('show');
 	},
 
 	close: function(e)
@@ -135,7 +138,9 @@ jsSite.bugs =
 		e.preventDefault();
 
 		// hide previous errors
-		$('#reportBugDescriptionError').hide();
+		$reportBugDescriptionError = $('#reportBugDescriptionError');
+		$reportBugDescriptionError.hide();
+		$reportBugDescriptionError.parents('.control-group').removeClass('error');
 
 		// init var
 		var noErrors = true;
@@ -144,7 +149,8 @@ jsSite.bugs =
 		if($('#reportBugDescription').val().length == 0)
 		{
 			noErrors = false;
-			$('#reportBugDescriptionError').show();
+			$reportBugDescriptionError.show();
+			$reportBugDescriptionError.parents('.control-group').addClass('error');
 		}
 
 		// no errors
@@ -161,9 +167,10 @@ jsSite.bugs =
 			$('#reportBugBox .step3').hide();
 			$('#reportBugNext').hide();
 			$('#reportBugPrevious').show();
+			$('#reportBugSubmit').show().addClass('disabled');
 
-			// create screenshot
-			$('#reportBugHolder').hide();
+			// create screen shot
+			$('#reportBugModal').hide();
 			html2canvas.Preload($('body')[0], jsSite.bugs.options);
 		}
 		else $('#reportBugSubmit').addClass('disabled').prop('disabled', true);
@@ -176,16 +183,16 @@ jsSite.bugs =
 		var queue = html2canvas.Parse($('body')[0], images, jsSite.bugs.options);
 		if(queue.backgroundColor == 'transparent') queue.backgroundColor = '#FFF';
 		var $canvas = $(html2canvas.Renderer(queue, jsSite.bugs.options));
-		$('#reportBugHolder').show();
+		$('#reportBugModal').show();
 		jsSite.bugs.screenshot = $canvas[0].toDataURL();
 
 		// hide spinner
 		$('#reportBugSubmitSpinner').hide();
 
 		// show highlight button
-		$('#reportBugSubmit').show();
+		$('#reportBugSubmit').removeClass('disabled');
 
-		// @todo	enable highlight
+		// @later	enable highlight
 
 	},
 
@@ -215,29 +222,27 @@ jsSite.bugs =
 		};
 
 		$.ajax({
-			       url: '/ajax.php?module=core&action=bug&language=' + jsSite.current.language,
-			       data: data,
-			       success: function(data, textStatus, jqXHR)
-			       {
-				       if(data.code == 200)
-				       {
-					       $('#reportBugBox .step1').hide();
-					       $('#reportBugBox .step2').hide();
-					       $('#reportBugBox .step3').show();
-					       $('#reportBugNext').hide();
-					       $('#reportBugPrevious').hide();
-					       $('#reportBugSubmit').hide();
+	       url: '/ajax.php?module=core&action=bug&language=' + jsSite.current.language,
+	       data: data,
+	       success: function(data, textStatus, jqXHR)
+	       {
+		       if(data.code == 200)
+		       {
+			       $('#reportBugBox .step1').hide();
+			       $('#reportBugBox .step2').hide();
+			       $('#reportBugBox .step3').show();
+			       $('#reportBugNext').hide();
+			       $('#reportBugPrevious').hide();
+			       $('#reportBugSubmit').hide();
+			       $('#reportBugClose').show();
 
-					       // clear info
-					       $('#reportBugDescription').val('');
-				       }
+			       // clear info
+			       $('#reportBugDescription').val('');
+		       }
 
-				       else alert(data.message);
-			       }
-		       });
-
-
-		// send to ajax
+		       else alert(data.message);
+	       }
+       });
 	}
 }
 
@@ -276,7 +281,7 @@ jsSite.links =
 	init: function()
 	{
 		$('a.confirm').on('click', jsSite.links.confirm);
-		$('#confirmModal').modal({ show: false });
+		$('#confirmModal').modal({ show: false, backdrop: false });
 	},
 
 	confirm: function(e)
