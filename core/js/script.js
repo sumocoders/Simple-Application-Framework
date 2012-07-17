@@ -5,7 +5,7 @@
  */
 var jsSite =
 {
-	debug: true,
+	debug: false,
 	current:
 	{
 		module: null,
