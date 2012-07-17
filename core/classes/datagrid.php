@@ -96,9 +96,32 @@ class SiteDataGrid extends SpoonDataGrid
 
 		if($isButton)
 		{
-			$value = '<a href="' . $URL . '" class="btn btn-mini">' . $value . '</a>';
-			$URL = null;
+			// add class for column
 			$class .= ' action';
+
+			// rebuild value
+			$html = '<a href="' . $URL . '" class="btn btn-mini">';
+
+			if($image != '')
+			{
+				$html .= '<span class="add-on"><i class="' . $image . '"></i></span>';
+				$html .= '<span class="hide">';
+
+				// reset the image because we added it ourself
+				$image = null;
+
+				$class .= ' actionSmall';
+			}
+
+			$html .= $value;
+			$html .= '</a>';
+
+			$value = $html;
+
+			if($image != '') $html .= '</span>';
+
+			// reset url
+			$URL = null;
 		}
 
 		// new column
