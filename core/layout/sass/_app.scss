@@ -185,6 +185,20 @@ body, #navBar.fixed {
 	}
 }
 
+/* Button holders */
+.buttonHolderRight {
+	@include bootstrap-clearfix;
+
+	h1, h2, h3, h4, h5 {
+		float: left;
+	}
+
+	.btn-group {
+		float: right;
+	}
+}
+
+
 /* Styling for forms */
 @import "_forms";
 

@@ -5,13 +5,15 @@
 	<div id="content" class="container-fluid">
 		<section id="{$MODULE}" class="{$ACTION} row-fluid">
 			<div class="span12">
-				<header class="header buttonHolderRight clearfix">
+				<header class="header buttonHolderRight">
 					<h2>{$lblUsers|ucfirst}</h2>
 
-					<a href="{$var|buildurl:'add':'users'}" class="btn">
-						<i class="icon-plus"></i>
-						{$lblAdd|ucfirst}
-					</a>
+					<div class="btn-group">
+						<a href="{$var|buildurl:'add':'users'}" class="btn">
+							<i class="icon-plus"></i>
+							{$lblAdd|ucfirst}
+						</a>
+					</div>
 				</header>
 
 				{option:report}
