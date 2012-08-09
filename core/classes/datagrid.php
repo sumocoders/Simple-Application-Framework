@@ -33,7 +33,7 @@ class SiteDataGrid extends SpoonDataGrid
 		$this->setDebug(SPOON_DEBUG);
 
 		// set the compile-directory, so compiled templates will be in a folder that is writable
-		$this->setCompileDirectory(CACHE_PATH . '/compiled');
+		$this->setCompileDirectory(CACHE_PATH . '/compiled_templates');
 
 		// set attributes for the datagrid
 		$this->setAttributes(array('class' => 'datagrid table table-striped'));
