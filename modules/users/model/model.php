@@ -32,6 +32,12 @@ class User
 	 */
 	public $isAdmin = false;
 
+	/**
+	 * DateTime properties
+	 *
+	 * @var DateTime
+	 */
+	public $createdOn, $editedOn;
 
 	/**
 	 * Array properties
@@ -53,7 +59,7 @@ class User
 		$id = (int) $id;
 
 		// get data
-		$data = Site::getDB()->getRecord('SELECT i.*
+		$data = Site::getDB()->getRecord('SELECT i.*, UNIX_TIMESTAMP(i.created_on) AS created_on, UNIX_TIMESTAMP(i.edited_on) AS edited_on
 											FROM users AS i
 											WHERE i.id = ?',
 											array($id));
@@ -83,7 +89,7 @@ class User
 		$email = (string) $email;
 
 		// get data
-		$data = Site::getDB()->getRecord('SELECT i.*
+		$data = Site::getDB()->getRecord('SELECT i.*, UNIX_TIMESTAMP(i.created_on) AS created_on, UNIX_TIMESTAMP(i.edited_on) AS edited_on
 										  FROM users AS i
 										  WHERE i.email = ?',
 										 array($email));
@@ -145,6 +151,8 @@ class User
 			if(isset($data['data']['settings'])) $this->settings = $data['data']['settings'];
 		}
 		if($this->type == 'admin') $this->isAdmin = true;
+		if(isset($data['created_on'])) $this->createdOn = new DateTime('@' . $data['created_on']);
+		if(isset($data['edited_on'])) $this->editedOn = new DateTime('@' . $data['edited_on']);
 	}
 
 	/**
@@ -154,18 +162,26 @@ class User
 	 */
 	public function save()
 	{
+		$this->editedOn = new DateTime();
+
 		// build record
 		$item['name'] = $this->name;
 		$item['email'] = $this->email;
 		$item['secret'] = $this->secret;
 		$item['type'] = $this->type;
 		$item['data'] = serialize(array('settings' => $this->settings));
+		$item['edited_on'] = Site::getUTCDate('Y-m-d H:i:s', $this->editedOn->getTimestamp());
 
 		// new password?
 		if($this->rawPassword != null) $item['password'] = sha1(md5($this->rawPassword) . $this->secret);
 
 		// non existing
-		if($this->id === null) $this->id = Site::getDB(true)->insert('users', $item);
+		if($this->id === null)
+		{
+			$this->createdOn = new DateTime();
+			$item['created_on'] = Site::getUTCDate('Y-m-d H:i:s', $this->createdOn->getTimestamp());
+			$this->id = Site::getDB(true)->insert('users', $item);
+		}
 		else Site::getDB(true)->update('users', $item, 'id = ?', $this->id);
 
 		// return
@@ -197,6 +213,8 @@ class User
 		$item['email'] = $this->email;
 		$item['type'] = $this->type;
 		$item['isAdmin'] = $this->isAdmin;
+		$item['createdOn'] = ($this->createdOn !== null) ? $this->createdOn->getTimestamp() : null;
+		$item['editedOn'] = ($this->editedOn !== null) ? $this->editedOn->getTimestamp() : null;
 
 		return $item;
 	}

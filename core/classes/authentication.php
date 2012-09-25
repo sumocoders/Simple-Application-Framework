@@ -25,7 +25,7 @@ class Authentication
 		$db->delete('users_sessions', 'edited_on < ?', array(Site::getUTCDate(null, (time() - (2 * 60 * 60)))));
 
 		// search for session
-		$data = $db->getRecord('SELECT u.id, u.name, u.email, u.secret, u.type, u.data
+		$data = $db->getRecord('SELECT u.*, UNIX_TIMESTAMP(u.created_on) AS created_on, UNIX_TIMESTAMP(u.edited_on) AS edited_on
 								FROM users_sessions AS i
 								INNER JOIN users AS u ON i.user_id = u.id
 								WHERE i.session_id = ? AND i.edited_on > ?',
@@ -39,6 +39,9 @@ class Authentication
 
 			// initialize
 			$user->initialize($data);
+
+			// login again, so we stay logged in
+			self::login($user);
 
 			// return
 			return $user;
