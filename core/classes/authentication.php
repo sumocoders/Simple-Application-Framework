@@ -65,6 +65,27 @@ class Authentication
 	}
 
 	/**
+	 * Login a given user
+	 *
+	 * @param User $user
+	 */
+	public static function login(User $user)
+	{
+		// build item
+		$item['session_id'] = SpoonSession::getSessionId();
+		$item['user_id'] = $user->id;
+		$item['edited_on'] = Site::getUTCDate();
+
+		// insert new session
+		Site::getDB(true)->execute(
+			'INSERT INTO users_sessions(session_id, user_id, edited_on)
+			 VALUES(:session_id, :user_id, :edited_on)
+			 ON DUPLICATE KEY UPDATE edited_on = :edited_on',
+			$item
+		);
+	}
+
+	/**
 	 * Log out the user
 	 *
 	 * @return void

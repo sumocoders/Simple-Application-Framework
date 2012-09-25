@@ -26,6 +26,20 @@ class UsersLogin extends SiteBaseAction
 	 */
 	public function execute()
 	{
+		// redirect if a user is already logged in
+		if($this->currentUser != null)
+		{
+			// grab the url if provided
+			$url = SpoonFilter::getGetValue('redirect', null, '/' . $this->url->getLanguage());
+
+			// add a report
+			if(substr_count($url, '?') > 0) $url .= '&report=logged-in';
+			else $url .= '?report=logged-in';
+
+			// redirect
+			$this->redirect($url);
+		}
+
 		// load the form
 		$this->loadForm();
 
@@ -70,13 +84,9 @@ class UsersLogin extends SiteBaseAction
 			$this->frm->getField('login')->isFilled('Dit veld is verplicht');
 			$this->frm->getField('password')->isFilled('Dit veld is verplicht');
 
-			// get db
-			$db = Site::getDB(true);
+			$user = User::getByEmail($this->frm->getField('login')->getValue());
 
-			// get secret
-			$user = $db->getRecord('SELECT i.* FROM users AS i WHERE i.email = ?', array($this->frm->getField('login')->getValue()));
-
-			if($user == null)
+			if(!$user)
 			{
 				$this->tpl->assign('error', true);
 				$this->frm->getField('login')->addError('&nbsp;');
@@ -84,7 +94,7 @@ class UsersLogin extends SiteBaseAction
 
 			else
 			{
-				if($user['password'] != sha1(md5($this->frm->getField('password')->getValue()) . $user['secret']))
+				if($user->password != sha1(md5($this->frm->getField('password')->getValue()) . $user->secret))
 				{
 					$this->tpl->assign('error', true);
 					$this->frm->getField('login')->addError('&nbsp;');
@@ -94,19 +104,17 @@ class UsersLogin extends SiteBaseAction
 			// no errors
 			if($this->frm->isCorrect())
 			{
-				// build item
-				$item['session_id'] = SpoonSession::getSessionId();
-				$item['user_id'] = $user['id'];
-				$item['edited_on'] = Site::getUTCDate();
+				Authentication::login($user);
 
-				// insert new session
-				$db->execute('INSERT INTO users_sessions(session_id, user_id, edited_on)
-								VALUES(:session_id, :user_id, :edited_on)
-								ON DUPLICATE KEY UPDATE edited_on = :edited_on',
-								$item);
+				// grab the url if provided
+				$url = SpoonFilter::getGetValue('redirect', null, '/' . $this->url->getLanguage());
+
+				// add a report
+				if(substr_count($url, '?') > 0) $url .= '&report=logged-in';
+				else $url .= '?report=logged-in';
 
 				// redirect
-				$this->redirect(SpoonFilter::getGetValue('redirect', null, '/'));
+				$this->redirect($url);
 			}
 		}
 	}
