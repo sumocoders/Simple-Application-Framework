@@ -54,3 +54,9 @@ define('SITE_URL', 'http://' . SITE_DOMAIN);
 define('PATH_WWW', realpath(dirname(__FILE__) . '/../'));
 // path to the library
 define('PATH_LIBRARY', realpath(dirname(__FILE__)));
+
+/**
+ * Errbit configuration
+ */
+define('ERRBIT_API_KEY', '');
+require_once 'external/sumo.php';
