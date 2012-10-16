@@ -244,7 +244,9 @@ jsSite.bugs =
 
 jsSite.forms =
 {
-	init: function() {}
+	init: function() {
+		$('form').on('submit', function(e) { $('#ajaxSpinner').show(); });
+	}
 }
 
 jsSite.layout =
