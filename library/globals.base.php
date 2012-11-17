@@ -33,7 +33,6 @@ define('DB_USERNAME', '<database_username>');
 // datebase password
 define('DB_PASSWORD', '<database_password>');
 
-
 /**
  * Site configuration
  */
@@ -43,7 +42,6 @@ define('SITE_DOMAIN', isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : '<u
 define('SITE_DEFAULT_TITLE', '<name>'); // @todo	correct title
 // the url
 define('SITE_URL', 'http://' . SITE_DOMAIN);
-
 
 /**
  * Path configuration
