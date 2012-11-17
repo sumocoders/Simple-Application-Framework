@@ -59,4 +59,4 @@ define('PATH_LIBRARY', realpath(dirname(__FILE__)));
  * Errbit configuration
  */
 define('ERRBIT_API_KEY', '');
-require_once 'external/sumo.php';
+require_once PATH_LIBRARY . '/external/sumo.php';
