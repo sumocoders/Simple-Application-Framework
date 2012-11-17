@@ -27,7 +27,13 @@ class UsersAdd extends SiteBaseAction
 	public function execute()
 	{
 		// check if admin
-		if(!$this->currentUser->isAdmin) $this->redirect($this->url->buildUrl('index', 'error', null, array('code' => 403, 'message' => 'forbidden')), 403);
+		if(!$this->currentUser->isAdmin)
+		{
+			$this->redirect(
+				$this->url->buildUrl('index', 'error', null, array('code' => 403, 'message' => 'forbidden')),
+				403
+			);
+		}
 
 		// load the form
 		$this->loadForm();
@@ -91,7 +97,12 @@ class UsersAdd extends SiteBaseAction
 				$item->save();
 
 				// redirect
-				$this->redirect($this->url->buildUrl('index', null, null, array('report' => 'added', 'var' => $item->name, 'id' => $item->id)));
+				$this->redirect(
+					$this->url->buildUrl(
+						'index', null, null,
+						array('report' => 'added', 'var' => $item->name, 'id' => $item->id)
+					)
+				);
 			}
 
 			// show general error

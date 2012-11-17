@@ -43,19 +43,35 @@ class UsersEdit extends SiteBaseAction
 	public function execute()
 	{
 		// check if admin
-		if(!$this->currentUser->isAdmin) $this->redirect($this->url->buildUrl('index', 'error'), 403);
+		if(!$this->currentUser->isAdmin)
+		{
+			$this->redirect(
+				$this->url->buildUrl('index', 'error', null, array('code' => 403, 'message' => 'forbidden')),
+				403
+			);
+		}
 
 		// id availabe
 		$this->id = $this->url->getParameter(1, 'int');
 
 		// no id?
-		if($this->id == '') $this->redirect($this->url->buildUrl('index', null, null, array('error' => 'invalid-record')));
+		if($this->id == '')
+		{
+			$this->redirect(
+				$this->url->buildUrl('index', null, null, array('error' => 'invalid-record'))
+			);
+		}
 
 		// get item
 		$this->item = User::get($this->id);
 
 		// validate
-		if($this->item === false) $this->redirect($this->url->buildUrl('index', null, null, array('error' => 'invalid-record')));
+		if($this->item === false)
+		{
+			$this->redirect(
+				$this->url->buildUrl('index', null, null, array('error' => 'invalid-record'))
+			);
+		}
 
 		// load the form
 		$this->loadForm();
@@ -122,7 +138,12 @@ class UsersEdit extends SiteBaseAction
 				$this->item->save();
 
 				// redirect
-				$this->redirect($this->url->buildUrl('index', null, null, array('report' => 'edited', 'var' => $this->item->name, 'id' => $this->item->id)));
+				$this->redirect(
+					$this->url->buildUrl(
+						'index', null, null,
+						array('report' => 'edited', 'var' => $this->item->name, 'id' => $this->item->id)
+					)
+				);
 			}
 
 			// show general error

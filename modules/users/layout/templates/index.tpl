@@ -21,6 +21,11 @@
 						{$report}
 					</div>
 				{/option:report}
+				{option:error}
+					<div class="alert alert-error">
+						{$error}
+					</div>
+				{/option:error}
 
 				{option:dataGrid}
 					{$dataGrid}
