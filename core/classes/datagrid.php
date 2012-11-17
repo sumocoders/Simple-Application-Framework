@@ -100,7 +100,14 @@ class SiteDataGrid extends SpoonDataGrid
 			$class .= ' action';
 
 			// rebuild value
-			$html = '<a href="' . $URL . '" class="btn btn-mini">';
+			$html = '<a href="' . $URL . '" class="btn btn-mini';
+
+			// if the action name contains delete we should ask confirmation
+			if(substr_count($name, 'delete'))
+			{
+				$html .= ' confirm" data-message="' . SiteLocale::msg('AreYouSure');
+			}
+			$html .= '">';
 
 			if($image != '')
 			{
