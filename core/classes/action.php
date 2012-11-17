@@ -225,7 +225,11 @@ class SiteBaseAction
 		$this->tpl->assign('is' . SpoonFilter::toCamelCase($this->url->getModule()), true);
 
 		// require the model if it exists
-		if(SpoonFile::exists(PATH_WWW . '/modules/' . $this->getModule() . '/model/model.php')) require_once PATH_WWW . '/modules/' . $this->getModule() . '/model/model.php';
+		$path = PATH_WWW . '/modules/' . $this->getModule() . '/model/model.php';
+		if(SpoonFile::exists($path))
+		{
+			require_once $path;
+		}
 	}
 
 	/**
