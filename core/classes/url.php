@@ -77,8 +77,15 @@ class SiteURL
 		// set host for later use
 		$this->setHost($_SERVER['HTTP_HOST']);
 
+		$isAjax = (substr($this->getQueryString(), 0, 8) == 'ajax.php');
+
 		// process url
-		$this->processQueryString();
+		if($isAjax)
+		{
+			$language = SpoonFilter::getGetValue('language', SiteLocale::$possibleLanguages, '');
+			$this->setLanguage($language);
+		}
+		else $this->processQueryString();
 	}
 
 	/**

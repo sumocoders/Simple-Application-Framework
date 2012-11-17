@@ -29,6 +29,7 @@ var jsSite = {
 		jsSite.forms.init();
 		jsSite.layout.init();
 		jsSite.links.init();
+		jsSite.search.init();
 
 		try {
 			// build method
@@ -333,6 +334,82 @@ jsSite.links = {
 		$('#confirmModalOk').attr('href', $this.attr('href'));
 		$('#confirmModalMessage').html($this.data('message'));
 		$('#confirmModal').modal('show');
+	}
+}
+
+jsSite.search = {
+	results: [],
+	init: function() {
+		$('#searchQuery').typeahead({
+			source: jsSite.search.autocomplete,
+			matcher: function(item) { return true },
+			updater: jsSite.search.updater,
+			highlighter: function(items) { return items; }
+		});
+	},
+	autocomplete: function(query, process) {
+		$.ajax({
+			url: '/ajax.php?module=core&action=search&language=' + jsSite.current.language,
+			data: { q: query },
+			success: function(data, textStatus, jqXHR) {
+				jsSite.search.results = [];
+				if(data.code == 200) {
+					var items = [];
+					for(var i in data.data) {
+						var key = data.data[i].label + ' <small class="muted">(' + data.data[i].module + ')</small>';
+						items.push(key);
+						jsSite.search.results[key] = data.data[i]
+					}
+					process(items);
+				}
+				else alert(data.message);
+			}
+		});
+	},
+	updater: function(item) {
+		if(typeof jsSite.search.results[item].url != 'undefined') {
+			document.location = jsSite.search.results[item].url;
+		} else if(typeof jsSite.search.results[item].value != 'undefined') {
+			return jsSite.search.results[item].value;
+		} else {
+			return item;
+		}
+	}
+}
+
+jsSite.prestations =
+{
+	init: function()
+	{
+		$('#userId').multipleSelectbox({ emptyMessage: 'Geen personen gekozen.', addLabel: 'toevoegen', removeLabel: 'verwijderen', showIconOnly: true });
+
+		$('#quickNav').change(function(e) {
+			// replace
+			var newDate = $(this).val().replace(new RegExp('/', 'g'), '-');
+
+			// alter url
+			document.location.href = '/'+ jsSite.current.module + '/' + jsSite.current.action +'/'+ newDate;
+		});
+
+		$('#addAndAddAnother').click(function(e)
+		{
+			// prevent default
+			e.preventDefault();
+
+			// search form
+			var form = $($(this).parents('form')[0]);
+
+			// append new field and submit
+			form.append('<input type="hidden" name="next" value="add_another" />').submit();
+		});
+
+		$('td.dont_invoice input:checkbox').change(function() { $('#dontInvoice').attr('checked', ($('td.dont_invoice input:checkbox').length == $('td.dont_invoice input:checked').length) ? 'checked' : ''); })
+		$('td.dont_send input:checkbox:first').change();
+		$('#dontInvoice').change(function() { $('td.dont_invoice input:checkbox').attr('checked', $(this).attr('checked')); });
+
+		$('td.is_invoiced input:checkbox').change(function() { $('#isInvoiced').attr('checked', ($('td.is_invoiced input:checkbox').length == $('td.is_invoiced input:checked').length) ? 'checked' : ''); })
+		$('td.is_invoiced input:checkbox:first').change();
+		$('#isInvoiced').change(function() { $('td.is_invoiced input:checkbox').attr('checked', $(this).attr('checked')); });
 	}
 }
 

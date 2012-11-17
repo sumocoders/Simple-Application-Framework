@@ -219,3 +219,49 @@ class User
 		return $item;
 	}
 }
+
+/**
+ * UsersHelper
+ *
+ * @package		users
+ * @subpackage	helper
+ *
+ * @author 		Tijs Verkoyen <tijs@sumocoders.be>
+ * @since		1.0
+ */
+class UsersHelper
+{
+	/**
+	 * Search for users
+	 *
+	 * @param $query		The data to look for
+	 * @return array
+	 */
+	public static function search($query)
+	{
+		$return = array();
+
+		$data = Site::getDB()->getRecords(
+			'SELECT id, name
+			 FROM users AS i
+			 WHERE i.deleted = ? AND (i.name LIKE ? OR i.email LIKE ?)',
+			array('N', $query . '%', $query . '%')
+		);
+
+		if(!empty($data))
+		{
+			$urlObject = new SiteURL();
+			$url = $urlObject->buildUrl('edit', 'users');
+
+			foreach($data as $row)
+			{
+				$return[] = array(
+					'label' => $row['name'],
+					'url' => $url . '/' . $row['id'],
+				);
+			}
+		}
+
+		return $return;
+	}
+}
