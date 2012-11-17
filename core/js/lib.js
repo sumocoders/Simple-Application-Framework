@@ -862,3 +862,116 @@ else return b}(h,function(){typeof t.FlashCanvas!=="undefined"&&(E("html2canvas:
 x.ctx.storage[B],A.type){case "variable":v[A.name]=A.arguments;break;case "function":if(A.name==="fillRect")(!e||A.arguments[0]+A.arguments[2]<2880&&A.arguments[1]+A.arguments[3]<2880)&&v.fillRect.apply(v,A.arguments);else if(A.name==="fillText")(!e||A.arguments[1]<2880&&A.arguments[2]<2880)&&v.fillText.apply(v,A.arguments);else if(A.name==="drawImage"&&A.arguments[8]>0&&A.arguments[7]){if(j&&c.taintTest&&H.indexOf(A.arguments[0].src)===-1){w.drawImage(A.arguments[0],0,0);try{w.getImageData(0,0,1,
 1)}catch(L){w=h.createElement("canvas");w=w.getContext("2d");continue}H.push(A.arguments[0].src)}v.drawImage.apply(v,A.arguments)}}}x.clip&&v.restore()}}E("html2canvas: Renderer: Canvas renderer done - returning canvas obj");G=c.elements.length;return G===1&&typeof c.elements[0]==="object"&&c.elements[0].nodeName!=="BODY"&&e===!1?(H=t.Util.Bounds(c.elements[0]),j=h.createElement("canvas"),j.width=H.width,j.height=H.height,v=j.getContext("2d"),v.drawImage(g,H.left,H.top,H.width,H.height,0,0,H.width,
 H.height),g=null,j):g}}};t.html2canvas=L})(window,document);
+
+/**
+ * Multiple select box
+ *
+ * @author	Tijs Verkoyen <tijs@sumocoders.be>
+ */
+(function($) {
+	$.fn.multipleSelectbox = function(options) {
+		var defaults = { splitChar: ',', emptyMessage: '', addLabel: 'add', removeLabel: 'delete', showIconOnly: false, afterBuild: null };
+		var options = $.extend(defaults, options);
+
+		return this.each(function() {
+			var id = $(this).attr('id');
+			var possibleOptions = $(this).find('option');
+			var elements = get();
+			var blockSubmit = false;
+
+			$(this.form).submit(function() { return !blockSubmit; });
+
+			if($('#elementList-' + id).length > 0) { $('#elementList-' + id).parent('.multipleSelectWrapper').remove(); }
+			var html =	'<div class="multipleSelectWrapper">' +
+						'	<div id="elementList-' + id + '" class="multipleSelectList">' + '	</div>' +
+						'	<div class="input-append">' +
+						'		<select id="addValue-' + id + '" name="addValue-' + id + '">';
+			for(var i = 0; i < possibleOptions.length; i++) {
+				html +=	'			<option value="' + $(possibleOptions[i]).attr('value') + '">' + $(possibleOptions[i]).html() + '</option>';
+			}
+			html +=		'		</select>' +
+						'		<a href="#" id="addButton-' + id + '" class="btn">';
+			html += 	'               <i class="icon-plus"></i>';
+			if(options.showIconOnly) html += '<span>' + options.addLabel + '</span>';
+			else html += '<span class="hidden">' + options.addLabel + '</span>';
+			html += 	'			</a>' +
+						'      </div>' +
+						'</div>';
+
+			$(this).css('visibility', 'hidden').css('position', 'absolute').css('top', '-9000px').css('left', '-9000px').attr('tabindex', '-1');
+			$(this).before(html);
+
+			build();
+
+			$('#addButton-' + id).bind('click', function(e) {
+				e.preventDefault();
+				e.stopPropagation();
+				add();
+			});
+
+			$('.deleteButton-' + id).live('click', function(e) {
+				e.preventDefault();
+				e.stopPropagation();
+				remove($(this).data('id'));
+			});
+
+			function add() {
+				blockSubmit = false;
+				var value = $('#addValue-' + id).val();
+				var inElements = false;
+				$('#addValue-' + id).focus();
+				if(value != null && value != '')
+				{
+					for(var i in elements) {
+						if(value == elements[i]) inElements = true;
+					}
+					if(!inElements) {
+						elements.push(value);
+						$('#' + id).val(elements);
+						build();
+					}
+				}
+			}
+			function build() {
+				var html = '';
+				if(elements.length == 0 && options.emptyMessage != '') html = '<span class="muted">' + options.emptyMessage + '</span>';
+				else {
+					for(var i in elements) {
+						html += '<span class="badge">' +
+								'	' + $('#' + id + ' option[value=' + elements[i] + ']').html() +
+								'	<a href="#" class="deleteButton-' + id + '" data-id="' + elements[i] + '" title="' + options.removeLabel + '"><i class="icon-remove icon-white"></i><span class="hidden">' + options.removeLabel + '</span></a>' +
+								'</span>';
+						$('#addValue-' + id + ' option[value=' + elements[i] + ']').prop('disabled', true);
+					}
+				}
+
+				$('#elementList-' + id).html(html);
+				$('#addValue-' + id).prop('disabled', false);
+				if($('#addValue-' + id + ' option:enabled').length == 0)
+				{
+					$('#addValue-' + id).prop('disabled', true);
+				}
+				$('#addValue-' + id).val($('#addValue-'+ id +' option:enabled:first').attr('value'));
+
+				// call callback if specified
+				if(options.afterBuild != null) { options.afterBuild(id); }
+			}
+			function get() {
+				var chunks = $('#' + id).val();
+				var elements = [];
+				for(var i in chunks) {
+					value = chunks[i].replace(/^\s+|\s+$/g, '');
+					if(value != '') elements.push(value);
+				}
+				return elements;
+			}
+			function remove(value) {
+				var index = $.inArray(value.toString(), elements);
+				if(index > -1) elements.splice(index, 1);
+				$('#' + id).val(elements.join(options.splitChar));
+				$('#addValue-' + id + ' option[value=' + value + ']').prop('disabled', false);
+				build();
+			}
+		});
+	};
+})(jQuery);

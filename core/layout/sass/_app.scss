@@ -211,7 +211,9 @@ body, #navBar.fixed {
 	}
 }
 
+/* Styling for our own jQuery UI and our plugins */
 @import "_jquery_ui";
+@import "_jquery_plugins";
 
 /* Styling for forms */
 @import "_forms";
