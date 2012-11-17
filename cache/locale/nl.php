@@ -15,11 +15,18 @@ $act = array();
 $err = array();
 $err['AuthenticationError'] = 'Incorrecte login gegevens.';
 $err['EmailIsInvalid'] = 'Dit is een ongeldig emailadres.';
+$err['DateIsInvalid'] = 'Dit is een ongeldige datum.';
+$err['DateIsInvalidFuture'] = 'Je kan geen tijdstip in de toekomst ingeven.';
 $err['FieldIsRequired'] = 'Dit veld is verplicht.';
+$err['FloatIsInvalid'] = 'Dit is een ongeldig getal.';
 $err['Forbidden'] = 'Je hebt niet voldoende rechten.';
 $err['GeneralError'] = 'Er ging iets mis.';
 $err['GeneralFormError'] = 'Er ging iets mis, kijk de gemarkeerde velden na.';
 $err['InvalidModule'] = 'Helaas, deze module kunnen we niet terugvinden.';
+$err['InvalidRecord'] = 'Helaas, dit item kunnen we niet terugvinden.';
+$err['IntegerIsInvalid'] = 'Dit is een ongeldig geheel getal.';
+$err['TimeIsInvalid'] = 'Dit is een ongeldig tijdstip.';
+$err['TimeIsInvalidBeforeStart'] = 'Je kan geen tijdstip voor het starttijdstip ingeven.';
 
 // init var
 $lbl = array();
