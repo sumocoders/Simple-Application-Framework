@@ -3,7 +3,7 @@
 		<nav id="nav" class="span9">
 			<ul class="nav">
 				<li><a href="/" rel="home">{$lblHome|ucfirst}</a></li>
-				<li><a href="{$var|buildurl:'index':'users'}">{$lblUsers|ucfirst}</a></li>
+				{option:currentUser.isAdmin}<li><a href="{$var|buildurl:'index':'users'}">{$lblUsers|ucfirst}</a></li>{/option:currentUser.isAdmin}
 			</ul>
 		</nav>
 
