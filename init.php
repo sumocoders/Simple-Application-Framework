@@ -43,7 +43,7 @@ class Init
 		{
 			error_reporting(0);
 			ini_set('display_errors', 'Off');
-			define('LAST_MODIFIED', filemtime('../library/globals.php'));
+			define('LAST_MODIFIED', filemtime('./library/globals.php'));
 		}
 
 		// require spoon
