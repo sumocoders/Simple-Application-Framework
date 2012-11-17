@@ -427,7 +427,7 @@ class SpoonTemplateCompiler
 				ob_start();
 				?>' . $match[1] . '<?php
 				$include = eval(\'return \\\'\' . str_replace(\'\\\'\', \'\\\\\\\'\', ob_get_clean()) .\'\\\';\');
-				if($this->getForceCompile()) $this->compile(\'' . dirname(realpath($this->template)) . '\', $include);
+				if($this->getForceCompile() || !file_exists($this->getCompileDirectory() .\'/\' . $this->getCompileName($include, \'' . dirname(realpath($this->template)) . '\'))) $this->compile(\'' . dirname(realpath($this->template)) . '\', $include);
 				$return = @include $this->getCompileDirectory() .\'/\' . $this->getCompileName($include, \'' . dirname(realpath($this->template)) . '\');
 				if($return === false && $this->compile(\'' . dirname(realpath($this->template)) . '\', $include))
 				{
