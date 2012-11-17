@@ -246,6 +246,175 @@ jsSite.forms =
 {
 	init: function() {
 		$('form').on('submit', function(e) { $('#ajaxSpinner').show(); });
+		jsSite.forms.datefields();
+	},
+
+	datefields: function()
+	{
+		// the default, nothing special
+		if($('.inputDatefieldNormal').length > 0)
+		{
+			$('.inputDatefieldNormal').each(function()
+			                                {
+				                                // get data
+				                                var data = $(this).data();
+
+				                                $(this).datepicker(
+					                                {
+						                                dateFormat: 'dd/mm/yy',
+						                                dayNames: ['zondag', 'maandag', 'dinsdag', 'woensdag', 'donderdag', 'vrijdag', 'zaterdag'],
+						                                dayNamesMin: ['zo', 'ma', 'di', 'wo', 'do', 'vr', 'za'],
+						                                dayNamesShort: ['zon', 'maa', 'din', 'woe', 'don', 'vrij', 'zat'],
+						                                firstDay: 1,
+						                                hideIfNoPrevNext: true,
+						                                monthNames: ['januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december'],
+						                                monthNamesShort: ['jan', 'feb', 'maa', 'apr', 'mei', 'jun', 'jul', 'aug', 'sep', 'okt', 'nov', 'dec'],
+						                                nextText: 'volgende',
+						                                prevText: 'vorige',
+						                                showAnim: 'slideDown'
+					                                });
+			                                });
+		}
+
+		// datefields that have a certain startdate
+		if($('.inputDatefieldFrom').length > 0)
+		{
+			$('.inputDatefieldFrom').each(function()
+			                              {
+				                              // get data
+				                              var data = $(this).data();
+
+				                              $(this).datepicker(
+					                              {
+						                              dateFormat: 'dd/mm/yy',
+						                              dayNames: ['zondag', 'maandag', 'dinsdag', 'woensdag', 'donderdag', 'vrijdag', 'zaterdag'],
+						                              dayNamesMin: ['zo', 'ma', 'di', 'wo', 'do', 'vr', 'za'],
+						                              dayNamesShort: ['zon', 'maa', 'din', 'woe', 'don', 'vrij', 'zat'],
+						                              firstDay: 1,
+						                              hideIfNoPrevNext: true,
+						                              monthNames: ['januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december'],
+						                              monthNamesShort: ['jan', 'feb', 'maa', 'apr', 'mei', 'jun', 'jul', 'aug', 'sep', 'okt', 'nov', 'dec'],
+						                              nextText: 'volgende',
+						                              prevText: 'vorige',
+						                              minDate: new Date(parseInt(data.startdate.split('-')[0], 10), parseInt(data.startdate.split('-')[1], 10) - 1, parseInt(data.startdate.split('-')[2], 10)),
+						                              showAnim: 'slideDown'
+					                              });
+			                              });
+		}
+
+		// datefields that have a certain enddate
+		if($('.inputDatefieldTill').length > 0)
+		{
+			$('.inputDatefieldTill').each(function()
+			                              {
+				                              // get data
+				                              var data = $(this).data();
+
+				                              $(this).datepicker(
+					                              {
+						                              dateFormat: 'dd/mm/yy',
+						                              dayNames: ['zondag', 'maandag', 'dinsdag', 'woensdag', 'donderdag', 'vrijdag', 'zaterdag'],
+						                              dayNamesMin: ['zo', 'ma', 'di', 'wo', 'do', 'vr', 'za'],
+						                              dayNamesShort: ['zon', 'maa', 'din', 'woe', 'don', 'vrij', 'zat'],
+						                              firstDay: 1,
+						                              hideIfNoPrevNext: true,
+						                              monthNames: ['januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december'],
+						                              monthNamesShort: ['jan', 'feb', 'maa', 'apr', 'mei', 'jun', 'jul', 'aug', 'sep', 'okt', 'nov', 'dec'],
+						                              nextText: 'volgende',
+						                              prevText: 'vorige',
+						                              maxDate: new Date(parseInt(data.enddate.split('-')[0], 10), parseInt(data.enddate.split('-')[1], 10) -1, parseInt(data.enddate.split('-')[2], 10)),
+						                              showAnim: 'slideDown'
+					                              });
+			                              });
+		}
+
+		// datefields that have a certain range
+		if($('.inputDatefieldRange').length > 0)
+		{
+			$('.inputDatefieldRange').each(function()
+			                               {
+				                               // get data
+				                               var data = $(this).data();
+
+				                               $(this).datepicker(
+					                               {
+						                               dateFormat: 'dd/mm/yy',
+						                               dayNames: ['zondag', 'maandag', 'dinsdag', 'woensdag', 'donderdag', 'vrijdag', 'zaterdag'],
+						                               dayNamesMin: ['zo', 'ma', 'di', 'wo', 'do', 'vr', 'za'],
+						                               dayNamesShort: ['zon', 'maa', 'din', 'woe', 'don', 'vrij', 'zat'],
+						                               firstDay: 1,
+						                               hideIfNoPrevNext: true,
+						                               monthNames: ['januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december'],
+						                               monthNamesShort: ['jan', 'feb', 'maa', 'apr', 'mei', 'jun', 'jul', 'aug', 'sep', 'okt', 'nov', 'dec'],
+						                               nextText: 'volgende',
+						                               prevText: 'vorige',
+						                               minDate: new Date(parseInt(data.startdate.split('-')[0], 10), parseInt(data.startdate.split('-')[1], 10) - 1, parseInt(data.startdate.split('-')[2], 10), 0, 0, 0, 0),
+						                               maxDate: new Date(parseInt(data.enddate.split('-')[0], 10), parseInt(data.enddate.split('-')[1], 10) - 1, parseInt(data.enddate.split('-')[2], 10), 23, 59, 59),
+						                               showAnim: 'slideDown'
+					                               });
+			                               });
+		}
+	},
+
+
+	// set placeholders
+	placeholders: function()
+	{
+		// detect if placeholder-attribute is supported
+		jQuery.support.placeholder = ('placeholder' in document.createElement('input'));
+
+		if(!jQuery.support.placeholder)
+		{
+			// bind focus
+			$('input[placeholder]').focus(function()
+			                              {
+				                              // grab element
+				                              var input = $(this);
+
+				                              // only do something when the current value and the placeholder are the same
+				                              if(input.val() == input.attr('placeholder'))
+				                              {
+					                              // clear
+					                              input.val('');
+
+					                              // remove class
+					                              input.removeClass('placeholder');
+				                              }
+			                              });
+
+			$('input[placeholder]').blur(function()
+			                             {
+				                             // grab element
+				                             var input = $(this);
+
+				                             // only do something when the input is empty or the value is the same as the placeholder
+				                             if(input.val() == '' || input.val() == input.attr('placeholder'))
+				                             {
+					                             // set placeholder
+					                             input.val(input.attr('placeholder'));
+
+					                             // add class
+					                             input.addClass('placeholder');
+				                             }
+			                             });
+
+			// call blur to initialize
+			$('input[placeholder]').blur();
+
+			// hijack the form so placeholders aren't submitted as values
+			$('input[placeholder]').parents('form').submit(function()
+			                                               {
+				                                               // find elements with placeholders
+				                                               $(this).find('input[placeholder]').each(function()
+				                                                                                       {
+					                                                                                       // grab element
+					                                                                                       var input = $(this);
+
+					                                                                                       // if the value and the placeholder are the same reset the value
+					                                                                                       if(input.val() == input.attr('placeholder')) input.val('');
+				                                                                                       });
+			                                               });
+		}
 	}
 }
 
