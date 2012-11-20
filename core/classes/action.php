@@ -79,7 +79,7 @@ class SiteAction
 			SpoonHTTP::setHeadersByCode(404);
 
 			// show the template
-			$this->tpl->assign('Page not found');
+			$this->tpl->assign('error', 'Page not found');
 			$this->tpl->display(PATH_WWW . '/modules/error/layout/templates/index.tpl');
 			exit();
 		}
