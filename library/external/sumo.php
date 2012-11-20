@@ -24,10 +24,6 @@ class Sumo
 	public static function exceptionHandler($exception, $output)
 	{
 		Errbit::instance()->notify($exception);
-
-		if(APPLICATION == 'frontend') FrontendInit::exceptionHandler($exception, $output);
-		elseif(APPLICATION == 'backend') BackendInit::exceptionHandler($exception, $output);
-		elseif(APPLICATION == 'api') APIInit::exceptionHandler($exception, $output);
 	}
 
 	/**
