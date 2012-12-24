@@ -30,7 +30,7 @@ class Init
 		define('CORE_PATH', PATH_WWW . '/core');
 
 		// set include path
-		set_include_path(PATH_LIBRARY . PATH_SEPARATOR . PATH_WWW . PATH_SEPARATOR . get_include_path());
+		set_include_path(realpath(PATH_WWW . '/vendor/spoon/library') . PATH_SEPARATOR . PATH_WWW . PATH_SEPARATOR . get_include_path());
 
 		// set debugging
 		if(SPOON_DEBUG)
@@ -46,7 +46,7 @@ class Init
 			define('LAST_MODIFIED', filemtime('./library/globals.php'));
 		}
 
-		// require spoon
+		// require Spoon
 		require_once 'spoon/spoon.php';
 
 		// require frontend-classes
