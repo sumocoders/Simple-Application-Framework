@@ -1,0 +1,8 @@
+{
+	"name": "sumocoders/simple-application-framework",
+	"description": "This is the SumoCoders mini-framework, it should allow you to build applications without much hasle.",
+	"license": "MIT",
+	"require": {
+		"spoon/library": "1.3.*"
+	}
+}
