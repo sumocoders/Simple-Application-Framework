@@ -14,6 +14,13 @@
  */
 class Site
 {
+    /**
+     * The settings holder
+     *
+     * @var array
+     */
+    private static $settings;
+
 	/**
 	 * Default constructor
 	 *
@@ -141,6 +148,57 @@ class Site
 			'fr' => ucfirst(SiteLocale::lbl('French'))
 		);
 	}
+
+    /**
+     * Get a setting
+     *
+     * @param string $key
+     * @param mixed[optional] $defaultValue
+     * @return mixed
+     */
+    public static function getSetting($key, $defaultValue = null)
+    {
+        if(self::$settings === null)
+        {
+            $settings = self::getDB()->getPairs(
+                'SELECT i.key, i.value
+                 FROM settings AS i'
+            );
+
+            foreach($settings as $key => &$value)
+            {
+                $value = unserialize($value);
+            }
+
+            self::$settings = $settings;
+        }
+
+        if(isset(self::$settings[$key])) return self::$settings[$key];
+
+        // fallback
+        return $defaultValue;
+    }
+
+    /**
+     * Store a setting
+     *
+     * @param string $key
+     * @param mixed $value
+     */
+    public static function setSetting($key, $value)
+    {
+        Site::getDB(true)->execute(
+            'INSERT INTO settings VALUES(:key, :value)
+             ON DUPLICATE KEY UPDATE value = :value',
+            array(
+                'key' => $key,
+                'value' => serialize($value)
+            )
+        );
+
+        self::$settings = null;
+    }
+
 
 	/**
 	 * Get the thumbnail folders

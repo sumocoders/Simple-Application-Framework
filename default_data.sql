@@ -20,3 +20,9 @@ CREATE TABLE IF NOT EXISTS `users_sessions` (
   `edited_on` datetime NOT NULL,
   PRIMARY KEY (`session_id`,`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS `settings` (
+  `key` varchar(255) NOT NULL,
+  `value` text,
+  PRIMARY KEY (`key`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
