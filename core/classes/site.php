@@ -165,9 +165,9 @@ class Site
                  FROM settings AS i'
             );
 
-            foreach($settings as $key => &$value)
+            foreach($settings as $name => &$value)
             {
-                $value = unserialize($value);
+                $settings[$name] = unserialize($value);
             }
 
             self::$settings = $settings;
