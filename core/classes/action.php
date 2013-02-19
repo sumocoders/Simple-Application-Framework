@@ -295,8 +295,8 @@ class SiteBaseAction
 			$message = SiteLocale::msg(SpoonFilter::toCamelCase($this->url->getModule() . '-' . $report , '-'));
 
 			// any vars?
-			$var = SpoonFilter::getGetValue('var', null, '');
-			if($var != '') $message = vsprintf($message, $var);
+			$var = SpoonFilter::getGetValue('var', null, '', 'array');
+			if(!empty($var)) $message = vsprintf($message, $var);
 
 			// assign
 			$this->tpl->assign('report', $message);
