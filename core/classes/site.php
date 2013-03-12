@@ -155,6 +155,47 @@ class Site
 	}
 
 	/**
+	 * Get a string that we can use a filename
+	 * @return string
+	 */
+	public static function getFilename()
+	{
+		$filename = md5(microtime(true));
+		$path = substr($filename, 0, 2) . '/' . substr($filename, 2, 2);
+
+		// create the path if needed
+		if(!SpoonDirectory::exists(PATH_WWW . '/files/' . $path))
+		{
+			SpoonDirectory::create(PATH_WWW . '/files/' . $path);
+		}
+
+		return $path . '/' . $filename;
+	}
+
+	/**
+	 * Get a path for a file
+	 *
+	 * @param $filename
+	 * @return string
+	 */
+	public static function getFilesPath($filename)
+	{
+		$url = self::getFilesUrl($filename);
+		return PATH_WWW . $url;
+	}
+
+	/**
+	 * Get a file url
+	 *
+	 * @param string $filename
+	 * @return string
+	 */
+	public static function getFilesUrl($filename)
+	{
+		return '/files/' . $filename;
+	}
+
+	/**
 	 * Get the available languages
 	 *
 	 * @return array
