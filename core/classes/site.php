@@ -199,7 +199,6 @@ class Site
         self::$settings = null;
     }
 
-
 	/**
 	 * Get the thumbnail folders
 	 *

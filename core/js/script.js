@@ -43,7 +43,7 @@ var jsSite = {
 	},
 	// set defaults for AJAX
 	initAjax: function() {
-		$.ajaxSetup({ cache: false, type: 'POST', dataType: 'json', imeout: 5000 });
+		$.ajaxSetup({ cache: false, type: 'POST', dataType: 'json', timeout: 5000 });
 
 		// global error handler
 		$(document).ajaxError(function(event, XMLHttpRequest, ajaxOptions) {
@@ -374,42 +374,6 @@ jsSite.search = {
 		} else {
 			return item;
 		}
-	}
-}
-
-jsSite.prestations =
-{
-	init: function()
-	{
-		$('#userId').multipleSelectbox({ emptyMessage: 'Geen personen gekozen.', addLabel: 'toevoegen', removeLabel: 'verwijderen', showIconOnly: true });
-
-		$('#quickNav').change(function(e) {
-			// replace
-			var newDate = $(this).val().replace(new RegExp('/', 'g'), '-');
-
-			// alter url
-			document.location.href = '/'+ jsSite.current.module + '/' + jsSite.current.action +'/'+ newDate;
-		});
-
-		$('#addAndAddAnother').click(function(e)
-		{
-			// prevent default
-			e.preventDefault();
-
-			// search form
-			var form = $($(this).parents('form')[0]);
-
-			// append new field and submit
-			form.append('<input type="hidden" name="next" value="add_another" />').submit();
-		});
-
-		$('td.dont_invoice input:checkbox').change(function() { $('#dontInvoice').attr('checked', ($('td.dont_invoice input:checkbox').length == $('td.dont_invoice input:checked').length) ? 'checked' : ''); })
-		$('td.dont_send input:checkbox:first').change();
-		$('#dontInvoice').change(function() { $('td.dont_invoice input:checkbox').attr('checked', $(this).attr('checked')); });
-
-		$('td.is_invoiced input:checkbox').change(function() { $('#isInvoiced').attr('checked', ($('td.is_invoiced input:checkbox').length == $('td.is_invoiced input:checked').length) ? 'checked' : ''); })
-		$('td.is_invoiced input:checkbox:first').change();
-		$('#isInvoiced').change(function() { $('td.is_invoiced input:checkbox').attr('checked', $(this).attr('checked')); });
 	}
 }
 

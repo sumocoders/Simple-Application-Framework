@@ -18,14 +18,12 @@ class User
 	 */
 	public $id;
 
-
 	/**
 	 * Textual properties
 	 *
 	 * @var	string
 	 */
 	public $name, $email, $secret, $rawPassword, $password, $type;
-
 
 	/**
 	 * Boolean properties
