@@ -46,7 +46,7 @@ class AjaxCoreSearch extends AjaxBaseAction
 
 						foreach($return as $row)
 						{
-							$row['module'] = $module;
+							if(!isset($row['module'])) $row['module'] = $module;
 							$items[] = $row;
 						}
 					}
