@@ -16,7 +16,7 @@
 				{/option:formAddHasError}
 
 				{form:add}
-					<div class="form-horizontal">
+					<div class="form">
 						<div class="control-group{option:txtEmailError} error{/option:txtEmailError}">
 							<label for="email" class="control-label">{$lblEmail|ucfirst}<abbr title="{$msgRequired}">*</abbr></label>
 							<div class="controls">

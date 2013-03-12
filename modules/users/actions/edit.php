@@ -92,6 +92,15 @@ class UsersEdit extends SiteBaseAction
 	}
 
 	/**
+	 * Parse the form
+	 */
+	private function parse()
+	{
+		$this->frm->parse($this->tpl);
+		$this->tpl->assign('item', $this->item->toArray());
+	}
+
+	/**
 	 * Validate the form
 	 *
 	 * @return void
@@ -111,7 +120,6 @@ class UsersEdit extends SiteBaseAction
 				// set properties
 				$this->item->name = $this->frm->getField('name')->getValue();
 				$this->item->email = $this->frm->getField('email')->getValue();
-				$this->item->type = $this->frm->getField('type')->getValue();
 
 				if($this->frm->getField('password')->isFilled())
 				{
@@ -119,13 +127,29 @@ class UsersEdit extends SiteBaseAction
 					$this->item->rawPassword = $this->frm->getField('password')->getValue();
 				}
 
+				if($this->currentUser->isAdmin)
+				{
+					$this->item->type = $this->frm->getField('type')->getValue();
+				}
+
 				// save
 				$this->item->save();
+
+				if($this->currentUser->isAdmin)
+				{
+					// redirect
+					$this->redirect(
+						$this->url->buildUrl(
+							'index', null, null,
+							array('report' => 'edited', 'var' => $this->item->name, 'id' => $this->item->id)
+						)
+					);
+				}
 
 				// redirect
 				$this->redirect(
 					$this->url->buildUrl(
-						'index', null, null,
+						'edit', null, $this->item->id,
 						array('report' => 'edited', 'var' => $this->item->name, 'id' => $this->item->id)
 					)
 				);

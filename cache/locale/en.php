@@ -20,6 +20,9 @@ $err['Forbidden'] = 'You do not have sufficient rights.';
 $err['GeneralError'] = 'Something went wrong.';
 $err['GeneralFormError'] = 'Something went wrong, please check the highlighted fields.';
 $err['InvalidModule'] = 'Sorry, this module can not be found.';
+$err['InvalidRecord'] = 'Sorry, this item can not be found.';
+$err['JPGGIFAndPNGOnly'] = 'Only jp(e)g, gif or png-files are allowed.';
+$err['UrlIsInvalid'] = 'This is an invalid url.';
 
 // init var
 $lbl = array();

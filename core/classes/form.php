@@ -22,10 +22,7 @@ class SiteForm extends SpoonForm
 	 */
 	public function __construct($name, $action = null, $method = 'post', $useToken = false)
 	{
-		// no acion provided?
 		$action = ($action === null) ? '/' . trim((string) $_SERVER['REQUEST_URI'], '/') : (string) $action;
-
-		// call parent
 		parent::__construct($name, $action, $method, $useToken);
 	}
 
@@ -40,10 +37,7 @@ class SiteForm extends SpoonForm
 	 */
 	public function addButton($name, $value, $type = null, $class = 'inputButton btn')
 	{
-		// add element
 		$this->add(new SpoonFormButton($name, $value, $type, $class));
-
-		// return the element
 		return $this->getField($name);
 	}
 

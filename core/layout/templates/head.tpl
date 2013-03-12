@@ -3,7 +3,10 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>{$SITE_DEFAULT_TITLE}</title>
+	<title>
+		{option:pageTitle}{$pageTitle}{/option:pageTitle}
+		{option:!pageTitle}{$SITE_DEFAULT_TITLE}{/option:!pageTitle}
+	</title>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="">
