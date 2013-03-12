@@ -62,6 +62,15 @@ class UsersEdit extends SiteBaseAction
 			);
 		}
 
+		// check if admin or editing yourself
+		if(!$this->currentUser->isAdmin && $this->currentUser->id != $this->id)
+		{
+			$this->redirect(
+				$this->url->buildUrl('index', 'error', null, array('code' => 403, 'message' => 'forbidden')),
+				403
+			);
+		}
+
 		// get item
 		$this->item = User::get($this->id);
 

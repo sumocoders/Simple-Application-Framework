@@ -246,6 +246,8 @@ class UsersHelper
 	 */
 	public static function search($query)
 	{
+		if(!Authentication::getLoggedInUser()->isAdmin) return;
+
 		$return = array();
 
 		$data = Site::getDB()->getRecords(
