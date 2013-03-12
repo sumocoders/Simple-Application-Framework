@@ -526,6 +526,23 @@ class SiteDataGridFunctions
 	}
 
 	/**
+	 * Returns an image tag
+	 *
+	 * @param	string $image				The filename of the image.
+	 * @param	string[optional] $width		The width of the icon
+	 * @return string
+	 */
+	public static function showThumbnail($image, $width = 48)
+	{
+		// redefine
+		$image = (string) $image;
+		$width = (int) $width;
+
+		// return
+		return '<img src="' . $image . '" width="' . $width . '" alt="" />';
+	}
+
+	/**
 	 * Truncate a string
 	 *
 	 * @param	string[optional] $string	The string to truncate.
