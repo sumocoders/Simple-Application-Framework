@@ -79,6 +79,22 @@ class Site
 	}
 
 	/**
+	 * Display an error
+	 *
+	 * @param string $message
+	 * @param int[optional] $httpCode
+	 */
+	public static function displayError($message, $httpCode = 500)
+	{
+		SpoonHTTP::setHeadersByCode($httpCode);
+
+		$tpl = Spoon::get('template');
+		$tpl->assign('error', $message);
+		$tpl->display(PATH_WWW . '/core/layout/templates/error.tpl');
+		exit;
+	}
+
+	/**
 	 * Generate thumbnails based on the folders in the path
 	 * Use
 	 * - 128x128 as foldername to generate an image where the width will be 128px and the height will be 128px

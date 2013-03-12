@@ -40,19 +40,10 @@ class UsersLogin extends SiteBaseAction
 			$this->redirect($url);
 		}
 
-		// load the form
 		$this->loadForm();
-
-		// validate the form
 		$this->validateForm();
-
-		// parse reports
 		$this->parseReports();
-
-		// parse
 		$this->frm->parse($this->tpl);
-
-		// display the page
 		$this->display();
 	}
 

@@ -18,10 +18,7 @@ class UsersLogout extends SiteBaseAction
 	 */
 	public function execute()
 	{
-		// logout
 		Authentication::logout();
-
-		// redirect
 		$this->redirect($this->url->buildUrl('login', 'users', null, array('report' => 'logged-out')));
 	}
 }

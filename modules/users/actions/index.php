@@ -18,13 +18,8 @@ class UsersIndex extends SiteBaseAction
 	 */
 	public function execute()
 	{
-		// show reports
 		$this->parseReports();
-
-		// parse
 		$this->parse();
-
-		// display the page
 		$this->display();
 	}
 
@@ -38,19 +33,13 @@ class UsersIndex extends SiteBaseAction
 		// check if admin
 		if(!$this->currentUser->isAdmin)
 		{
-			$this->redirect(
-				$this->url->buildUrl('index', 'error', null, array('code' => 403, 'message' => 'forbidden')),
-				403
-			);
+			Site::displayError('Forbidden', 403);
 		}
 
-		// create data grid
 		$dataGrid = new SiteDataGridDB(
 			'SELECT id, email, name
 			 FROM users'
 		);
-
-		// add columns
 		$dataGrid->addColumn(
 			'edit', '', ucfirst(SiteLocale::lbl('Edit')),
 			$this->url->buildUrl('edit', null, '[id]'),

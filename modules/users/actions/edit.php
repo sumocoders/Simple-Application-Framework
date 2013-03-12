@@ -45,41 +45,26 @@ class UsersEdit extends SiteBaseAction
 		// check if admin
 		if(!$this->currentUser->isAdmin)
 		{
-			$this->redirect(
-				$this->url->buildUrl('index', 'error', null, array('code' => 403, 'message' => 'forbidden')),
-				403
-			);
+			Site::displayError('Forbidden', 403);
 		}
 
-		// id availabe
 		$this->id = $this->url->getParameter(1, 'int');
-
-		// no id?
 		if($this->id == '')
 		{
-			$this->redirect(
-				$this->url->buildUrl('index', null, null, array('error' => 'invalid-record'))
-			);
+			Site::displayError('Page not found', 404);
 		}
 
 		// check if admin or editing yourself
 		if(!$this->currentUser->isAdmin && $this->currentUser->id != $this->id)
 		{
-			$this->redirect(
-				$this->url->buildUrl('index', 'error', null, array('code' => 403, 'message' => 'forbidden')),
-				403
-			);
+			Site::displayError('Forbidden', 403);
 		}
 
 		// get item
 		$this->item = User::get($this->id);
-
-		// validate
 		if($this->item === false)
 		{
-			$this->redirect(
-				$this->url->buildUrl('index', null, null, array('error' => 'invalid-record'))
-			);
+			Site::displayError('Page not found', 404);
 		}
 
 		$this->loadForm();

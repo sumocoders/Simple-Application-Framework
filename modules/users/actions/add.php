@@ -29,10 +29,7 @@ class UsersAdd extends SiteBaseAction
 		// check if admin
 		if(!$this->currentUser->isAdmin)
 		{
-			$this->redirect(
-				$this->url->buildUrl('index', 'error', null, array('code' => 403, 'message' => 'forbidden')),
-				403
-			);
+			Site::displayError('Forbidden', 403);
 		}
 
 		$this->loadForm();
