@@ -35,16 +35,9 @@ class UsersAdd extends SiteBaseAction
 			);
 		}
 
-		// load the form
 		$this->loadForm();
-
-		// validate the form
 		$this->validateForm();
-
-		// parse
 		$this->frm->parse($this->tpl);
-
-		// display the page
 		$this->display();
 	}
 

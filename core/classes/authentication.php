@@ -62,7 +62,15 @@ class Authentication
 			// not logout
 			elseif($url->getAction() != 'logout' && $url->getAction() != 'login')
 			{
-				SpoonHTTP::redirect($url->buildUrl('login', 'users', null, array('redirect' => '/' . $url->getQueryString())), 403);
+				SpoonHTTP::redirect(
+					$url->buildUrl(
+						'login', 'users', null,
+						array(
+						     'redirect' => '/' . $url->getQueryString()
+						)
+					),
+					403
+				);
 			}
 		}
 	}

@@ -20,7 +20,6 @@ class SiteAction
 	 */
 	private $action;
 
-
 	/**
 	 * The current module
 	 *
@@ -28,14 +27,12 @@ class SiteAction
 	 */
 	private $module;
 
-
 	/**
 	 * SiteTemplate
 	 *
 	 * @var	SiteTemplate
 	 */
 	public $tpl;
-
 
 	/**
 	 * Default constructor
@@ -169,7 +166,6 @@ class SiteBaseAction
 	 * @var	User
 	 */
 	protected $currentUser;
-
 
 	/**
 	 * The current module
