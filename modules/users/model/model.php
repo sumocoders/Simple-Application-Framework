@@ -182,6 +182,15 @@ class User
 		}
 		else Site::getDB(true)->update('users', $item, 'id = ?', $this->id);
 
+		// log
+		Site::getLogger()->notice(
+			'user saved',
+			array(
+			     'object' => $this,
+			     'by' => Authentication::getLoggedInUser()
+			)
+		);
+
 		// return
 		return true;
 	}

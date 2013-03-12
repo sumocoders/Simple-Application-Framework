@@ -1,5 +1,8 @@
 <?php
 
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
+
 /**
  * Site
  *
@@ -147,6 +150,31 @@ class Site
 			'en' => ucfirst(SiteLocale::lbl('English')),
 			'fr' => ucfirst(SiteLocale::lbl('French'))
 		);
+	}
+
+	/**
+	 * Get the logger
+	 *
+	 * @return Monolog\Logger
+	 */
+	public static function getLogger()
+	{
+		// does it exists?
+		if(!Spoon::exists('logger'))
+		{
+			// create directory if needed
+			if(!SpoonDirectory::exists(PATH_WWW . '/cache/logs'))
+			{
+				SpoonDirectory::create(PATH_WWW . '/cache/logs');
+			}
+
+			$logger = new Logger('application');
+			$logger->pushHandler(new StreamHandler(PATH_WWW . '/cache/logs/application.log', Logger::INFO));
+
+			Spoon::set('logger', $logger);
+		}
+
+		return Spoon::get('logger');
 	}
 
     /**

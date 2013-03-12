@@ -3,6 +3,7 @@
 	"description": "This is the SumoCoders mini-framework, it should allow you to build applications without much hasle.",
 	"license": "MIT",
 	"require": {
-		"spoon/library": "1.3.*"
+		"spoon/library": "1.3.*",
+		"monolog/monolog": "1.3.1"
 	}
 }
