@@ -26,5 +26,5 @@ require "forkcms_deploy/defaults"
 require "sumodev_deploy"
 load "./deployment/overwrites"
 
-# UNCOMMENT THIS IF YOU'RE USING Compass 
-#after 'deploy:update_code', 'assets:precompile'
+# UNCOMMENT THIS IF YOU'RE USING Compass
+after 'deploy:update_code', 'assets:precompile'
