@@ -242,7 +242,7 @@ class SiteURL
 
 				// invalid type
 				default:
-					throw new Exception('Invalid type (' . $type . '). Possible values are: ' . implode(', ', $aAllowedTypes)) . '.';
+					throw new Exception('Invalid type (' . $type . '). Possible values are: ' . implode(', ', $aAllowedTypes) . '.');
 			}
 		}
 
