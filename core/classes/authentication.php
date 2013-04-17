@@ -129,6 +129,9 @@ class Authentication
 			// check if given password match
 			if($user->password == sha1(md5($password) . $user->secret))
 			{
+				// reset the login-attempts
+				Site::getDB(true)->delete('users_login_attempts', 'login = ?', $email);
+
 				$return = $user;
 			}
 		}
