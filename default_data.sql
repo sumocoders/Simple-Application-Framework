@@ -21,6 +21,13 @@ CREATE TABLE IF NOT EXISTS `users_sessions` (
   PRIMARY KEY (`session_id`,`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+CREATE TABLE IF NOT EXISTS `users_login_attempts` (
+  `login` varchar(255) NOT NULL,
+  `attempts` int(11) NOT NULL,
+  `last_attempt` datetime NOT NULL,
+  PRIMARY KEY (`login`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 CREATE TABLE IF NOT EXISTS `settings` (
   `key` varchar(255) NOT NULL,
   `value` text,
