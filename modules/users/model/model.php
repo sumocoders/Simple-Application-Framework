@@ -57,7 +57,9 @@ class User
 		$id = (int) $id;
 
 		// get data
-		$data = Site::getDB()->getRecord('SELECT i.*, UNIX_TIMESTAMP(i.created_on) AS created_on, UNIX_TIMESTAMP(i.edited_on) AS edited_on
+		$data = Site::getDB()->getRecord('SELECT i.*, UNIX_TIMESTAMP(i.created_on) AS created_on,
+											UNIX_TIMESTAMP(i.edited_on) AS edited_on,
+											UNIX_TIMESTAMP(i.blocked_on) AS blocked_on
 											FROM users AS i
 											WHERE i.id = ?',
 											array($id));
@@ -87,7 +89,9 @@ class User
 		$email = (string) $email;
 
 		// get data
-		$data = Site::getDB()->getRecord('SELECT i.*, UNIX_TIMESTAMP(i.created_on) AS created_on, UNIX_TIMESTAMP(i.edited_on) AS edited_on
+		$data = Site::getDB()->getRecord('SELECT i.*, UNIX_TIMESTAMP(i.created_on) AS created_on,
+											UNIX_TIMESTAMP(i.edited_on) AS edited_on,
+											UNIX_TIMESTAMP(i.blocked_on) AS blocked_on
 										  FROM users AS i
 										  WHERE i.email = ?',
 										 array($email));
