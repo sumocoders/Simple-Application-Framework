@@ -136,6 +136,18 @@ class Authentication
 		// should we log?
 		if(!$return)
 		{
+			// log in the db
+			Site::getDB(true)->execute(
+				'INSERT INTO users_login_attempts
+				 VALUES(:email, :attempts, :date)
+				 ON DUPLICATE KEY UPDATE attempts = :attempts, last_attempt = :date',
+				array(
+				     'email' => $email,
+				     'attempts' => $attempts + 1,
+				     'date' => Site::getUTCDate('Y-m-d H:i:s'),
+				)
+			);
+
 			// log
 			Site::getLogger()->notice(
 				'failed login attempt',
