@@ -127,7 +127,7 @@ class Authentication
 		if($user !== false)
 		{
 			// check if given password match
-			if($user->password == sha1(md5($password) . $user->secret))
+			if(!$user->isBlocked && $user->password == sha1(md5($password) . $user->secret))
 			{
 				// reset the login-attempts
 				Site::getDB(true)->delete('users_login_attempts', 'login = ?', $email);
@@ -154,9 +154,12 @@ class Authentication
 				)
 			);
 
+			$message = 'failed login attempt';
+			if($user->isBlocked) $message .= ' from blocked user';
+
 			// log
 			Site::getLogger()->notice(
-				'failed login attempt',
+				$message,
 				array(
 				     'email' => $email,
 				     'server' => $_SERVER,
