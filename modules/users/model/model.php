@@ -174,7 +174,9 @@ class User
 		$item['secret'] = $this->secret;
 		$item['type'] = $this->type;
 		$item['data'] = serialize(array('settings' => $this->settings));
+		$item['blocked'] = ($this->isBlocked) ? 'Y' : 'N';
 		$item['edited_on'] = Site::getUTCDate('Y-m-d H:i:s', $this->editedOn->getTimestamp());
+		$item['blocked_on'] = ($this->isBlocked) ? Site::getUTCDate('Y-m-d H:i:s', $this->blockedOn->getTimestamp()) : null;
 
 		// new password?
 		if($this->rawPassword != null) $item['password'] = sha1(md5($this->rawPassword) . $this->secret);
