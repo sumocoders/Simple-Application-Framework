@@ -27,6 +27,7 @@ $err['UrlIsInvalid'] = 'This is an invalid url.';
 // init var
 $lbl = array();
 $lbl['Add'] = 'add';
+$lbl['Blocked'] = 'blocked';
 $lbl['Cancel'] = 'cancel';
 $lbl['Close'] = 'close';
 $lbl['Delete'] = 'delete';

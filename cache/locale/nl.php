@@ -31,6 +31,7 @@ $err['TimeIsInvalidBeforeStart'] = 'Je kan geen tijdstip voor het starttijdstip 
 // init var
 $lbl = array();
 $lbl['Add'] = 'toevoegen';
+$lbl['Blocked'] = 'geblokkeerd';
 $lbl['Cancel'] = 'annuleer';
 $lbl['Close'] = 'sluiten';
 $lbl['Delete'] = 'verwijder';

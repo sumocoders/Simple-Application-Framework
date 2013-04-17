@@ -47,6 +47,13 @@
 									{$ddmType} {$ddmTypeError}
 								</div>
 							</div>
+							<div class="control-group">
+								<div class="controls">
+									<label class="checkbox">
+										{$chkBlocked} {$lblBlocked}? {$chkBlockedError}
+									</label>
+								</div>
+							</div>
 						{/option:currentUser.isAdmin}
 
 						<div class="form-actions">

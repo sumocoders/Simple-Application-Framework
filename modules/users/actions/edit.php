@@ -89,6 +89,11 @@ class UsersEdit extends SiteBaseAction
 		$this->frm->addText('name', $this->item->name)->setAttributes(array('required' => null));
 		$this->frm->addPassword('password')->setAttributes(array('autocomplete' => 'off'));
 		$this->frm->addDropdown('type', array('user' => 'user', 'admin' => 'admin'), $this->item->type);
+
+		if($this->currentUser->isAdmin)
+		{
+			$this->frm->addCheckbox('blocked', ($this->item->isBlocked));
+		}
 	}
 
 	/**
@@ -130,6 +135,12 @@ class UsersEdit extends SiteBaseAction
 				if($this->currentUser->isAdmin)
 				{
 					$this->item->type = $this->frm->getField('type')->getValue();
+					$this->item->isBlocked = $this->frm->getField('blocked')->getValue();
+
+					if($this->item->isBlocked && $this->item->blockedOn === null)
+					{
+						$this->item->blockedOn = new DateTime();
+					}
 				}
 
 				// save
