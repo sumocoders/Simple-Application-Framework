@@ -75,21 +75,14 @@ class UsersLogin extends SiteBaseAction
 			$this->frm->getField('login')->isFilled('Dit veld is verplicht');
 			$this->frm->getField('password')->isFilled('Dit veld is verplicht');
 
-			$user = User::getByEmail($this->frm->getField('login')->getValue());
+			$user = Authentication::validateLogin(
+				$this->frm->getField('login')->getValue(),
+				$this->frm->getField('password')->getValue()
+			);
 
-			if(!$user)
-			{
+			if(!$user) {
 				$this->tpl->assign('error', true);
 				$this->frm->getField('login')->addError('&nbsp;');
-			}
-
-			else
-			{
-				if($user->password != sha1(md5($this->frm->getField('password')->getValue()) . $user->secret))
-				{
-					$this->tpl->assign('error', true);
-					$this->frm->getField('login')->addError('&nbsp;');
-				}
 			}
 
 			// no errors

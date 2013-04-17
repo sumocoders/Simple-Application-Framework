@@ -110,4 +110,42 @@ class Authentication
 		SpoonSession::destroy();
 		session_regenerate_id(true);
 	}
+
+	/**
+	 * Validate the given credentials
+	 *
+	 * @param string $email
+	 * @param string $password
+	 * @return User|bool
+	 */
+	public static function validateLogin($email, $password)
+	{
+		// init vars
+		$return = false;
+		$user = User::getByEmail($email);
+
+		if($user !== false)
+		{
+			// check if given password match
+			if($user->password == sha1(md5($password) . $user->secret))
+			{
+				$return = $user;
+			}
+		}
+
+		// should we log?
+		if(!$return)
+		{
+			// log
+			Site::getLogger()->notice(
+				'failed login attempt',
+				array(
+				     'email' => $email,
+				     'server' => $_SERVER,
+				)
+			);
+		}
+
+		return $return;
+	}
 }
