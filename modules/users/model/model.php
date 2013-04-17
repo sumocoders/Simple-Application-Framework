@@ -28,14 +28,14 @@ class User
 	/**
 	 * Boolean properties
 	 */
-	public $isAdmin = false;
+	public $isAdmin = false, $isBlocked = false;
 
 	/**
 	 * DateTime properties
 	 *
 	 * @var DateTime
 	 */
-	public $createdOn, $editedOn;
+	public $createdOn, $editedOn, $blockedOn;
 
 	/**
 	 * Array properties
@@ -149,8 +149,10 @@ class User
 			if(isset($data['data']['settings'])) $this->settings = $data['data']['settings'];
 		}
 		if($this->type == 'admin') $this->isAdmin = true;
+		if(isset($data['blocked'])) $this->isBlocked = ($data['blocked'] == 'Y');
 		if(isset($data['created_on'])) $this->createdOn = new DateTime('@' . $data['created_on']);
 		if(isset($data['edited_on'])) $this->editedOn = new DateTime('@' . $data['edited_on']);
+		if(isset($data['blocked_on'])) $this->blockedOn = new DateTime('@' . $data['blocked_on']);
 	}
 
 	/**
