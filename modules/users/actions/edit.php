@@ -93,6 +93,10 @@ class UsersEdit extends SiteBaseAction
 		if($this->currentUser->isAdmin)
 		{
 			$this->frm->addCheckbox('blocked', ($this->item->isBlocked));
+			if($this->item->id == $this->currentUser->id)
+			{
+				$this->frm->getField('blocked')->setAttributes(array('disabled' => 'disabled'));
+			}
 		}
 	}
 
