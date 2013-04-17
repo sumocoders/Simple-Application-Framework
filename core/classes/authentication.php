@@ -166,6 +166,23 @@ class Authentication
 				)
 			);
 
+			// when someone has attempted to login for 7 times we will block the user.
+			if($user && $attempts >= 7)
+			{
+				$user->isBlocked = true;
+				if($user->blockedOn === null) $user->blockedOn = new DateTime();
+				$user->save();
+
+				// log
+				Site::getLogger()->notice(
+					'blocked user after 7 failed attempts',
+					array(
+					     'object' => $user,
+					     'attempts' => $attempts,
+					)
+				);
+			}
+
 			// if there are multiple attempts we will slow down the user
 			if($attempts >= 3)
 			{
