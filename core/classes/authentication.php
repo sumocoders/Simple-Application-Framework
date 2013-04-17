@@ -136,6 +136,9 @@ class Authentication
 		// should we log?
 		if(!$return)
 		{
+			// get current number of attempts
+			$attempts = (int) Site::getDB()->getVar('SELECT attempts FROM users_login_attempts WHERE login = ?', $email);
+
 			// log in the db
 			Site::getDB(true)->execute(
 				'INSERT INTO users_login_attempts
@@ -156,6 +159,12 @@ class Authentication
 				     'server' => $_SERVER,
 				)
 			);
+
+			// if there are multiple attempts we will slow down the user
+			if($attempts >= 3)
+			{
+				sleep(($attempts - 3) * 5);
+			}
 		}
 
 		return $return;
