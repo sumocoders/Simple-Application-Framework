@@ -1,6 +1,53 @@
 {
-    "hash": "c871e09f3ac48cb4ec287b5a060e23a3",
+    "hash": "218e6ff42d580c2a7ce12c5985d722fd",
     "packages": [
+        {
+            "name": "errbit/errbit-php",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/wasilak/errbit-php.git",
+                "reference": "d40f2f0fd2480ff6551c8c7278135527757085ce"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/wasilak/errbit-php/zipball/d40f2f0fd2480ff6551c8c7278135527757085ce",
+                "reference": "d40f2f0fd2480ff6551c8c7278135527757085ce",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Errbit": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Flippa.com Pty. Ltd.",
+                    "homepage": "https://flippa.com/",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Piotr Wasilewski",
+                    "email": "piotr.m.wasilewski@gmail.com",
+                    "role": "Packager"
+                }
+            ],
+            "description": "Logging for PHP 5.3",
+            "homepage": "https://github.com/flippa/errbit-php",
+            "keywords": [
+                "log",
+                "logging"
+            ],
+            "time": "2012-11-05 22:42:56"
+        },
         {
             "name": "monolog/monolog",
             "version": "1.3.1",
@@ -107,12 +154,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/forkcms/library.git",
-                "reference": "91407bbf055ff27afacc2311a17c5641738ddc3c"
+                "reference": "22e015a4ac192cef501e3c03649319c51cc93d97"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/forkcms/library/zipball/91407bbf055ff27afacc2311a17c5641738ddc3c",
-                "reference": "91407bbf055ff27afacc2311a17c5641738ddc3c",
+                "url": "https://api.github.com/repos/forkcms/library/zipball/22e015a4ac192cef501e3c03649319c51cc93d97",
+                "reference": "22e015a4ac192cef501e3c03649319c51cc93d97",
                 "shasum": ""
             },
             "require": {
@@ -131,7 +178,47 @@
             ],
             "description": "A PHP5 library that is fast, easy to learn and fun!",
             "homepage": "http://www.spoon-library.com",
-            "time": "2013-03-11 16:20:28"
+            "time": "2013-04-29 15:45:51"
+        },
+        {
+            "name": "sumocoders/sumo-fork-class",
+            "version": "dev-master",
+            "target-dir": "SumoCoders/SumoForkClass",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sumocoders/Sumo-specific-Fork-stuff.git",
+                "reference": "1a6f596f7ee15abaae66f36738802eb6aec58adb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sumocoders/Sumo-specific-Fork-stuff/zipball/1a6f596f7ee15abaae66f36738802eb6aec58adb",
+                "reference": "1a6f596f7ee15abaae66f36738802eb6aec58adb",
+                "shasum": ""
+            },
+            "require": {
+                "errbit/errbit-php": "dev-master",
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "SumoCoders\\SumoForkClass": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD"
+            ],
+            "authors": [
+                {
+                    "name": "Tijs Verkoyen",
+                    "email": "tijs@sumocoders.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Fork is great, but we like to implemented our internal tools into the website we create for our clients",
+            "homepage": "https://github.com/sumocoders/Sumo-specific-Fork-stuff",
+            "time": "2013-04-13 14:39:27"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -181,15 +268,59 @@
                 "mailer"
             ],
             "time": "2013-01-08 15:50:34"
+        },
+        {
+            "name": "tijsverkoyen/css-to-inline-styles",
+            "version": "dev-master",
+            "target-dir": "TijsVerkoyen/CssToInlineStyles",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tijsverkoyen/CssToInlineStyles.git",
+                "reference": "7c9673fe35d02b187ba326e16ab67a93a14ea95c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tijsverkoyen/CssToInlineStyles/zipball/7c9673fe35d02b187ba326e16ab67a93a14ea95c",
+                "reference": "7c9673fe35d02b187ba326e16ab67a93a14ea95c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "TijsVerkoyen\\CssToInlineStyles": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD"
+            ],
+            "authors": [
+                {
+                    "name": "Tijs Verkoyen",
+                    "email": "css_to_inline_styles@verkoyen.eu",
+                    "role": "Developer"
+                }
+            ],
+            "description": "CssToInlineStyles is a class that enables you to convert HTML-pages/files into HTML-pages/files with inline styles. This is very useful when you're sending emails.",
+            "homepage": "https://github.com/tijsverkoyen/CssToInlineStyles",
+            "time": "2013-03-13 11:39:52"
         }
     ],
-    "packages-dev": null,
+    "packages-dev": [
+
+    ],
     "aliases": [
 
     ],
     "minimum-stability": "stable",
     "stability-flags": {
-        "spoon/library": 20
+        "spoon/library": 20,
+        "sumocoders/sumo-fork-class": 20,
+        "errbit/errbit-php": 20,
+        "tijsverkoyen/css-to-inline-styles": 20
     },
     "platform": [
 
