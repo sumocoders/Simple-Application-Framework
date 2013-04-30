@@ -42,18 +42,13 @@ class AjaxCoreBug extends AjaxBaseAction
 			else $to = 'bugs@sumocoders.be';
 
 
-			// build mail
-			$email = new SpoonEmail();
-			$email->setTemplateCompileDirectory(PATH_WWW . '/cache/compiled_templates');
-			$email->setFrom('no-reply@sumocoders.be', SITE_DEFAULT_TITLE);
-			$email->addRecipient($to, SITE_DEFAULT_TITLE);
-			$email->setSubject(SITE_DEFAULT_TITLE . ': bugreport');
-
- 			// add current user info if provided
- 			if(isset($currentUser['name']) && isset($currentUser['email']))
- 			{
- 				$email->setReplyTo($currentUser['email'], $currentUser['name']);
- 			}
+			$message = Swift_Message::newInstance(SITE_DEFAULT_TITLE . ': bugreport');
+			$message->setFrom('no-reply@sumocoders.be', SITE_DEFAULT_TITLE);
+			$message->setTo($to);
+			if(isset($currentUser['name']) && isset($currentUser['email']))
+			{
+				$message->setReplyTo($currentUser['email'], $currentUser['name']);
+			}
 
 			// screenshot provided?
 			if($screenShot != '')
@@ -61,14 +56,11 @@ class AjaxCoreBug extends AjaxBaseAction
 				$screenShot = base64_decode(substr($screenShot, strpos($screenShot, ',') + 1));
 
 				// store in tempfile
-				$filename = tempnam(sys_get_temp_dir(), 'screenshot');
+				$filename = tempnam(sys_get_temp_dir(), 'screenshot') . '.png';
 				file_put_contents($filename, $screenShot);
 
-				$email->addAttachment($filename, date('YmdHis') . '.png');
+				$message->attach(Swift_Attachment::fromPath($filename));
 			}
-
-			// user agent
-			$userAgent = isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : '<i>(Unknown)</i>';
 
 			// generate output
 			$output = '<html>
@@ -194,14 +186,11 @@ class AjaxCoreBug extends AjaxBaseAction
 							</body>
 						</html>';
 
-			// set the HTML-content
-			$email->setHTMLContent($output);
-
-			// send the email
-			$email->send();
+			$message->setBody($output, 'text/html');
 
 			// return
 			$response['code'] = 200;
+			$response['data'] = Site::sendMail($message);
 			$response['message'] = 'ok';
 		}
 

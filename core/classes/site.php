@@ -389,23 +389,12 @@ class Site
 	 * @param $body
 	 * @return int
 	 */
-	public static function sendMail(
-		$subject,
-		$from,
-		$to,
-		$body
-	)
+	public static function sendMail($message)
 	{
 		$transport = Swift_SmtpTransport::newInstance(MAIL_SERVER, MAIL_PORT)
 			->setUsername(MAIL_USERNAME)
 			->setPassword(MAIL_PASSWORD);
 		$mailer = Swift_Mailer::newInstance($transport);
-
-		// create the message
-		$message = Swift_Message::newInstance($subject);
-		$message->setFrom($from);
-		$message->setTo($to);
-		$message->setBody($body);
 
 		return $mailer->send($message, $failures);
 	}
