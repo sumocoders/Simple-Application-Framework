@@ -337,6 +337,46 @@ jsSite.links = {
 	}
 }
 
+jsSite.locale = {
+	initialized: false,
+	data: {},
+	init: function() {
+		$.ajax({
+			url: '/cache/locale/' + jsSite.current.language + '.json',
+			type: 'GET',
+			dataType: 'json',
+			async: false,
+			success: function(data) {
+				jsSite.locale.data = data;
+				jsSite.locale.initialized = true;
+			},
+			error: function(jqXHR, textStatus, errorThrown) {
+				throw 'Regenerate your locale-files.';
+			}
+		});
+	},
+	get: function(type, key) {
+		if(!jsSite.locale.initialized) jsSite.locale.init();
+		if(typeof jsSite.locale.data[type][key] == 'undefined') return '{$' + type + key + '}';
+		return jsSite.locale.data[type][key];
+	},
+	act: function(key) {
+		return jsSite.locale.get('act', key);
+	},
+	err: function(key) {
+		return jsSite.locale.get('err', key);
+	},
+	lbl: function(key) {
+		return jsSite.locale.get('lbl', key);
+	},
+	loc: function(key) {
+		return jsSite.locale.get('loc', key);
+	},
+	msg: function(key) {
+		return jsSite.locale.get('msg', key);
+	}
+}
+
 jsSite.search = {
 	results: [],
 	init: function() {
