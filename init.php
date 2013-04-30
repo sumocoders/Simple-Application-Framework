@@ -89,28 +89,25 @@ class Init
 		// rebuild filename
 		$filename = $class . '.php';
 
-		// build path
 		$path = PATH_WWW . '/core/classes/' . $filename;
-
-		// load the class if it exists
-		if(file_exists($path)) require_once $path;
-
-		else
+		if(file_exists($path))
 		{
-			// build external path
-			$path = PATH_LIBRARY . '/external/' . $filename;
+			require_once $path;
+			return;
+		}
 
-			// load the class if it exists
-			if(file_exists($path)) require_once $path;
+		$path = PATH_WWW . '/modules/' . $class . 's/model/model.php';
+		if(file_exists($path))
+		{
+			require_once $path;
+			return;
+		}
 
-			else
-			{
-				// build path
-				$path = PATH_WWW . '/modules/' . $class . 's/model/model.php';
-
-				// load the class if it exists
-				if(file_exists($path)) require_once $path;
-			}
+		$path = PATH_LIBRARY . '/external/' . $filename;
+		if(file_exists($path))
+		{
+			require_once $path;
+			return;
 		}
 	}
 }
