@@ -190,13 +190,17 @@ class SiteLocale extends SpoonTemplate
 		$lbl = array();
 		$msg = array();
 
-		// require the file
-		require_once CACHE_PATH . '/locale/' . self::$language . '.php';
+		$json = json_decode(
+			SpoonFile::getContent(
+				CACHE_PATH . '/locale/' . self::$language . '.json'
+			),
+			true
+		);
 
 		// locale
-		self::$act = $act;
-		self::$err = $err;
-		self::$lbl = $lbl;
-		self::$msg = $msg;
+		self::$act = $json['act'];
+		self::$err = $json['err'];
+		self::$lbl = $json['lbl'];
+		self::$msg = $json['msg'];
 	}
 }
