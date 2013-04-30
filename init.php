@@ -25,6 +25,12 @@ class Init
 		// require globals
 		require_once './library/globals.php';
 
+		// load our Errbithandler
+		$sumo = new SumoCoders\SumoForkClass\SumoForkClass();
+		$sumo->setDebug(SPOON_DEBUG);
+		$sumo->setErrbitApiKey(ERRBIT_API_KEY);
+		$sumo->init();
+
 		// define constants
 		define('CACHE_PATH', PATH_WWW . '/cache');
 		define('CORE_PATH', PATH_WWW . '/core');
