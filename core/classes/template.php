@@ -244,6 +244,10 @@ class SiteTemplate extends SpoonTemplate
 	private function parseJavascriptData()
 	{
 		$this->addJavascriptData('core', 'debug', SPOON_DEBUG);
+
+		if(Authentication::getLoggedInUser()) {
+			$this->addJavascriptData('core', 'currentUser', Authentication::getLoggedInUser()->toArray());
+		}
 		$this->assign('jsData', json_encode($this->javascriptData));
 	}
 

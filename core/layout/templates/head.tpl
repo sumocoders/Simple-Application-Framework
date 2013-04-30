@@ -42,11 +42,7 @@
 		{/iteration:javascript}
 	{/option:javascript}
 	<script>
-		var currentUser = {};
-		{option:currentUser}
-		currentUser.name = '{$currentUser.name|addslashes}';
-		currentUser.email = '{$currentUser.email|addslashes}';
-		{/option:currentUser}
+		var jsData = {$jsData};
 	</script>
 </head>
 <body>

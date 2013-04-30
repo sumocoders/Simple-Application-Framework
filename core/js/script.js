@@ -160,7 +160,7 @@ jsSite.bugs = {
 		var data = {
 			description: $('#reportBugDescription').val(),
 			screenshot: jsSite.bugs.screenshot,
-			currentUser: currentUser,
+			currentUser: jsSite.data.get('core.currentUser'),
 			data: { url: document.location.href }
 		};
 
