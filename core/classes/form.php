@@ -42,6 +42,20 @@ class SiteForm extends SpoonForm
 	}
 
 	/**
+	 * Adds a image field.
+	 *
+	 * @return	SpoonFormImage
+	 * @param	string $name					The name.
+	 * @param	string[optional] $class			The CSS-class to be used.
+	 * @param	string[optional] $classError	The CSS-class to be used when there is an error.
+	 */
+	public function addImage($name, $class = 'inputFile', $classError = 'inputFileError')
+	{
+		$this->add(new SiteFormImage($name, $class, $classError));
+		return $this->getField($name);
+	}
+
+	/**
 	 * Generates an example template, based on the elements already added.
 	 *
 	 * @return string
@@ -183,5 +197,52 @@ class SiteForm extends SpoonForm
 		$value .= '{/form:' . $this->getName() . '}';
 
 		return $value;
+	}
+}
+
+/**
+ * This is our extended version of SpoonFormImage
+ *
+ * @author Tijs Verkoyen <tijs@sumocoders.be>
+ */
+class SiteFormImage extends SpoonFormImage
+{
+	/**
+	 * Generate thumbnails based on the folders in the path
+	 * Use
+	 *  - 128x128 as foldername to generate an image that where the width will be 128px and the height will be 128px
+	 *  - 128x as foldername to generate an image that where the width will be 128px, the height will be calculated based on the aspect ratio.
+	 *  - x128 as foldername to generate an image that where the width will be 128px, the height will be calculated based on the aspect ratio.
+	 *
+	 * @param string $path
+	 * @param string $filename
+	 */
+	public function generateThumbnails($path, $filename)
+	{
+		// create folder if needed
+		if(!SpoonDirectory::exists($path . '/source')) SpoonDirectory::create($path . '/source');
+
+		// move the source file
+		$this->moveFile($path . '/source/' . $filename);
+
+		// generate the thumbnails
+		FrontendModel::generateThumbnails($path, $path . '/source/' . $filename);
+	}
+
+	/**
+	 * This function will return the errors. It is extended so we can do image checks automatically.
+	 *
+	 * @return string
+	 */
+	public function getErrors()
+	{
+		// do an image validation
+		if($this->isFilled())
+		{
+			$this->isAllowedExtension(array('jpg', 'jpeg', 'gif', 'png'), SiteLocale::err('JPGGIFAndPNGOnly'));
+			$this->isAllowedMimeType(array('image/jpeg', 'image/gif', 'image/png'), SiteLocale::err('JPGGIFAndPNGOnly'));
+		}
+
+		return $this->errors;
 	}
 }
