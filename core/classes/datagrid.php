@@ -574,4 +574,32 @@ class SiteDataGridFunctions
 			return SpoonFilter::htmlspecialchars($string);
 		}
 	}
+
+	/**
+	 * Convert a value into a localized string
+	 *
+	 * @param string $type
+	 * @param string $var
+	 * @param string[otpional] $prefix
+	 * @return string
+	 */
+	public static function locale($type, $var, $prefix = null)
+	{
+		$name = SpoonFilter::toCamelCase($prefix . '_' . $var);
+
+		switch($type)
+		{
+			case 'act':
+				return SiteLocale::act($name);
+			case 'err':
+				return SiteLocale::err($name);
+			case 'lbl':
+				return SiteLocale::lbl($name);
+			case 'msg':
+				return SiteLocale::msg($name);
+			default:
+		}
+
+		return $name;
+	}
 }
