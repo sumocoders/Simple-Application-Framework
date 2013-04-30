@@ -31,6 +31,13 @@ class SiteTemplate extends SpoonTemplate
 	private $javascriptFiles = array();
 
 	/**
+	 * Data to pass to js
+	 *
+	 * @var mixed
+	 */
+	private $javascriptData;
+
+	/**
 	 * Default constructor
 	 * The constructor will store the instance in the reference, preset some settings and map the custom modifiers.
 	 *
@@ -71,6 +78,17 @@ class SiteTemplate extends SpoonTemplate
 
 		// add if needed
 		if(!in_array($url, $this->cssFiles)) $this->cssFiles[] = $url;
+	}
+
+	/**
+	 * Make data available for javascript
+	 *
+	 * @param string $key
+	 * @param mixed $value
+	 */
+	public function addJavascriptData($module, $key, $value)
+	{
+		$this->javascriptData[$module][$key] = $value;
 	}
 
 	/**
@@ -116,8 +134,11 @@ class SiteTemplate extends SpoonTemplate
 		// parse locale
 		$this->parseLocale();
 
-		// parse Javascript
+		// parse Javascript & css
 		$this->parseExternalFiles();
+
+		// parse javascript data
+		$this->parseJavascriptData();
 
 		// call the parent
 		parent::display($template);
@@ -215,6 +236,15 @@ class SiteTemplate extends SpoonTemplate
 			// assign
 			$this->assign('css', $css);
 		}
+	}
+
+	/**
+	 * Parse the data that should be passed to javascript
+	 */
+	private function parseJavascriptData()
+	{
+		$this->addJavascriptData('core', 'debug', SPOON_DEBUG);
+		$this->assign('jsData', json_encode($this->javascriptData));
 	}
 
 	/**
