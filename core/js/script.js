@@ -564,6 +564,10 @@ jsSite.links = {
 			$form = $('<form />')
 				.attr('action', $this.attr('href'))
 				.attr('method', 'POST');
+			$form.append(
+				$('<input type="hidden">').attr('name', 'form_token')
+					.attr('value', jsSite.data.get('core.form_token'))
+			);
 			for(var i in $this.data()) {
 				if(i.substr(0, 5) == 'field') {
 					var $element = $('<input type="hidden">')
