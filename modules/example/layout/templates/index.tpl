@@ -18,12 +18,11 @@
 				<div class="span12">
 					<h2>Some examples</h2>
 
-					<h3>Delete-button</h3>
+					<h3>Confirm-button</h3>
 					<p>This button will use a dialog to confirm the action.</p>
 					<p>
-						<a href="#delete-url" class="btn btn-danger confirm" data-message="{$msgAreYouSure}">
-							<i class="icon-trash icon-white"></i>
-						{$lblDelete|ucfirst}
+						<a href="#url-after-confirmation" class="btn confirm" data-message="{$msgAreYouSure}">
+							{$lblOk|ucfirst}
 						</a>
 					</p>
 
