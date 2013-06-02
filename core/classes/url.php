@@ -367,7 +367,11 @@ class SiteURL
 	public function setModule($module)
 	{
 		// does the module exists
-		if(!SpoonDirectory::exists(PATH_WWW . '/modules/' . $module)) SpoonHTTP::redirect('/' . $this->getLanguage() . '/error?msg=invalid-module', 404);
+		if(!SpoonDirectory::exists(PATH_WWW . '/modules/' . $module)) {
+			new SiteTemplate();
+			$this->module = 'invalid';
+			Site::displayError(SiteLocale::err('InvalidModule'), 404);
+		}
 
 		$this->module = (string) $module;
 	}

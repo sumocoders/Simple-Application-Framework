@@ -241,7 +241,9 @@ class SiteBaseAction
 		if($template === null) $template = PATH_WWW . '/modules/' . $this->url->getModule() . '/layout/templates/' . $this->url->getAction() . '.tpl';
 
 		// redirect to eror page
-		if(!SpoonFile::exists($template)) $this->redirect($this->url->buildUrl('index', 'error'), 301);
+		if(!SpoonFile::exists($template)) {
+			Site::displayError('Template not found');
+		}
 
 		// display
 		$this->tpl->display($template);
