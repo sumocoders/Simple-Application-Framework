@@ -158,7 +158,7 @@ class Authentication
 			if($user->isBlocked) $message .= ' from blocked user';
 
 			// log
-			Site::getLogger()->notice(
+			Site::getLogger()->warning(
 				$message,
 				array(
 				     'email' => $email,
@@ -174,7 +174,7 @@ class Authentication
 				$user->save();
 
 				// log
-				Site::getLogger()->notice(
+				Site::getLogger()->error(
 					'blocked user after 7 failed attempts',
 					array(
 					     'object' => $user,
