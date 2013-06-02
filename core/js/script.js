@@ -541,6 +541,7 @@ jsSite.layout = {
 jsSite.links = {
 	init: function() {
 		$('a.confirm').on('click', jsSite.links.confirm);
+		$('a.confirmPostForm').on('click', jsSite.links.confirmDelete);
 		$('#confirmModal').modal({ show: false, backdrop: false });
 	},
 	confirm: function(e) {
@@ -549,6 +550,31 @@ jsSite.links = {
 		$('#confirmModalOk').attr('href', $this.attr('href'));
 		$('#confirmModalMessage').html($this.data('message'));
 		$('#confirmModal').modal('show');
+	},
+	confirmDelete: function(e) {
+		e.preventDefault();
+		var $this = $(this);
+		var $modal = $('#confirmModal');
+		$('#confirmModalMessage').html($this.data('message'));
+		$modal.on('click', '#confirmModalOk', function(e) {
+			$modal.off('click', '#confirmModalOk');
+			$('#confirmModal').modal('hide');
+
+			// create a form
+			$form = $('<form />')
+				.attr('action', $this.attr('href'))
+				.attr('method', 'POST');
+			for(var i in $this.data()) {
+				if(i.substr(0, 5) == 'field') {
+					var $element = $('<input type="hidden">')
+						.attr('name', i.substr(5).toLowerCase())
+						.attr('value', $this.data(i));
+					$form.append($element);
+				}
+			}
+			$form.submit();
+		});
+		$modal.modal('show');
 	}
 }
 jsSite.locale = {
