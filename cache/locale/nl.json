@@ -5,6 +5,7 @@
 		"EmailIsInvalid": "Dit is een ongeldig emailadres.",
 		"DateIsInvalid": "Dit is een ongeldige datum.",
 		"DateIsInvalidFuture": "Je kan geen tijdstip in de toekomst ingeven.",
+		"FieldHasntMinimumLength": "Gelieve minstens %1$s karakters te gebruiken.",
 		"FieldIsRequired": "Dit veld is verplicht.",
 		"FloatIsInvalid": "Dit is een ongeldig getal.",
 		"Forbidden": "Je hebt niet voldoende rechten.",
