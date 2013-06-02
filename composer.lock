@@ -1,5 +1,9 @@
 {
-    "hash": "218e6ff42d580c2a7ce12c5985d722fd",
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
+    ],
+    "hash": "7ef5241b36c90987fbfbfd5f526ddadc",
     "packages": [
         {
             "name": "errbit/errbit-php",
@@ -154,12 +158,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/forkcms/library.git",
-                "reference": "22e015a4ac192cef501e3c03649319c51cc93d97"
+                "reference": "09b482d06b1643818a46e58b7fc49a4687f9f102"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/forkcms/library/zipball/22e015a4ac192cef501e3c03649319c51cc93d97",
-                "reference": "22e015a4ac192cef501e3c03649319c51cc93d97",
+                "url": "https://api.github.com/repos/forkcms/library/zipball/09b482d06b1643818a46e58b7fc49a4687f9f102",
+                "reference": "09b482d06b1643818a46e58b7fc49a4687f9f102",
                 "shasum": ""
             },
             "require": {
@@ -178,7 +182,7 @@
             ],
             "description": "A PHP5 library that is fast, easy to learn and fun!",
             "homepage": "http://www.spoon-library.com",
-            "time": "2013-04-29 15:45:51"
+            "time": "2013-05-10 07:26:03"
         },
         {
             "name": "sumocoders/sumo-fork-class",
@@ -276,18 +280,23 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/tijsverkoyen/CssToInlineStyles.git",
-                "reference": "7c9673fe35d02b187ba326e16ab67a93a14ea95c"
+                "reference": "d3f21da051587d94ecab5b3a13a4bb161bbc6c23"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tijsverkoyen/CssToInlineStyles/zipball/7c9673fe35d02b187ba326e16ab67a93a14ea95c",
-                "reference": "7c9673fe35d02b187ba326e16ab67a93a14ea95c",
+                "url": "https://api.github.com/repos/tijsverkoyen/CssToInlineStyles/zipball/d3f21da051587d94ecab5b3a13a4bb161bbc6c23",
+                "reference": "d3f21da051587d94ecab5b3a13a4bb161bbc6c23",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.0"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.2.x-dev"
+                }
+            },
             "autoload": {
                 "psr-0": {
                     "TijsVerkoyen\\CssToInlineStyles": ""
@@ -306,7 +315,7 @@
             ],
             "description": "CssToInlineStyles is a class that enables you to convert HTML-pages/files into HTML-pages/files with inline styles. This is very useful when you're sending emails.",
             "homepage": "https://github.com/tijsverkoyen/CssToInlineStyles",
-            "time": "2013-03-13 11:39:52"
+            "time": "2013-05-08 12:38:38"
         }
     ],
     "packages-dev": [
