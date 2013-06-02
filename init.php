@@ -25,12 +25,6 @@ class Init
 		// require globals
 		require_once './library/globals.php';
 
-		// load our Errbithandler
-		$sumo = new SumoCoders\SumoForkClass\SumoForkClass();
-		$sumo->setDebug(SPOON_DEBUG);
-		$sumo->setErrbitApiKey(ERRBIT_API_KEY);
-		$sumo->init();
-
 		// define constants
 		define('CACHE_PATH', PATH_WWW . '/cache');
 		define('CORE_PATH', PATH_WWW . '/core');
@@ -54,6 +48,17 @@ class Init
 
 		// require Spoon
 		require_once 'spoon/spoon.php';
+
+		/**
+		 * @remark only for SumoCoders
+		 *
+		 * Here we initialize our Sumo class, which will add some Sumo specific stuff
+		 * into this Fork instance.
+		 */
+		$sumo = new SumoCoders\SumoForkClass\SumoForkClass();
+		$sumo->setErrbitApiKey(ERRBIT_API_KEY);
+		$sumo->setDebug(SPOON_DEBUG);
+		$sumo->init();
 
 		// require frontend-classes
 		spl_autoload_register(array('Init', 'autoLoader'));
