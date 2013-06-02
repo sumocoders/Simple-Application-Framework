@@ -81,8 +81,9 @@ class SiteDataGrid extends SpoonDataGrid
 	 * @param	string[optional] $image		The location to an image, used to fill the column.
 	 * @param	int[optional] $sequence		The sequence for this column, by default it will be added at the back.
 	 * @param	bool[optional] $isButton	Will this column contain a button?
+	 * @param	bool[optional] $isExternal	Should this link open in a new tab/window?
 	 */
-	public function addColumn($name, $label = null, $value = null, $URL = null, $title = null, $image = null, $sequence = null, $isButton = false)
+	public function addColumn($name, $label = null, $value = null, $URL = null, $title = null, $image = null, $sequence = null, $isButton = false, $isExternal = false)
 	{
 		// redefine name
 		$name = (string) $name;
@@ -107,6 +108,7 @@ class SiteDataGrid extends SpoonDataGrid
 			{
 				$html .= ' confirm" data-message="' . SiteLocale::msg('AreYouSure');
 			}
+			if($isExternal) $html .= '" target="_blank';
 			$html .= '">';
 
 			if($image != '')
