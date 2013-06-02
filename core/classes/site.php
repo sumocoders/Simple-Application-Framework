@@ -380,6 +380,7 @@ class Site
 		// make and return timestamp
 		return mktime($hour, $minute, 0, $month, $day, $year);
 	}
+
 	/**
 	 * Send a mail
 	 *

@@ -69,8 +69,7 @@ class UsersEdit extends SiteBaseAction
 
 		$this->loadForm();
 		$this->validateForm();
-		$this->frm->parse($this->tpl);
-		$this->tpl->assign('item', $this->item->toArray());
+		$this->parse();
 		$this->display();
 	}
 

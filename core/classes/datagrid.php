@@ -440,7 +440,7 @@ class SiteDataGridFunctions
 			{
 				$var .= '<ul><li>' . trim(substr(trim($line), 1)) . '</li></ul>';
 			}
-			else $var .= $line;
+			else $var .= $line . "\n";
 		}
 
 		// replace br's into p's
