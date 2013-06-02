@@ -72,8 +72,8 @@ class UsersLogin extends SiteBaseAction
 		if($this->frm->isSubmitted())
 		{
 			// validate required fields
-			$this->frm->getField('login')->isFilled('Dit veld is verplicht');
-			$this->frm->getField('password')->isFilled('Dit veld is verplicht');
+			$this->frm->getField('login')->isFilled(SiteLocale::err('FieldIsRequired'));
+			$this->frm->getField('password')->isFilled(SiteLocale::err('FieldIsRequired'));
 
 			$user = Authentication::validateLogin(
 				$this->frm->getField('login')->getValue(),
