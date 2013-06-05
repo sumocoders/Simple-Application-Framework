@@ -14,8 +14,6 @@ class Init
 {
 	/**
 	 * Default constructor
-	 *
-	 * @return void
 	 */
 	public function __construct()
 	{

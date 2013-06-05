@@ -15,8 +15,6 @@ class JS
 {
 	/**
 	 * Default constructor
-	 *
-	 * @return void
 	 */
 	public function __construct()
 	{

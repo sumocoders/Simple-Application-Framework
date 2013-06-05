@@ -40,7 +40,6 @@ class SiteAction
 	 *
 	 * @param	string $action		The action.
 	 * @param	string $module		The module.
-	 * @return void
 	 */
 	public function __construct($action, $module)
 	{
@@ -194,8 +193,6 @@ class SiteBaseAction
 	/**
 	 * Default constructor
 	 * The constructor will set some properties. It populates the parameter array with urldecoded values for easy-use.
-	 *
-	 * @return void
 	 */
 	public function __construct()
 	{

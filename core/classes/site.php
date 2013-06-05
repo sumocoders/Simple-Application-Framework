@@ -26,8 +26,6 @@ class Site
 
 	/**
 	 * Default constructor
-	 *
-	 * @return void
 	 */
 	public function __construct()
 	{
@@ -101,20 +99,20 @@ class Site
 	 * - 128x as foldername to generate an image where the width will be 128px, the height will be calculated based on the aspect ratio.
 	 * - x128 as foldername to generate an image where the height will be 128px, the width will be calculated based on the aspect ratio.
 	 *
-	 * @param string $path The path wherin the thumbnail-folders will be stored.
-	 * @param string $sourceFile The location of the source file.
+	 * @param string $path  The path wherin the thumbnail-folders will be stored.
+	 * @param string $sourceFile    The location of the source file.
 	 */
-	public static function generateThumbnails($path, $sourcefile)
+	public static function generateThumbnails($path, $sourceFile)
 	{
 		// get folder listing
 		$folders = self::getThumbnailFolders($path);
-		$filename = basename($sourcefile);
+		$filename = basename($sourceFile);
 
 		// loop folders
 		foreach($folders as $folder)
 		{
 			// generate the thumbnail
-			$thumbnail = new SpoonThumbnail($sourcefile, $folder['width'], $folder['height']);
+			$thumbnail = new SpoonThumbnail($sourceFile, $folder['width'], $folder['height']);
 			$thumbnail->setAllowEnlargement(true);
 
 			// if the width & height are specified we should ignore the aspect ratio
@@ -384,14 +382,16 @@ class Site
 	/**
 	 * Send a mail
 	 *
-	 * @param $subject
-	 * @param $from
-	 * @param $to
-	 * @param $body
+	 * @param Swift_Mime_Message $message
 	 * @return int
 	 */
 	public static function sendMail($message)
 	{
+        if(!defined('MAIL_SERVER')) throw new Exception('No mail-server configured');
+        if(!defined('MAIL_PORT')) throw new Exception('No mail-port configured');
+        if(!defined('MAIL_USERNAME')) throw new Exception('No mail-username configured');
+        if(!defined('MAIL_PASSWORD')) throw new Exception('No mail-password configured');
+
 		$transport = Swift_SmtpTransport::newInstance(MAIL_SERVER, MAIL_PORT)
 			->setUsername(MAIL_USERNAME)
 			->setPassword(MAIL_PASSWORD);

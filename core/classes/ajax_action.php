@@ -33,7 +33,6 @@ class AjaxAction
 	 *
 	 * @param	string $action	The action.
 	 * @param	string $module	The module.
-	 * @return void
 	 */
 	public function __construct($action, $module)
 	{

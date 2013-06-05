@@ -63,8 +63,6 @@ class SiteURL
 
 	/**
 	 * Default constructor
-	 *
-	 * @return void
 	 */
 	public function __construct()
 	{
@@ -170,7 +168,7 @@ class SiteURL
 	/**
 	 * Get the language
 	 *
-	 * @return void
+	 * @return string
 	 */
 	public function getLanguage()
 	{

@@ -249,12 +249,12 @@ class UsersHelper
 	/**
 	 * Search for users
 	 *
-	 * @param $query		The data to look for
+	 * @param string $query    The data to look for
 	 * @return array
 	 */
 	public static function search($query)
 	{
-		if(!Authentication::getLoggedInUser()->isAdmin) return;
+		if(!Authentication::getLoggedInUser()->isAdmin) return array();
 
 		$return = array();
 

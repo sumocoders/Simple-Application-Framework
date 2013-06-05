@@ -92,7 +92,7 @@ class SiteLocale extends SpoonTemplate
 	/**
 	 * Determine the prefered language
 	 *
-	 * @return void
+	 * @return string
 	 */
 	public static function getPreferedLanguage()
 	{

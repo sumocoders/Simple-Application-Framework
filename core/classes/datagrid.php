@@ -22,7 +22,6 @@ class SiteDataGrid extends SpoonDataGrid
 	 * Default constructor
 	 *
 	 * @param	SpoonDataGridSource $source	The datasource.
-	 * @return void
 	 */
 	public function __construct(SpoonDataGridSource $source)
 	{
@@ -355,7 +354,6 @@ class SiteDataGridArray extends SiteDataGrid
 	 * Default constructor
 	 *
 	 * @param	array $array	The data.
-	 * @return void
 	 */
 	public function __construct(array $array)
 	{
@@ -385,7 +383,6 @@ class SiteDataGridDB extends SiteDataGrid
 	 * @param	array[optional] $parameters			The parameters to be used inside the query.
 	 * @param	string[optional] $resultsQuery		The optional count query, used to calculate the number of results.
 	 * @param	array[optional] $resultsParameters 	Theh parameters to be used inside the results query.
-	 * @return void
 	 */
 	public function __construct($query, $parameters = array(), $resultsQuery = null, $resultsParameters = array())
 	{
@@ -527,13 +524,12 @@ class SiteDataGridFunctions
 		return '<img src="' . $path . '/' . $image . '" alt="' . $title . '" />';
 	}
 
-	/**
-	 * Returns an image tag
-	 *
-	 * @param	string $image				The filename of the image.
-	 * @param	string[optional] $width		The width of the icon
-	 * @return string
-	 */
+    /**
+     * Returns an image tag
+     * @param string $image [optional] $width        The width of the icon
+     * @param int $width
+     * @return string
+     */
 	public static function showThumbnail($image, $width = 48)
 	{
 		// redefine

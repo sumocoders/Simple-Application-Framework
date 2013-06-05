@@ -40,8 +40,6 @@ class SiteTemplate extends SpoonTemplate
 	/**
 	 * Default constructor
 	 * The constructor will store the instance in the reference, preset some settings and map the custom modifiers.
-	 *
-	 * @return void
 	 */
 	public function __construct()
 	{
@@ -83,6 +81,7 @@ class SiteTemplate extends SpoonTemplate
 	/**
 	 * Make data available for javascript
 	 *
+	 * @param string $module
 	 * @param string $key
 	 * @param mixed $value
 	 */

@@ -15,8 +15,6 @@ class Ajax
 {
 	/**
 	 * Default constructor
-	 *
-	 * @return void
 	 */
 	public function __construct()
 	{
