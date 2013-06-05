@@ -181,23 +181,13 @@ class SiteLocale extends SpoonTemplate
 	 */
 	public static function setLocale($language)
 	{
-		// set language
 		self::$language = (string) $language;
-
-		// initialize vars
-		$act = array();
-		$err = array();
-		$lbl = array();
-		$msg = array();
-
 		$json = json_decode(
 			SpoonFile::getContent(
 				CACHE_PATH . '/locale/' . self::$language . '.json'
 			),
 			true
 		);
-
-		// locale
 		self::$act = $json['act'];
 		self::$err = $json['err'];
 		self::$lbl = $json['lbl'];

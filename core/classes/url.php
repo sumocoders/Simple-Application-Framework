@@ -291,8 +291,6 @@ class SiteURL
 			foreach($_GET as $key => $value) $this->addParameter($value, $key);
 		}
 
-		$queryString = trim($queryString, '/');
-
 		// split into chunks, a url will always look like /<language>/<module>/<action>(?GET)
 		if(!isset($chunks[0]) || $chunks[0] == '') $chunks = array();
 		else $chunks = (array) explode('/', $chunks[0]);

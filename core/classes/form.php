@@ -225,7 +225,7 @@ class SiteFormImage extends SpoonFormImage
 		$this->moveFile($path . '/source/' . $filename);
 
 		// generate the thumbnails
-		FrontendModel::generateThumbnails($path, $path . '/source/' . $filename);
+		Site::generateThumbnails($path, $path . '/source/' . $filename);
 	}
 
 	/**

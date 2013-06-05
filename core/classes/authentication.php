@@ -16,7 +16,7 @@ class Authentication
 	 *
 	 * @return User
 	 */
-	public static function getLoggedInUser()
+    public static function getLoggedInUser()
 	{
 		// get db
 		$db = Site::getDB(true);
