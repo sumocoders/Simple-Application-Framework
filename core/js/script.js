@@ -32,10 +32,7 @@ var jsSite = {
 		jsSite.search.init();
 
 		try {
-			// build method
 			var method = 'jsSite.'+ jsSite.current.module +'.init()';
-
-			// try to call the method
 			eval(method);
 		} catch(e) {
 			if(jsSite.debug) console.log(e);
@@ -61,9 +58,9 @@ var jsSite = {
 					else textStatus = XMLHttpRequest.responseText;
 				}
 				$('body').prepend('<div class="alert alert-error noMargin">' +
-				                  ' <a href="#" class="close" data-dismiss="alert">x</a>' +
-				                        textStatus +
-				                  '</div>');
+									' <a href="#" class="close" data-dismiss="alert">x</a>' +
+										textStatus +
+									'</div>');
 			}
 		});
 
@@ -99,7 +96,7 @@ jsSite.bugs = {
 		e.preventDefault();
 
 		// hide previous errors
-		$reportBugDescriptionError = $('#reportBugDescriptionError');
+		var $reportBugDescriptionError = $('#reportBugDescriptionError');
 		$reportBugDescriptionError.hide();
 		$reportBugDescriptionError.parents('.control-group').removeClass('error');
 
@@ -165,22 +162,22 @@ jsSite.bugs = {
 		};
 
 		$.ajax({
-		   url: '/ajax.php?module=core&action=bug&language=' + jsSite.current.language,
-		   data: data,
-		   success: function(data, textStatus, jqXHR) {
-			   if(data.code == 200) {
-				   $('#reportBugBox .step1').hide();
-				   $('#reportBugBox .step2').hide();
-				   $('#reportBugBox .step3').show();
-				   $('#reportBugNext').hide();
-				   $('#reportBugPrevious').hide();
-				   $('#reportBugSubmit').hide();
-				   $('#reportBugClose').show();
-				   $('#reportBugDescription').val('');
-			   }
-			   else alert(data.message);
-		   }
-	   });
+			url: '/ajax.php?module=core&action=bug&language=' + jsSite.current.language,
+			data: data,
+			success: function(data, textStatus, jqXHR) {
+				if(data.code == 200) {
+					$('#reportBugBox .step1').hide();
+					$('#reportBugBox .step2').hide();
+					$('#reportBugBox .step3').show();
+					$('#reportBugNext').hide();
+					$('#reportBugPrevious').hide();
+					$('#reportBugSubmit').hide();
+					$('#reportBugClose').show();
+					$('#reportBugDescription').val('');
+				}
+				else alert(data.message);
+			}
+		});
 	}
 }
 jsSite.data = {
@@ -228,7 +225,7 @@ jsSite.forms = {
 						jsSite.locale.msg('DatepickerMinimalWednessday'),
 						jsSite.locale.msg('DatepickerMinimalThursday'),
 						jsSite.locale.msg('DatepickerMinimalFriday'),
-						jsSite.locale.msg('DatepickerMinimalSaterday'),
+						jsSite.locale.msg('DatepickerMinimalSaterday')
 					],
 					dayNamesShort: [
 						jsSite.locale.msg('DatepickerShortSunday'),
@@ -237,37 +234,37 @@ jsSite.forms = {
 						jsSite.locale.msg('DatepickerShortWednessday'),
 						jsSite.locale.msg('DatepickerShortThursday'),
 						jsSite.locale.msg('DatepickerShortFriday'),
-						jsSite.locale.msg('DatepickerShortSaterday'),
+						jsSite.locale.msg('DatepickerShortSaterday')
 					],
 					firstDay: 1,
 					hideIfNoPrevNext: true,
 					monthNames: [
-					   jsSite.locale.msg('DatepickerFullJanuary'),
-					   jsSite.locale.msg('DatepickerFullFebruary'),
-					   jsSite.locale.msg('DatepickerFullMarch'),
-					   jsSite.locale.msg('DatepickerFullApril'),
-					   jsSite.locale.msg('DatepickerFullMay'),
-					   jsSite.locale.msg('DatepickerFullJune'),
-					   jsSite.locale.msg('DatepickerFullJuly'),
-					   jsSite.locale.msg('DatepickerFullAugust'),
-					   jsSite.locale.msg('DatepickerFullSeptember'),
-					   jsSite.locale.msg('DatepickerFullOctober'),
-					   jsSite.locale.msg('DatepickerFullNovember'),
-					   jsSite.locale.msg('DatepickerFullDecember'),
+						jsSite.locale.msg('DatepickerFullJanuary'),
+						jsSite.locale.msg('DatepickerFullFebruary'),
+						jsSite.locale.msg('DatepickerFullMarch'),
+						jsSite.locale.msg('DatepickerFullApril'),
+						jsSite.locale.msg('DatepickerFullMay'),
+						jsSite.locale.msg('DatepickerFullJune'),
+						jsSite.locale.msg('DatepickerFullJuly'),
+						jsSite.locale.msg('DatepickerFullAugust'),
+						jsSite.locale.msg('DatepickerFullSeptember'),
+						jsSite.locale.msg('DatepickerFullOctober'),
+						jsSite.locale.msg('DatepickerFullNovember'),
+						jsSite.locale.msg('DatepickerFullDecember')
 					],
 					monthNamesShort: [
-					   jsSite.locale.msg('DatepickerShortJanuary'),
-					   jsSite.locale.msg('DatepickerShortFebruary'),
-					   jsSite.locale.msg('DatepickerShortMarch'),
-					   jsSite.locale.msg('DatepickerShortApril'),
-					   jsSite.locale.msg('DatepickerShortMay'),
-					   jsSite.locale.msg('DatepickerShortJune'),
-					   jsSite.locale.msg('DatepickerShortJuly'),
-					   jsSite.locale.msg('DatepickerShortAugust'),
-					   jsSite.locale.msg('DatepickerShortSeptember'),
-					   jsSite.locale.msg('DatepickerShortOctober'),
-					   jsSite.locale.msg('DatepickerShortNovember'),
-					   jsSite.locale.msg('DatepickerShortDecember'),
+						jsSite.locale.msg('DatepickerShortJanuary'),
+						jsSite.locale.msg('DatepickerShortFebruary'),
+						jsSite.locale.msg('DatepickerShortMarch'),
+						jsSite.locale.msg('DatepickerShortApril'),
+						jsSite.locale.msg('DatepickerShortMay'),
+						jsSite.locale.msg('DatepickerShortJune'),
+						jsSite.locale.msg('DatepickerShortJuly'),
+						jsSite.locale.msg('DatepickerShortAugust'),
+						jsSite.locale.msg('DatepickerShortSeptember'),
+						jsSite.locale.msg('DatepickerShortOctober'),
+						jsSite.locale.msg('DatepickerShortNovember'),
+						jsSite.locale.msg('DatepickerShortDecember')
 					],
 					nextText: jsSite.locale.lbl('Next'),
 					prevText: jsSite.locale.lbl('Previous'),
@@ -283,61 +280,61 @@ jsSite.forms = {
 				$(this).datepicker({
 					dateFormat: 'dd/mm/yy',
 					dayNames: [
-					   jsSite.locale.msg('DatepickerFullSunday'),
-					   jsSite.locale.msg('DatepickerFullMonday'),
-					   jsSite.locale.msg('DatepickerFullTuesday'),
-					   jsSite.locale.msg('DatepickerFullWednessday'),
-					   jsSite.locale.msg('DatepickerFullThursday'),
-					   jsSite.locale.msg('DatepickerFullFriday'),
-					   jsSite.locale.msg('DatepickerFullSaterday')
+						jsSite.locale.msg('DatepickerFullSunday'),
+						jsSite.locale.msg('DatepickerFullMonday'),
+						jsSite.locale.msg('DatepickerFullTuesday'),
+						jsSite.locale.msg('DatepickerFullWednessday'),
+						jsSite.locale.msg('DatepickerFullThursday'),
+						jsSite.locale.msg('DatepickerFullFriday'),
+						jsSite.locale.msg('DatepickerFullSaterday')
 					],
 					dayNamesMin: [
-					   jsSite.locale.msg('DatepickerMinimalSunday'),
-					   jsSite.locale.msg('DatepickerMinimalMonday'),
-					   jsSite.locale.msg('DatepickerMinimalTuesday'),
-					   jsSite.locale.msg('DatepickerMinimalWednessday'),
-					   jsSite.locale.msg('DatepickerMinimalThursday'),
-					   jsSite.locale.msg('DatepickerMinimalFriday'),
-					   jsSite.locale.msg('DatepickerMinimalSaterday'),
+						jsSite.locale.msg('DatepickerMinimalSunday'),
+						jsSite.locale.msg('DatepickerMinimalMonday'),
+						jsSite.locale.msg('DatepickerMinimalTuesday'),
+						jsSite.locale.msg('DatepickerMinimalWednessday'),
+						jsSite.locale.msg('DatepickerMinimalThursday'),
+						jsSite.locale.msg('DatepickerMinimalFriday'),
+						jsSite.locale.msg('DatepickerMinimalSaterday')
 					],
 					dayNamesShort: [
-					   jsSite.locale.msg('DatepickerShortSunday'),
-					   jsSite.locale.msg('DatepickerShortMonday'),
-					   jsSite.locale.msg('DatepickerShortTuesday'),
-					   jsSite.locale.msg('DatepickerShortWednessday'),
-					   jsSite.locale.msg('DatepickerShortThursday'),
-					   jsSite.locale.msg('DatepickerShortFriday'),
-					   jsSite.locale.msg('DatepickerShortSaterday'),
+						jsSite.locale.msg('DatepickerShortSunday'),
+						jsSite.locale.msg('DatepickerShortMonday'),
+						jsSite.locale.msg('DatepickerShortTuesday'),
+						jsSite.locale.msg('DatepickerShortWednessday'),
+						jsSite.locale.msg('DatepickerShortThursday'),
+						jsSite.locale.msg('DatepickerShortFriday'),
+						jsSite.locale.msg('DatepickerShortSaterday')
 					],
 					firstDay: 1,
 					hideIfNoPrevNext: true,
 					monthNames: [
-					   jsSite.locale.msg('DatepickerFullJanuary'),
-					   jsSite.locale.msg('DatepickerFullFebruary'),
-					   jsSite.locale.msg('DatepickerFullMarch'),
-					   jsSite.locale.msg('DatepickerFullApril'),
-					   jsSite.locale.msg('DatepickerFullMay'),
-					   jsSite.locale.msg('DatepickerFullJune'),
-					   jsSite.locale.msg('DatepickerFullJuly'),
-					   jsSite.locale.msg('DatepickerFullAugust'),
-					   jsSite.locale.msg('DatepickerFullSeptember'),
-					   jsSite.locale.msg('DatepickerFullOctober'),
-					   jsSite.locale.msg('DatepickerFullNovember'),
-					   jsSite.locale.msg('DatepickerFullDecember'),
+						jsSite.locale.msg('DatepickerFullJanuary'),
+						jsSite.locale.msg('DatepickerFullFebruary'),
+						jsSite.locale.msg('DatepickerFullMarch'),
+						jsSite.locale.msg('DatepickerFullApril'),
+						jsSite.locale.msg('DatepickerFullMay'),
+						jsSite.locale.msg('DatepickerFullJune'),
+						jsSite.locale.msg('DatepickerFullJuly'),
+						jsSite.locale.msg('DatepickerFullAugust'),
+						jsSite.locale.msg('DatepickerFullSeptember'),
+						jsSite.locale.msg('DatepickerFullOctober'),
+						jsSite.locale.msg('DatepickerFullNovember'),
+						jsSite.locale.msg('DatepickerFullDecember')
 					],
 					monthNamesShort: [
-					   jsSite.locale.msg('DatepickerShortJanuary'),
-					   jsSite.locale.msg('DatepickerShortFebruary'),
-					   jsSite.locale.msg('DatepickerShortMarch'),
-					   jsSite.locale.msg('DatepickerShortApril'),
-					   jsSite.locale.msg('DatepickerShortMay'),
-					   jsSite.locale.msg('DatepickerShortJune'),
-					   jsSite.locale.msg('DatepickerShortJuly'),
-					   jsSite.locale.msg('DatepickerShortAugust'),
-					   jsSite.locale.msg('DatepickerShortSeptember'),
-					   jsSite.locale.msg('DatepickerShortOctober'),
-					   jsSite.locale.msg('DatepickerShortNovember'),
-					   jsSite.locale.msg('DatepickerShortDecember'),
+						jsSite.locale.msg('DatepickerShortJanuary'),
+						jsSite.locale.msg('DatepickerShortFebruary'),
+						jsSite.locale.msg('DatepickerShortMarch'),
+						jsSite.locale.msg('DatepickerShortApril'),
+						jsSite.locale.msg('DatepickerShortMay'),
+						jsSite.locale.msg('DatepickerShortJune'),
+						jsSite.locale.msg('DatepickerShortJuly'),
+						jsSite.locale.msg('DatepickerShortAugust'),
+						jsSite.locale.msg('DatepickerShortSeptember'),
+						jsSite.locale.msg('DatepickerShortOctober'),
+						jsSite.locale.msg('DatepickerShortNovember'),
+						jsSite.locale.msg('DatepickerShortDecember')
 					],
 					nextText: jsSite.locale.lbl('Next'),
 					prevText: jsSite.locale.lbl('Previous'),
@@ -354,31 +351,31 @@ jsSite.forms = {
 				$(this).datepicker({
 					dateFormat: 'dd/mm/yy',
 					dayNames: [
-					   jsSite.locale.msg('DatepickerFullSunday'),
-					   jsSite.locale.msg('DatepickerFullMonday'),
-					   jsSite.locale.msg('DatepickerFullTuesday'),
-					   jsSite.locale.msg('DatepickerFullWednessday'),
-					   jsSite.locale.msg('DatepickerFullThursday'),
-					   jsSite.locale.msg('DatepickerFullFriday'),
-					   jsSite.locale.msg('DatepickerFullSaterday')
+						jsSite.locale.msg('DatepickerFullSunday'),
+						jsSite.locale.msg('DatepickerFullMonday'),
+						jsSite.locale.msg('DatepickerFullTuesday'),
+						jsSite.locale.msg('DatepickerFullWednessday'),
+						jsSite.locale.msg('DatepickerFullThursday'),
+						jsSite.locale.msg('DatepickerFullFriday'),
+						jsSite.locale.msg('DatepickerFullSaterday')
 					],
 					dayNamesMin: [
-					   jsSite.locale.msg('DatepickerMinimalSunday'),
-					   jsSite.locale.msg('DatepickerMinimalMonday'),
-					   jsSite.locale.msg('DatepickerMinimalTuesday'),
-					   jsSite.locale.msg('DatepickerMinimalWednessday'),
-					   jsSite.locale.msg('DatepickerMinimalThursday'),
-					   jsSite.locale.msg('DatepickerMinimalFriday'),
-					   jsSite.locale.msg('DatepickerMinimalSaterday'),
+						jsSite.locale.msg('DatepickerMinimalSunday'),
+						jsSite.locale.msg('DatepickerMinimalMonday'),
+						jsSite.locale.msg('DatepickerMinimalTuesday'),
+						jsSite.locale.msg('DatepickerMinimalWednessday'),
+						jsSite.locale.msg('DatepickerMinimalThursday'),
+						jsSite.locale.msg('DatepickerMinimalFriday'),
+						jsSite.locale.msg('DatepickerMinimalSaterday')
 					],
 					dayNamesShort: [
-					   jsSite.locale.msg('DatepickerShortSunday'),
-					   jsSite.locale.msg('DatepickerShortMonday'),
-					   jsSite.locale.msg('DatepickerShortTuesday'),
-					   jsSite.locale.msg('DatepickerShortWednessday'),
-					   jsSite.locale.msg('DatepickerShortThursday'),
-					   jsSite.locale.msg('DatepickerShortFriday'),
-					   jsSite.locale.msg('DatepickerShortSaterday'),
+						jsSite.locale.msg('DatepickerShortSunday'),
+						jsSite.locale.msg('DatepickerShortMonday'),
+						jsSite.locale.msg('DatepickerShortTuesday'),
+						jsSite.locale.msg('DatepickerShortWednessday'),
+						jsSite.locale.msg('DatepickerShortThursday'),
+						jsSite.locale.msg('DatepickerShortFriday'),
+						jsSite.locale.msg('DatepickerShortSaterday')
 					],
 					firstDay: 1,
 					hideIfNoPrevNext: true,
@@ -394,7 +391,7 @@ jsSite.forms = {
 						jsSite.locale.msg('DatepickerFullSeptember'),
 						jsSite.locale.msg('DatepickerFullOctober'),
 						jsSite.locale.msg('DatepickerFullNovember'),
-						jsSite.locale.msg('DatepickerFullDecember'),
+						jsSite.locale.msg('DatepickerFullDecember')
 					],
 					monthNamesShort: [
 						jsSite.locale.msg('DatepickerShortJanuary'),
@@ -408,7 +405,7 @@ jsSite.forms = {
 						jsSite.locale.msg('DatepickerShortSeptember'),
 						jsSite.locale.msg('DatepickerShortOctober'),
 						jsSite.locale.msg('DatepickerShortNovember'),
-						jsSite.locale.msg('DatepickerShortDecember'),
+						jsSite.locale.msg('DatepickerShortDecember')
 					],
 					nextText: jsSite.locale.lbl('Next'),
 					prevText: jsSite.locale.lbl('Previous'),
@@ -425,61 +422,61 @@ jsSite.forms = {
 				$(this).datepicker({
 					dateFormat: 'dd/mm/yy',
 					dayNames: [
-					   jsSite.locale.msg('DatepickerFullSunday'),
-					   jsSite.locale.msg('DatepickerFullMonday'),
-					   jsSite.locale.msg('DatepickerFullTuesday'),
-					   jsSite.locale.msg('DatepickerFullWednessday'),
-					   jsSite.locale.msg('DatepickerFullThursday'),
-					   jsSite.locale.msg('DatepickerFullFriday'),
-					   jsSite.locale.msg('DatepickerFullSaterday')
+						jsSite.locale.msg('DatepickerFullSunday'),
+						jsSite.locale.msg('DatepickerFullMonday'),
+						jsSite.locale.msg('DatepickerFullTuesday'),
+						jsSite.locale.msg('DatepickerFullWednessday'),
+						jsSite.locale.msg('DatepickerFullThursday'),
+						jsSite.locale.msg('DatepickerFullFriday'),
+						jsSite.locale.msg('DatepickerFullSaterday')
 					],
 					dayNamesMin: [
-					   jsSite.locale.msg('DatepickerMinimalSunday'),
-					   jsSite.locale.msg('DatepickerMinimalMonday'),
-					   jsSite.locale.msg('DatepickerMinimalTuesday'),
-					   jsSite.locale.msg('DatepickerMinimalWednessday'),
-					   jsSite.locale.msg('DatepickerMinimalThursday'),
-					   jsSite.locale.msg('DatepickerMinimalFriday'),
-					   jsSite.locale.msg('DatepickerMinimalSaterday'),
+						jsSite.locale.msg('DatepickerMinimalSunday'),
+						jsSite.locale.msg('DatepickerMinimalMonday'),
+						jsSite.locale.msg('DatepickerMinimalTuesday'),
+						jsSite.locale.msg('DatepickerMinimalWednessday'),
+						jsSite.locale.msg('DatepickerMinimalThursday'),
+						jsSite.locale.msg('DatepickerMinimalFriday'),
+						jsSite.locale.msg('DatepickerMinimalSaterday')
 					],
 					dayNamesShort: [
-					   jsSite.locale.msg('DatepickerShortSunday'),
-					   jsSite.locale.msg('DatepickerShortMonday'),
-					   jsSite.locale.msg('DatepickerShortTuesday'),
-					   jsSite.locale.msg('DatepickerShortWednessday'),
-					   jsSite.locale.msg('DatepickerShortThursday'),
-					   jsSite.locale.msg('DatepickerShortFriday'),
-					   jsSite.locale.msg('DatepickerShortSaterday'),
+						jsSite.locale.msg('DatepickerShortSunday'),
+						jsSite.locale.msg('DatepickerShortMonday'),
+						jsSite.locale.msg('DatepickerShortTuesday'),
+						jsSite.locale.msg('DatepickerShortWednessday'),
+						jsSite.locale.msg('DatepickerShortThursday'),
+						jsSite.locale.msg('DatepickerShortFriday'),
+						jsSite.locale.msg('DatepickerShortSaterday')
 					],
 					firstDay: 1,
 					hideIfNoPrevNext: true,
 					monthNames: [
-					   jsSite.locale.msg('DatepickerFullJanuary'),
-					   jsSite.locale.msg('DatepickerFullFebruary'),
-					   jsSite.locale.msg('DatepickerFullMarch'),
-					   jsSite.locale.msg('DatepickerFullApril'),
-					   jsSite.locale.msg('DatepickerFullMay'),
-					   jsSite.locale.msg('DatepickerFullJune'),
-					   jsSite.locale.msg('DatepickerFullJuly'),
-					   jsSite.locale.msg('DatepickerFullAugust'),
-					   jsSite.locale.msg('DatepickerFullSeptember'),
-					   jsSite.locale.msg('DatepickerFullOctober'),
-					   jsSite.locale.msg('DatepickerFullNovember'),
-					   jsSite.locale.msg('DatepickerFullDecember'),
+						jsSite.locale.msg('DatepickerFullJanuary'),
+						jsSite.locale.msg('DatepickerFullFebruary'),
+						jsSite.locale.msg('DatepickerFullMarch'),
+						jsSite.locale.msg('DatepickerFullApril'),
+						jsSite.locale.msg('DatepickerFullMay'),
+						jsSite.locale.msg('DatepickerFullJune'),
+						jsSite.locale.msg('DatepickerFullJuly'),
+						jsSite.locale.msg('DatepickerFullAugust'),
+						jsSite.locale.msg('DatepickerFullSeptember'),
+						jsSite.locale.msg('DatepickerFullOctober'),
+						jsSite.locale.msg('DatepickerFullNovember'),
+						jsSite.locale.msg('DatepickerFullDecember')
 					],
 					monthNamesShort: [
-					   jsSite.locale.msg('DatepickerShortJanuary'),
-					   jsSite.locale.msg('DatepickerShortFebruary'),
-					   jsSite.locale.msg('DatepickerShortMarch'),
-					   jsSite.locale.msg('DatepickerShortApril'),
-					   jsSite.locale.msg('DatepickerShortMay'),
-					   jsSite.locale.msg('DatepickerShortJune'),
-					   jsSite.locale.msg('DatepickerShortJuly'),
-					   jsSite.locale.msg('DatepickerShortAugust'),
-					   jsSite.locale.msg('DatepickerShortSeptember'),
-					   jsSite.locale.msg('DatepickerShortOctober'),
-					   jsSite.locale.msg('DatepickerShortNovember'),
-					   jsSite.locale.msg('DatepickerShortDecember'),
+						jsSite.locale.msg('DatepickerShortJanuary'),
+						jsSite.locale.msg('DatepickerShortFebruary'),
+						jsSite.locale.msg('DatepickerShortMarch'),
+						jsSite.locale.msg('DatepickerShortApril'),
+						jsSite.locale.msg('DatepickerShortMay'),
+						jsSite.locale.msg('DatepickerShortJune'),
+						jsSite.locale.msg('DatepickerShortJuly'),
+						jsSite.locale.msg('DatepickerShortAugust'),
+						jsSite.locale.msg('DatepickerShortSeptember'),
+						jsSite.locale.msg('DatepickerShortOctober'),
+						jsSite.locale.msg('DatepickerShortNovember'),
+						jsSite.locale.msg('DatepickerShortDecember')
 					],
 					nextText: jsSite.locale.lbl('Next'),
 					prevText: jsSite.locale.lbl('Previous'),
