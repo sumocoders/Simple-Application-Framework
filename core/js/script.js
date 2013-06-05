@@ -77,14 +77,13 @@ jsSite.bugs = {
 		$('#reportBugNext').on('click', jsSite.bugs.next);
 		$('#reportBugPrevious').on('click', jsSite.bugs.previous);
 		$('#reportBugSubmit').on('click', jsSite.bugs.save);
-		$('#reportBugBox a.close').on('click', jsSite.bugs.close);
+		$('#reportBugBox').on('click', 'a.close', jsSite.bugs.close);
 	},
 	click: function(e) {
-		$('#reportBugBox .step1').show();
-		$('#reportBugBox .step2').hide();
-		$('#reportBugBox .step3').hide();
+		var $reportBugBox = $('#reportBugBox');
+		$reportBugBox.find('.step1').show();
+		$reportBugBox.find('.step2, .step3').hide();
 		$('#reportBugNext').show();
-
 		$('#reportBugModal').modal('show');
 		$('#reportBugDescription').focus();
 	},
@@ -112,20 +111,13 @@ jsSite.bugs = {
 
 		// no errors
 		if(noErrors) {
-			// enable submit
-			$('#reportBugSubmit').removeClass('disabled').prop('disabled', false);
-
-			// show spinner
+			var $reportBugSubmit = $('#reportBugSubmit'), $reportBugBox = $('#reportBugBox');
+			$reportBugSubmit.removeClass('disabled').prop('disabled', false);
 			$('#reportBugSubmitSpinner').show();
-
-			$('#reportBugBox .step1').hide();
-			$('#reportBugBox .step2').show();
-			$('#reportBugBox .step3').hide();
+			$reportBugBox.find('.step1, .step2, .step3').hide();
 			$('#reportBugNext').hide();
 			$('#reportBugPrevious').show();
-			$('#reportBugSubmit').show().addClass('disabled');
-
-			// create screen shot
+			$reportBugSubmit.show().addClass('disabled');
 			$('#reportBugModal').hide();
 			html2canvas($('body'), { onrendered: jsSite.bugs.onCompletePreload });
 		}
@@ -144,10 +136,9 @@ jsSite.bugs = {
 	},
 	previous: function(e) {
 		e.preventDefault();
-
-		$('#reportBugBox .step1').show();
-		$('#reportBugBox .step2').hide();
-		$('#reportBugBox .step3').hide();
+		var $reportBugBox = $('#reportBugBox');
+		$reportBugBox.find('.step1').show();
+		$reportBugBox.find('.step2, .step3').hide();
 		$('#reportBugNext').show();
 		$('#reportBugPrevious').hide();
 		$('#reportBugSubmit').hide();
@@ -160,15 +151,14 @@ jsSite.bugs = {
 			currentUser: jsSite.data.get('core.currentUser'),
 			data: { url: document.location.href }
 		};
-
 		$.ajax({
 			url: '/ajax.php?module=core&action=bug&language=' + jsSite.current.language,
 			data: data,
 			success: function(data, textStatus, jqXHR) {
 				if(data.code == 200) {
-					$('#reportBugBox .step1').hide();
-					$('#reportBugBox .step2').hide();
-					$('#reportBugBox .step3').show();
+					var $reportBugBox = $('#reportBugBox');
+					$reportBugBox.find('.step1, .step2').hide();
+					$reportBugBox.find('.step3').show();
 					$('#reportBugNext').hide();
 					$('#reportBugPrevious').hide();
 					$('#reportBugSubmit').hide();
@@ -198,7 +188,7 @@ jsSite.data = {
 }
 jsSite.forms = {
 	init: function() {
-		$('form').on('submit', function(e) { $('#ajaxSpinner').show(); });
+		$('form').on('submit', function() { $('#ajaxSpinner').show(); });
 		jsSite.forms.datefields();
 		jsSite.forms.placeholders();
 	},
@@ -491,23 +481,24 @@ jsSite.forms = {
 		// detect if placeholder-attribute is supported
 		jQuery.support.placeholder = ('placeholder' in document.createElement('input'));
 		if(!jQuery.support.placeholder) {
+			var $input = $('input[placeholder]');
 			// bind focus
-			$('input[placeholder]').focus(function() {
+			$input.focus(function() {
 				var input = $(this);
 				if(input.val() == input.attr('placeholder')) {
 					input.val('');
 					input.removeClass('placeholder');
 				}
 			});
-			$('input[placeholder]').blur(function() {
+			$input.blur(function() {
 				var input = $(this);
 				if(input.val() == '' || input.val() == input.attr('placeholder')) {
 					input.val(input.attr('placeholder'));
 					input.addClass('placeholder');
 				}
 			});
-			$('input[placeholder]').blur();
-			$('input[placeholder]').parents('form').submit(function() {
+			$input.blur();
+			$input.parents('form').submit(function() {
 				$(this).find('input[placeholder]').each(function() {
 					var input = $(this);
 					if(input.val() == input.attr('placeholder')) input.val('');
@@ -527,10 +518,7 @@ jsSite.layout = {
 		}
 	},
 	onScroll: function(e) {
-		var $this = $(this);
-		var $header = $('#header');
-		var $navBar = $('#navBar');
-
+		var $this = $(this), $header = $('#header'), $navBar = $('#navBar');
 		if($this.scrollTop() >= $header.height()) $navBar.addClass('fixed').css('width', ($('#header').width()));
 		if($this.scrollTop() < $header.height()) $navBar.removeClass('fixed').css('width', 'auto');
 	}
@@ -556,9 +544,7 @@ jsSite.links = {
 		$modal.on('click', '#confirmModalOk', function(e) {
 			$modal.off('click', '#confirmModalOk');
 			$('#confirmModal').modal('hide');
-
-			// create a form
-			$form = $('<form></form>')
+			var $form = $('<form></form>')
 				.attr('action', $this.attr('href'))
 				.attr('method', 'POST');
 			$form.append(
