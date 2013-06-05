@@ -561,7 +561,7 @@ jsSite.links = {
 			$('#confirmModal').modal('hide');
 
 			// create a form
-			$form = $('<form />')
+			$form = $('<form></form>')
 				.attr('action', $this.attr('href'))
 				.attr('method', 'POST');
 			$form.append(
