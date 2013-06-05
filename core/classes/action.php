@@ -59,7 +59,7 @@ class SiteAction
 
 	/**
 	 * Execute the action
-	 * We will build the classname, require the class and call the execute method.
+	 * We will build the class name, require the class and call the execute method.
 	 *
 	 * @return void
 	 */
@@ -80,11 +80,11 @@ class SiteAction
 			exit();
 		}
 
-		// require the config file, we know it is there because we validated it before (possible actions are defined by existance off the file).
+		// require the config file, we know it is there because we validated it before (possible actions are defined by existence off the file).
 		require_once PATH_WWW . '/modules/' . $this->getModule() . '/actions/' . $this->getAction() . '.php';
 
 		// validate if class exists (aka has correct name)
-		if(!class_exists($actionClassName)) throw new Exception('The actionfile is present, but the classname should be: ' . $actionClassName . '.');
+		if(!class_exists($actionClassName)) throw new Exception('The action file is present, but the class name should be: ' . $actionClassName . '.');
 
 		// create action-object
 		$object = new $actionClassName();
@@ -192,11 +192,11 @@ class SiteBaseAction
 
 	/**
 	 * Default constructor
-	 * The constructor will set some properties. It populates the parameter array with urldecoded values for easy-use.
+	 * The constructor will set some properties. It populates the parameter array with url decoded values for easy-use.
 	 */
 	public function __construct()
 	{
-		// get objects from the reference so they are accessable from the action-object
+		// get objects from the reference so they are accessible from the action-object
 		$this->tpl = Spoon::get('template');
 		$this->url = Spoon::get('url');
 
@@ -234,10 +234,10 @@ class SiteBaseAction
 	 */
 	public function display($template = null)
 	{
-		// if no template is specified we have to build the path ourself
+		// if no template is specified we have to build the path ourselves
 		if($template === null) $template = PATH_WWW . '/modules/' . $this->url->getModule() . '/layout/templates/' . $this->url->getAction() . '.tpl';
 
-		// redirect to eror page
+		// redirect to error page
 		if(!SpoonFile::exists($template)) {
 			Site::displayError('Template not found');
 		}

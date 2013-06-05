@@ -90,11 +90,11 @@ class SiteLocale extends SpoonTemplate
 	}
 
 	/**
-	 * Determine the prefered language
+	 * Determine the preferred language
 	 *
 	 * @return string
 	 */
-	public static function getPreferedLanguage()
+	public static function getPreferredLanguage()
 	{
 		// init var
 		$foundALanguage = false;
@@ -121,13 +121,13 @@ class SiteLocale extends SpoonTemplate
 		{
 			if(isset($_SERVER['HTTP_ACCEPT_LANGUAGE']))
 			{
-				// get prefered languages
+				// get preferred languages
 				$browserLanguages = explode(',', $_SERVER['HTTP_ACCEPT_LANGUAGE']);
 
 				// init var
 				$foundALanguage = false;
 
-				// loop prefered langauges
+				// loop preferred languages
 				foreach($browserLanguages as $language)
 				{
 					$languageAbbreviation = substr($language, 0, 2);

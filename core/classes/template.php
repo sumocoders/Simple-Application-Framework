@@ -114,7 +114,7 @@ class SiteTemplate extends SpoonTemplate
 
 	/**
 	 * Output the template into the browser
-	 * Will also assign the interfacelabels and all user-defined constants.
+	 * Will also assign the interface labels and all user-defined constants.
 	 *
 	 * @param	string $template	The template to display.
 	 * @return void
@@ -267,7 +267,7 @@ class SiteTemplate extends SpoonTemplate
 }
 
 /**
- * SiteTemplateModiefiers, a collection of modifiers that will be available.
+ * SiteTemplateModifiers, a collection of modifiers that will be available.
  *
  * @package		site
  * @subpackage	template

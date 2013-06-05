@@ -2,11 +2,7 @@
 
 /**
  * Init
- *
- * This source file is part of Vodtec.
- *
  * @package			site
- *
  * @author 			Tijs Verkoyen <tijs@sumocoders.be>
  * @since			1.0
  */
@@ -86,7 +82,7 @@ class Init
 		// remove prefix
 		if($class != 'site' && substr($class, 0, 4) == 'site') $class = substr($class, 4);
 
-		// datagrid
+		// data grid
 		if(substr($class, 0, 8) == 'datagrid') $class = 'datagrid';
 
 		// rebuild filename

@@ -49,7 +49,7 @@ class AjaxAction
 
 	/**
 	 * Execute the action
-	 * We will build the classname, require the class and call the execute method.
+	 * We will build the class name, require the class and call the execute method.
 	 *
 	 * @return void
 	 */
@@ -76,11 +76,11 @@ class AjaxAction
 			exit;
 		}
 
-		// require the config file, we know it is there because we validated it before (possible actions are defined by existance off the file).
+		// require the config file, we know it is there because we validated it before (possible actions are defined by existence off the file).
 		require_once $path;
 
 		// validate if class exists (aka has correct name)
-		if(!class_exists($actionClassName)) throw new Exception('The actionfile is present, but the classname should be: ' . $actionClassName . '.');
+		if(!class_exists($actionClassName)) throw new Exception('The action file is present, but the class name should be: ' . $actionClassName . '.');
 
 		// create action-object
 		$object = new $actionClassName();

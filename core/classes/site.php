@@ -59,7 +59,7 @@ class Site
 		// get last chunk
 		$last = $chunks[$count - 1];
 
-		// is nummeric
+		// is numeric
 		if(SpoonFilter::isNumeric($last))
 		{
 			// remove last chunk
@@ -95,11 +95,11 @@ class Site
 	/**
 	 * Generate thumbnails based on the folders in the path
 	 * Use
-	 * - 128x128 as foldername to generate an image where the width will be 128px and the height will be 128px
-	 * - 128x as foldername to generate an image where the width will be 128px, the height will be calculated based on the aspect ratio.
-	 * - x128 as foldername to generate an image where the height will be 128px, the width will be calculated based on the aspect ratio.
+	 * - 128x128 as folder name to generate an image where the width will be 128px and the height will be 128px
+	 * - 128x as folder name to generate an image where the width will be 128px, the height will be calculated based on the aspect ratio.
+	 * - x128 as folder name to generate an image where the height will be 128px, the width will be calculated based on the aspect ratio.
 	 *
-	 * @param string $path  The path wherin the thumbnail-folders will be stored.
+	 * @param string $path  The path wherein the thumbnail-folders will be stored.
 	 * @param string $sourceFile    The location of the source file.
 	 */
 	public static function generateThumbnails($path, $sourceFile)
@@ -354,7 +354,7 @@ class Site
 	public static function getUTCTimestamp(SpoonFormDate $date, SpoonFormTime $time = null)
 	{
 		// validate date/time object
-		if(!$date->isValid() || ($time !== null && !$time->isValid())) throw new Exception('You need to provide two objects that actaully contain valid data.');
+		if(!$date->isValid() || ($time !== null && !$time->isValid())) throw new Exception('You need to provide two objects that actually contain valid data.');
 
 		// init vars
 		$year = gmdate('Y', $date->getTimestamp());

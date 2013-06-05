@@ -1,6 +1,6 @@
 # README
 
-This is the SumoCoders mini-framework, it should allow you to build applications without much hasle.
+This is the SumoCoders mini-framework, it should allow you to build applications without much hassle.
 
 ## Authentication
 
@@ -16,7 +16,7 @@ it and just have a nice looking application.
 
 ### SCSS/Compass
 
-We used the Compass-framework in conjuction with the [Twitter Bootstrap compass-port of vwall](https://github.com/vwall/compass-twitter-bootstrap) 
+We used the Compass-framework in conjunction with the [Twitter Bootstrap compass-port of vwall](https://github.com/vwall/compass-twitter-bootstrap)
 to be able to style everything.
 
 If you want to use compass yourself:

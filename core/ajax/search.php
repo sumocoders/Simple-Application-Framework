@@ -36,7 +36,7 @@ class AjaxCoreSearch extends AjaxBaseAction
 					// require the class
 					require_once $path;
 
-					// build classname
+					// build class name
 					$className = SpoonFilter::toCamelCase($module) . 'Helper';
 
 					// check if search method exists

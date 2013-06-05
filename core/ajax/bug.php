@@ -42,7 +42,7 @@ class AjaxCoreBug extends AjaxBaseAction
 			else $to = 'bugs@sumocoders.be';
 
 
-			$message = Swift_Message::newInstance(SITE_DEFAULT_TITLE . ': bugreport');
+			$message = Swift_Message::newInstance(SITE_DEFAULT_TITLE . ': bug report');
 			$message->setFrom('no-reply@sumocoders.be', SITE_DEFAULT_TITLE);
 			$message->setTo($to);
 			if(isset($currentUser['name']) && isset($currentUser['email']))
@@ -50,15 +50,12 @@ class AjaxCoreBug extends AjaxBaseAction
 				$message->setReplyTo($currentUser['email'], $currentUser['name']);
 			}
 
-			// screenshot provided?
+			// screen shot provided?
 			if($screenShot != '')
 			{
 				$screenShot = base64_decode(substr($screenShot, strpos($screenShot, ',') + 1));
-
-				// store in tempfile
 				$filename = tempnam(sys_get_temp_dir(), 'screenshot') . '.png';
 				file_put_contents($filename, $screenShot);
-
 				$message->attach(Swift_Attachment::fromPath($filename));
 			}
 
@@ -122,7 +119,7 @@ class AjaxCoreBug extends AjaxBaseAction
 												</tr>' . "\n";
 
 
-			// output the superglobal variables, if any
+			// output the super global variables, if any
 			$hasVars = false;
 			foreach(array('GET', 'POST', 'COOKIE', 'FILES') as $superGlobal)
 			{

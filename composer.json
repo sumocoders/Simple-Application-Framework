@@ -1,6 +1,6 @@
 {
     "name": "sumocoders/simple-application-framework",
-    "description": "This is the SumoCoders mini-framework, it should allow you to build applications without much hasle.",
+    "description": "This is the SumoCoders mini-framework, it should allow you to build applications without much hassle.",
     "license": "MIT",
     "require": {
         "spoon/library": "dev-master",

@@ -1,5 +1,5 @@
 {*
-	Below a list of globally availble options & variables.
+	Below a list of globally available options & variables.
 
 	Variables:
 	- {$summary} / table summary
@@ -10,7 +10,6 @@
 	Options:
 	- paging / whether pagination is enabled
 *}
-
 <table {option:summary} summary="{$summary}"{/option:summary}{$attributes}>
 	{option:caption}<caption>{$caption}</caption>{/option:caption}
 	<thead>

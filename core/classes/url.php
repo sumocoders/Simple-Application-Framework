@@ -3,7 +3,7 @@
 /**
  * SiteURL
  *
- * This class will handle the incomming url.
+ * This class will handle the incoming url.
  *
  * @package		site
  * @subpackage	url
@@ -54,7 +54,7 @@ class SiteURL
 
 
 	/**
-	 * The querystring
+	 * The query string
 	 *
 	 * @var	string
 	 */
@@ -66,7 +66,7 @@ class SiteURL
 	 */
 	public function __construct()
 	{
-		// add ourself to the reference so other classes can retrieve us
+		// add our self to the reference so other classes can retrieve us
 		Spoon::set('url', $this);
 
 		// set query-string for later use
@@ -259,7 +259,7 @@ class SiteURL
 	}
 
 	/**
-	 * Get the full querystring
+	 * Get the full query string
 	 *
 	 * @return string
 	 */
@@ -269,13 +269,13 @@ class SiteURL
 	}
 
 	/**
-	 * Process the querystring
+	 * Process the query string
 	 *
 	 * @return void
 	 */
 	private function processQueryString()
 	{
-		// store the querystring local, so we don't alter it.
+		// store the query string local, so we don't alter it.
 		$queryString = $this->getQueryString();
 
 		// fix GET-parameters
@@ -284,7 +284,7 @@ class SiteURL
 		// are there GET-parameters
 		if(isset($chunks[1]))
 		{
-			// remove from querystring
+			// remove from query string
 			$queryString = str_replace('?' . $chunks[1], '', $this->getQueryString());
 
 			// add parameters
@@ -296,10 +296,10 @@ class SiteURL
 		else $chunks = (array) explode('/', $chunks[0]);
 
 		// nothing provided
-		if(empty($chunks)) SpoonHTTP::redirect('/' . SiteLocale::getPreferedLanguage(), 301);
+		if(empty($chunks)) SpoonHTTP::redirect('/' . SiteLocale::getPreferredLanguage(), 301);
 
 		// get the language,
-		$this->setLanguage((isset($chunks[0]) && $chunks[0] != '') ? $chunks[0] : SiteLocale::getPreferedLanguage());
+		$this->setLanguage((isset($chunks[0]) && $chunks[0] != '') ? $chunks[0] : SiteLocale::getPreferredLanguage());
 
 		// get the module, null will be the default
 		$this->setModule((isset($chunks[1]) && $chunks[1] != '') ? $chunks[1] : 'example'); // @todo
@@ -345,7 +345,7 @@ class SiteURL
 	public function setLanguage($language)
 	{
 		// validate language
-		if(!in_array($language, SiteLocale::$possibleLanguages)) SpoonHTTP::redirect('/' . SiteLocale::getPreferedLanguage() . '/' . $this->getQueryString());
+		if(!in_array($language, SiteLocale::$possibleLanguages)) SpoonHTTP::redirect('/' . SiteLocale::getPreferredLanguage() . '/' . $this->getQueryString());
 
 		// store language
 		$this->language = (string) $language;
@@ -373,9 +373,9 @@ class SiteURL
 	}
 
 	/**
-	 * Set the querystring
+	 * Set the query string
 	 *
-	 * @param	string $queryString		The full querystring.
+	 * @param	string $queryString		The full query string.
 	 * @return void
 	 */
 	private function setQueryString($queryString)

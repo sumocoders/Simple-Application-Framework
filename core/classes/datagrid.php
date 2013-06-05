@@ -1,10 +1,10 @@
 <?php
 
 /**
- * This is our extended version of SpoonDatagrid
+ * This is our extended version of SpoonDataGrid
  *
  * This class will handle a lot of stuff for you, for example:
- * 	- it will set debugmode
+ * 	- it will set debug mode
  *	- it will set the compile-directory
  * 	- ...
  *
@@ -21,20 +21,20 @@ class SiteDataGrid extends SpoonDataGrid
 	/**
 	 * Default constructor
 	 *
-	 * @param	SpoonDataGridSource $source	The datasource.
+	 * @param	SpoonDataGridSource $source	The data source.
 	 */
 	public function __construct(SpoonDataGridSource $source)
 	{
 		// call parent constructor
 		parent::__construct($source);
 
-		// set debugmode, this will force the recompile for the used templates
+		// set debug mode, this will force the recompile for the used templates
 		$this->setDebug(SPOON_DEBUG);
 
 		// set the compile-directory, so compiled templates will be in a folder that is writable
 		$this->setCompileDirectory(CACHE_PATH . '/compiled_templates');
 
-		// set attributes for the datagrid
+		// set attributes for the data grid
 		$this->setAttributes(array('class' => 'datagrid table table-striped'));
 
 		// hide the id by default
@@ -56,7 +56,7 @@ class SiteDataGrid extends SpoonDataGrid
 		$this->setHeaderLabels($labels);
 
 		// set paging class
-		$this->setPagingClass('SiteDatagridPaging');
+		$this->setPagingClass('SiteDataGridPaging');
 		$this->setPagingLimit(25);
 
 		$url = Spoon::get('url');
@@ -115,7 +115,7 @@ class SiteDataGrid extends SpoonDataGrid
 				$html .= '<span class="add-on"><i class="' . $image . '"></i></span>';
 				$html .= '<span class="hide">';
 
-				// reset the image because we added it ourself
+				// reset the image because we added it ourselves
 				$image = null;
 
 				$class .= ' actionSmall';
@@ -178,7 +178,7 @@ class SiteDataGrid extends SpoonDataGrid
 }
 
 /**
- * This is our implementation of iSpoonDatagridPaging
+ * This is our implementation of iSpoonDataGridPaging
  *
  * @package		backend
  * @subpackage	core
@@ -187,7 +187,7 @@ class SiteDataGrid extends SpoonDataGrid
  * @author		Davy Hellemans <davy@netlash.com>
  * @since		2.0
  */
-class SiteDatagridPaging implements iSpoonDataGridPaging
+class SiteDataGridPaging implements iSpoonDataGridPaging
 {
 	/**
 	 * Builds & returns the pagination
@@ -340,7 +340,7 @@ class SiteDatagridPaging implements iSpoonDataGridPaging
 }
 
 /**
- * A datagrid with an array as source
+ * A data grid with an array as source
  *
  * @package		backend
  * @subpackage	core
@@ -360,13 +360,13 @@ class SiteDataGridArray extends SiteDataGrid
 		// create a new source-object
 		$source = new SpoonDataGridSourceArray($array);
 
-		// call the parent, as in create a new datagrid with the created source
+		// call the parent, as in create a new data grid with the created source
 		parent::__construct($source);
 	}
 }
 
 /**
- * A datagrid with a DB-connection as source
+ * A data grid with a DB-connection as source
  *
  * @package		backend
  * @subpackage	core
@@ -382,7 +382,7 @@ class SiteDataGridDB extends SiteDataGrid
 	 * @param	string $query						The query to retrieve the data.
 	 * @param	array[optional] $parameters			The parameters to be used inside the query.
 	 * @param	string[optional] $resultsQuery		The optional count query, used to calculate the number of results.
-	 * @param	array[optional] $resultsParameters 	Theh parameters to be used inside the results query.
+	 * @param	array[optional] $resultsParameters 	The parameters to be used inside the results query.
 	 */
 	public function __construct($query, $parameters = array(), $resultsQuery = null, $resultsParameters = array())
 	{
@@ -392,7 +392,7 @@ class SiteDataGridDB extends SiteDataGrid
 		// create a new source-object
 		$source = new SpoonDataGridSourceDB(Site::getDB(), array($query, (array) $parameters), $results);
 
-		// call the parent, as in create a new datagrid with the created source
+		// call the parent, as in create a new data grid with the created source
 		parent::__construct($source);
 	}
 }
@@ -461,10 +461,7 @@ class SiteDataGridFunctions
 	 */
 	public static function concat($x)
 	{
-		// grab the arguments
 		$args = func_get_args();
-
-		// concat
 		return implode('', $args);
 	}
 
@@ -485,7 +482,7 @@ class SiteDataGridFunctions
 	}
 
 	/**
-	 * Get time ago as a string for use in a datagrid
+	 * Get time ago as a string for use in a data grid
 	 *
 	 * @param	int $timestamp		The UNIX-timestamp to convert in a time-ago-string.
 	 * @return string
@@ -544,7 +541,7 @@ class SiteDataGridFunctions
 	 * Truncate a string
 	 *
 	 * @param	string[optional] $string	The string to truncate.
-	 * @param	int $length					The maximumlength for the string.
+	 * @param	int $length					The maximum length for the string.
 	 * @param	bool[optional] $useHellip	Should a hellip be appended?
 	 * @return string
 	 */
@@ -578,7 +575,7 @@ class SiteDataGridFunctions
 	 *
 	 * @param string $type
 	 * @param string $var
-	 * @param string[otpional] $prefix
+	 * @param string[optional] $prefix
 	 * @return string
 	 */
 	public static function locale($type, $var, $prefix = null)

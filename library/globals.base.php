@@ -11,7 +11,7 @@
  */
 // should the debug information be shown
 define('SPOON_DEBUG', true);
-// mailaddress where the exceptions will be mailed to
+// email address where the exceptions will be mailed to
 define('SPOON_DEBUG_EMAIL', '');
 // message for the visitors when an exception occur
 define('SPOON_DEBUG_MESSAGE', 'Internal error.');
@@ -30,7 +30,7 @@ define('DB_DATABASE', '<database_name>');
 define('DB_HOSTNAME', '<database_server>');
 // database username
 define('DB_USERNAME', '<database_username>');
-// datebase password
+// database password
 define('DB_PASSWORD', '<database_password>');
 
 /**
