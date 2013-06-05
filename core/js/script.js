@@ -540,8 +540,8 @@ jsSite.layout = {
 }
 jsSite.links = {
 	init: function() {
-		$('a.confirm').on('click', jsSite.links.confirm);
-		$('a.confirmPostForm').on('click', jsSite.links.confirmDelete);
+		$(document).on('click', 'a.confirm', jsSite.links.confirm)
+		$(document).on('click', 'a.confirmPostForm', jsSite.links.confirmDelete);
 		$('#confirmModal').modal({ show: false, backdrop: false });
 	},
 	confirm: function(e) {
