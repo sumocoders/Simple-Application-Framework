@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "7ef5241b36c90987fbfbfd5f526ddadc",
+    "hash": "4c79127647d7d4358f3b2020a42d6cbb",
     "packages": [
         {
             "name": "errbit/errbit-php",
@@ -158,12 +158,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/forkcms/library.git",
-                "reference": "09b482d06b1643818a46e58b7fc49a4687f9f102"
+                "reference": "1.3.10"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/forkcms/library/zipball/09b482d06b1643818a46e58b7fc49a4687f9f102",
-                "reference": "09b482d06b1643818a46e58b7fc49a4687f9f102",
+                "url": "https://api.github.com/repos/forkcms/library/zipball/1.3.10",
+                "reference": "1.3.10",
                 "shasum": ""
             },
             "require": {
@@ -182,7 +182,7 @@
             ],
             "description": "A PHP5 library that is fast, easy to learn and fun!",
             "homepage": "http://www.spoon-library.com",
-            "time": "2013-05-10 07:26:03"
+            "time": "2013-06-07 07:27:08"
         },
         {
             "name": "sumocoders/sumo-fork-class",
@@ -327,9 +327,9 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "spoon/library": 20,
-        "sumocoders/sumo-fork-class": 20,
         "errbit/errbit-php": 20,
-        "tijsverkoyen/css-to-inline-styles": 20
+        "tijsverkoyen/css-to-inline-styles": 20,
+        "sumocoders/sumo-fork-class": 20
     },
     "platform": [
 
