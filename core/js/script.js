@@ -542,7 +542,6 @@ jsSite.links = {
 		var $modal = $('#confirmModal');
 		$('#confirmModalMessage').html($this.data('message'));
 		$modal.on('click', '#confirmModalOk', function(e) {
-			$modal.off('click', '#confirmModalOk');
 			$('#confirmModal').modal('hide');
 			var $form = $('<form></form>')
 				.attr('action', $this.attr('href'))
@@ -562,6 +561,9 @@ jsSite.links = {
 			$form.submit();
 		});
 		$modal.modal('show');
+		$modal.on('hide', function() {
+			$modal.off('click', '#confirmModalOk');
+		});
 	}
 }
 jsSite.locale = {
