@@ -50,8 +50,6 @@ class AjaxAction
 	/**
 	 * Execute the action
 	 * We will build the class name, require the class and call the execute method.
-	 *
-	 * @return void
 	 */
 	public function execute()
 	{
