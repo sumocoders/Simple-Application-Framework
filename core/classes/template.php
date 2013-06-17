@@ -154,6 +154,7 @@ class SiteTemplate extends SpoonTemplate
 		$this->mapModifier('cleanupplaintext', array('SiteTemplateModifiers', 'cleanupPlainText'));
 		$this->mapModifier('dump', array('SiteTemplateModifiers', 'dump'));
 		$this->mapModifier('formatdate', array('SiteTemplateModifiers', 'formatDate'));
+		$this->mapModifier('formatfloat', array('SiteTemplateModifiers', 'formatFloat'));
 		$this->mapModifier('timeago', array('SiteTemplateModifiers', 'timeAgo'));
 		$this->mapModifier('truncate', array('SiteTemplateModifiers', 'truncate'));
 		$this->mapModifier('url', array('SiteTemplateModifiers', 'buildUrl'));
@@ -352,6 +353,22 @@ class SiteTemplateModifiers
 	{
 		// format the date
 		return SpoonDate::getDate((string) $format, (int) $var, 'nl');
+	}
+
+	/**
+	 * Format a number as a float
+	 *
+	 * @param	float $number				The number to format.
+	 * @param	int[optional] $decimals		The number of decimals.
+	 * @return string
+	 */
+	public static function formatFloat($number, $decimals = 2)
+	{
+		// redefine
+		$number = (float) $number;
+		$decimals = (int) $decimals;
+
+		return number_format($number, $decimals, '.', ' ');
 	}
 
 	/**
