@@ -544,6 +544,7 @@ jsSite.links = {
 		$modal.on('click', '#confirmModalOk', function(e) {
 			$('#confirmModal').modal('hide');
 			var $form = $('<form></form>')
+				.attr('style', 'display: none;')
 				.attr('action', $this.attr('href'))
 				.attr('method', 'POST');
 			$form.append(
@@ -558,6 +559,7 @@ jsSite.links = {
 					$form.append($element);
 				}
 			}
+			$('body').append($form);
 			$form.submit();
 		});
 		$modal.modal('show');
