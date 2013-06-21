@@ -1,2 +1,7 @@
 @import '_base';
 @import '_app';
+
+abbr[title], abbr[data-original-title]
+{
+  border: none;
+}
