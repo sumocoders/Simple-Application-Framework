@@ -24,7 +24,7 @@ class User
 	/**
 	 * Boolean properties
 	 */
-	public $isAdmin = false, $isBlocked = false;
+	public $isAdmin = false, $isBlocked = false, $isDeleted = false;
 
 	/**
 	 * DateTime properties
@@ -182,6 +182,7 @@ class User
 		}
 		if($this->type == 'admin') $this->isAdmin = true;
 		if(isset($data['blocked'])) $this->isBlocked = ($data['blocked'] == 'Y');
+		if(isset($data['deleted'])) $this->isDeleted = ($data['deleted'] == 'Y');
 		if(isset($data['created_on'])) $this->createdOn = new DateTime('@' . $data['created_on']);
 		if(isset($data['edited_on'])) $this->editedOn = new DateTime('@' . $data['edited_on']);
 		if(isset($data['blocked_on'])) $this->blockedOn = new DateTime('@' . $data['blocked_on']);
@@ -202,6 +203,7 @@ class User
 		$item['type'] = $this->type;
 		$item['data'] = serialize(array('settings' => $this->settings));
 		$item['blocked'] = ($this->isBlocked) ? 'Y' : 'N';
+		$item['deleted'] = ($this->isDeleted) ? 'Y' : 'N';
 		$item['edited_on'] = Site::getUTCDate('Y-m-d H:i:s', $this->editedOn->getTimestamp());
 		$item['blocked_on'] = ($this->isBlocked) ? Site::getUTCDate('Y-m-d H:i:s', $this->blockedOn->getTimestamp()) : null;
 
