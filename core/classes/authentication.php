@@ -155,7 +155,7 @@ class Authentication
 			);
 
 			$message = 'failed login attempt';
-			if($user->isBlocked) $message .= ' from blocked user';
+			if($user !== false && $user->isBlocked) $message .= ' from blocked user';
 
 			// log
 			Site::getLogger()->warning(
