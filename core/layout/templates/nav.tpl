@@ -1,3 +1,4 @@
+<!--
 <div id="navBar" class="container-fluid">
 	<div class="row-fluid">
 		<nav id="nav" class="span9">
@@ -24,4 +25,14 @@
 			</form>
 		</div>
 	</div>
+</div>
+-->
+
+<div id="navbar">
+  <div class="container">
+    <ul class="nav">
+      <li><a href="/" rel="home">{$lblHome|ucfirst}</a></li>
+      {option:currentUser.isAdmin}<li><a href="{$var|buildurl:'index':'users'}">{$lblUsers|ucfirst}</a></li>{/option:currentUser.isAdmin}
+    </ul>
+  </div>
 </div>

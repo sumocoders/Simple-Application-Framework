@@ -1,3 +1,4 @@
+<!--
 <div id="header" class="container-fluid">
 	<div class="row-fluid">
 		<div class="span8">
@@ -23,4 +24,12 @@
 		</div>
 	</div>
 </div>
+-->
 
+
+<header id="header">
+  <div class="container">
+    <a href="#">MENU</a>
+    <h2>Projects</h2>
+  </div>
+</header>

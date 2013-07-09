@@ -1,214 +1,9 @@
-/* fonts */
-@include font-face(
-	"Dosis Bold",
-	font-files(
-		font-url("dosis-bold.woff", true),
-		font-url("dosis-bold.ttf", true),
-		font-url("dosis-bold.svg", true)
-	),
-	font-url("dosis-bold.eot", true),
-	"normal"
-);
-@include font-face(
-	"Dosis Medium",
-	font-files(
-		font-url("dosis-medium.woff", true),
-		font-url("dosis-medium.ttf", true),
-		font-url("dosis-medium.svg", true)
-	),
-	font-url("dosis-medium.eot", true),
-	"normal"
-);
+// Import fonts
 
-body, #navBar.fixed {
-	background: $bodyBackground image-url("background.jpg") repeat top left;
-}
+@import 'fonts:*';
 
-/* Fixes */
-// because we use a custom font, something is off with the icons
-.btn [class^="icon-"], .btn [class*=" icon-"] { margin-top: 3px; }
-.btn-mini [class^="icon-"], .btn-mini [class*=" icon-"] { margin-top: 1px; }
-.btn-large [class^="icon-"], .btn-large [class*=" icon-"] { margin-top: 4px; }
-
-/* IE6-warning */
-#ie6.alert, .alert.noMargin {
-	margin-bottom: 0;
-}
-
-/* header */
-#header {
-	margin-bottom: 20px;
-	background: #4F4E4E image-url("header_background.jpg") repeat top left;
-	color: #FFFFFF;
-	@include single-box-shadow(rgba(32, 31, 31, 0.75), 0, 0, 2px, 2px, true);
-	@include single-text-shadow(rgba(27, 27, 26, 0.75), 1px, 1px, 2px);
-
-	.row-fluid {
-		height: 65px;
-	}
-
-	h1 {
-		font-family: "Dosis Bold";
-		font-size: 26px;
-		font-weight: normal;
-		padding: 9px 0;
-		line-height: 1;
-
-		a {
-			float: left;
-		}
-	}
-
-	a {
-		@include link-colors(#FFFFFF);
-
-		&:hover {
-			color: shade(#FFFFFF, 25%);
-			border: none;
-			@include transition-property("color");
-			@include transition-duration(500ms);
-			@include transition-timing-function(ease-in);
-		}
-	}
-
-	#ajaxSpinner {
-		display: none;
-		float: left;
-		margin: 10px 0 0 6px;
-		width: 16px;
-		height: 12px;
-		@include replace-text(inline-image("spinner.gif"));
-	}
-}
-
-/* user */
-#user {
-	color: #FFFFFF;
-	margin-top: 22px;
-
-	p {
-		text-align: right;
-	}
-}
-
-/* navigation */
-#navBar {
-	.row-fluid {
-		margin: 10px 0 30px;
-		border-bottom: 1px solid #9A9999;
-	}
-
-	&.fixed {
-		position: fixed;
-		top: 0;
-		left: 0;
-
-		.row-fluid {
-			margin-bottom: 1px;
-		}
-	}
-
-	#nav {
-		font-family: "Dosis Medium";
-		font-size: 18px;
-		text-transform: uppercase;
-
-		ul {
-			@include inline-block-list;
-
-			li {
-				margin: 2px;
-
-				a {
-					padding: 10px;
-					border: none;
-					@include border-radius(5px);
-					@include link-colors(#313020);
-
-					&:hover {
-						background-color: shade($bodyBackground, 7%);
-					}
-				}
-			}
-
-			li.selected a {
-				background-color: shade($bodyBackground, 10%);
-			}
-
-		}
-	}
-}
-
-/* search */
-#search {
-	margin-top: 7px;
-	text-align: right;
-
-	button {
-		float: right;
-	}
-}
-
-/* footer */
-#footer {
-	background: transparent inline-image("footer_border.png") repeat-x top left;
-	margin-top: 40px;
-	padding: 20px 0 0 0;
-
-	#credits {
-		width: 260px;
-		padding: 45px 22px 0 0;
-		min-height: 138px;
-		background: transparent inline-image("footer_shadow.png") no-repeat top right;
-
-		a {
-			display: block;
-			width: 220px;
-			height: 35px;
-			@include replace-text("sprite.png", 0, 0);
-		}
-	}
-
-	#legal p {
-		font-size: 13px;
-	}
-
-	#feedback {
-		float: right;
-		text-align: right;
-
-		a.bug {
-			line-height: 18px;
-			font-size: 16px;
-			@include link-colors($grayLight, shade($grayLight, 25%));
-
-			&:hover {
-				border: none;
-			}
-
-			i.icon-bug {
-				display: inline-block;
-				width: 18px;
-				height: 18px;
-				line-height: 18px;
-				vertical-align: top;
-				background: transparent image-url('sprite.png') no-repeat 0 -37px;
-			}
-		}
-	}
-}
-
-/* Button holders */
-.buttonHolderRight {
-	@include clearfix;
-
-	h1, h2, h3, h4, h5 {
-		float: left;
-	}
-
-	.btn-group {
-		float: right;
-	}
+body {
+  font-family: $opensans;
 }
 
 /* Styling for our own jQuery UI and our plugins */
@@ -229,3 +24,156 @@ body, #navBar.fixed {
 
 /* Styling for users */
 @import "_users";
+
+// DEFINE THE COMPANY LOGO HERE
+
+.logo {
+  @include svg-with-png-fallback(logo_sumocoders, no-repeat, $dimensions: false);
+  background-color: #e84914;
+  display: block;
+  @include squish-text;
+  background-position: center center;
+}
+
+
+.container {
+  width: auto;
+  padding: 0 20px;
+}
+
+#ajaxSpinner {
+  display: none;
+}
+
+// FORM ELEMENTS
+
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+.uneditable-input {
+  @include box-sizing(border-box);
+  height: 45px;
+  @include box-shadow(none);
+  border: 1px solid #b6bcd0;
+  
+}
+
+.control-label {
+  color: #7093c3;
+}
+
+.btn {
+  @include box-sizing(border-box);
+  background: #3dae50;
+  @include box-shadow(none);
+  border: none;
+  height: 45px;
+  text-shadow: none;
+  
+  &:hover {
+    background: lighten(#3dae50, 10%);
+    @include transition(all 150ms);
+  }
+  
+  &.btn-primary {
+    
+  }
+}
+
+//Users
+
+#users {
+  
+  &.login {
+    
+    .logo {
+      width: 150px;
+      height: 150px;
+      @include border-radius(50%);
+      margin: 10% auto;
+    }
+    
+    .control-label {
+      font-family: $opensans-bold;
+      font-size: 1.29 * $baseFontSize;
+      color: #597192;
+    }
+    
+    .add-on {
+      width: 13.75%;
+      height: 45px;
+      @include box-sizing(border-box);
+      background-color: #b6bcd0;
+      border: none;
+      
+      &.username {
+        @include svg-with-png-fallback(icon_user, no-repeat #b6bcd0 center center, $dimensions: false);
+      }
+      
+      &.password {
+        @include svg-with-png-fallback(icon_lock, no-repeat #b6bcd0 center center, $dimensions: false);
+      }
+    }
+    
+    input[type="password"],
+    input[type="email"] {
+      width: 86.25%;
+      @include border-radius(0 4px 4px 0);
+      -webkit-appearance: none;
+    }
+    
+    .btn {
+      margin-top: 36px;
+    }
+  }
+}
+
+// NAVBAR MOBILE FUNCTIONALITY
+
+#navbar {
+  position: absolute;
+  z-index: 0;
+}
+
+#contentWrap {
+  position: relative;
+  z-index: 10;
+  background: #fff;
+}
+
+#header {
+  background: #393b42;
+  color: #fff;
+}
+
+@media screen and (min-width: 767px) {
+  
+  .container {
+    width: 100%;
+    padding: 0;
+  }
+  
+  #users {
+    
+    &.login {
+      width: 400px;
+      margin: 0 auto;
+    }
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  
+  
+}

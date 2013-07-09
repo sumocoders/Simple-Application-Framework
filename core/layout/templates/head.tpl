@@ -36,6 +36,7 @@
 
 	<script src="/core/js/lib.js?m={$LAST_MODIFIED}"></script>
 	<script src="/core/js/script.js?m={$LAST_MODIFIED}"></script>
+	<script src="/core/js/theme_new.js?m={$LAST_MODIFIED}"></script>
 	{option:javascript}
 		{iteration:javascript}
 			<script src="{$javascript.url}"></script>
