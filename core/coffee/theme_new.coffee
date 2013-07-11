@@ -29,15 +29,15 @@ class Theme
 
 class DefaultTheme extends Theme
   @events
-    '#cookieBarAgree' : click : 'cookieBarAgree'
-    '#cookieBarDisagree' : click : 'cookieBarDisagree'
-    'input:submit' : click : 'hijackSubmit'
-    'a.backToTop': click : 'scrollToTop'
-    'a[href*="#"]': click : 'scrollTo'
+    #'#cookieBarAgree' : click : 'cookieBarAgree'
+    #'#cookieBarDisagree' : click : 'cookieBarDisagree'
+    #'input:submit' : click : 'hijackSubmit'
+    #'a.backToTop': click : 'scrollToTop'
+    #'a[href*="#"]': click : 'scrollTo'
 
   @onDomReady [
-    'cookieBar'
-    'removeImageHeight'
+    #'cookieBar'
+    #'removeImageHeight'
   ]
 
   cookieBar: ->
@@ -86,19 +86,42 @@ class DefaultTheme extends Theme
 class SpecificTheme extends DefaultTheme
   @events
     # '#element' : event : 'functionName'
-    #'#navigation a' : click : 'showSubNav'
+    '#toggleMenu' : click : 'toggleMenu'
+    '#content.open' : touchend : 'toggleMenu'
+    '#toggleTabletNavbar' : click : 'tabletMenu'
+    '.dropdownToggle' : click : 'toggleDropdown'
 
   @onDomReady [
     #'functionName'
     'initCarousel'
-    'initFancybox'
   ]
 
   initCarousel: ->
     $('.carousel').carousel()
 
-  initFancybox: ->
-    $('.fancybox').fancybox()
+  toggleMenu: (e) ->
+    if !$('#content').hasClass('open')
+      $('#content').addClass('open')
+    else
+      $('#content').removeClass('open')
+    false
+
+  tabletMenu: (e) ->
+    if !$('#navbar').hasClass('open')
+      $('#navbar').addClass('open')
+      $(e.currentTarget).addClass('open');
+    else
+      $('#navbar').removeClass('open')
+      $(e.currentTarget).removeClass('open');
+      
+  toggleDropdown: (e) ->
+    $this = $(e.currentTarget)
+    if !$this.hasClass('open')
+      $this.parent().find('.dropdownItems').slideDown()
+      $this.addClass('open')
+    else
+      $this.parent().find('.dropdownItems').slideUp()
+      $this.removeClass('open')
     false
 
 

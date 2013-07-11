@@ -1,7 +1,6 @@
 {include:'{$CORE_PATH}/layout/templates/head.tpl'}
-<!-- {include:'{$CORE_PATH}/layout/templates/header.tpl'} -->
 
-	<div id="content" class="container">
+	<div class="container">
 		<section id="{$MODULE}" class="{$ACTION}">
 		  <div class="row-fluid">
   			<div class="span12">

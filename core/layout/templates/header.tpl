@@ -29,7 +29,17 @@
 
 <header id="header">
   <div class="container">
-    <a href="#">MENU</a>
-    <h2>Projects</h2>
+    <div class="title">
+      <a id="toggleMenu" class="visible-phone" href="#">MENU</a>
+      <h2>Projects</h2>
+    </div>
+    <div class="actions">
+      <a href="#" class="dropdownToggle visible-phone" data-toggle="dropdownItems">Actions</a>
+      <ul class="dropdownItems">
+        <li><a class="iconList" href="#">List</a></li>
+        <li><a class="iconPrint" href="#">print</a></li>
+        <Li><a class="iconAdd" href="#">add</a></Li>
+      </ul>
+    </div>
   </div>
 </header>

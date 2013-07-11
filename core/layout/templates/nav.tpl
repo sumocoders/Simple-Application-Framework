@@ -1,38 +1,37 @@
-<!--
-<div id="navBar" class="container-fluid">
-	<div class="row-fluid">
-		<nav id="nav" class="span9">
-			<ul class="nav">
-				<li><a href="/" rel="home">{$lblHome|ucfirst}</a></li>
-				{option:currentUser.isAdmin}<li><a href="{$var|buildurl:'index':'users'}">{$lblUsers|ucfirst}</a></li>{/option:currentUser.isAdmin}
-			</ul>
-		</nav>
 
-		<div id="search" class="span3">
-			<form>
-				<div class="control-group">
-					<label for="searchQuery" class="hide control-label">{$lblSearch|ucfirst}</label>
-					<div class="controls">
-						<div class="input-append">
-							<input id="searchQuery" name="q" type="search" placeholder="{$lblSearch|ucfirst}" class="input-medium">
-							<button type="submit" class="btn hidden-phone hidden-tablet">
-								<i class="icon-search"></i>
-								<span class="hide">{$lblSearch|ucfirst}</span>
-							</button>
-						</div>
-					</div>
-				</div>
-			</form>
-		</div>
-	</div>
-</div>
--->
 
 <div id="navbar">
+  <a href="/" class="logo hidden-phone">{$SITE_DEFAULT_TITLE}</a>
+  <div id="searchBox" class="mobile">
+    <div class="controls">
+  		<input id="searchQuery" name="q" type="search" placeholder="{$lblSearch|ucfirst}" class="input-medium">
+  		<button type="submit" class="btn">
+  			<i class="icon-search"></i>
+  			<span class="hide">{$lblSearch|ucfirst}</span>
+  		</button>
+  	</div>
+  </div>
   <div class="container">
     <ul class="nav">
+      {option:currentUser}
+				<li id="user">
+				  <a href="#">{$currentUser.name|uppercase}</a>
+				</li>
+			{/option:currentUser}
       <li><a href="/" rel="home">{$lblHome|ucfirst}</a></li>
+      <li><a href="/" rel="link2">link 2</a></li>
+      <li><a href="/" rel="link3">link 3</a></li>
       {option:currentUser.isAdmin}<li><a href="{$var|buildurl:'index':'users'}">{$lblUsers|ucfirst}</a></li>{/option:currentUser.isAdmin}
     </ul>
   </div>
+  <div id="searchBox" class="desktop">
+    <div class="controls">
+  		<input id="searchQuery" name="q" type="search" placeholder="{$lblSearch|ucfirst}" class="input-medium">
+  		<button type="submit" class="btn">
+  			<i class="icon-search"></i>
+  			<span class="hide">{$lblSearch|ucfirst}</span>
+  		</button>
+  	</div>
+  </div>
 </div>
+<a href="#" id="toggleTabletNavbar">MENU</a>

@@ -85,25 +85,9 @@
       return _ref;
     }
 
-    DefaultTheme.events({
-      '#cookieBarAgree': {
-        click: 'cookieBarAgree'
-      },
-      '#cookieBarDisagree': {
-        click: 'cookieBarDisagree'
-      },
-      'input:submit': {
-        click: 'hijackSubmit'
-      },
-      'a.backToTop': {
-        click: 'scrollToTop'
-      },
-      'a[href*="#"]': {
-        click: 'scrollTo'
-      }
-    });
+    DefaultTheme.events;
 
-    DefaultTheme.onDomReady(['cookieBar', 'removeImageHeight']);
+    DefaultTheme.onDomReady([]);
 
     DefaultTheme.prototype.cookieBar = function() {
       if (utils.cookies.readCookie('cookie_bar_hide') === 'b%3A1%3B') {
@@ -168,16 +152,56 @@
       return _ref1;
     }
 
-    SpecificTheme.events;
+    SpecificTheme.events({
+      '#toggleMenu': {
+        click: 'toggleMenu'
+      },
+      '#content.open': {
+        touchend: 'toggleMenu'
+      },
+      '#toggleTabletNavbar': {
+        click: 'tabletMenu'
+      },
+      '.dropdownToggle': {
+        click: 'toggleDropdown'
+      }
+    });
 
-    SpecificTheme.onDomReady(['initCarousel', 'initFancybox']);
+    SpecificTheme.onDomReady(['initCarousel']);
 
     SpecificTheme.prototype.initCarousel = function() {
       return $('.carousel').carousel();
     };
 
-    SpecificTheme.prototype.initFancybox = function() {
-      $('.fancybox').fancybox();
+    SpecificTheme.prototype.toggleMenu = function(e) {
+      if (!$('#content').hasClass('open')) {
+        $('#content').addClass('open');
+      } else {
+        $('#content').removeClass('open');
+      }
+      return false;
+    };
+
+    SpecificTheme.prototype.tabletMenu = function(e) {
+      if (!$('#navbar').hasClass('open')) {
+        $('#navbar').addClass('open');
+        return $(e.currentTarget).addClass('open');
+      } else {
+        $('#navbar').removeClass('open');
+        return $(e.currentTarget).removeClass('open');
+      }
+    };
+
+    SpecificTheme.prototype.toggleDropdown = function(e) {
+      var $this;
+      $this = $(e.currentTarget);
+      if (!$this.hasClass('open')) {
+        $this.parent().find('.dropdownItems').slideDown();
+        $this.addClass('open');
+      } else {
+        $this.parent().find('.dropdownItems').slideUp();
+        $this.removeClass('open');
+      }
       return false;
     };
 

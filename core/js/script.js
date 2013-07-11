@@ -57,7 +57,7 @@ var jsSite = {
 					if(typeof json.message != 'undefined') textStatus = json.message;
 					else textStatus = XMLHttpRequest.responseText;
 				}
-				$('body').prepend('<div class="alert alert-error noMargin">' +
+				$('#main').prepend('<div class="alert alert-error noMargin">' +
 									' <a href="#" class="close" data-dismiss="alert">x</a>' +
 										textStatus +
 									'</div>');
