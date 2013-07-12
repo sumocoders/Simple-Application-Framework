@@ -91,14 +91,20 @@ class SpecificTheme extends DefaultTheme
     '#toggleTabletNavbar' : click : 'tabletMenu'
     '.dropdownToggle' : click : 'toggleDropdown'
     'a.toggleSubNavigation' : click : 'toggleSubNavigation'
+    '.nav-tabs a' : click : 'initTabs'
 
   @onDomReady [
     #'functionName'
     'initCarousel'
+    'initTabs'
   ]
 
   initCarousel: ->
     $('.carousel').carousel()
+    
+  initTabs: (e) ->
+    $(e.currentTarget).tab('show')
+    false
 
   toggleMenu: (e) ->
     if !$('#content').hasClass('open')

@@ -5,6 +5,7 @@
 body {
   font-family: $opensans-regular-webfont;
   //overflow: hidden;
+  background: #fff;
 }
 
 /* Styling for our own jQuery UI and our plugins */
@@ -376,7 +377,8 @@ input[type="color"],
   }
 }
 
-#header {
+#header,
+.taskbar {
   background: #393b42;
   padding: 0 25px;
   position: fixed;
@@ -481,6 +483,42 @@ input[type="color"],
       }
     }
   }
+}
+
+.taskbar {
+  position: relative;
+  background: #babbc0;
+  margin: 30px 0 40px 0;
+  
+  .actions {
+    
+    .dropdownToggle {
+      background-color: #8c8d94;
+    }
+    
+    ul {
+      
+      li {
+        
+        a {
+          background-color: #8c8d94;
+          
+          &.iconList {
+            background-color: #8c8d94;
+          }
+          
+          &.iconPrint {
+            background-color: #8c8d94;
+          }
+          
+          &.iconAdd {
+            background-color: #8c8d94;
+          }
+        }
+      }
+    }
+  }
+  
 }
 
 #main {
@@ -590,7 +628,8 @@ input[type="color"],
     }
   }
   
-  #header {
+  #header,
+  .taskbar {
     padding-right: 50px;
     
     .container {
@@ -652,7 +691,10 @@ input[type="color"],
   }
   
   #main {
-    padding: 120px 25px;
+    
+    .container {
+      padding: 0 25px;
+    }
   }
 }
 

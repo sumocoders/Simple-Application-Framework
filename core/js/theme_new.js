@@ -168,13 +168,21 @@
       },
       'a.toggleSubNavigation': {
         click: 'toggleSubNavigation'
+      },
+      '.nav-tabs a': {
+        click: 'initTabs'
       }
     });
 
-    SpecificTheme.onDomReady(['initCarousel']);
+    SpecificTheme.onDomReady(['initCarousel', 'initTabs']);
 
     SpecificTheme.prototype.initCarousel = function() {
       return $('.carousel').carousel();
+    };
+
+    SpecificTheme.prototype.initTabs = function(e) {
+      $(e.currentTarget).tab('show');
+      return false;
     };
 
     SpecificTheme.prototype.toggleMenu = function(e) {

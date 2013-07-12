@@ -38,33 +38,41 @@
               </tr>
             </tbody>
           </table>
-    			<p>
-    				Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nullam id dolor id nibh ultricies vehicula ut id elit. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Curabitur blandit tempus porttitor. Vestibulum id ligula porta felis euismod semper.
-    			</p>
-    			<p>
-    				Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Sed posuere consectetur est at lobortis. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Aenean lacinia bibendum nulla sed consectetur.
-    			</p>
-    			<p>
-    				Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nullam id dolor id nibh ultricies vehicula ut id elit. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Curabitur blandit tempus porttitor. Vestibulum id ligula porta felis euismod semper.
-    			</p>
-    			<p>
-    				Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Sed posuere consectetur est at lobortis. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Aenean lacinia bibendum nulla sed consectetur.
-    			</p>
-    			<p>
-    				Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nullam id dolor id nibh ultricies vehicula ut id elit. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Curabitur blandit tempus porttitor. Vestibulum id ligula porta felis euismod semper.
-    			</p>
-    			<p>
-    				Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Sed posuere consectetur est at lobortis. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Aenean lacinia bibendum nulla sed consectetur.
-    			</p>
-    			<p>
-    				Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nullam id dolor id nibh ultricies vehicula ut id elit. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Curabitur blandit tempus porttitor. Vestibulum id ligula porta felis euismod semper.
-    			</p>
-    			<p>
-    				Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Sed posuere consectetur est at lobortis. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Aenean lacinia bibendum nulla sed consectetur.
-    			</p>
-    			<p>
-    				Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nullam id dolor id nibh ultricies vehicula ut id elit. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Curabitur blandit tempus porttitor. Vestibulum id ligula porta felis euismod semper.
-    			</p>
+        </div>
+    			<header class="taskbar">
+    			  <div class="title">
+    			    <h2>Tellus ridiculus</h2>
+    			  </div>
+    			  <div class="actions">
+    			    <a href="#" class="dropdownToggle visible-phone" data-toggle="dropdownItems">Actions</a>
+              <ul class="dropdownItems">
+                <li><a class="iconList" href="#">List</a></li>
+                <li><a class="iconPrint" href="#">Print</a></li>
+                <Li><a class="iconAdd" href="#">Add</a></Li>
+              </ul>
+    			  </div>
+    			</header>
+    		<div class="container">
+    			<ul class="nav nav-tabs">
+    			  <li class="active"><a href="#home">Home</a></li>
+    			  <li><a href="#profile">Profile</a></li>
+    			  <li><a href="#messages">Messages</a></li>
+    			  <li><a href="#settings">Settings</a></li>
+    			</ul>
+    			<div class="tab-content">
+    			  <div class="tab-pane active" id="home">
+    			    <h3>Home, bitch</h3>
+    			  </div>
+    			  <div class="tab-pane" id="profile">
+    			    <h3>This is your profile, bro</h3>
+    			  </div>
+    			  <div class="tab-pane" id="messages">
+    			    <h3>You ain't got no friends, man</h3>
+    			  </div>
+    			  <div class="tab-pane" id="settings">
+    			    <h3>Under tha hood</h3>
+    			  </div>
+    			</div>
         </div>
       </div>
     </div>
