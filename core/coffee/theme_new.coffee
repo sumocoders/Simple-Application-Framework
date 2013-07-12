@@ -90,6 +90,7 @@ class SpecificTheme extends DefaultTheme
     '#content.open' : touchend : 'toggleMenu'
     '#toggleTabletNavbar' : click : 'tabletMenu'
     '.dropdownToggle' : click : 'toggleDropdown'
+    'a.toggleSubNavigation' : click : 'toggleSubNavigation'
 
   @onDomReady [
     #'functionName'
@@ -122,6 +123,40 @@ class SpecificTheme extends DefaultTheme
     else
       $this.parent().find('.dropdownItems').slideUp()
       $this.removeClass('open')
+    false
+  
+  toggleSubNavigation: (e) =>
+    @subNavOpen
+    $this = $(e.currentTarget)
+    $subNav = $this.parent().find('.subNavigation')
+    #$('.subNavigation.open').removeClass('open')
+    if !@subNavOpen
+      $this.addClass('active')
+      $subNav.addClass('open').slideDown()
+      $('#toggleTabletNavbar').addClass('subnav')
+      $('#navbar').addClass('subnav')
+      $('#content').addClass('subnav')
+      $('.alert').addClass('subnav')
+      @subNavOpen = true
+    else
+      if $subNav.is('.open')
+        $this.removeClass('active')
+        $subNav.removeClass('open').slideUp()
+        $('#toggleTabletNavbar').removeClass('subnav')
+        $('#navbar').removeClass('subnav')
+        $('#content').removeClass('subnav')
+        $('.alert').removeClass('subnav')
+        @subNavOpen = false
+      else
+        # Vervangen
+        $('#navbar .nav li a.active').removeClass('active')
+        $this.addClass('active')
+        $('.subNavigation.open').removeClass('open')
+        $subNav.addClass('open').slideDown()
+        $('#toggleTabletNavbar').addClass('subnav')
+        $('#navbar').addClass('subnav')
+        $('#content').addClass('subnav')
+        $('.alert').addClass('subnav')
     false
 
 

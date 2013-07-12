@@ -3,7 +3,7 @@
 @import 'fonts:*';
 
 body {
-  font-family: $opensans;
+  font-family: $opensans-regular-webfont;
   //overflow: hidden;
 }
 
@@ -76,6 +76,8 @@ input[type="color"],
   color: #7093c3;
 }
 
+//buttons
+
 .btn {
   @include box-sizing(border-box);
   background: #3dae50;
@@ -94,6 +96,75 @@ input[type="color"],
   }
 }
 
+// alerts
+
+.alert {
+  position: fixed;
+  margin-top: 65px;
+  border: none;
+  width: 100%;
+  @include box-sizing(border-box);
+  @include border-radius(0);
+  color: #fff;
+  text-shadow: none;
+  padding: 0 25px;
+  line-height: 40px;
+  
+  .container {
+    padding: 0;
+  }
+  
+  .close {
+    @include svg-with-png-fallback(icon_close, no-repeat center center, $dimensions: false);
+    @include squish-text;
+    width: 65px;
+    height: 40px;
+    @include box-sizing(border-box);
+    opacity: 1;
+    right: 0;
+    margin: 0;
+    top: 0;
+    @include transition(all 150ms);
+  }
+  
+  &.alert-success {
+    background: #56b989;
+    
+    .close {
+      background-color: #3c9469;
+      
+      &:hover {
+        background-color: darken(#3c9469, 10%);
+      }
+    }
+  }
+  
+  &.alert-warning {
+    background-color: #d0b15c;
+    
+    .close {
+      background-color: #b38e2a;
+      
+      &:hover {
+        background-color: darken(#b38e2a, 10%);
+;      }
+    }
+  }
+  
+  &.alert-error {
+    background-color: #ca5121;
+    
+    .close {
+      background-color: #9f360c;
+      
+      &:hover {
+        background-color: darken(#9f360c, 10%);
+      }
+    }
+  }
+}
+
+
 //Users
 
 #users {
@@ -108,7 +179,7 @@ input[type="color"],
     }
     
     .control-label {
-      font-family: $opensans-bold;
+      font-family: $opensans-bold-webfont;
       font-size: 1.29 * $baseFontSize;
       color: #597192;
     }
@@ -149,7 +220,7 @@ input[type="color"],
   z-index: 10;
   background: #e4e5ec;
   width: 85%;
-  overflow: scroll;
+  overflow-y: scroll;
   padding-bottom: 45px;
   height: 100%;
   
@@ -166,7 +237,65 @@ input[type="color"],
         color: #8d94ab;
         padding: 18px;
         text-transform: uppercase;
-        font-family: $opensans-bold;
+        font-family: $opensans-bold-webfont;
+        
+        &.toggleSubNavigation {
+          @include svg-with-png-fallback(icon_subnav, no-repeat 95% center, $dimensions: false);
+        }
+        
+        &.active {
+          background-color: #fff;
+          color: #0f0f0f;
+        }
+      }
+      
+      &#user {
+        
+        &>a {
+          padding-left: 50px;
+          color: #464242;
+          font-family: $opensans-extrabold-webfont;
+          font-size: 1.29 * $baseFontSize;
+          position: relative;
+          
+          &:before {
+            content: '';
+            position: absolute;
+            @include svg-with-png-fallback(icon_profile, no-repeat);
+            left: 18px;
+            top: 16px;
+          }
+          
+          &.active {
+            background-color: #fff;
+            color: #0f0f0f;
+          }
+          
+        }
+      }
+      
+      .subNavigation {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        //height: 0;
+        //overflow: hidden;
+        display: none;
+        //@include transition(all 250ms);
+        
+        li {
+          border-bottom-color: #3b3c48;
+          
+          a {
+            background: #222329;
+            color: #818696;
+            display: block;
+          }
+        }
+        
+        &.open {
+          //height: auto;
+        }
       }
     }
   }
@@ -253,6 +382,8 @@ input[type="color"],
   position: fixed;
   width: 100%;
   @include box-sizing(border-box);
+  height: 65px;
+  z-index: 99;
   
   .container {
     padding: 0;
@@ -276,7 +407,7 @@ input[type="color"],
     color: #fff;
     font-size: 1.2 * $baseFontSize;
     text-transform: uppercase;
-    font-family: $opensans-bold;
+    font-family: $opensans-bold-webfont;
   }
   
   .actions {
@@ -284,6 +415,7 @@ input[type="color"],
     width: 50%;
     position: relative;
     height: 65px;
+    z-index: 9999;
     
     .dropdownToggle {
       display: block;
@@ -315,15 +447,14 @@ input[type="color"],
           width: 65px;
           padding-left: 65px;
           margin-bottom: 4px;
-          //@include squish-text;
           @include transition(all 500ms);
           @include box-sizing(border-box);
-          font-family: $opensans-semibold;
+          //font-family: $opensans-semibold-webfont;
           font-size: 1.29 * $baseFontSize;
           color: #fff;
           border: none;
           text-decoration: none;
-          padding-top: 20px;
+          line-height: 65px;
           overflow: hidden;
           
           &.iconList {
@@ -345,7 +476,6 @@ input[type="color"],
         &:hover {
           a {
             background-color: #4ba75f;
-            width: 150px;
           }
         }
       }
@@ -354,7 +484,7 @@ input[type="color"],
 }
 
 #main {
-  padding-top: 65px;
+  padding-top: 120px;
 }
 
 @media screen and (min-width: 767px) {
@@ -362,6 +492,14 @@ input[type="color"],
   .container {
     width: 100%;
     padding: 0;
+  }
+  
+  .alert {
+    padding-right: 50px;
+    
+    .close {
+      right: 4px;
+    }
   }
   
   #users {
@@ -382,6 +520,46 @@ input[type="color"],
     &.open {
       left: 0;
       @include transition(all 250ms);
+      
+      &.subnav {
+        padding-right: 230px;
+      }
+    }
+    
+    .nav {
+      
+      li {
+        
+        .subNavigation {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+          height: 100% !important;
+          display: block !important;
+          @include transition(width 250ms);
+          position: fixed;
+          width: 0;
+          overflow: hidden;
+          left: 265px;
+          top: 0;
+          background: #222329;
+          
+          li {
+            border-bottom-color: #3b3c48;
+            
+            a {
+              background: #222329;
+              color: #818696;
+              display: block;
+              white-space: nowrap;
+            }
+          }
+          
+          &.open {
+            width: 230px;
+          }
+        }
+      }
     }
   }
   
@@ -393,18 +571,22 @@ input[type="color"],
     display: block;
     position: fixed;
     height: 100%;
-    width: 50px;
-    left: 0;
-    @include svg-with-png-fallback(arrow_show_menu, no-repeat center center, $dimensions: false);
+    width: 100px;
+    left: -50px;
+    @include svg-with-png-fallback(arrow_show_menu, no-repeat, $dimensions: false);
+    background-position: 60px center;
     @include squish-text;
     background-color: #1f2024;
-    z-index: 99;
+    z-index: 25;
     @include transition(left 250ms);
     
     &.open {
-      left: 265px;
+      left: 215px;
       @include transition(left 250ms);
-      @include transform(rotate(180deg));
+      
+      &.subnav {
+        left: 445px;
+      }
     }
   }
   
@@ -420,7 +602,9 @@ input[type="color"],
     }
     
     .actions {
-      float: right;
+      //float: right;
+      position: fixed;
+      right: 0;
       width: 50%;
       @include clearfix;
       
@@ -445,6 +629,13 @@ input[type="color"],
             width: 65px;
             margin-bottom: 0;
           }
+          
+          &:hover {
+            a {
+              background-color: #4ba75f;
+              width: 150px;
+            }
+          }
         }
       }
     }
@@ -461,11 +652,20 @@ input[type="color"],
   }
   
   #main {
-    padding: 65px 25px;
+    padding: 120px 25px;
   }
 }
 
 @media screen and (min-width: 1025px) {
+  
+  .alert {
+    padding-right: 265px;
+    @include transition(padding-right 250ms);
+    
+    &.subnav {
+      padding-right: 495px;
+    }
+  }
   
   #navbar {
     //position: fixed;
@@ -475,10 +675,19 @@ input[type="color"],
   
   #header {
     padding-right: 265px;
+    @include transition(all 250ms);
   }
   
   #content {
     padding-left: 265px;
+    
+    &.subnav {
+      padding-left: 495px;
+      
+      #header {
+        padding-right: 495px;
+      }
+    }
   }
   
   #toggleTabletNavbar {

@@ -148,6 +148,7 @@
     __extends(SpecificTheme, _super);
 
     function SpecificTheme() {
+      this.toggleSubNavigation = __bind(this.toggleSubNavigation, this);
       _ref1 = SpecificTheme.__super__.constructor.apply(this, arguments);
       return _ref1;
     }
@@ -164,6 +165,9 @@
       },
       '.dropdownToggle': {
         click: 'toggleDropdown'
+      },
+      'a.toggleSubNavigation': {
+        click: 'toggleSubNavigation'
       }
     });
 
@@ -201,6 +205,42 @@
       } else {
         $this.parent().find('.dropdownItems').slideUp();
         $this.removeClass('open');
+      }
+      return false;
+    };
+
+    SpecificTheme.prototype.toggleSubNavigation = function(e) {
+      var $subNav, $this;
+      this.subNavOpen;
+      $this = $(e.currentTarget);
+      $subNav = $this.parent().find('.subNavigation');
+      if (!this.subNavOpen) {
+        $this.addClass('active');
+        $subNav.addClass('open').slideDown();
+        $('#toggleTabletNavbar').addClass('subnav');
+        $('#navbar').addClass('subnav');
+        $('#content').addClass('subnav');
+        $('.alert').addClass('subnav');
+        this.subNavOpen = true;
+      } else {
+        if ($subNav.is('.open')) {
+          $this.removeClass('active');
+          $subNav.removeClass('open').slideUp();
+          $('#toggleTabletNavbar').removeClass('subnav');
+          $('#navbar').removeClass('subnav');
+          $('#content').removeClass('subnav');
+          $('.alert').removeClass('subnav');
+          this.subNavOpen = false;
+        } else {
+          $('#navbar .nav li a.active').removeClass('active');
+          $this.addClass('active');
+          $('.subNavigation.open').removeClass('open');
+          $subNav.addClass('open').slideDown();
+          $('#toggleTabletNavbar').addClass('subnav');
+          $('#navbar').addClass('subnav');
+          $('#content').addClass('subnav');
+          $('.alert').addClass('subnav');
+        }
       }
       return false;
     };

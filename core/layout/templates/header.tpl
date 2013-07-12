@@ -37,8 +37,8 @@
       <a href="#" class="dropdownToggle visible-phone" data-toggle="dropdownItems">Actions</a>
       <ul class="dropdownItems">
         <li><a class="iconList" href="#">List</a></li>
-        <li><a class="iconPrint" href="#">print</a></li>
-        <Li><a class="iconAdd" href="#">add</a></Li>
+        <li><a class="iconPrint" href="#">Print</a></li>
+        <Li><a class="iconAdd" href="#">Add</a></Li>
       </ul>
     </div>
   </div>
