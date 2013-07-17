@@ -14,7 +14,7 @@
 					<ul class="dropdownItems">
 						<li><a class="iconList" href="#">{$lblOverview|ucfirst}</a></li>
 						<li><a class="iconPrint" href="#">{$lblPrint|ucfirst}</a></li>
-						<Li><a class="iconAdd" href="#">{$lblAdd|ucfirst}</a></Li>
+						<li><a class="iconAdd" href="#">{$lblAdd|ucfirst}</a></li>
 					</ul>
 				</div>
 			</div>
