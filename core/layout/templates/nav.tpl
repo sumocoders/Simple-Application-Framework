@@ -1,5 +1,5 @@
 <nav id="navbar" role="navigation">
-	<a href="/" class="logo hidden-phone">{$SITE_DEFAULT_TITLE}</a>
+	<a href="/" rel="home" class="logo hidden-phone">{$SITE_DEFAULT_TITLE}</a>
 
 	<div id="searchBox" class="mobile" role="search">
 		<div class="controls">
