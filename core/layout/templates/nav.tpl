@@ -26,16 +26,33 @@
 			{*
 				@remark insert your navigation per module here. Below you
 				can find an example on how to use the correct markup.
-
+			*}
 				<li>
-					<a href="/" class="toggleSubNavigation">link 2</a>
+					<a href="{$var|buildurl:'typography':'example'}" class="toggleSubNavigation">Bootstrap</a>
 					<ul class="subNavigation">
-						<li><a href="#">Sublink 1</a></li>
-						<li><a href="#">Sublink 2</a></li>
-						<li><a href="#">Sublink 3</a></li>
+						<li><a href="{$var|buildurl:'typography':'example'}">Typography</a></li>
+						<li><a href="{$var|buildurl:'code':'example'}">Code</a></li>
+						<li><a href="{$var|buildurl:'tables':'example'}">Tables</a></li>
+						<li><a href="{$var|buildurl:'forms':'example'}">Forms</a></li>
+						<li><a href="{$var|buildurl:'buttons':'example'}">Buttons</a></li>
+						<li><a href="{$var|buildurl:'images':'example'}">Images</a></li>
+						<li><a href="{$var|buildurl:'icons':'example'}">Icons by Glyphicons</a></li>
+
+						<li><a href="{$var|buildurl:'dropdowns':'example'}">Dropdowns</a></li>
+						<li><a href="{$var|buildurl:'button-groups':'example'}">Button groups</a></li>
+						<li><a href="{$var|buildurl:'button-dropdowns':'example'}">Button dropdowns</a></li>
+						<li><a href="{$var|buildurl:'navs':'example'}">Navs</a></li>
+						<li><a href="{$var|buildurl:'breadcrumbs':'example'}">Breadcrumbs</a></li>
+						<li><a href="{$var|buildurl:'pagination-example':'example'}">Pagination</a></li>
+						<li><a href="{$var|buildurl:'labels-and-badges':'example'}">Labels and badges</a></li>
+						<li><a href="{$var|buildurl:'typography-example':'example'}">Typography</a></li>
+						<li><a href="{$var|buildurl:'thumbnails-example':'example'}">Thumbnails</a></li>
+						<li><a href="{$var|buildurl:'alerts':'example'}">Alerts</a></li>
+						<li><a href="{$var|buildurl:'progress-bars':'example'}">Progress bars</a></li>
+						<li><a href="{$var|buildurl:'media-object':'example'}">Media object</a></li>
+						<li><a href="{$var|buildurl:'misc':'example'}">Misc</a></li>
 					</ul>
 				</li>
-			*}
 			{option:currentUser.isAdmin}
 				<li>
 					<a href="{$var|buildurl:'index':'users'}">{$lblUsers|ucfirst}</a>
