@@ -99,23 +99,6 @@ class SiteLocale extends SpoonTemplate
 		// init var
 		$foundALanguage = false;
 
-		// available in cookie?
-		if(SpoonCookie::exists('language') && SpoonCookie::get('language'))
-		{
-			// set language
-			$language = SpoonCookie::get('language');
-
-			// valid language?
-			if(!in_array($language, self::$possibleLanguages))
-			{
-				// delete cookie
-				SpoonCookie::delete('language');
-
-				// set language to first item in the possible languages
-				$language = self::$possibleLanguages[0];
-			}
-		}
-
 		// search for browser language
 		else
 		{
@@ -143,9 +126,6 @@ class SiteLocale extends SpoonTemplate
 
 			// no language found
 			if(!$foundALanguage) $language = 'nl';
-
-			// store in cookie
-			SpoonCookie::set('language', $language);
 		}
 
 		return $language;
