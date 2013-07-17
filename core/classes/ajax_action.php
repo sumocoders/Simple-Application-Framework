@@ -41,7 +41,9 @@ class AjaxAction
 		$this->setAction((string) $action);
 
 		// require the model if it exists
-		if(SpoonFile::exists(PATH_WWW . '/modules/' . $this->getModule() . '/model/model.php')) require_once PATH_WWW . '/modules/' . $this->getModule() . '/model/model.php';
+		if(SpoonFile::exists(PATH_WWW . '/modules/' . $this->getModule() . '/model/model.php')) {
+			require_once PATH_WWW . '/modules/' . $this->getModule() . '/model/model.php';
+		}
 
 		// execute the action
 		$this->execute();

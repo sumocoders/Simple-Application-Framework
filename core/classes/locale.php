@@ -97,35 +97,24 @@ class SiteLocale extends SpoonTemplate
 	public static function getPreferredLanguage()
 	{
 		// init var
-		$foundALanguage = false;
+		$language = 'nl';   // @remark: this should be the same as the default language.
 
-		// search for browser language
-		else
+		if(isset($_SERVER['HTTP_ACCEPT_LANGUAGE']))
 		{
-			if(isset($_SERVER['HTTP_ACCEPT_LANGUAGE']))
+			// get preferred languages
+			$browserLanguages = explode(',', $_SERVER['HTTP_ACCEPT_LANGUAGE']);
+
+			// loop preferred languages
+			foreach($browserLanguages as $language)
 			{
-				// get preferred languages
-				$browserLanguages = explode(',', $_SERVER['HTTP_ACCEPT_LANGUAGE']);
+				$languageAbbreviation = substr($language, 0, 2);
 
-				// init var
-				$foundALanguage = false;
-
-				// loop preferred languages
-				foreach($browserLanguages as $language)
+				if(in_array($languageAbbreviation, self::$possibleLanguages))
 				{
-					$languageAbbreviation = substr($language, 0, 2);
-
-					if(in_array($languageAbbreviation, self::$possibleLanguages))
-					{
-						$language = $languageAbbreviation;
-						$foundALanguage = true;
-						break;
-					}
+					$language = $languageAbbreviation;
+					break;
 				}
 			}
-
-			// no language found
-			if(!$foundALanguage) $language = 'nl';
 		}
 
 		return $language;
