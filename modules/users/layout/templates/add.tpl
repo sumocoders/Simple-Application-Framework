@@ -1,20 +1,27 @@
 {include:'{$CORE_PATH}/layout/templates/head.tpl'}
-{include:'{$CORE_PATH}/layout/templates/header.tpl'}
 {include:'{$CORE_PATH}/layout/templates/nav.tpl'}
 
-	<div id="content" class="container-fluid">
-		<section id="{$MODULE}" class="{$ACTION} row-fluid">
-			<div class="span12">
-				<header class="header">
+<div id="contentWrap">
+	<div id="content">
+		<header id="header" role="banner">
+			<div class="container">
+				<div class="title">
+					<a id="toggleMenu" class="visible-phone" href="#">{$lblMenu|uppercase}</a>
 					<h2>{$msgUsersAdd}</h2>
-				</header>
+				</div>
+				<div class="actions">
+					<a href="#" class="dropdownToggle visible-phone" data-toggle="dropdownItems">{$lblActions|ucfirst}</a>
+					<ul class="dropdownItems">
+						<li><a class="iconList" href="{$var|buildurl:'index':'users'}">{$lblOverview|ucfirst}</a></li>
+					</ul>
+				</div>
+			</div>
+		</header>
 
-				{option:formAddHasError}
-					<div class="alert alert-error">
-						{$errGeneralFormError}
-					</div>
-				{/option:formAddHasError}
+		{include:'{$CORE_PATH}/layout/templates/notifications.tpl'}
 
+		<main id="main" role="main">
+			<div class="container">
 				{form:add}
 					<div class="form">
 						<div class="control-group{option:txtEmailError} error{/option:txtEmailError}">
@@ -48,9 +55,10 @@
 					</div>
 				{/form:add}
 			</div>
-		</section>
-
-		{include:'{$CORE_PATH}/layout/templates/footer.tpl'}
+		</main>
 	</div>
+</div>
+
+{include:'{$CORE_PATH}/layout/templates/footer.tpl'}
 </body>
 </html>

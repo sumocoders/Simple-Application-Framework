@@ -197,6 +197,21 @@ class SiteForm extends SpoonForm
 
 		return $value;
 	}
+
+	/**
+	 * Parse this form in the given template.
+	 *
+	 * @param	SpoonTemplate $template		The template to parse the form in.
+	 */
+	public function parse(SpoonTemplate $template)
+	{
+		parent::parse($template);
+
+		if(!$this->isCorrect(true)) {
+			$template->assign('formHasError', true);
+		}
+
+	}
 }
 
 /**

@@ -162,9 +162,6 @@ class UsersEdit extends SiteBaseAction
 					)
 				);
 			}
-
-			// show general error
-			else $this->tpl->assign('form' . SpoonFilter::toCamelCase($this->frm->getName()) . 'HasError', true);
 		}
 	}
 }

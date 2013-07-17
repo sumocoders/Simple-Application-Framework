@@ -24,3 +24,12 @@
 		</div>
 	</div>
 {/option:warning}
+
+{option:formHasError}
+	<div class="alert alert-error" role="alert">
+		<div class="container">
+			<button type="button" class="close" data-dismiss="alert" title="{$lblClose|ucfirst}">{$lblClose|ucfirst}</button>
+			{$errGeneralFormError}
+		</div>
+	</div>
+{/option:formHasError}
