@@ -284,10 +284,6 @@ class SiteURL
 		// are there GET-parameters
 		if(isset($chunks[1]))
 		{
-			// remove from query string
-			$queryString = str_replace('?' . $chunks[1], '', $this->getQueryString());
-
-			// add parameters
 			foreach($_GET as $key => $value) $this->addParameter($value, $key);
 		}
 

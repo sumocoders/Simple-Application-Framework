@@ -124,9 +124,8 @@ class SiteDataGrid extends SpoonDataGrid
 			$html .= $value;
 			$html .= '</a>';
 
-			$value = $html;
-
 			if($image != '') $html .= '</span>';
+			$value = $html;
 
 			// reset url
 			$URL = null;
