@@ -130,24 +130,28 @@
       this.subNavOpen;
       $this = $(e.currentTarget);
       $subNav = $this.next('ul');
-      if (!this.subNavOpen) {
-        $this.addClass('active');
-        $subNav.addClass('open').slideDown();
-        this._setClassesBasedOnSubNavigation();
-        return this.subNavOpen = true;
-      } else {
-        if ($subNav.is('.open')) {
-          $this.removeClass('active');
-          $subNav.removeClass('open').slideUp();
-          this._setClassesBasedOnSubNavigation();
-          return this.subNavOpen = false;
-        } else {
-          $('#navbar .nav li a.active').removeClass('active');
-          $('.subNavigation.open').removeClass('open');
+      if ($subNav.length > 0) {
+        e.preventDefault();
+        if (!this.subNavOpen) {
           $this.addClass('active');
           $subNav.addClass('open').slideDown();
-          return this._setClassesBasedOnSubNavigation();
+          this._setClassesBasedOnSubNavigation();
+          this.subNavOpen = true;
+        } else {
+          if ($subNav.is('.open')) {
+            $this.removeClass('active');
+            $subNav.removeClass('open').slideUp();
+            this._setClassesBasedOnSubNavigation();
+            this.subNavOpen = false;
+          } else {
+            $('#navbar .nav li a.active').removeClass('active');
+            $('.subNavigation.open').removeClass('open');
+            $this.addClass('active');
+            $subNav.addClass('open').slideDown();
+            this._setClassesBasedOnSubNavigation();
+          }
         }
+        return false;
       }
     };
 

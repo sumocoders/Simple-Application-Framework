@@ -61,28 +61,30 @@ class Framework extends DefaultObject
     $this = $(e.currentTarget)
     $subNav = $this.next('ul')
 
-    # not open
-    if !@subNavOpen
-      $this.addClass('active')
-      $subNav.addClass('open').slideDown()
-      this._setClassesBasedOnSubNavigation()
-      @subNavOpen = true
-    else
-      # already open, so close
-      if $subNav.is('.open')
-        $this.removeClass('active')
-        $subNav.removeClass('open').slideUp()
-        this._setClassesBasedOnSubNavigation()
-        @subNavOpen = false
-
-      # replace the current subnavigation
-      else
-        $('#navbar .nav li a.active').removeClass('active')
-        $('.subNavigation.open').removeClass('open')
+    if $subNav.length > 0
+      e.preventDefault()
+      # not open
+      if !@subNavOpen
         $this.addClass('active')
         $subNav.addClass('open').slideDown()
         this._setClassesBasedOnSubNavigation()
+        @subNavOpen = true
+      else
+        # already open, so close
+        if $subNav.is('.open')
+          $this.removeClass('active')
+          $subNav.removeClass('open').slideUp()
+          this._setClassesBasedOnSubNavigation()
+          @subNavOpen = false
 
+        # replace the current subnavigation
+        else
+          $('#navbar .nav li a.active').removeClass('active')
+          $('.subNavigation.open').removeClass('open')
+          $this.addClass('active')
+          $subNav.addClass('open').slideDown()
+          this._setClassesBasedOnSubNavigation()
+      false
 
   toggleMediumMenu: (e) ->
     e.preventDefault()
