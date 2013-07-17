@@ -28,9 +28,6 @@ class DefaultObject
 
 class Framework extends DefaultObject
   @events
-#    'a.backToTop': click : 'scrollToTop'
-#    'a[href*="#"]': click : 'scrollTo'
-
     # toggle menu on full size
     '#navbar .nav li a' : click : 'toggleSubNavigation'
 
@@ -43,6 +40,12 @@ class Framework extends DefaultObject
 
     # show action-list on iphone-size
     '.dropdownToggle' : click : 'toggleDropdown'
+
+    # animate scrolling
+    'a.backToTop': click : 'scrollToTop'
+#    'a[href*="#"]': click : 'scrollTo'
+
+
 
   @onDomReady [
 #    'functionname'
@@ -111,8 +114,14 @@ class Framework extends DefaultObject
     $(hash).length > 0
       $('html, body').stop().animate({
         scrollTop: $(hash).offset().top
-      }, 600);
+      }, 500);
       false
+
+  scrollToTop: (e) ->
+    e.preventDefault()
+    $('html, body').stop().animate({
+      scrollTop: $('#content').offset().top
+    }, 500);
 
 Framework.current = new Framework()
 

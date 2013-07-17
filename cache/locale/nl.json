@@ -58,6 +58,7 @@
 	},
 	"msg": {
 		"AreYouSure": "Ben je zeker?",
+		"BackToTop": "Terug naar begin",
 		"BugReportStep1": "Rapporteer een bug. Omschrijf het probleem en het verwachte resultaat zo bondig mogelijk.",
 		"BugReportStep2": "We verzamelen nu enkele gegevens om ons te helpen het probleem te analyseren.",
 		"BugReportStep3": "Bedankt, de informatie werd doorgestuurd.",

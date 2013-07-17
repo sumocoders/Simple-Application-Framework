@@ -58,6 +58,7 @@
 	},
 	"msg": {
 		"AreYouSure": "Are you sure?",
+		"BackToTop": "Back to top",
 		"BugReportStep1": "Report a bug. Describe the problem and the expected result as concise as possible.",
 		"BugReportStep2": "We now collect some information to help us analyze the problem.",
 		"BugReportStep3": "Thank you, the information was sent.",

@@ -105,6 +105,9 @@
       },
       '.dropdownToggle': {
         click: 'toggleDropdown'
+      },
+      'a.backToTop': {
+        click: 'scrollToTop'
       }
     });
 
@@ -175,9 +178,16 @@
       if ((url === '' || url.indexOf(document.location.pathname) >= 0) && !$anchor.is('[data-no-scroll]') && $(hash).length > 0) {
         $('html, body').stop().animate({
           scrollTop: $(hash).offset().top
-        }, 600);
+        }, 500);
         return false;
       }
+    };
+
+    Framework.prototype.scrollToTop = function(e) {
+      e.preventDefault();
+      return $('html, body').stop().animate({
+        scrollTop: $('#content').offset().top
+      }, 500);
     };
 
     return Framework;
