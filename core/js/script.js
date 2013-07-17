@@ -27,7 +27,6 @@ var jsSite = {
 
 		jsSite.bugs.init();
 		jsSite.forms.init();
-		jsSite.layout.init();
 		jsSite.links.init();
 		jsSite.search.init();
 
@@ -505,22 +504,6 @@ jsSite.forms = {
 				});
 			});
 		}
-	}
-}
-jsSite.layout = {
-	init: function() {
-		if(
-			!(navigator.userAgent.match(/iPhone/i)) &&
-			!(navigator.userAgent.match(/iPod/i)) &&
-			!(navigator.userAgent.match(/iPad/i))
-		) {
-			$(document).on('scroll', jsSite.layout.onScroll);
-		}
-	},
-	onScroll: function(e) {
-		var $this = $(this), $header = $('#header'), $navBar = $('#navBar');
-		if($this.scrollTop() >= $header.height()) $navBar.addClass('fixed').css('width', ($('#header').width()));
-		if($this.scrollTop() < $header.height()) $navBar.removeClass('fixed').css('width', 'auto');
 	}
 }
 jsSite.links = {
