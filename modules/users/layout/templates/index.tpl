@@ -1,5 +1,4 @@
 {include:'{$CORE_PATH}/layout/templates/head.tpl'}
-{include:'{$CORE_PATH}/layout/templates/header.tpl'}
 {include:'{$CORE_PATH}/layout/templates/nav.tpl'}
 
 	<div id="content" class="container-fluid">
@@ -16,16 +15,6 @@
 					</div>
 				</header>
 
-				{option:report}
-					<div class="alert alert-success">
-						{$report}
-					</div>
-				{/option:report}
-				{option:error}
-					<div class="alert alert-error">
-						{$error}
-					</div>
-				{/option:error}
 
 				{option:dataGrid}
 					{$dataGrid}

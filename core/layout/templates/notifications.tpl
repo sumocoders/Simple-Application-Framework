@@ -1,23 +1,26 @@
-{* The good *}
-<div class="alert alert-success">
-  <div class="container">
-    <button type="button" class="close" data-dismiss="alert">Close</button>
-    Well done lad!
-  </div>
-</div>
+{option:report}
+	<div class="alert alert-success" role="status">
+		<div class="container">
+			<a class="close" data-dismiss="alert" title="{$lblClose|ucfirst}">{$lblClose|ucfirst}</a>
+			{$report}
+		</div>
+	</div>
+{/option:report}
 
-{* The bad *}
-<div class="alert alert-error">
-  <div class="container">
-    <button type="button" class="close" data-dismiss="alert">Close</button>
-    Oh snap, you screwed up big time
-  </div>
-</div>
+{option:error}
+	<div class="alert alert-error" role="alert">
+		<div class="container">
+			<button type="button" class="close" data-dismiss="alert" title="{$lblClose|ucfirst}">{$lblClose|ucfirst}</button>
+			{$error}
+		</div>
+	</div>
+{/option:error}
 
-{* And the ugly *}
-<div class="alert alert-warning">
-  <div class="container">
-    <button type="button" class="close" data-dismiss="alert">Close</button>
-    Brace yourselves! Winter is coming!
-  </div>
-</div>
+{option:warning}
+	<div class="alert alert-warning" role="alert">
+		<div class="container">
+			<button type="button" class="close" data-dismiss="alert" title="{$lblClose|ucfirst}">{$lblClose|ucfirst}</button>
+			{$warning}
+		</div>
+	</div>
+{/option:warning}

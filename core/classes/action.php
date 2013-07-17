@@ -311,6 +311,21 @@ class SiteBaseAction
 			// assign
 			$this->tpl->assign('error', $message);
 		}
+
+		// error provided in url?
+		$warning = SpoonFilter::getGetValue('warning', null, '');
+		if($warning != '')
+		{
+			// get message
+			$message = SiteLocale::msg(SpoonFilter::toCamelCase($warning , '-'));
+
+			// any vars?
+			$var = SpoonFilter::getGetValue('var', null, '');
+			if($var != '') $message = vsprintf($message, $var);
+
+			// assign
+			$this->tpl->assign('warning', $message);
+		}
 	}
 
 	/**
