@@ -10,8 +10,8 @@
 					<h2>{$lblExample|ucfirst}</h2>
 				</div>
 				<div class="actions">
-					<a href="#" class="dropdownToggle visible-phone" data-toggle="dropdownItems">{$lblActions|ucfirst}</a>
-					<ul class="dropdownItems">
+					<a href="#" class="dropdownToggle visible-phone">{$lblActions|ucfirst}</a>
+					<ul>
 						<li><a class="iconList" href="#">{$lblOverview|ucfirst}</a></li>
 						<li><a class="iconPrint" href="#">{$lblPrint|ucfirst}</a></li>
 						<li><a class="iconAdd" href="#">{$lblAdd|ucfirst}</a></li>
