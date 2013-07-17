@@ -66,7 +66,6 @@ class Init
 	 * AutoLoader
 	 *
 	 * @param	string $class	The class that should be loaded.
-	 * @return void
 	 */
 	public static function autoLoader($class)
 	{

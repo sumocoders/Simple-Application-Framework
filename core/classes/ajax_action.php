@@ -115,7 +115,6 @@ class AjaxAction
 	 * Set the action
 	 *
 	 * @param	string $action	The action.
-	 * @return void
 	 */
 	private function setAction($action)
 	{
@@ -126,7 +125,6 @@ class AjaxAction
 	 * Set the module
 	 *
 	 * @param	string $module	The module.
-	 * @return void
 	 */
 	private function setModule($module)
 	{
@@ -154,8 +152,6 @@ class AjaxBaseAction
 
 	/**
 	 * Execute the action
-	 *
-	 * @return void
 	 */
 	public function execute()
 	{
@@ -167,7 +163,6 @@ class AjaxBaseAction
 	 * @param int $statusCode The status code for the response, use the available constants. (self::OK, self::BAD_REQUEST, self::FORBIDDEN, self::ERROR).
 	 * @param mixed[optional] $data The data to output.
 	 * @param string[optional] $message The text-message to send.
-	 * @return void
 	 */
 	public function output($statusCode, $data = null, $message = null)
 	{

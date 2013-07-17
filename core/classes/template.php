@@ -63,7 +63,6 @@ class SiteTemplate extends SpoonTemplate
 	 * Add a css-file
 	 *
 	 * @param	string $url		The url of the css-file.
-	 * @return void
 	 */
 	public function addCssFile($url)
 	{
@@ -94,7 +93,6 @@ class SiteTemplate extends SpoonTemplate
 	 * Add a javascript file
 	 *
 	 * @param	string $url	The url of the js-file.
-	 * @return void
 	 */
 	public function addJavascriptFile($url)
 	{
@@ -117,7 +115,6 @@ class SiteTemplate extends SpoonTemplate
 	 * Will also assign the interface labels and all user-defined constants.
 	 *
 	 * @param	string $template	The template to display.
-	 * @return void
 	 */
 	public function display($template)
 	{
@@ -145,8 +142,6 @@ class SiteTemplate extends SpoonTemplate
 
 	/**
 	 * Map the fork-specific modifiers
-	 *
-	 * @return void
 	 */
 	private function mapCustomModifiers()
 	{
@@ -163,8 +158,6 @@ class SiteTemplate extends SpoonTemplate
 
 	/**
 	 * Parse all user-defined constants
-	 *
-	 * @return void
 	 */
 	private function parseConstants()
 	{
@@ -206,8 +199,6 @@ class SiteTemplate extends SpoonTemplate
 
 	/**
 	 * Parse the external loaded files into the header
-	 *
-	 * @return void
 	 */
 	private function parseExternalFiles()
 	{
@@ -255,8 +246,6 @@ class SiteTemplate extends SpoonTemplate
 
 	/**
 	 * Parse the locale
-	 *
-	 * @return void
 	 */
 	private function parseLocale()
 	{

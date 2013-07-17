@@ -98,8 +98,6 @@ class Authentication
 
 	/**
 	 * Log out the user
-	 *
-	 * @return void
 	 */
 	public static function logout()
 	{

@@ -159,7 +159,6 @@ class SiteDataGrid extends SpoonDataGrid
 	 * Defines the default URL.
 	 *
 	 * @param	string $URL		The URL to use.
-	 * @return void
 	 */
 	public function setURL($URL)
 	{

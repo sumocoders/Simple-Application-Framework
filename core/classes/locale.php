@@ -146,7 +146,6 @@ class SiteLocale extends SpoonTemplate
 	 * Set the locale
 	 *
 	 * @param	string $language	The language.
-	 * @return void
 	 */
 	public static function setLocale($language)
 	{

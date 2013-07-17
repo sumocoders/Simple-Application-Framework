@@ -13,8 +13,6 @@ class AjaxCoreBug extends AjaxBaseAction
 {
 	/**
 	 * Execute the action
-	 *
-	 * @return void
 	 */
 	public function execute()
 	{
