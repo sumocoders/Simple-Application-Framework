@@ -108,6 +108,9 @@
       },
       'a.backToTop': {
         click: 'scrollToTop'
+      },
+      'a[href*="#"]': {
+        click: 'scrollTo'
       }
     });
 
@@ -179,8 +182,8 @@
         $('html, body').stop().animate({
           scrollTop: $(hash).offset().top
         }, 500);
-        return false;
       }
+      return false;
     };
 
     Framework.prototype.scrollToTop = function(e) {

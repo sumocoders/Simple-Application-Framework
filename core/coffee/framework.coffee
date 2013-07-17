@@ -43,9 +43,7 @@ class Framework extends DefaultObject
 
     # animate scrolling
     'a.backToTop': click : 'scrollToTop'
-#    'a[href*="#"]': click : 'scrollTo'
-
-
+    'a[href*="#"]': click : 'scrollTo'
 
   @onDomReady [
 #    'functionname'
@@ -101,7 +99,7 @@ class Framework extends DefaultObject
     $this.toggleClass('open');
     $this.next('ul').slideToggle()
 
-# Scroll methods
+# Animated scroll methods
   scrollTo: (e) ->
     $anchor = $(e.currentTarget)
     href = $anchor.attr('href')
@@ -110,12 +108,11 @@ class Framework extends DefaultObject
 
     # check if we have an url, and if it is on the current page and the element exists
     if  (url == '' or url.indexOf(document.location.pathname) >= 0) and
-    not $anchor.is('[data-no-scroll]') and
-    $(hash).length > 0
+    not $anchor.is('[data-no-scroll]') and $(hash).length > 0
       $('html, body').stop().animate({
         scrollTop: $(hash).offset().top
       }, 500);
-      false
+    false
 
   scrollToTop: (e) ->
     e.preventDefault()
