@@ -35,7 +35,7 @@ class SiteDataGrid extends SpoonDataGrid
 		$this->setCompileDirectory(CACHE_PATH . '/compiled_templates');
 
 		// set attributes for the data grid
-		$this->setAttributes(array('class' => 'datagrid table table-striped'));
+		$this->setAttributes(array('class' => 'table'));
 
 		// hide the id by default
 		if(in_array('id', $this->getColumns())) $this->setColumnsHidden('id');
