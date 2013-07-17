@@ -173,7 +173,9 @@ jsSite.data = {
 	initialized: false,
 	data: {},
 	init: function() {
-		if(typeof jsData == 'undefined') throw 'jsData is not available';
+		if(typeof jsData == 'undefined') {
+			throw 'jsData is not available';
+		}
 		jsSite.data.data = jsData;
 		jsSite.data.initialized = true;
 	},
