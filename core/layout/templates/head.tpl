@@ -46,7 +46,7 @@
 		var jsData = {$jsData};
 	</script>
 </head>
-<body>
+<body id="{$MODULE}" class="{$ACTION}">
 	<!--[if lt IE 8 ]>
 		<div id="ie6" class="alert alert-block" role="alert">
 			<a href="#" class="close" data-dismiss="alert" title="{$lblClose|ucfirst}">x</a>
