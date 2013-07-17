@@ -105,9 +105,9 @@ class SiteLocale extends SpoonTemplate
 			$browserLanguages = explode(',', $_SERVER['HTTP_ACCEPT_LANGUAGE']);
 
 			// loop preferred languages
-			foreach($browserLanguages as $language)
+			foreach($browserLanguages as $browserLanguage)
 			{
-				$languageAbbreviation = substr($language, 0, 2);
+				$languageAbbreviation = substr($browserLanguage, 0, 2);
 
 				if(in_array($languageAbbreviation, self::$possibleLanguages))
 				{
