@@ -27,7 +27,6 @@ var jsSite = {
 
 		jsSite.bugs.init();
 		jsSite.forms.init();
-		jsSite.links.init();
 		jsSite.search.init();
 
 		try {
@@ -506,51 +505,6 @@ jsSite.forms = {
 				});
 			});
 		}
-	}
-}
-jsSite.links = {
-	init: function() {
-		$(document).on('click', 'a.confirm', jsSite.links.confirm)
-		$(document).on('click', 'a.confirmPostForm', jsSite.links.confirmDelete);
-		$('#confirmModal').modal({ show: false, backdrop: false });
-	},
-	confirm: function(e) {
-		e.preventDefault();
-		var $this = $(this);
-		$('#confirmModalOk').attr('href', $this.attr('href'));
-		$('#confirmModalMessage').html($this.data('message'));
-		$('#confirmModal').modal('show');
-	},
-	confirmDelete: function(e) {
-		e.preventDefault();
-		var $this = $(this);
-		var $modal = $('#confirmModal');
-		$('#confirmModalMessage').html($this.data('message'));
-		$modal.on('click', '#confirmModalOk', function(e) {
-			$('#confirmModal').modal('hide');
-			var $form = $('<form></form>')
-				.attr('style', 'display: none;')
-				.attr('action', $this.attr('href'))
-				.attr('method', 'POST');
-			$form.append(
-				$('<input type="hidden">').attr('name', 'form_token')
-					.attr('value', jsSite.data.get('core.form_token'))
-			);
-			for(var i in $this.data()) {
-				if(i.substr(0, 5) == 'field') {
-					var $element = $('<input type="hidden">')
-						.attr('name', i.substr(5).toLowerCase())
-						.attr('value', $this.data(i));
-					$form.append($element);
-				}
-			}
-			$('body').append($form);
-			$form.submit();
-		});
-		$modal.modal('show');
-		$modal.on('hide', function() {
-			$modal.off('click', '#confirmModalOk');
-		});
 	}
 }
 jsSite.locale = {

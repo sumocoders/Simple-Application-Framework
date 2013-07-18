@@ -12,25 +12,20 @@
       return _ref;
     }
 
-    App.events({
-      '.nav-tabs a': {
-        click: 'initTabs'
-      }
-    });
+    App.events;
 
-    App.onDomReady(['initCarousel', 'initTabs']);
-
-    App.prototype.initCarousel = function() {
-      return $('.carousel').carousel();
-    };
-
-    App.prototype.initTabs = function(e) {
-      $(e.currentTarget).tab('show');
-      return false;
-    };
+    App.onDomReady([]);
 
     return App;
 
   })(Framework);
+
+  App.current = new App();
+
+  $(function() {
+    return App.current.domReady();
+  });
+
+  window.App = App;
 
 }).call(this);
