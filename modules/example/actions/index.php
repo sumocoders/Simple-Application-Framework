@@ -16,6 +16,7 @@ class ExampleIndex extends SiteBaseAction
 	 */
 	public function execute()
 	{
+		$this->parseReports();
 		$this->display();
 	}
 }

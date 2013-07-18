@@ -24,6 +24,32 @@
 
 		<main id="main" role="main">
         	<div class="container">
+				<div class="row-fluid">
+					<div class="span12">
+						<p>This button will use a dialog to confirm the action.</p>
+						<p>
+							<a href="#url-after-confirmation" class="btn confirm" data-message="{$msgAreYouSure}">
+								{$lblOk|ucfirst}
+							</a>
+						</p>
+					</div>
+				</div>
+				<div class="row-fluid">
+					<div class="span12">
+						<p>
+							This button will use a dialog to confirm the action, and when confirmed will dynamically build a form and submit it.
+							<a href="https://github.com/sumocoders/Simple-Application-Framework/commit/6c8b5926bdfe8618a865274635094d1e04d3dce9">More information can be found on Github</a>.
+						</p>
+						<p>
+							<a href="#url-off-the-form" class="btn btn-danger confirmPostForm"
+								data-field-form="delete" data-field-form-id="1" data-message="{$msgAreYouSure}">
+								<i class="icon-trash icon-white"></i>
+								{$lblDelete|ucfirst}
+							</a>
+						</p>
+					</div>
+				</div>
+
 				<table class="table">
 					<thead>
 						<tr>
