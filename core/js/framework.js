@@ -85,6 +85,8 @@
     __extends(Framework, _super);
 
     function Framework() {
+      this.askConfirmationAndPostAsAForm = __bind(this.askConfirmationAndPostAsAForm, this);
+      this._postAsForm = __bind(this._postAsForm, this);
       this.toggleSubNavigation = __bind(this.toggleSubNavigation, this);
       this._setClassesBasedOnSubNavigation = __bind(this._setClassesBasedOnSubNavigation, this);      _ref = Framework.__super__.constructor.apply(this, arguments);
       return _ref;
@@ -111,6 +113,12 @@
       },
       'a[href*="#"]': {
         click: 'scrollTo'
+      },
+      'a.confirm': {
+        click: 'askConfirmation'
+      },
+      'a.confirmPostForm': {
+        click: 'askConfirmationAndPostAsAForm'
       }
     });
 
@@ -196,6 +204,55 @@
         scrollTop: $('#content').offset().top
       }, 500);
     };
+
+    Framework.prototype.askConfirmation = function(e) {
+      var $this;
+
+      e.preventDefault();
+      $this = $(e.currentTarget);
+      $('#confirmModalOk').attr('href', $this.attr('href'));
+      $('#confirmModalMessage').html($this.data('message'));
+      return $('#confirmModal').modal('show');
+    };
+
+    false;
+
+    Framework.prototype._postAsForm = function(e) {
+      var $element, $form, name, value, _ref1;
+
+      $form = $('<form></form>').attr('style', 'display: none;').attr('action', e.attr('href')).attr('method', 'POST').append($('<input type="hidden">').attr('name', 'form_token'));
+      _ref1 = e.data();
+      for (name in _ref1) {
+        value = _ref1[name];
+        if (name.substr(0, 5) === 'field') {
+          $element = $('<input>').attr('type', 'hidden').attr('name', name.substr(5).toLowerCase()).attr('value', value);
+          $form.append($element);
+        }
+      }
+      $('#confirmModal').modal('hide');
+      $('body').append($form);
+      return $form.submit();
+    };
+
+    false;
+
+    Framework.prototype.askConfirmationAndPostAsAForm = function(e) {
+      var $modal, $this,
+        _this = this;
+
+      e.preventDefault();
+      $this = $(e.currentTarget);
+      $modal = $('#confirmModal');
+      $('#confirmModalMessage').html($this.data('message'));
+      return $modal.on('click', '#confirmModalOk', function(e) {
+        e.preventDefault();
+        return _this._postAsForm($this);
+      }).modal('show').on('hide', function(e) {
+        return $modal.off('click', '#confirmModalOk');
+      });
+    };
+
+    false;
 
     return Framework;
 

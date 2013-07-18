@@ -45,12 +45,16 @@ class Framework extends DefaultObject
     'a.backToTop': click : 'scrollToTop'
     'a[href*="#"]': click : 'scrollTo'
 
+    # link methods
+    'a.confirm': click : 'askConfirmation'
+    'a.confirmPostForm': click : 'askConfirmationAndPostAsAForm'
   @onDomReady [
 #    'functionname'
   ]
 
 # Menu methods
   _setClassesBasedOnSubNavigation: () =>
+    # we can't use toggle class as we don't know what the current state is
     if($('#navbar .nav ul.open').length == 0)
       $('#toggleTabletNavbar, #navbar, #content, .alert').removeClass('subnav')
     else
@@ -88,15 +92,18 @@ class Framework extends DefaultObject
 
   toggleMediumMenu: (e) ->
     e.preventDefault()
+
     $('#navbar').toggleClass('open');
     $(e.currentTarget).toggleClass('open');
 
   toggleSmallMenu: (e) ->
     e.preventDefault()
+
     $('#content').toggleClass('open');
 
   toggleDropdown: (e) ->
     e.preventDefault()
+
     $this = $(e.currentTarget)
     $this.toggleClass('open');
     $this.next('ul').slideToggle()
@@ -118,9 +125,62 @@ class Framework extends DefaultObject
 
   scrollToTop: (e) ->
     e.preventDefault()
+
     $('html, body').stop().animate({
       scrollTop: $('#content').offset().top
     }, 500);
+
+# Link methods
+  askConfirmation: (e) ->
+    e.preventDefault();
+    $this = $(e.currentTarget)
+
+    $('#confirmModalOk').attr('href', $this.attr('href'));
+    $('#confirmModalMessage').html($this.data('message'));
+    $('#confirmModal').modal('show');
+  false
+
+  _postAsForm: (e) =>
+    # @defv gij een idee wrm dit twee keer wordt aangeroepen
+
+    # build the form
+    $form = $('<form></form>') # we can't use an single-style tag, because IE can't handle this
+      .attr('style', 'display: none;')
+      .attr('action', e.attr('href'))
+      .attr('method', 'POST')
+      .append(
+        $('<input type="hidden">').attr('name', 'form_token')
+#          .attr('value', jsSite.data.get('core.form_token')) @todo Fix me
+      )
+
+    # append the data
+    for name, value of e.data()
+      if name.substr(0, 5) == 'field'
+        $element = $('<input>').attr('type', 'hidden')
+          .attr('name', name.substr(5).toLowerCase())
+          .attr('value', value)
+        $form.append($element)
+
+    $('#confirmModal').modal('hide')
+    $('body').append($form)
+    $form.submit()
+  false
+
+  askConfirmationAndPostAsAForm: (e) =>
+    e.preventDefault();
+    $this = $(e.currentTarget)
+    $modal = $('#confirmModal')
+
+    $('#confirmModalMessage').html($this.data('message'))
+    $modal.on('click', '#confirmModalOk', (e) =>
+      e.preventDefault()
+      this._postAsForm($this)
+    )
+      .modal('show')
+      .on('hide', (e) =>
+        $modal.off('click', '#confirmModalOk')
+      )
+  false
 
 Framework.current = new Framework()
 
