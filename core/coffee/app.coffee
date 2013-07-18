@@ -1,19 +1,14 @@
 class App extends Framework
   @events
 #    '#element' : event : 'functionName'
-    '.nav-tabs a' : click : 'initTabs'
 
   @onDomReady [
 #    'functionName'
-    'initCarousel'
-    'initTabs'
   ]
 
-  initCarousel: ->
-    $('.carousel').carousel()
+App.current = new App()
 
-  initTabs: (e) ->
-    $(e.currentTarget).tab('show')
-    false
+$ ->
+  App.current.domReady()
 
-
+window.App = App
