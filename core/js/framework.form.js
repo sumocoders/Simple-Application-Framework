@@ -13,7 +13,11 @@
       return _ref;
     }
 
+<<<<<<< HEAD
     Form.onDomReady(['_dateFields', '_normalDateFields', '_startingFromDateFields', '_untilDateFields', '_rangeDateFields']);
+=======
+    Form.onDomReady(['_dateFields', '_normalDateFields', '_startingFromDateFields', '_untilDateFields', '_rangeDateFields', '_fixPlaceholders', '_hijackSubmit']);
+>>>>>>> Centralised code for loading state
 
     Form.prototype._dateFieldOptions = {
       dateFormat: 'dd/mm/yy',
@@ -93,6 +97,48 @@
       });
     };
 
+<<<<<<< HEAD
+=======
+    Form.prototype._fixPlaceholders = function() {
+      var $input;
+
+      jQuery.support.placeholder = (__indexOf.call(document.createElement('input'), 'placeholder') >= 0);
+      if (!jQuery.support.placeholder) {
+        $input = $('input[placeholder]');
+        $input.on('focus', function() {
+          var $this;
+
+          $this = $(this);
+          if ($this.val() === $this.attr('placeholder')) {
+            return $this.val('').removeClass('placeholder');
+          }
+        });
+        $input.on('blur', function() {
+          var $this;
+
+          $this = $(this);
+          if ($this.val() === '' || $this.val() === $this.attr('placeholder')) {
+            return $this.val($this.attr('placeholder')).addClass('placeholder');
+          }
+        });
+        $input.blur;
+        return $input.parents('form').submit(function() {
+          return $(this).find('input[placeholder]').each(function() {
+            if ($(this).val() === $(this).attr('placeholder')) {
+              return $(this).val('');
+            }
+          });
+        });
+      }
+    };
+
+    Form.prototype._hijackSubmit = function() {
+      return $('form').on('submit', function(e) {
+        return Framework.current.showLoadingBar();
+      });
+    };
+
+>>>>>>> Centralised code for loading state
     return Form;
 
   })(DefaultObject);

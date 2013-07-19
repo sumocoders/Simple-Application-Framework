@@ -126,6 +126,49 @@
 
     Framework.onDomReady([]);
 
+    Framework.prototype._initAjax = function() {
+      $.ajaxSetup({
+        cache: false,
+        type: 'POST',
+        dataType: 'json',
+        timeout: 5000
+      });
+      $(document).ajaxError(function(event, XMLHttpRequest, ajaxOptions) {
+        var json, textStatus;
+
+        if (XMLHttpRequest.status === 403) {
+          window.location.reload();
+        }
+        if (ajaxOptions != null) {
+          textStatus = Locale.err('GeneralError');
+          if (XMLHttpRequest.responseText != null) {
+            json = $.parseJSON(XMLHttpRequest.responseText);
+            if (json.message != null) {
+              textStatus = json.message;
+            } else {
+              textStatus = XMLHttpRequest.responseText;
+            }
+          }
+          $('#header').after('<div class="alert alert-error" role="alert">' + '  <div class="container">' + '    <button type="button" class="close" data-dismiss="alert" title="' + Locale.lbl('Close') + '">' + Locale.lbl('Close') + '</button>' + '    ' + textStatus + '  </div>' + '</div>');
+        }
+        return false;
+      });
+      $(document).ajaxStart(function() {
+        return Framework.current.showLoadingBar();
+      });
+      return $(document).ajaxStop(function() {
+        return Framework.current.hideLoadingBar();
+      });
+    };
+
+    Framework.prototype.showLoadingBar = function() {
+      return $('#header').addClass('progress progress-striped active');
+    };
+
+    Framework.prototype.hideLoadingBar = function() {
+      return $('#header').removeClass('progress progress-striped active');
+    };
+
     Framework.prototype._setClassesBasedOnSubNavigation = function() {
       if ($('#navbar .nav ul.open').length === 0) {
         return $('#toggleTabletNavbar, #navbar, #content, .alert').removeClass('subnav');
@@ -260,7 +303,7 @@
 
   })(DefaultObject);
 
-  Framework.current = new Framework;
+  Framework.current = new Framework();
 
   $(function() {
     return Framework.current.domReady();

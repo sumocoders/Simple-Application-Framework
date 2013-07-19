@@ -54,6 +54,53 @@ class Framework extends DefaultObject
 #    'functionname'
   ]
 
+  _initAjax: ->
+    # set some defaults for AJAX-request
+    $.ajaxSetup
+      cache: false
+      type: 'POST'
+      dataType: 'json'
+      timeout: 5000
+
+    # 403 means we aren't authenticated anymore, so reload the page
+    $(document).ajaxError((event, XMLHttpRequest, ajaxOptions) ->
+      window.location.reload() if XMLHttpRequest.status == 403
+
+      if ajaxOptions?
+        textStatus = Locale.err('GeneralError')
+
+        if XMLHttpRequest.responseText?
+          json = $.parseJSON(XMLHttpRequest.responseText)
+          if json.message?
+            textStatus = json.message
+          else
+            textStatus = XMLHttpRequest.responseText
+
+        $('#header').after(
+          '<div class="alert alert-error" role="alert">' +
+          '  <div class="container">' +
+          '    <button type="button" class="close" data-dismiss="alert" title="' + Locale.lbl('Close') + '">' + Locale.lbl('Close') + '</button>' +
+          '    ' + textStatus +
+          '  </div>' +
+          '</div>'
+        )
+      false
+    )
+
+    # show spinners
+    $(document).ajaxStart(() ->
+      Framework.current.showLoadingBar()
+    )
+    $(document).ajaxStop(() ->
+      Framework.current.hideLoadingBar()
+    )
+
+  showLoadingBar: ->
+    $('#header').addClass('progress progress-striped active');
+
+  hideLoadingBar: ->
+    $('#header').removeClass('progress progress-striped active');
+
 # Menu methods
   _setClassesBasedOnSubNavigation: () =>
     # we can't use toggle class as we don't know what the current state is
@@ -185,7 +232,7 @@ class Framework extends DefaultObject
       )
   false
 
-Framework.current = new Framework
+Framework.current = new Framework()
 
 $ ->
   Framework.current.domReady()
