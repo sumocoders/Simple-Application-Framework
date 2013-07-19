@@ -2,13 +2,15 @@
 	<a href="/" rel="home" class="logo hidden-phone">{$SITE_DEFAULT_TITLE}</a>
 
 	<div id="searchBox" class="mobile" role="search">
-		<div class="controls">
-			<input id="searchQuery" name="q" type="search" placeholder="{$lblSearch|ucfirst}" class="input-medium">
-			<button type="submit" class="btn">
-				<i class="icon-search"></i>
-				<span class="hide">{$lblSearch|ucfirst}</span>
-			</button>
-		</div>
+		<form action="#">
+			<div class="controls">
+				<input id="searchQuery" name="q" type="search" placeholder="{$lblSearch|ucfirst}" class="input-medium">
+				<button type="submit" class="btn">
+					<i class="icon-search"></i>
+					<span class="hide">{$lblSearch|ucfirst}</span>
+				</button>
+			</div>
+		</form>
 	</div>
 	<div class="container">
 		<ul class="nav">
@@ -60,13 +62,15 @@
 		</ul>
 	</div>
 	<div id="searchBox" class="desktop" role="search">
-		<div class="controls">
-			<input id="searchQuery" name="q" type="search" placeholder="{$lblSearch|ucfirst}" class="input-medium">
-			<button type="submit" class="btn">
-				<i class="icon-search"></i>
-				<span class="hide">{$lblSearch|ucfirst}</span>
-			</button>
-		</div>
+		<form action="#">
+			<div class="controls">
+				<input id="searchQuery" name="q" type="search" placeholder="{$lblSearch|ucfirst}" class="input-medium">
+				<button type="submit" class="btn">
+					<i class="icon-search"></i>
+					<span class="hide">{$lblSearch|ucfirst}</span>
+				</button>
+			</div>
+		</form>
 	</div>
 </nav>
 <a href="#" id="toggleTabletNavbar">{$lblMenu|uppercase}</a>
