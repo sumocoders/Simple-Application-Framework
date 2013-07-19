@@ -100,10 +100,10 @@ class Framework extends DefaultObject
     )
 
   showLoadingBar: ->
-    $('#header').addClass('progress progress-striped active');
+    $('#header').addClass('progress progress-striped active')
 
   hideLoadingBar: ->
-    $('#header').removeClass('progress progress-striped active');
+    $('#header').removeClass('progress progress-striped active')
 
 # Menu methods
   _setClassesBasedOnSubNavigation: () =>
