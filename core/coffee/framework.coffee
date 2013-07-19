@@ -183,7 +183,7 @@ class Framework extends DefaultObject
       )
   false
 
-Framework.current = new Framework()
+Framework.current = new Framework
 
 $ ->
   Framework.current.domReady()
