@@ -52,7 +52,7 @@
 		{/iteration:javascript}
 	{/option:javascript}
 </head>
-<body id="{$MODULE}" class="{$ACTION}">
+<body class="{$MODULE} {$ACTION}">
 	<!--[if lt IE 8 ]>
 		<div id="ie6" class="alert alert-block" role="alert">
 			<a href="#" class="close" data-dismiss="alert" title="{$lblClose|ucfirst}">x</a>
