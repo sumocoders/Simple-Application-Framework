@@ -52,6 +52,8 @@ class Framework extends DefaultObject
     'a.confirmPostForm': click : 'askConfirmationAndPostAsAForm'
   @onDomReady [
 #    'functionname'
+    '_initAjax'
+    '_initializeSearch'
   ]
 
   _initAjax: ->
@@ -233,6 +235,57 @@ class Framework extends DefaultObject
         $modal.off('click', '#confirmModalOk')
       )
   false
+
+# search
+  _initializeSearch: ->
+    $('.searchBox input[name=q]').autocomplete(
+      position:
+        using: (position, elements) ->
+          newPosition =
+            left: position.left
+            top: 'auto'
+            bottom: elements.target.height,
+            margin: 0
+          elements.element.element.css(newPosition)
+      source: (request, response) ->
+        $.ajax
+          url: '/ajax.php?module=core&action=search&language=' + Data.get('core.language')
+          data: { q: request.term }
+          success: (data) ->
+            items = []
+            for value in data.data
+              items.push(
+                {
+                  label: value.label + ' (' + value.module + ')'
+                  value: value
+                }
+              )
+            response(items)
+      select: (e, ui) ->
+        e.preventDefault()
+        if ui.item.value.url?
+          document.location = ui.item.value.url
+        else if ui.item.value.value?
+          return ui.item.value.value
+        else
+          return ui.item.label
+      focus: (e, ui) ->
+        e.preventDefault()
+        $(e.target).val(ui.item.value.label)
+    )
+
+    $('.searchBox input[name=q]').each ->
+      $(this).data('ui-autocomplete')._renderItem = Framework.current.renderItem
+
+  renderItem: (ul, item) ->
+    $('<li>')
+      .append(
+        $('<a>').append(
+          item.value.label +
+          '<small class="muted"> (' + item.value.module + ')</small>'
+        )
+      )
+      .appendTo(ul)
 
 Framework.current = new Framework
 

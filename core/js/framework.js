@@ -124,7 +124,7 @@
       }
     });
 
-    Framework.onDomReady([]);
+    Framework.onDomReady(['_initAjax', '_initializeSearch']);
 
     Framework.prototype._initAjax = function() {
       $.ajaxSetup({
@@ -298,6 +298,67 @@
     };
 
     false;
+
+    Framework.prototype._initializeSearch = function() {
+      $('.searchBox input[name=q]').autocomplete({
+        position: {
+          using: function(position, elements) {
+            var newPosition;
+
+            newPosition = {
+              left: position.left,
+              top: 'auto',
+              bottom: elements.target.height,
+              margin: 0
+            };
+            return elements.element.element.css(newPosition);
+          }
+        },
+        source: function(request, response) {
+          return $.ajax({
+            url: '/ajax.php?module=core&action=search&language=' + Data.get('core.language'),
+            data: {
+              q: request.term
+            },
+            success: function(data) {
+              var items, value, _i, _len, _ref1;
+
+              items = [];
+              _ref1 = data.data;
+              for (_i = 0, _len = _ref1.length; _i < _len; _i++) {
+                value = _ref1[_i];
+                items.push({
+                  label: value.label + ' (' + value.module + ')',
+                  value: value
+                });
+              }
+              return response(items);
+            }
+          });
+        },
+        select: function(e, ui) {
+          e.preventDefault();
+          if (ui.item.value.url != null) {
+            return document.location = ui.item.value.url;
+          } else if (ui.item.value.value != null) {
+            return ui.item.value.value;
+          } else {
+            return ui.item.label;
+          }
+        },
+        focus: function(e, ui) {
+          e.preventDefault();
+          return $(e.target).val(ui.item.value.label);
+        }
+      });
+      return $('.searchBox input[name=q]').each(function() {
+        return $(this).data('ui-autocomplete')._renderItem = Framework.current.renderItem;
+      });
+    };
+
+    Framework.prototype.renderItem = function(ul, item) {
+      return $('<li>').append($('<a>').append(item.value.label + '<small class="muted"> (' + item.value.module + ')</small>')).appendTo(ul);
+    };
 
     return Framework;
 

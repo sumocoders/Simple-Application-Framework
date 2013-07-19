@@ -1,7 +1,8 @@
 <nav id="navbar" role="navigation">
 	<a href="/" rel="home" class="logo hidden-phone">{$SITE_DEFAULT_TITLE}</a>
 
-	<div id="searchBox" class="mobile" role="search">
+	{* @todo mathias twee keer zelfde id mag niet he *}
+	<div id="searchBox" class="mobile searchBox" role="search">
 		<form action="#">
 			<div class="controls">
 				<input id="searchQuery" name="q" type="search" placeholder="{$lblSearch|ucfirst}" class="input-medium">
@@ -61,7 +62,7 @@
 			{/option:currentUser.isAdmin}
 		</ul>
 	</div>
-	<div id="searchBox" class="desktop" role="search">
+	<div id="searchBox" class="desktop searchBox" role="search">
 		<form action="#">
 			<div class="controls">
 				<input id="searchQuery" name="q" type="search" placeholder="{$lblSearch|ucfirst}" class="input-medium">
