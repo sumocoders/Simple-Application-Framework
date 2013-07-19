@@ -690,6 +690,7 @@ input[type="color"],
     
     .container {
       padding: 0 25px;
+      @include box-sizing(border-box);
     }
   }
 }
