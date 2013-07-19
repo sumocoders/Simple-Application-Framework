@@ -1,17 +1,12 @@
-class Form extends DefaultObject
-  @onDomReady [
-#    'functionname'
-    '_dateFields'
-    '_normalDateFields'
-    '_startingFromDateFields'
-    '_untilDateFields'
-    '_rangeDateFields'
-
-    # fixes
-    '_fixPlaceholders'
-
-    '_hijackSubmit'
-  ]
+class Form
+  constructor: ->
+    @_dateFields()
+    @_normalDateFields()
+    @_startingFromDateFields()
+    @_untilDateFields()
+    @_rangeDateFields()
+    @_fixPlaceholders()
+    @_hijackSubmit()
 
 # date fields
   _dateFieldOptions:
@@ -88,7 +83,7 @@ class Form extends DefaultObject
     )
 
   _dateFields: ->
-    $.datepicker.setDefaults Form.current._dateFieldOptions
+    $.datepicker.setDefaults Form._dateFieldOptions
 
   _normalDateFields: ->
     $('.inputDatefieldNormal').each(() ->
@@ -98,7 +93,7 @@ class Form extends DefaultObject
   _startingFromDateFields: =>
     $('.inputDatefieldFrom').each(() ->
       $this = $(this)
-      startDate = Form.current._parseDate($this, 'startdate')
+      startDate = Form._parseDate($this, 'startdate')
 
       $this.datepicker()
         .datepicker('option', 'minDate', startDate)
@@ -109,7 +104,7 @@ class Form extends DefaultObject
   _untilDateFields: ->
     $('.inputDatefieldTill').each(() ->
       $this = $(this)
-      endDate = Form.current._parseDate($this, 'enddate')
+      endDate = Form._parseDate($this, 'enddate')
 
       $this.datepicker()
         .datepicker('option', 'maxDate', endDate)
@@ -120,8 +115,8 @@ class Form extends DefaultObject
   _rangeDateFields: ->
     $('.inputDatefieldRange').each(() ->
       $this = $(this)
-      startDate = Form.current._parseDate($this, 'startdate')
-      endDate = Form.current._parseDate($this, 'enddate')
+      startDate = Form._parseDate($this, 'startdate')
+      endDate = Form._parseDate($this, 'enddate')
 
       $this.datepicker()
         .datepicker('option', 'minDate', startDate)
@@ -167,12 +162,7 @@ class Form extends DefaultObject
 
   _hijackSubmit: ->
     $('form').on('submit', (e) ->
-      Framework.current.showLoadingBar()
+      App.current.showLoadingBar()
     )
 
-Form.current = new Form
-
-$ ->
-  Form.current.domReady()
-
-window.Form = Form.current
+window.Form = Form

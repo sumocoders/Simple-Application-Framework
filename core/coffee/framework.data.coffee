@@ -4,23 +4,23 @@ class Data
 
   initialize: ->
     throw Error('jsData is not available') if not jsData?
-    this.data = jsData
-    this.isInitialized = true
+    @data = jsData
+    @isInitialized = true
   false
 
   exists: (key) ->
-    this.get(key)?
+    @get(key)?
 
   get: (key) ->
-    this.initialize() if not this.isInitialized
+    @initialize() if not @isInitialized
     chunks = key.split '.'
     module = chunks[0]
 
     if chunks.length >= 2
       dataKey = chunks.splice(1).join '.'
-      value = this.data[module][dataKey]
+      value = @data[module][dataKey]
     else
-      value = this.data[module]
+      value = @data[module]
     value
 
 Data.current = new Data

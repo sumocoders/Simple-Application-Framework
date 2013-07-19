@@ -10,13 +10,15 @@
     Locale.prototype.data = null;
 
     Locale.prototype.initialize = function() {
+      var _this = this;
+
       return $.ajax('/cache/locale/' + Data.get('core.language') + '.json', {
         type: 'GET',
         dataType: 'json',
         async: false,
         success: function(data) {
-          Locale.current.data = data;
-          return Locale.current.isInitialized = true;
+          _this.data = data;
+          return _this.isInitialized = true;
         },
         error: function(jqXHR, textStatus, errorThrown) {
           throw Error('Regenerate your locale-files.');
@@ -64,8 +66,6 @@
 
   })();
 
-  Locale.current = new Locale;
-
-  window.Locale = Locale.current;
+  window.Locale = new Locale;
 
 }).call(this);

@@ -26,8 +26,6 @@ class DefaultObject
       for action, callback of actions
         $document.on(action, selector, @[callback])
 
-window.DefaultObject = DefaultObject
-
 class Framework extends DefaultObject
   @events
     # toggle menu on full size
@@ -54,6 +52,7 @@ class Framework extends DefaultObject
 #    'functionname'
     '_initAjax'
     '_initializeSearch'
+    '_initForm'
   ]
 
   _initAjax: ->
@@ -92,12 +91,15 @@ class Framework extends DefaultObject
     )
 
     # show spinners
-    $(document).ajaxStart(() ->
-      Framework.current.showLoadingBar()
+    $(document).ajaxStart(() =>
+      @showLoadingBar()
     )
-    $(document).ajaxStop(() ->
-      Framework.current.hideLoadingBar()
+    $(document).ajaxStop(() =>
+      @hideLoadingBar()
     )
+
+  _initForm: ->
+    new Form
 
   showLoadingBar: ->
     $('#header').addClass('progress progress-striped active')
@@ -124,14 +126,14 @@ class Framework extends DefaultObject
       if !@subNavOpen
         $this.addClass('active')
         $subNav.addClass('open').slideDown()
-        this._setClassesBasedOnSubNavigation()
+        @_setClassesBasedOnSubNavigation()
         @subNavOpen = true
       else
         # already open, so close
         if $subNav.is('.open')
           $this.removeClass('active')
           $subNav.removeClass('open').slideUp()
-          this._setClassesBasedOnSubNavigation()
+          @_setClassesBasedOnSubNavigation()
           @subNavOpen = false
 
         # replace the current subnavigation
@@ -140,7 +142,7 @@ class Framework extends DefaultObject
           $('.subNavigation.open').removeClass('open')
           $this.addClass('active')
           $subNav.addClass('open').slideDown()
-          this._setClassesBasedOnSubNavigation()
+          @_setClassesBasedOnSubNavigation()
       false
 
   toggleMediumMenu: (e) ->
@@ -195,7 +197,6 @@ class Framework extends DefaultObject
   false
 
   _postAsForm: (e) =>
-    # @defv gij een idee wrm dit twee keer wordt aangeroepen
     # build the form
     # we can't use an single-style tag, because IE can't handle this
     $form = $('<form></form>')
@@ -217,6 +218,7 @@ class Framework extends DefaultObject
 
     $('#confirmModal').modal('hide')
     $('body').append($form)
+    @showLoadingBar()
     $form.submit()
   false
 
@@ -228,7 +230,7 @@ class Framework extends DefaultObject
     $('#confirmModalMessage').html($this.data('message'))
     $modal.on('click', '#confirmModalOk', (e) =>
       e.preventDefault()
-      this._postAsForm($this)
+      @_postAsForm($this)
     )
       .modal('show')
       .on('hide', (e) =>
@@ -275,7 +277,7 @@ class Framework extends DefaultObject
     )
 
     $('.searchBox input[name=q]').each ->
-      $(this).data('ui-autocomplete')._renderItem = Framework.current.renderItem
+      $(this).data('ui-autocomplete')._renderItem = App.current.renderItem
 
   renderItem: (ul, item) ->
     $('<li>')
@@ -287,9 +289,9 @@ class Framework extends DefaultObject
       )
       .appendTo(ul)
 
-Framework.current = new Framework
-
-$ ->
-  Framework.current.domReady()
-
+#Framework.current = new Framework
+#
+#$ ->
+#  Framework.current.domReady()
+#
 window.Framework = Framework

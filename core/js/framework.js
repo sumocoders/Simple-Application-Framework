@@ -81,8 +81,6 @@
 
   })();
 
-  window.DefaultObject = DefaultObject;
-
   Framework = (function(_super) {
     __extends(Framework, _super);
 
@@ -124,9 +122,11 @@
       }
     });
 
-    Framework.onDomReady(['_initAjax', '_initializeSearch']);
+    Framework.onDomReady(['_initAjax', '_initializeSearch', '_initForm']);
 
     Framework.prototype._initAjax = function() {
+      var _this = this;
+
       $.ajaxSetup({
         cache: false,
         type: 'POST',
@@ -154,11 +154,15 @@
         return false;
       });
       $(document).ajaxStart(function() {
-        return Framework.current.showLoadingBar();
+        return _this.showLoadingBar();
       });
       return $(document).ajaxStop(function() {
-        return Framework.current.hideLoadingBar();
+        return _this.hideLoadingBar();
       });
+    };
+
+    Framework.prototype._initForm = function() {
+      return new Form;
     };
 
     Framework.prototype.showLoadingBar = function() {
@@ -276,6 +280,7 @@
       }
       $('#confirmModal').modal('hide');
       $('body').append($form);
+      this.showLoadingBar();
       return $form.submit();
     };
 
@@ -352,7 +357,7 @@
         }
       });
       return $('.searchBox input[name=q]').each(function() {
-        return $(this).data('ui-autocomplete')._renderItem = Framework.current.renderItem;
+        return $(this).data('ui-autocomplete')._renderItem = App.current.renderItem;
       });
     };
 
@@ -363,12 +368,6 @@
     return Framework;
 
   })(DefaultObject);
-
-  Framework.current = new Framework;
-
-  $(function() {
-    return Framework.current.domReady();
-  });
 
   window.Framework = Framework;
 
