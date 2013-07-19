@@ -20,36 +20,6 @@ var jsSite = {
 jsSite.forms = {
 	init: function() {
 		$('form').on('submit', function() { $('#ajaxSpinner').show(); });
-		jsSite.forms.placeholders();
-	},
-	placeholders: function() {
-		// detect if placeholder-attribute is supported
-		jQuery.support.placeholder = ('placeholder' in document.createElement('input'));
-		if(!jQuery.support.placeholder) {
-			var $input = $('input[placeholder]');
-			// bind focus
-			$input.focus(function() {
-				var input = $(this);
-				if(input.val() == input.attr('placeholder')) {
-					input.val('');
-					input.removeClass('placeholder');
-				}
-			});
-			$input.blur(function() {
-				var input = $(this);
-				if(input.val() == '' || input.val() == input.attr('placeholder')) {
-					input.val(input.attr('placeholder'));
-					input.addClass('placeholder');
-				}
-			});
-			$input.blur();
-			$input.parents('form').submit(function() {
-				$(this).find('input[placeholder]').each(function() {
-					var input = $(this);
-					if(input.val() == input.attr('placeholder')) input.val('');
-				});
-			});
-		}
 	}
 }
 
