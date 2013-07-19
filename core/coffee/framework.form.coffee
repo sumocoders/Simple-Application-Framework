@@ -129,6 +129,11 @@ class Form extends DefaultObject
     )
 
 
+  _hijackSubmit: ->
+    $('form').on('submit', (e) ->
+      Framework.current.showLoadingBar()
+    )
+
 Form.current = new Form
 
 $ ->
