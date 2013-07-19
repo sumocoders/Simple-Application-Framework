@@ -26,6 +26,8 @@ class DefaultObject
       for action, callback of actions
         $document.on(action, selector, @[callback])
 
+window.DefaultObject = DefaultObject
+
 class Framework extends DefaultObject
   @events
     # toggle menu on full size

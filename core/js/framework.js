@@ -81,6 +81,8 @@
 
   })();
 
+  window.DefaultObject = DefaultObject;
+
   Framework = (function(_super) {
     __extends(Framework, _super);
 
