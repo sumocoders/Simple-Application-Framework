@@ -79,7 +79,9 @@ class Framework extends DefaultObject
         $('#header').after(
           '<div class="alert alert-error" role="alert">' +
           '  <div class="container">' +
-          '    <button type="button" class="close" data-dismiss="alert" title="' + Locale.lbl('Close') + '">' + Locale.lbl('Close') + '</button>' +
+          '    <button type="button" class="close" data-dismiss="alert"' +
+          '       title="' + Locale.lbl('Close') + '">' + Locale.lbl('Close') +
+          '    </button>' +
           '    ' + textStatus +
           '  </div>' +
           '</div>'
@@ -232,7 +234,7 @@ class Framework extends DefaultObject
       )
   false
 
-Framework.current = new Framework()
+Framework.current = new Framework
 
 $ ->
   Framework.current.domReady()

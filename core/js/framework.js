@@ -149,7 +149,7 @@
               textStatus = XMLHttpRequest.responseText;
             }
           }
-          $('#header').after('<div class="alert alert-error" role="alert">' + '  <div class="container">' + '    <button type="button" class="close" data-dismiss="alert" title="' + Locale.lbl('Close') + '">' + Locale.lbl('Close') + '</button>' + '    ' + textStatus + '  </div>' + '</div>');
+          $('#header').after('<div class="alert alert-error" role="alert">' + '  <div class="container">' + '    <button type="button" class="close" data-dismiss="alert"' + '       title="' + Locale.lbl('Close') + '">' + Locale.lbl('Close') + '    </button>' + '    ' + textStatus + '  </div>' + '</div>');
         }
         return false;
       });
@@ -303,7 +303,7 @@
 
   })(DefaultObject);
 
-  Framework.current = new Framework();
+  Framework.current = new Framework;
 
   $(function() {
     return Framework.current.domReady();

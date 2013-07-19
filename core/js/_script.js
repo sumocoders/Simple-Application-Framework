@@ -17,11 +17,6 @@ var jsSite = {
 		}
 	},
 }
-jsSite.forms = {
-	init: function() {
-		$('form').on('submit', function() { $('#ajaxSpinner').show(); });
-	}
-}
 
 jsSite.search = {
 	results: [],

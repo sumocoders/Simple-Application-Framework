@@ -6,6 +6,11 @@ class Form extends DefaultObject
     '_startingFromDateFields'
     '_untilDateFields'
     '_rangeDateFields'
+
+    # fixes
+    '_fixPlaceholders'
+
+    '_hijackSubmit'
   ]
 
 # date fields
@@ -83,11 +88,11 @@ class Form extends DefaultObject
     )
 
   _dateFields: ->
-    $.datepicker.setDefaults Form.current._dateFieldOptions;
+    $.datepicker.setDefaults Form.current._dateFieldOptions
 
   _normalDateFields: ->
     $('.inputDatefieldNormal').each(() ->
-      $(this).datepicker();
+      $(this).datepicker()
     )
 
   _startingFromDateFields: =>
@@ -103,7 +108,7 @@ class Form extends DefaultObject
 
   _untilDateFields: ->
     $('.inputDatefieldTill').each(() ->
-      $this = $(this);
+      $this = $(this)
       endDate = Form.current._parseDate($this, 'enddate')
 
       $this.datepicker()
@@ -114,7 +119,7 @@ class Form extends DefaultObject
 
   _rangeDateFields: ->
     $('.inputDatefieldRange').each(() ->
-      $this = $(this);
+      $this = $(this)
       startDate = Form.current._parseDate($this, 'startdate')
       endDate = Form.current._parseDate($this, 'enddate')
 
@@ -128,6 +133,37 @@ class Form extends DefaultObject
         $this.datepicker('option', 'defaultDate', endDate)
     )
 
+  # fixes
+  _fixPlaceholders: ->
+    # detect if placeholder-attributes is supported
+    jQuery.support.placeholder =
+      ('placeholder' in document.createElement('input'))
+
+    if !jQuery.support.placeholder
+      $input = $('input[placeholder]')
+
+      $input.on('focus', ->
+        $this = $(this)
+
+        if $this.val() == $this.attr 'placeholder'
+          $this.val('')
+            .removeClass('placeholder')
+      )
+
+      $input.on('blur', ->
+        $this = $(this)
+
+        if($this.val() == '' || $this.val() == $this.attr('placeholder'))
+          $this.val($this.attr('placeholder'))
+            .addClass('placeholder')
+      )
+
+      $input.blur
+
+      $input.parents('form').submit ->
+        $(this).find('input[placeholder]').each ->
+          if $(this).val() == $(this).attr('placeholder')
+            $(this).val('')
 
   _hijackSubmit: ->
     $('form').on('submit', (e) ->
