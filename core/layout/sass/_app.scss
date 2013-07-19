@@ -148,7 +148,7 @@ input[type="color"],
       
       &:hover {
         background-color: darken(#b38e2a, 10%);
-;      }
+      }
     }
   }
   
@@ -534,10 +534,6 @@ input[type="color"],
   
   .alert {
     padding-right: 50px;
-    
-    .close {
-      right: 4px;
-    }
   }
   
   #users {
@@ -577,7 +573,7 @@ input[type="color"],
           @include transition(width 250ms);
           position: fixed;
           width: 0;
-          overflow: hidden;
+          overflow: scroll;
           left: 265px;
           top: 0;
           background: #222329;
@@ -664,7 +660,7 @@ input[type="color"],
             display: block;
             background: #1f2024;
             height: 65px;
-            margin-right: 4px;
+            margin-left: 4px;
             width: 65px;
             margin-bottom: 0;
           }
