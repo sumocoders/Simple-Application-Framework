@@ -150,7 +150,7 @@ class Framework extends DefaultObject
       .attr('method', 'POST')
       .append(
         $('<input type="hidden">').attr('name', 'form_token')
-#          .attr('value', jsSite.data.get('core.form_token')) @todo Fix me
+          .attr('value', Data.get('core.form_token'))
       )
 
     # append the data
