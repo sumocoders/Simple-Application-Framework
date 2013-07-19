@@ -93,19 +93,19 @@ class Framework extends DefaultObject
   toggleMediumMenu: (e) ->
     e.preventDefault()
 
-    $('#navbar').toggleClass('open');
-    $(e.currentTarget).toggleClass('open');
+    $('#navbar').toggleClass('open')
+    $(e.currentTarget).toggleClass('open')
 
   toggleSmallMenu: (e) ->
     e.preventDefault()
 
-    $('#content').toggleClass('open');
+    $('#content').toggleClass('open')
 
   toggleDropdown: (e) ->
     e.preventDefault()
 
     $this = $(e.currentTarget)
-    $this.toggleClass('open');
+    $this.toggleClass('open')
     $this.next('ul').slideToggle()
 
 # Animated scroll methods
@@ -115,12 +115,13 @@ class Framework extends DefaultObject
     url = href.substr(0, href.indexOf('#'))
     hash = href.substr(href.indexOf('#'))
 
-    # check if we have an url, and if it is on the current page and the element exists
+    # check if we have an url, and if it is on the current page and
+    # the element exists
     if  (url == '' or url.indexOf(document.location.pathname) >= 0) and
     not $anchor.is('[data-no-scroll]') and $(hash).length > 0
       $('html, body').stop().animate({
         scrollTop: $(hash).offset().top
-      }, 500);
+      }, 500)
     false
 
   scrollToTop: (e) ->
@@ -128,23 +129,23 @@ class Framework extends DefaultObject
 
     $('html, body').stop().animate({
       scrollTop: $('#content').offset().top
-    }, 500);
+    }, 500)
 
 # Link methods
   askConfirmation: (e) ->
-    e.preventDefault();
+    e.preventDefault()
     $this = $(e.currentTarget)
 
-    $('#confirmModalOk').attr('href', $this.attr('href'));
-    $('#confirmModalMessage').html($this.data('message'));
-    $('#confirmModal').modal('show');
+    $('#confirmModalOk').attr('href', $this.attr('href'))
+    $('#confirmModalMessage').html($this.data('message'))
+    $('#confirmModal').modal('show')
   false
 
   _postAsForm: (e) =>
     # @defv gij een idee wrm dit twee keer wordt aangeroepen
-
     # build the form
-    $form = $('<form></form>') # we can't use an single-style tag, because IE can't handle this
+    # we can't use an single-style tag, because IE can't handle this
+    $form = $('<form></form>')
       .attr('style', 'display: none;')
       .attr('action', e.attr('href'))
       .attr('method', 'POST')
@@ -167,7 +168,7 @@ class Framework extends DefaultObject
   false
 
   askConfirmationAndPostAsAForm: (e) =>
-    e.preventDefault();
+    e.preventDefault()
     $this = $(e.currentTarget)
     $modal = $('#confirmModal')
 

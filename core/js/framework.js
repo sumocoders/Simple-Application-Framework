@@ -220,7 +220,7 @@
     Framework.prototype._postAsForm = function(e) {
       var $element, $form, name, value, _ref1;
 
-      $form = $('<form></form>').attr('style', 'display: none;').attr('action', e.attr('href')).attr('method', 'POST').append($('<input type="hidden">').attr('name', 'form_token'));
+      $form = $('<form></form>').attr('style', 'display: none;').attr('action', e.attr('href')).attr('method', 'POST').append($('<input type="hidden">').attr('name', 'form_token').attr('value', Data.get('core.form_token')));
       _ref1 = e.data();
       for (name in _ref1) {
         value = _ref1[name];

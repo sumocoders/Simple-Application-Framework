@@ -168,24 +168,6 @@ jsSite.bugs = {
 		});
 	}
 }
-jsSite.data = {
-	initialized: false,
-	data: {},
-	init: function() {
-		if(typeof jsData == 'undefined') {
-			throw 'jsData is not available';
-		}
-		jsSite.data.data = jsData;
-		jsSite.data.initialized = true;
-	},
-	exists: function(key) {
-		return (typeof eval('jsSite.data.data.' + key) != 'undefined');
-	},
-	get: function(key) {
-		if(!jsSite.data.initialized) jsSite.data.init();
-		return eval('jsSite.data.data.' + key);
-	}
-}
 jsSite.forms = {
 	init: function() {
 		$('form').on('submit', function() { $('#ajaxSpinner').show(); });
