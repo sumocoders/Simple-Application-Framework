@@ -5,27 +5,7 @@
  */
 var jsSite = {
 	debug: false,
-	current: {
-		module: null,
-		action: null,
-		language: null
-	},
 	init: function() {
-		// get url and split into chunks
-		var chunks = document.location.pathname.split('/');
-		if(typeof chunks[1] == 'undefined') chunks[1] = 'nl';		// @todo	fix me
-		if(typeof chunks[2] == 'undefined') chunks[2] = 'example';	// @todo	fix me
-		if(typeof chunks[3] == 'undefined') chunks[3] = 'index';	// @todo	fix me
-
-		// set some properties
-		jsSite.current.module = chunks[2];
-		jsSite.current.action = chunks[3];
-		jsSite.current.language = chunks[1];
-
-		// init the ajax-configuration
-		jsSite.initAjax();
-
-		jsSite.bugs.init();
 		jsSite.forms.init();
 		jsSite.search.init();
 
@@ -36,36 +16,6 @@ var jsSite = {
 			if(jsSite.debug) console.log(e);
 		}
 	},
-	// set defaults for AJAX
-	initAjax: function() {
-		$.ajaxSetup({ cache: false, type: 'POST', dataType: 'json', timeout: 5000 });
-
-		// global error handler
-		$(document).ajaxError(function(event, XMLHttpRequest, ajaxOptions) {
-			// 403 means we aren't authenticated anymore, so reload the page
-			if(XMLHttpRequest.status == 403) window.location.reload();
-
-			// check if a custom error handler is used
-			if(typeof ajaxOptions.error == 'undefined') {
-				var textStatus = jsSite.locale.err('GeneralError');
-
-				// get error message for AJAX-call
-				if(typeof XMLHttpRequest.responseText != 'undefined') {
-					var json = $.parseJSON(XMLHttpRequest.responseText);
-					if(typeof json.message != 'undefined') textStatus = json.message;
-					else textStatus = XMLHttpRequest.responseText;
-				}
-				$('#main').prepend('<div class="alert alert-error noMargin">' +
-									' <a href="#" class="close" data-dismiss="alert">x</a>' +
-										textStatus +
-									'</div>');
-			}
-		});
-
-		// spinner stuff
-		$(document).ajaxStart(function() { $('#ajaxSpinner').show(); });
-		$(document).ajaxStop(function() { $('#ajaxSpinner').hide(); });
-	}
 }
 jsSite.forms = {
 	init: function() {
