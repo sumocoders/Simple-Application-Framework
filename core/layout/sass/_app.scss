@@ -588,9 +588,10 @@ input:focus:invalid:focus {
       &#user {
         
         &>a {
-          padding-left: 50px;
+          padding-left: 53px;
+          padding-top: 19px;
           color: #464242;
-          font-family: $opensans-extrabold-webfont;
+          font-family: $opensans-bold-webfont;
           font-size: 1.29 * $baseFontSize;
           position: relative;
           
