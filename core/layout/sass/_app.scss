@@ -232,6 +232,12 @@ input:focus:invalid:focus {
   }
 }
 
+// Messages
+
+.alert-info {
+  background-color: #B6BCD0;
+}
+
 // Tabs
 
 .nav-tabs {
@@ -743,6 +749,7 @@ input:focus:invalid:focus {
     font-size: 1.2 * $baseFontSize;
     text-transform: uppercase;
     font-family: $opensans-bold-webfont;
+    margin-top: 17px;
   }
   
   .actions {
