@@ -110,6 +110,7 @@ input[type="color"],
   padding-bottom: 0;
   color: #fff;
   font-family: $opensans-bold-webfont;
+  @include border-radius(2px);
   
   &:hover {
     background: lighten(#c5c5c5, 10%);
