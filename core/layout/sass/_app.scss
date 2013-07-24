@@ -125,7 +125,7 @@ input:focus:invalid:focus {
 
 .btn {
   @include box-sizing(border-box);
-  background: #c5c5c5;
+  background: #4ab0ce;
   @include box-shadow(none);
   border: none;
   height: 50px;
@@ -139,7 +139,7 @@ input:focus:invalid:focus {
   font-size: 18px;
   
   &:hover {
-    background: lighten(#c5c5c5, 10%);
+    background: darken(#4ab0ce, 10%);
     @include transition(all 150ms);
     color: #fff;
   }
@@ -148,15 +148,15 @@ input:focus:invalid:focus {
     background: #3dae50;
     
     &:hover {
-      background: lighten(#3dae50, 10%);
+      background: darken(#3dae50, 10%);
     }
   }
   
   &.btn-info {
-    background: #4ab0ce;
+    background: #747e9f;
     
     &:hover {
-      background: lighten(#4ab0ce, 10%);
+      background: darken(#747e9f, 10%);
     }
   }
   
@@ -164,7 +164,7 @@ input:focus:invalid:focus {
     background: #5bb75b;
     
     &:hover {
-      background: lighten(#5bb75b, 10%);
+      background: darken(#5bb75b, 10%);
     }
   }
   
@@ -172,7 +172,7 @@ input:focus:invalid:focus {
     background: #f9a834;
     
     &:hover {
-      background: lighten(#f9a834, 10%);
+      background: darken(#f9a834, 10%);
     }
   }
   
@@ -180,7 +180,7 @@ input:focus:invalid:focus {
     background: #db4f4a;
     
     &:hover {
-      background: lighten(#db4f4a, 10%);
+      background: darken(#db4f4a, 10%);
     }
   }
   
@@ -188,7 +188,7 @@ input:focus:invalid:focus {
     background: #373737;
     
     &:hover {
-      background: lighten(#373737, 10%);
+      background: darken(#373737, 10%);
     }
   }
   
