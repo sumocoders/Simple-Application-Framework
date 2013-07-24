@@ -103,7 +103,7 @@ input[type="color"],
   background: #c5c5c5;
   @include box-shadow(none);
   border: none;
-  height: 45px;
+  height: 50px;
   text-shadow: none;
   line-height: 45px;
   padding-top: 0;
@@ -111,6 +111,7 @@ input[type="color"],
   color: #fff;
   font-family: $opensans-bold-webfont;
   @include border-radius(2px);
+  font-size: 18px;
   
   &:hover {
     background: lighten(#c5c5c5, 10%);
@@ -462,7 +463,7 @@ input[type="color"],
       font-family: $opensans-bold-webfont;
       font-size: 1.29 * $baseFontSize;
       color: #597192;
-      margin-bottom: 20px;
+      margin-bottom: 15px;
     }
     
     .add-on {
