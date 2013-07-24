@@ -238,6 +238,16 @@ input:focus:invalid:focus {
   background-color: #B6BCD0;
 }
 
+// Dropdowns
+
+.dropdown {
+  ul {
+    @include box-shadow(none);
+    background: #f9f9f9;
+    border-color: #cccdd7;
+  }
+}
+
 // Tabs
 
 .nav-tabs {
