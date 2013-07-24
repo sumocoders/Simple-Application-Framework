@@ -19,12 +19,11 @@
 				<h2 id="headings">Headings</h2>
 				<p>All HTML headings, <code>&lt;h1&gt;</code> through <code>&lt;h6&gt;</code> are available.</p>
 				<div class="bs-docs-example">
-					<h1>h1. Heading 1</h1>
-					<h2>h2. Heading 2</h2>
-					<h3>h3. Heading 3</h3>
-					<h4>h4. Heading 4</h4>
-					<h5>h5. Heading 5</h5>
-					<h6>h6. Heading 6</h6>
+					<h1>Nullam id dolor id nibh ultricies vehicula h1.</h1>
+					<h2>Curabitur blandit tempus porttitor. Nulla vitae h2.</h2>
+					<h3>Praesent commodo cursus magna, vel scelerisque nisl consectetur et h3.</h3>
+					<h4>Morbi leo risus, porta ac consectetur ac, vestibulum at eros h4.</h4>
+					<h5>Maecenas sed diam eget risus varius blandit sit amet non magna h5.</h5>
 				</div>
 
 				<h2 id="body-copy">Body copy</h2>

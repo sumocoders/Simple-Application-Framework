@@ -29,10 +29,13 @@
 h1 {
 	margin-bottom: 12px;
 	color: #A73E15;
-	font-size: 24px;
+	font-size: 1.8em;
 	font-weight: 100;
+	font-family: $opensans-bold-webfont;
+	line-height: 1.2em;
+	color: #464242;
 }
-	h2 { @extend h1;  }
-	h3 { @extend h1; font-size: 20px; }
-	h4 { @extend h1; font-size: 18px; margin-bottom: 10.5px; }
-	h5 { @extend h1; font-size: 16px; margin-bottom: 10.5px; }
+	h2 { @extend h1; font-size: 1.5em; line-height: 1.2em; color: #577385;}
+	h3 { @extend h1; font-size: 1.2em; color: #8d94ab;}
+	h4 { @extend h1; font-size: 1.1em; margin-bottom: 10.5px; font-family: $OpenSans-Semibold-webfont; color: #7092c2;}
+	h5 { @extend h4; font-size: 1em; margin-bottom: 10.5px; color: #96bdf2;}
