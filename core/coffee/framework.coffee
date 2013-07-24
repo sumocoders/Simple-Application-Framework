@@ -185,8 +185,10 @@ class Framework extends DefaultObject
 
     # check if we have an url, and if it is on the current page and
     # the element exists
+    # disabled for nav-tabs
     if  (url == '' or url.indexOf(document.location.pathname) >= 0) and
-    not $anchor.is('[data-no-scroll]') and $(hash).length > 0
+    not $anchor.is('[data-no-scroll]') and $(hash).length > 0 and
+    not $anchor.parents().is('.nav-tabs')
       $('html, body').stop().animate({
         scrollTop: $(hash).offset().top
       }, 500)

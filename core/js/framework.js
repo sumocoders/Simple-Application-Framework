@@ -245,7 +245,7 @@
       href = $anchor.attr('href');
       url = href.substr(0, href.indexOf('#'));
       hash = href.substr(href.indexOf('#'));
-      if ((url === '' || url.indexOf(document.location.pathname) >= 0) && !$anchor.is('[data-no-scroll]') && $(hash).length > 0) {
+      if ((url === '' || url.indexOf(document.location.pathname) >= 0) && !$anchor.is('[data-no-scroll]') && $(hash).length > 0 && !$anchor.parents().is('.nav-tabs')) {
         $('html, body').stop().animate({
           scrollTop: $(hash).offset().top
         }, 500);
