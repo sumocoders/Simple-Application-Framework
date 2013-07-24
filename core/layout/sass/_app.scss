@@ -92,6 +92,30 @@ input[type="color"],
   
 }
 
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+.uneditable-input:focus {
+  @include box-shadow(none);
+  border: 2px solid #747e9f;
+  
+}
+
+input:focus:invalid:focus {
+  @include box-shadow(none);
+}
+
 .control-label {
   color: #7093c3;
 }
