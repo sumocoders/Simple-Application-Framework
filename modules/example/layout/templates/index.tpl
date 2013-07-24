@@ -4,7 +4,7 @@
 <div id="contentWrap">
 	<div id="content">
 		<header id="header" role="banner">
-			<div class="container">
+			<div class="container bar">
 				<div class="title">
 					<a id="toggleMenu" class="visible-phone" href="#">{$lblMenu|uppercase}</a>
 					<h2>{$lblExample|ucfirst}</h2>
@@ -82,17 +82,19 @@
 				</table>
 			</div>
 			<header class="taskbar">
-				<div class="title">
-					<h2>Tellus ridiculus</h2>
-				</div>
-				<div class="actions">
-					<a href="#" class="dropdownToggle visible-phone" data-toggle="dropdownItems">{$lblActions|ucfirst}</a>
-					<ul class="dropdownItems">
-						<li><a class="iconList" href="#">{$lblOverview|ucfirst}</a></li>
-						<li><a class="iconPrint" href="#">{$lblPrint|ucfirst}</a></li>
-						<Li><a class="iconAdd" href="#">{$lblAdd|ucfirst}</a></Li>
-					</ul>
-				</div>
+			  <div class="container">
+  				<div class="title">
+  					<h2>Tellus ridiculus</h2>
+  				</div>
+  				<div class="actions">
+  					<a href="#" class="dropdownToggle visible-phone" data-toggle="dropdownItems">{$lblActions|ucfirst}</a>
+  					<ul class="dropdownItems">
+  						<li><a class="iconList" href="#">{$lblOverview|ucfirst}</a></li>
+  						<li><a class="iconPrint" href="#">{$lblPrint|ucfirst}</a></li>
+  						<Li><a class="iconAdd" href="#">{$lblAdd|ucfirst}</a></Li>
+  					</ul>
+  				</div>
+			  </div>
 			</header>
 			<div class="container">
 				<ul class="nav nav-tabs">

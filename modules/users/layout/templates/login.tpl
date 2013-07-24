@@ -30,7 +30,7 @@
   								{$txtPassword} {$txtPasswordError}
   							</div>
   						</div>
-  						<button type="submit" class="btn btn-primary btn-block">{$lblSignIn|ucfirst}</button>
+  						<button type="submit" class="btn btn-primary btn-block">{$lblSignIn|ucfirst}<i class="icon iconArrowWhiteRight"></i></button>
   					</fieldset>
   				{/form:login}
   			</div>

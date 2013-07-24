@@ -1,0 +1,4 @@
+.iconArrowWhiteRight {
+  display: block;
+  @include svg-with-png-fallback(icons/icon_arrow_white_right, no-repeat);
+}

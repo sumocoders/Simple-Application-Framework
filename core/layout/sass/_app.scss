@@ -6,7 +6,17 @@ body {
   font-family: $opensans-regular-webfont;
   //overflow: hidden;
   background: #fff;
+  
+  &.login {
+    background: #e4e5ec;
+  }
 }
+
+// Import custom icons
+@import "_icons";
+
+// Import animation keyframes
+@import "_keyframes";
 
 /* Styling for our own jQuery UI and our plugins */
 @import "_jquery_ui";
@@ -69,7 +79,8 @@ input[type="color"],
   @include box-sizing(border-box);
   height: 45px;
   @include box-shadow(none);
-  border: 1px solid #b6bcd0;
+  border: 2px solid #b6bcd0;
+  background: #f8f9fc;
   
 }
 
@@ -77,23 +88,155 @@ input[type="color"],
   color: #7093c3;
 }
 
-//buttons
+//buttons & add-ons
 
 .btn {
   @include box-sizing(border-box);
-  background: #3dae50;
+  background: #c5c5c5;
   @include box-shadow(none);
   border: none;
   height: 45px;
   text-shadow: none;
+  line-height: 45px;
+  padding-top: 0;
+  padding-bottom: 0;
+  color: #fff;
+  font-family: $opensans-bold-webfont;
   
   &:hover {
-    background: lighten(#3dae50, 10%);
+    background: lighten(#c5c5c5, 10%);
     @include transition(all 150ms);
+    color: #fff;
   }
   
   &.btn-primary {
+    background: #3dae50;
     
+    &:hover {
+      background: lighten(#3dae50, 10%);
+    }
+  }
+  
+  &.btn-info {
+    background: #4ab0ce;
+    
+    &:hover {
+      background: lighten(#4ab0ce, 10%);
+    }
+  }
+  
+  &.btn-success {
+    background: #5bb75b;
+    
+    &:hover {
+      background: lighten(#5bb75b, 10%);
+    }
+  }
+  
+  &.btn-warning {
+    background: #f9a834;
+    
+    &:hover {
+      background: lighten(#f9a834, 10%);
+    }
+  }
+  
+  &.btn-danger {
+    background: #db4f4a;
+    
+    &:hover {
+      background: lighten(#db4f4a, 10%);
+    }
+  }
+  
+  &.btn-inverse {
+    background: #373737;
+    
+    &:hover {
+      background: lighten(#373737, 10%);
+    }
+  }
+  
+  &.btn-link {
+    background: none;
+    color: #666;
+    
+    &:hover {
+      
+    }
+  }
+  
+  .caret {
+    margin-top: 21px;
+  }
+}
+
+.btn-group {
+  
+  .btn {
+    margin-right: 2px;
+    margin-bottom: 2px;
+  }
+}
+
+.input-append,
+.input-prepend {
+  .add-on {
+    @include box-sizing(border-box);
+    //background: #3dae50;
+    @include box-shadow(none);
+    //border: none;
+    border-width: 2px;
+    height: 45px;
+    text-shadow: none;
+    line-height: 45px;
+    padding-top: 0;
+    padding-bottom: 0;
+    //color: #fff;
+    font-family: $opensans-bold-webfont;
+  }
+}
+
+// Tabs
+
+.nav-tabs {
+  border-bottom: 2px solid #dbdde6;
+  
+  & > .active {
+    border-top: 3px solid #6d8393;
+    margin-right: 2px;
+    //border-bottom: 2px solid #fff;
+    margin-bottom: -2px;
+    
+    & > a {
+      background: #fff;
+      @include border-radius(0);
+      border-left: 2px solid #dbdde6;
+      border-right: 2px solid #dbdde6;
+      border-top: none;
+      margin-right: 0;
+    }
+  }
+}
+
+// Progress bar for loading stuff
+
+.progress {
+  @include border-radius(0);
+  margin-bottom: 0;
+  overflow: visible;
+  
+  .bar {
+    width: 100%;
+    @include background-size(100px 100px);
+    text-align: left;
+  }
+  
+  &.active {
+    
+    .bar {
+      @include animate(loadingProgressBar 2s linear 0s infinite);
+    }
   }
 }
 
@@ -108,7 +251,7 @@ input[type="color"],
   @include border-radius(0);
   color: #fff;
   text-shadow: none;
-  padding: 0 25px;
+  padding: 0 0 0 25px;
   line-height: 40px;
   
   .container {
@@ -118,7 +261,7 @@ input[type="color"],
   .close {
     @include svg-with-png-fallback(icon_close, no-repeat center center, $dimensions: false);
     @include squish-text;
-    width: 65px;
+    width: 70px;
     height: 40px;
     @include box-sizing(border-box);
     opacity: 1;
@@ -165,6 +308,21 @@ input[type="color"],
   }
 }
 
+// Labels {
+
+.label {
+  text-shadow: none;
+  @include border-radius(0);
+}
+
+// Wells
+
+.well {
+  @include box-shadow(none);
+  @include border-radius(0);
+  border: 2px solid #b6bcd0;
+}
+
 
 //Users
 
@@ -179,10 +337,15 @@ input[type="color"],
       margin: 10% auto;
     }
     
+    .control-group {
+      margin-bottom: 27px;
+    }
+    
     .control-label {
       font-family: $opensans-bold-webfont;
       font-size: 1.29 * $baseFontSize;
       color: #597192;
+      margin-bottom: 20px;
     }
     
     .add-on {
@@ -209,7 +372,20 @@ input[type="color"],
     }
     
     .btn {
-      margin-top: 36px;
+      margin-top: 46px;
+      text-align: left;
+      padding-left: 21px;
+      padding-right: 21px;
+      
+      .icon {
+        float: right;
+        margin-top: 13px;
+      }
+    }
+    
+    .alert {
+      position: relative;
+      padding: 0 25px;
     }
   }
 }
@@ -316,6 +492,10 @@ input[type="color"],
     display: none;
   }
   
+  form {
+    margin-bottom: 0;
+  }
+  
   #searchQuery {
     border: none;
     background: #2c2d34;
@@ -380,16 +560,22 @@ input[type="color"],
 #header,
 .taskbar {
   background: #393b42;
-  padding: 0 25px;
+  //padding-right: 0 25px;
   position: fixed;
   width: 100%;
   @include box-sizing(border-box);
   height: 65px;
   z-index: 99;
   
+  &.progress-striped {
+  
+    .bar {
+      background-color: #393b42;
+    }
+  }
+  
   .container {
-    padding: 0;
-    //@include clearfix;
+    padding: 0 25px;
   }
   
   #toggleMenu {
@@ -418,13 +604,14 @@ input[type="color"],
     position: relative;
     height: 65px;
     z-index: 9999;
+    margin-right: -25px;
     
     .dropdownToggle {
       display: block;
       @include svg-with-png-fallback(icon_cogwheel, no-repeat center center, $dimensions: false);
-      background-color: #1f2024;
+      background-color: rgba(0,0,0,0.46);
       height: 65px;
-      width: 65px;
+      width: 70px;
       margin-bottom: 4px;
       @include squish-text;
       float: right;
@@ -446,14 +633,14 @@ input[type="color"],
           display: block;
           background-color: #1f2024;
           height: 65px;
-          width: 65px;
-          padding-left: 65px;
+          //width: 65px;
+          padding-left: 70px;
           margin-bottom: 4px;
           @include transition(all 500ms);
           @include box-sizing(border-box);
           //font-family: $opensans-semibold-webfont;
           font-size: 1.29 * $baseFontSize;
-          color: #fff;
+          color: #1f2024;
           border: none;
           text-decoration: none;
           line-height: 65px;
@@ -461,23 +648,24 @@ input[type="color"],
           
           &.iconList {
             @include svg-with-png-fallback(icon_list, #1f2024 no-repeat, $dimensions: false);
-            background-position: 20px center;
+            background-position: 22px center;
           }
           
           &.iconPrint {
             @include svg-with-png-fallback(icon_print, #1f2024 no-repeat center center, $dimensions: false);
-            background-position: 20px center;
+            background-position: 23px center;
           }
           
           &.iconAdd {
             @include svg-with-png-fallback(icon_add, #1f2024 no-repeat center center, $dimensions: false);
-            background-position: 20px center;
+            background-position: 26px center;
           }
         }
         
         &:hover {
           a {
             background-color: #4ba75f;
+            color: #fff;
           }
         }
       }
@@ -502,6 +690,7 @@ input[type="color"],
         
         a {
           background-color: #8c8d94;
+          color: #8c8d94;
           
           &.iconList {
             background-color: #8c8d94;
@@ -513,6 +702,12 @@ input[type="color"],
           
           &.iconAdd {
             background-color: #8c8d94;
+          }
+        }
+        
+        &:hover {
+          a {
+            color: #fff;
           }
         }
       }
@@ -530,6 +725,15 @@ input[type="color"],
   .container {
     width: 100%;
     padding: 0;
+  }
+  
+  // Progress bar for loading stuff
+  
+  .progress {
+    
+    .bar {
+      width: 100%;
+    }
   }
   
   .alert {
@@ -642,6 +846,7 @@ input[type="color"],
       right: 0;
       width: 50%;
       @include clearfix;
+      margin-right: 0;
       
       ul {
         float: right;
@@ -658,17 +863,32 @@ input[type="color"],
           
           a {
             display: block;
-            background: #1f2024;
+            //background: #1f2024;
             height: 65px;
             margin-left: 4px;
-            width: 65px;
+            //width: 65px;
+            width: auto;
             margin-bottom: 0;
+            //padding-right: 20px;
+            
+            
+            &.iconList {
+              background-color: rgba(0,0,0,0.46);
+            }
+            
+            &.iconPrint {
+              background-color: rgba(0,0,0,0.46);
+            }
+            
+            &.iconAdd {
+              background-color: rgba(0,0,0,0.46);
+            }
           }
           
           &:hover {
             a {
               background-color: #4ba75f;
-              width: 150px;
+              padding-right: 20px;
             }
           }
         }

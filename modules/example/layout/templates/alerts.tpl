@@ -4,7 +4,7 @@
 <div id="contentWrap">
 	<div id="content">
 		<header id="header" role="banner">
-			<div class="container">
+			<div class="container bar">
 				<div class="title">
 					<a id="toggleMenu" class="visible-phone" href="#">{$lblMenu|uppercase}</a>
 					<h2>Alerts <small>Styles for success, warning, and error messages</small></h2>
