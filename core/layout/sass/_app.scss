@@ -752,7 +752,7 @@ input:focus:invalid:focus {
   
   .title {
     float: left;
-    width: 50%;
+    width: 75%;
   }
   
   h2 {
@@ -760,12 +760,12 @@ input:focus:invalid:focus {
     font-size: 1.2 * $baseFontSize;
     text-transform: uppercase;
     font-family: $opensans-bold-webfont;
-    margin-top: 17px;
+    margin-top: 22px;
   }
   
   .actions {
     float: right;
-    width: 50%;
+    width: 25%;
     position: relative;
     height: 65px;
     z-index: 9999;
@@ -1001,12 +1001,16 @@ input:focus:invalid:focus {
       @include clearfix;
     }
     
+    .title {
+    float: left;
+    width: 55%;
+  }
+    
     h2 {
       font-size: 1.71 * $baseFontSize;
     }
     
     .actions {
-      //float: right;
       position: fixed;
       right: 0;
       width: 50%;
