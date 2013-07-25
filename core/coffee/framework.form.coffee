@@ -162,6 +162,7 @@ class Form
 
   _hijackSubmit: ->
     $('form').on('submit', (e) ->
+      # @todo trigger event instead of calling "remote" code
       App.current.showLoadingBar()
     )
 
