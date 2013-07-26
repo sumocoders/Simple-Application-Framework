@@ -14,7 +14,7 @@
 
       	{include:'{$CORE_PATH}/layout/templates/notifications.tpl'}
 
-		<main id="main" role="main">
+		<section id="main" role="main">
 			<div class="container">
 				<h2>Examples and markup</h2>
 
@@ -106,7 +106,7 @@
 				<p>Progress bars use CSS3 gradients, transitions, and animations to achieve all their effects. These features are not supported in IE7-9 or older versions of Firefox.</p>
 				<p>Versions earlier than Internet Explorer 10 and Opera 12 do not support animations.</p>
 			</div>
-		</main>
+		</section>
 	</div>
 </div>
 

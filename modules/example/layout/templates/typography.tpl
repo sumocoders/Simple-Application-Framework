@@ -14,7 +14,7 @@
 
       	{include:'{$CORE_PATH}/layout/templates/notifications.tpl'}
 
-		<main id="main" role="main">
+		<section id="main" role="main">
 			<div class="container">
 				<h2 id="headings">Headings</h2>
 				<p>All HTML headings, <code>&lt;h1&gt;</code> through <code>&lt;h6&gt;</code> are available.</p>
@@ -294,7 +294,7 @@
 					Horizontal description lists will truncate terms that are too long to fit in the left column fix <code>text-overflow</code>. In narrower viewports, they will change to the default stacked layout.
 				</p>
 			</div>
-		</main>
+		</section>
 	</div>
 </div>
 

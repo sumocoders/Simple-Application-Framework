@@ -14,7 +14,7 @@
 
       	{include:'{$CORE_PATH}/layout/templates/notifications.tpl'}
 
-		<main id="main" role="main">
+		<section id="main" role="main">
 			<div class="container">
 				<p class="lead">Abstract object styles for building various types of components (like blog comments, Tweets, etc) that feature a left- or right-aligned image alongside textual content.</p>
 
@@ -111,7 +111,7 @@
 				</div>
 				<pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><span class="tag">&lt;ul</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"media-list"</span><span class="tag">&gt;</span></li><li class="L1"><span class="pln">  </span><span class="tag">&lt;li</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"media"</span><span class="tag">&gt;</span></li><li class="L2"><span class="pln">    </span><span class="tag">&lt;a</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"pull-left"</span><span class="pln"> </span><span class="atn">href</span><span class="pun">=</span><span class="atv">"#"</span><span class="tag">&gt;</span></li><li class="L3"><span class="pln">      </span><span class="tag">&lt;img</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"media-object"</span><span class="pln"> </span><span class="atn">data-src</span><span class="pun">=</span><span class="atv">"holder.js/64x64"</span><span class="tag">&gt;</span></li><li class="L4"><span class="pln">    </span><span class="tag">&lt;/a&gt;</span></li><li class="L5"><span class="pln">    </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"media-body"</span><span class="tag">&gt;</span></li><li class="L6"><span class="pln">      </span><span class="tag">&lt;h4</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"media-heading"</span><span class="tag">&gt;</span><span class="pln">Media heading</span><span class="tag">&lt;/h4&gt;</span></li><li class="L7"><span class="pln">      ...</span></li><li class="L8"><span class="pln">&nbsp;</span></li><li class="L9"><span class="pln">      </span><span class="com">&lt;!-- Nested media object --&gt;</span></li><li class="L0"><span class="pln">      </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"media"</span><span class="tag">&gt;</span></li><li class="L1"><span class="pln">        ...</span></li><li class="L2"><span class="pln">     </span><span class="tag">&lt;/div&gt;</span></li><li class="L3"><span class="pln">    </span><span class="tag">&lt;/div&gt;</span></li><li class="L4"><span class="pln">  </span><span class="tag">&lt;/li&gt;</span></li><li class="L5"><span class="tag">&lt;/ul&gt;</span></li></ol></pre>
 			</div>
-		</main>
+		</section>
 	</div>
 </div>
 

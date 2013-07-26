@@ -14,7 +14,7 @@
 
       	{include:'{$CORE_PATH}/layout/templates/notifications.tpl'}
 
-		<main id="main" role="main">
+		<section id="main" role="main">
 			<div class="container">
 					<h2>Default thumbnails</h2>
 					<p>By default, Bootstrap's thumbnails are designed to showcase linked images with minimal required markup.</p>
@@ -125,7 +125,7 @@
 						</li>
 					</ul>
 			</div>
-		</main>
+		</section>
 	</div>
 </div>
 

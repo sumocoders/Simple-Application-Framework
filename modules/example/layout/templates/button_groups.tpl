@@ -14,7 +14,7 @@
 
       	{include:'{$CORE_PATH}/layout/templates/notifications.tpl'}
 
-		<main id="main" role="main">
+		<section id="main" role="main">
 			<div class="container">
 				<h2>Examples</h2>
 				<p>Two basic options, along with two more specific variations.</p>
@@ -74,7 +74,7 @@
 				<h4>Dropdowns in button groups</h4>
 				<p><span class="label label-info">Heads up!</span> Buttons with dropdowns must be individually wrapped in their own <code>.btn-group</code> within a <code>.btn-toolbar</code> for proper rendering.</p>
 		</div>
-		</main>
+		</section>
 	</div>
 </div>
 

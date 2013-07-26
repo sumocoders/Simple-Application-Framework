@@ -14,7 +14,7 @@
 
       	{include:'{$CORE_PATH}/layout/templates/notifications.tpl'}
 
-		<main id="main" role="main">
+		<section id="main" role="main">
 			<div class="container">
 				<h2>Default styles</h2>
 				<p>For basic styling—light padding and only horizontal dividers—add the base class <code>.table</code> to any <code>&lt;table&gt;</code>.</p>
@@ -367,7 +367,7 @@
 				</table>
 				<pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><span class="tag">&lt;table&gt;</span></li><li class="L1"><span class="pln">  </span><span class="tag">&lt;caption&gt;</span><span class="pln">...</span><span class="tag">&lt;/caption&gt;</span></li><li class="L2"><span class="pln">  </span><span class="tag">&lt;thead&gt;</span></li><li class="L3"><span class="pln">    </span><span class="tag">&lt;tr&gt;</span></li><li class="L4"><span class="pln">      </span><span class="tag">&lt;th&gt;</span><span class="pln">...</span><span class="tag">&lt;/th&gt;</span></li><li class="L5"><span class="pln">      </span><span class="tag">&lt;th&gt;</span><span class="pln">...</span><span class="tag">&lt;/th&gt;</span></li><li class="L6"><span class="pln">    </span><span class="tag">&lt;/tr&gt;</span></li><li class="L7"><span class="pln">  </span><span class="tag">&lt;/thead&gt;</span></li><li class="L8"><span class="pln">  </span><span class="tag">&lt;tbody&gt;</span></li><li class="L9"><span class="pln">    </span><span class="tag">&lt;tr&gt;</span></li><li class="L0"><span class="pln">      </span><span class="tag">&lt;td&gt;</span><span class="pln">...</span><span class="tag">&lt;/td&gt;</span></li><li class="L1"><span class="pln">      </span><span class="tag">&lt;td&gt;</span><span class="pln">...</span><span class="tag">&lt;/td&gt;</span></li><li class="L2"><span class="pln">    </span><span class="tag">&lt;/tr&gt;</span></li><li class="L3"><span class="pln">  </span><span class="tag">&lt;/tbody&gt;</span></li><li class="L4"><span class="tag">&lt;/table&gt;</span></li></ol></pre>
 			</div>
-		</main>
+		</section>
 	</div>
 </div>
 

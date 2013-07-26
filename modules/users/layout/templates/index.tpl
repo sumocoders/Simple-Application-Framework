@@ -20,7 +20,7 @@
 
 		{include:'{$CORE_PATH}/layout/templates/notifications.tpl'}
 
-		<main id="main" role="main">
+		<section id="main" role="main">
 			<div class="container">
 				{option:dataGrid}
 					{$dataGrid}
@@ -31,7 +31,7 @@
 					</div>
 				{/option:!dataGrid}
 			</div>
-		</main>
+		</section>
 	</div>
 </div>
 

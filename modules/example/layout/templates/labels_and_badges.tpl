@@ -14,7 +14,7 @@
 
       	{include:'{$CORE_PATH}/layout/templates/notifications.tpl'}
 
-		<main id="main" role="main">
+		<section id="main" role="main">
 			<div class="container">
 				<h3>Labels</h3>
 				<table class="table table-bordered table-striped">
@@ -158,7 +158,7 @@
 				<h3>Easily collapsible</h3>
 				<p>For easy implementation, labels and badges will simply collapse (via CSS's <code>:empty</code> selector) when no content exists within.</p>
 			</div>
-		</main>
+		</section>
 	</div>
 </div>
 

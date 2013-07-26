@@ -20,7 +20,7 @@
 
 		{include:'{$CORE_PATH}/layout/templates/notifications.tpl'}
 
-		<main id="main" role="main">
+		<section id="main" role="main">
 			<div class="container">
 				{form:add}
 					<div class="form">
@@ -55,7 +55,7 @@
 					</div>
 				{/form:add}
 			</div>
-		</main>
+		</section>
 	</div>
 </div>
 

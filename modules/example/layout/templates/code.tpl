@@ -14,7 +14,7 @@
 
       	{include:'{$CORE_PATH}/layout/templates/notifications.tpl'}
 
-		<main id="main" role="main">
+		<section id="main" role="main">
 			<div class="container">
 				<h2>Inline</h2>
 				<p>Wrap inline snippets of code with <code>&lt;code&gt;</code>.</p>
@@ -32,7 +32,7 @@
 				<p><span class="label label-info">Heads up!</span> Be sure to keep code within <code>&lt;pre&gt;</code> tags as close to the left as possible; it will render all tabs.</p>
 				<p>You may optionally add the <code>.pre-scrollable</code> class which will set a max-height of 350px and provide a y-axis scrollbar.</p>
 			</div>
-		</main>
+		</section>
 	</div>
 </div>
 

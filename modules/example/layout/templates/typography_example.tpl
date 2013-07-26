@@ -14,7 +14,7 @@
 
       	{include:'{$CORE_PATH}/layout/templates/notifications.tpl'}
 
-		<main id="main" role="main">
+		<section id="main" role="main">
 			<div class="container">
 					<h2>Hero unit</h2>
 					<p>A lightweight, flexible component to showcase key content on your site. It works well on marketing and content-heavy sites.</p>
@@ -36,7 +36,7 @@
 					</div>
 					<pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"page-header"</span><span class="tag">&gt;</span></li><li class="L1"><span class="pln">  </span><span class="tag">&lt;h1&gt;</span><span class="pln">Example page header </span><span class="tag">&lt;small&gt;</span><span class="pln">Subtext for header</span><span class="tag">&lt;/small&gt;&lt;/h1&gt;</span></li><li class="L2"><span class="tag">&lt;/div&gt;</span></li></ol></pre>
 			</div>
-		</main>
+		</section>
 	</div>
 </div>
 

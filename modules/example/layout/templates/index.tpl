@@ -22,7 +22,7 @@
 
       	{include:'{$CORE_PATH}/layout/templates/notifications.tpl'}
 
-		<main id="main" role="main">
+		<section id="main" role="main">
         	<div class="container">
 				<div class="row-fluid">
 					<div class="span12">
@@ -118,7 +118,7 @@
 					</div>
 				</div>
 			</div>
-		</main>
+		</section>
 	</div>
 </div>
 
