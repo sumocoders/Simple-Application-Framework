@@ -222,16 +222,16 @@ input:focus:invalid:focus {
 .input-prepend {
   .add-on {
     @include box-sizing(border-box);
-    //background: #3dae50;
+    background: #b6bcd0;
     @include box-shadow(none);
-    //border: none;
+    border-color: #b6bcd0;
     border-width: 2px;
     height: 50px;
     text-shadow: none;
     line-height: 45px;
     padding-top: 0;
     padding-bottom: 0;
-    //color: #fff;
+    color: #5a627f;
     font-family: $opensans-bold-webfont;
   }
 }
