@@ -100,8 +100,9 @@ class Framework extends DefaultObject
     )
 
   _initForm: ->
+    # Per form een object aanmaken
     new Form
-    
+
   _calculateActionsWidths: ->
     $('.actions li a').each(->
       $this = $(@)
