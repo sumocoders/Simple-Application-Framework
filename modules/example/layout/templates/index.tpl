@@ -98,10 +98,10 @@
 			</header>
 			<div class="container">
 				<ul class="nav nav-tabs">
-					<li class="active"><a href="#home">Home</a></li>
-					<li><a href="#profile">Profile</a></li>
-					<li><a href="#messages">Messages</a></li>
-					<li><a href="#settings">Settings</a></li>
+					<li class="active"><a href="#home" data-toggle="tab">Home</a></li>
+					<li><a href="#profile" data-toggle="tab">Profile</a></li>
+					<li><a href="#messages" data-toggle="tab">Messages</a></li>
+					<li><a href="#settings" data-toggle="tab">Settings</a></li>
 				</ul>
 				<div class="tab-content">
 					<div class="tab-pane active" id="home">
