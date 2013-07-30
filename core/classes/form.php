@@ -207,10 +207,9 @@ class SiteForm extends SpoonForm
 	{
 		parent::parse($template);
 
-		if(!$this->isCorrect(true)) {
+		if($this->isSubmitted() && !$this->isCorrect(true)) {
 			$template->assign('formHasError', true);
 		}
-
 	}
 }
 
