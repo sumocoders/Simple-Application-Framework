@@ -7,13 +7,13 @@
   				<header class="header hide">
   					<h2>{$msgUsersLogin}</h2>
   				</header>
-          
+
           <a href="/" class="logo">Sumocoders</a>
-          
+
   				{form:login}
   					{option:report}<div class="alert alert-info">{$report}</div>{/option:report}
   					{option:error}<div class="alert alert-error">{$errAuthenticationError}</div>{/option:error}
-  
+
   					<fieldset>
   						<div class="control-group{option:txtLoginError} error{/option:txtLoginError}">
   							<label class="control-label" for="login">{$lblLogin|ucfirst}<abbr title="{$msgRequired}">*</abbr></label>
@@ -22,7 +22,7 @@
   								{$txtLogin} {$txtLoginError}
   							</div>
   						</div>
-  
+
   						<div class="control-group{option:txtPasswordError} error{/option:txtPasswordError}">
   							<label class="control-label" for="password">{$lblPassword|ucfirst}<abbr title="{$msgRequired}">*</abbr></label>
   							<div class="controls input-prepend">
