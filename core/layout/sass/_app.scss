@@ -42,6 +42,7 @@ body {
   background-position: center center;
   width: 100%;
   height: 165px;
+  border: none;
 }
 
 // Links
@@ -80,7 +81,7 @@ input[type="tel"],
 input[type="color"],
 .uneditable-input {
   @include box-sizing(border-box);
-  height: 50px;
+  height: 45px;
   padding: 10px;
   @include box-shadow(none);
   border: 2px solid #b6bcd0;
@@ -108,12 +109,30 @@ input[type="color"]:focus,
 
 }
 
+.uneditable-input {
+  opacity: 0.5;
+}
+
 input:focus:invalid:focus {
   @include box-shadow(none);
 }
 
 .control-label {
   color: #7093c3;
+}
+
+.form-horizontal {
+  
+  .control-label {
+    padding-top: 12px;
+  }
+}
+
+label {
+  
+  &.checkbox {
+    margin-bottom: 20px;
+  }
 }
 
 //buttons & add-ons
@@ -123,7 +142,7 @@ input:focus:invalid:focus {
   background: #4ab0ce;
   @include box-shadow(none);
   border: none;
-  height: 50px;
+  height: 45px;
   text-shadow: none;
   line-height: 45px;
   padding-top: 0;
@@ -137,6 +156,7 @@ input:focus:invalid:focus {
     background: darken(#4ab0ce, 10%);
     @include transition(all 150ms);
     color: #fff;
+    border-bottom: none;
   }
 
   &.btn-primary {
@@ -195,9 +215,28 @@ input:focus:invalid:focus {
 
     }
   }
+  
+  &.btn-large {
+    font-size: 1.57 * $baseFontSize;
+    height: 50px;
+    line-height: 50px;
+  }
+  
+  &.btn-small {
+    font-size: $baseFontSize;
+    line-height: 30px;
+    height: 30px;
+  }
+  
+  &.btn-mini {
+    font-size: 0.9 * $baseFontSize;
+    line-height: 26px;
+    height: 26px;
+  }
 
   .caret {
     margin-top: 21px;
+    border-top-color: #fff;
   }
 
   i {
@@ -221,13 +260,20 @@ input:focus:invalid:focus {
     @include box-shadow(none);
     border-color: #b6bcd0;
     border-width: 2px;
-    height: 50px;
+    height: 45px;
     text-shadow: none;
     line-height: 45px;
     padding-top: 0;
     padding-bottom: 0;
     color: #5a627f;
     font-family: $opensans-bold-webfont;
+  }
+}
+
+.input-prepend {
+  
+  .btn {
+    margin-right: -2px;
   }
 }
 
@@ -281,6 +327,26 @@ input:focus:invalid:focus {
         border-left: 2px solid #dbdde6;
         border-right: 2px solid #dbdde6;
         border-top: none;
+      }
+    }
+  }
+  
+  &.nav-stacked {
+    
+    & > .active {
+      border: none;
+      margin-bottom: 0;
+      margin-right: 0;
+      
+      & > a {
+        background: #4ab0ce;
+        border-top: 1px solid #ddd;
+        color: #fff;
+        margin-right: 0;
+        
+        &:hover {
+          border-width: 1px;
+        }
       }
     }
   }
@@ -398,6 +464,49 @@ input:focus:invalid:focus {
   }
 }
 
+// tables 
+
+.table {
+  
+  thead {
+    
+    tr {
+      
+      &:last-child {
+        
+        th {
+          border-bottom: 2px solid #ddd;
+        }
+      }
+    }
+  }
+  
+  tfoot {
+    
+    tr {
+      
+      &:first-child {
+        
+        td {
+          border-top: 2px solid #ddd;
+        }
+      }
+    }
+  }
+}
+
+// pre and code blocks
+
+pre,
+code {
+  
+  ol,
+  ul {
+    margin-bottom: 0;
+    margin-left: 40px;
+  }
+}
+
 // alerts
 
 .alert {
@@ -431,6 +540,7 @@ input:focus:invalid:focus {
 
   &.alert-success {
     background: #56b989;
+    z-index: 9;
 
     .close {
       background-color: #3c9469;
@@ -443,6 +553,7 @@ input:focus:invalid:focus {
 
   &.alert-warning {
     background-color: #d0b15c;
+    z-index: 99;
 
     .close {
       background-color: #b38e2a;
@@ -455,6 +566,7 @@ input:focus:invalid:focus {
 
   &.alert-error {
     background-color: #ca5121;
+    z-index: 999;
 
     .close {
       background-color: #9f360c;
@@ -470,17 +582,55 @@ input:focus:invalid:focus {
 
 .label {
   text-shadow: none;
-  @include border-radius(0);
+  //@include border-radius(0);
 }
 
 // Wells
 
 .well {
   @include box-shadow(none);
-  @include border-radius(0);
+  //@include border-radius(0);
   border: 2px solid #b6bcd0;
 }
 
+// nav pills & list
+
+.nav-pills {
+  
+  & > .active {
+    
+    & > a {
+      background-color: #4ab0ce;
+      
+      &:hover {
+        background: #4ab0ce;
+      }
+    }
+  }
+}
+
+.nav-list {
+  
+  & > .active {
+    
+    & > a {
+      background: #4ab0ce;
+      
+      &:hover {
+        background: #4ab0ce;
+      }
+    }
+  }
+}
+
+// Lists
+
+dl {
+  
+  dt {
+    font-family: $opensans-bold-webfont;
+  }
+}
 
 //Users
 
@@ -493,6 +643,7 @@ input:focus:invalid:focus {
       height: 150px;
       @include border-radius(50%);
       margin: 10% auto;
+      border: none;
     }
 
     .control-group {
@@ -508,7 +659,7 @@ input:focus:invalid:focus {
 
     .add-on {
       width: 13.75%;
-      height: 50px;
+      height: 45px;
       @include box-sizing(border-box);
       background-color: #b6bcd0;
       border: none;
@@ -544,6 +695,7 @@ input:focus:invalid:focus {
     .alert {
       position: relative;
       padding: 0 25px;
+      @include border-radius(4px);
     }
   }
 }
@@ -570,9 +722,10 @@ input:focus:invalid:focus {
 
       a {
         color: #8d94ab;
-        padding: 18px;
+        padding: 21px 18px;
         text-transform: uppercase;
         font-family: $opensans-bold-webfont;
+        border: none;
 
         &.toggleSubNavigation {
           @include svg-with-png-fallback(icon_subnav, no-repeat 95% center, $dimensions: false);
@@ -642,9 +795,6 @@ input:focus:invalid:focus {
 }
 
 #searchBox {
-  //position: fixed;
-  //bottom: 0;
-  //width: 85%;
   position: relative;
 
   &.mobile {
@@ -691,6 +841,11 @@ input:focus:invalid:focus {
 
   .icon-search {
     @include svg-with-png-fallback(icon_search, no-repeat);
+    display: block;
+    
+    &:before {
+      display: none;
+    }
   }
 }
 

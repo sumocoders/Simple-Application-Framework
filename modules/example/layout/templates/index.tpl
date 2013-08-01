@@ -43,8 +43,7 @@
 						<p>
 							<a href="#url-off-the-form" class="btn btn-danger confirmPostForm"
 								data-field-form="delete" data-field-form-id="1" data-message="{$msgAreYouSure}">
-								<i class="icon-trash icon-white"></i>
-								{$lblDelete|ucfirst}
+								<i class="icon-trash icon-white"></i>&nbsp;&nbsp;{$lblDelete|ucfirst}
 							</a>
 						</p>
 					</div>
@@ -119,8 +118,8 @@
 				</div>
 			</div>
 		</section>
-		{include:'{$CORE_PATH}/layout/templates/footer.tpl'}
 	</div>
+	{include:'{$CORE_PATH}/layout/templates/footer.tpl'}
 </div>
 </body>
 </html>
