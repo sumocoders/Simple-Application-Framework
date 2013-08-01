@@ -4,6 +4,14 @@ a {
   &:hover {
     border-bottom: 1px solid $textLinkColorHover;
   }
+  
+  &.iconLink {
+    border: none;
+    
+    &:hover {
+      border: none;
+    }
+  }
 }
 
 .content a {
