@@ -48,12 +48,14 @@ class Framework extends DefaultObject
     # link methods
     'a.confirm': click : 'askConfirmation'
     'a.confirmPostForm': click : 'askConfirmationAndPostAsAForm'
+    
   @onDomReady [
 #    'functionname'
     '_initAjax'
     '_initializeSearch'
     '_initForm'
     '_calculateActionsWidths'
+    'setContentHeight'
   ]
 
   _initAjax: ->
@@ -304,6 +306,18 @@ class Framework extends DefaultObject
         )
       )
       .appendTo(ul)
+  
+  
+  
+  setContentHeight: =>
+    $('#content').css('minHeight', $(window).height())
+    timeout = null
+    $(window).on('resize', (e) ->
+      clearTimeout(timeout)
+      timeout = setTimeout( ->
+        $('#content').css('minHeight', $(window).height())
+      , 200)
+    )
 
 #Framework.current = new Framework
 #

@@ -17,7 +17,7 @@
 		<ul class="nav">
 			{option:currentUser}
 				<li id="user">
-					<a href="#" class="toggleSubNavigation">{$currentUser.name|uppercase}</a>
+					<a href="#" class="toggleSubNavigation"><i class="iconUser"></i>&nbsp;&nbsp;{$currentUser.name|uppercase}</a>
 					<ul class="subNavigation">
 						<li><a href="{$var|buildurl:'edit':'users'}/{$currentUser.id}">{$lblSettings|ucfirst}</a></li>
 						<li><a href="{$var|buildurl:'logout':'users'}">{$lblLogout|ucfirst}</a></li>

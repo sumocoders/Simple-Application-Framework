@@ -6,7 +6,7 @@
 		<header id="header" role="banner">
 			<div class="container">
 				<div class="title">
-					<a id="toggleMenu" class="visible-phone" href="#">{$lblMenu|uppercase}</a>
+					<a id="toggleMenu" class="visible-phone iconLink" href="#">{$lblMenu|uppercase}</a>
 					<h2>{$lblUsers|ucfirst}</h2>
 				</div>
 				<div class="actions">
@@ -26,9 +26,12 @@
 					{$dataGrid}
 				{/option:dataGrid}
 				{option:!dataGrid}
-					<div class="alert alert-warning" role="status">
-						{$msgUsersNoItems}
-					</div>
+					<div class="noItems" role="status">
+  				  <div class="iconNoItems">
+  				    {$lblNoItems|ucfirst}
+  				  </div>
+  					{$msgUsersNoItems}
+  				</div>
 				{/option:!dataGrid}
 			</div>
 		</section>

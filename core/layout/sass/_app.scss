@@ -43,6 +43,10 @@ body {
   width: 100%;
   height: 165px;
   border: none;
+  
+  &:hover {
+    border: none;
+  }
 }
 
 // Links
@@ -86,7 +90,8 @@ input[type="color"],
   @include box-shadow(none);
   border: 2px solid #b6bcd0;
   background: #f8f9fc;
-
+  width: 220px;
+  max-width: 100%;
 }
 
 input[type="text"]:focus,
@@ -744,20 +749,11 @@ dl {
       &#user {
 
         &>a {
-          padding-left: 53px;
           padding-top: 19px;
           color: #464242;
           font-family: $opensans-bold-webfont;
           font-size: 1.29 * $baseFontSize;
           position: relative;
-
-          &:before {
-            content: '';
-            position: absolute;
-            @include svg-with-png-fallback(icon_profile, no-repeat);
-            left: 18px;
-            top: 16px;
-          }
 
           &.active {
             background-color: #fff;
@@ -939,6 +935,11 @@ dl {
       margin-bottom: 4px;
       @include squish-text;
       float: right;
+      border: none;
+      
+      &:hover {
+        border: none;
+      }
     }
 
     ul {
@@ -990,6 +991,7 @@ dl {
           a {
             background-color: #4ba75f;
             color: #fff;
+            border: none;
           }
         }
       }

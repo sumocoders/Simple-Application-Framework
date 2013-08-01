@@ -81,6 +81,7 @@
     __extends(Framework, _super);
 
     function Framework() {
+      this.setContentHeight = __bind(this.setContentHeight, this);
       this.askConfirmationAndPostAsAForm = __bind(this.askConfirmationAndPostAsAForm, this);
       this._postAsForm = __bind(this._postAsForm, this);
       this.toggleSubNavigation = __bind(this.toggleSubNavigation, this);
@@ -119,7 +120,7 @@
       }
     });
 
-    Framework.onDomReady(['_initAjax', '_initializeSearch', '_initForm', '_calculateActionsWidths']);
+    Framework.onDomReady(['_initAjax', '_initializeSearch', '_initForm', '_calculateActionsWidths', 'setContentHeight']);
 
     Framework.prototype._initAjax = function() {
       var _this = this;
@@ -364,6 +365,18 @@
 
     Framework.prototype.renderItem = function(ul, item) {
       return $('<li>').append($('<a>').append(item.value.label + '<small class="muted"> (' + item.value.module + ')</small>')).appendTo(ul);
+    };
+
+    Framework.prototype.setContentHeight = function() {
+      var timeout;
+      $('#content').css('minHeight', $(window).height());
+      timeout = null;
+      return $(window).on('resize', function(e) {
+        clearTimeout(timeout);
+        return timeout = setTimeout(function() {
+          return $('#content').css('minHeight', $(window).height());
+        }, 200);
+      });
     };
 
     return Framework;

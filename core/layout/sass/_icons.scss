@@ -2,3 +2,30 @@
   display: block;
   @include svg-with-png-fallback(icons/icon_arrow_white_right, no-repeat);
 }
+
+.iconUser {
+  display: inline-block;
+  @include svg-with-png-fallback(icon_profile, no-repeat);
+  margin-bottom: -6px;
+}
+
+// No items message
+
+.noItems {
+  font-size: 1.71 * $baseFontSize;
+  color: #c8c9d2;
+  font-family: $opensans-bold-webfont;
+  text-align: center;
+  padding-bottom: 30px;
+}
+
+.iconNoItems {
+  @include svg-with-png-fallback(icon_no_items, no-repeat center center);
+  @include squish-text;
+  width: 168px;
+  height: 168px;
+  border: 15px solid #c8c9d2;
+  @include border-radius(50%);
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
