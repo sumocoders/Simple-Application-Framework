@@ -119,9 +119,8 @@
 				</div>
 			</div>
 		</section>
+		{include:'{$CORE_PATH}/layout/templates/footer.tpl'}
 	</div>
 </div>
-
-{include:'{$CORE_PATH}/layout/templates/footer.tpl'}
 </body>
 </html>

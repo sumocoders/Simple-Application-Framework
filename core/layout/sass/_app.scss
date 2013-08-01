@@ -1,6 +1,7 @@
 // Import fonts
 
 @import 'fonts:*';
+@import "compass_twitter_bootstrap_awesome";
 
 body {
   font-family: $opensans-regular-webfont;
@@ -1071,7 +1072,14 @@ input:focus:invalid:focus {
       }
     }
   }
-
+  
+  .taskbar {
+    
+    .actions {
+      position: absolute;
+    }
+  }
+  
   #content {
     @include box-sizing(border-box);
     padding-left: 50px;
