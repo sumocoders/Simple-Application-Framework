@@ -648,6 +648,10 @@ dl {
 
     .control-group {
       margin-bottom: 27px;
+      
+      .controls {
+        width: 100%;
+      }
     }
 
     .control-label {
