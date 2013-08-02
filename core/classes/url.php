@@ -129,6 +129,9 @@ class SiteURL
 			if(isset($_GET['sort'])) $parameters['sort'] = SpoonFilter::getGetValue('sort', array('asc', 'desc'), 'asc');
 		}
 
+		// replace underscores with dashes for nice urls
+		$action = str_replace('_', '-', $action);
+
 		// build urls
 		$url = '/' . $this->getLanguage() . '/' . $module . '/' . $action;
 
