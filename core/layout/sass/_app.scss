@@ -140,6 +140,30 @@ label {
   }
 }
 
+// Search auto-complete
+.ui-corner-all {
+  @include border-radius(0);
+}
+
+.ui-menu {
+  
+  .ui-menu-item {
+    
+    a {
+      border-bottom: 1px solid #aaa;
+      padding: 10px;
+      text-shadow: none;
+      
+      &:hover,
+      &.ui-state-focus {
+        background: #dfdfdf;
+        color: #393b42;
+        text-shadow: none;
+      }
+    }
+  }
+}
+
 //buttons & add-ons
 
 .btn {
