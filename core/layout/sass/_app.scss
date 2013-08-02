@@ -43,7 +43,7 @@ body {
   width: 100%;
   height: 165px;
   border: none;
-  
+
   &:hover {
     border: none;
   }
@@ -127,14 +127,14 @@ input:focus:invalid:focus {
 }
 
 .form-horizontal {
-  
+
   .control-label {
     padding-top: 12px;
   }
 }
 
 label {
-  
+
   &.checkbox {
     margin-bottom: 20px;
   }
@@ -146,15 +146,15 @@ label {
 }
 
 .ui-menu {
-  
+
   .ui-menu-item {
-    
+
     a {
       border-bottom: 1px solid #aaa;
       padding: 10px;
       text-shadow: none;
       cursor: pointer;
-      
+
       &:hover,
       &.ui-state-focus {
         background: #dfdfdf;
@@ -245,19 +245,19 @@ label {
 
     }
   }
-  
+
   &.btn-large {
     font-size: 1.57 * $baseFontSize;
     height: 50px;
     line-height: 50px;
   }
-  
+
   &.btn-small {
     font-size: $baseFontSize;
     line-height: 30px;
     height: 30px;
   }
-  
+
   &.btn-mini {
     font-size: 0.9 * $baseFontSize;
     line-height: 26px;
@@ -301,7 +301,7 @@ label {
 }
 
 .input-prepend {
-  
+
   .btn {
     margin-right: -2px;
   }
@@ -345,6 +345,14 @@ label {
     //border-bottom: 2px solid #fff;
     margin-bottom: -2px;
 
+	&.error {
+		border-color: #b94a48;
+
+		a {
+			color: #b94a48 !important;
+		}
+	}
+
     & > a {
       background: #fff;
       @include border-radius(0);
@@ -360,20 +368,20 @@ label {
       }
     }
   }
-  
+
   &.nav-stacked {
-    
+
     & > .active {
       border: none;
       margin-bottom: 0;
       margin-right: 0;
-      
+
       & > a {
         background: #4ab0ce;
         border-top: 1px solid #ddd;
         color: #fff;
         margin-right: 0;
-        
+
         &:hover {
           border-width: 1px;
         }
@@ -494,29 +502,29 @@ label {
   }
 }
 
-// tables 
+// tables
 
 .table {
-  
+
   thead {
-    
+
     tr {
-      
+
       &:last-child {
-        
+
         th {
           border-bottom: 2px solid #ddd;
         }
       }
     }
   }
-  
+
   tfoot {
-    
+
     tr {
-      
+
       &:first-child {
-        
+
         td {
           border-top: 2px solid #ddd;
         }
@@ -529,7 +537,7 @@ label {
 
 pre,
 code {
-  
+
   ol,
   ul {
     margin-bottom: 0;
@@ -626,12 +634,12 @@ code {
 // nav pills & list
 
 .nav-pills {
-  
+
   & > .active {
-    
+
     & > a {
       background-color: #4ab0ce;
-      
+
       &:hover {
         background: #4ab0ce;
       }
@@ -640,12 +648,12 @@ code {
 }
 
 .nav-list {
-  
+
   & > .active {
-    
+
     & > a {
       background: #4ab0ce;
-      
+
       &:hover {
         background: #4ab0ce;
       }
@@ -656,7 +664,7 @@ code {
 // Lists
 
 dl {
-  
+
   dt {
     font-family: $opensans-bold-webfont;
   }
@@ -678,7 +686,7 @@ dl {
 
     .control-group {
       margin-bottom: 27px;
-      
+
       .controls {
         width: 100%;
       }
@@ -867,7 +875,7 @@ dl {
   .icon-search {
     @include svg-with-png-fallback(icon_search, no-repeat);
     display: block;
-    
+
     &:before {
       display: none;
     }
@@ -961,7 +969,7 @@ dl {
       @include squish-text;
       float: right;
       border: none;
-      
+
       &:hover {
         border: none;
       }
@@ -1258,14 +1266,14 @@ dl {
       }
     }
   }
-  
+
   .taskbar {
-    
+
     .actions {
       position: absolute;
     }
   }
-  
+
   #content {
     @include box-sizing(border-box);
     padding-left: 50px;
