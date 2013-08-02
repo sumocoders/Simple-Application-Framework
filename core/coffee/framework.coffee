@@ -48,7 +48,7 @@ class Framework extends DefaultObject
     # link methods
     'a.confirm': click : 'askConfirmation'
     'a.confirmPostForm': click : 'askConfirmationAndPostAsAForm'
-    
+
   @onDomReady [
 #    'functionname'
     '_initAjax'
@@ -306,9 +306,7 @@ class Framework extends DefaultObject
         )
       )
       .appendTo(ul)
-  
-  
-  
+
   setContentHeight: =>
     $('#content').css('minHeight', $(window).height())
     timeout = null
@@ -319,9 +317,4 @@ class Framework extends DefaultObject
       , 200)
     )
 
-#Framework.current = new Framework
-#
-#$ ->
-#  Framework.current.domReady()
-#
 window.Framework = Framework
