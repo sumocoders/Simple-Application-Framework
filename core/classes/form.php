@@ -41,6 +41,26 @@ class SiteForm extends SpoonForm
 	}
 
 	/**
+	 * Adds a single dropdown.
+	 *
+	 * @return	SpoonFormDropdown
+	 * @param	string $name						The name.
+	 * @param	array[optional] $values				The possible values. Each value should have a label and value-key.
+	 * @param	mixed[optional] $selected			The selected value.
+	 * @param	bool[optional] $multipleSelection	Can multiple elements be selected?
+	 * @param	string[optional] $class				The CSS-class to be used.
+	 * @param	string[optional] $classError		The CSS-class to be used when there is an error.
+	 */
+	public function addDropdown($name, array $values = null, $selected = null, $multipleSelection = false, $class = 'inputDropdown', $classError = 'inputDropdownError')
+	{
+		// add element
+		$this->add(new SiteFormDropdown($name, $values, $selected, $multipleSelection, $class, $classError));
+
+		// return element
+		return $this->getField($name);
+	}
+
+	/**
 	 * Adds a image field.
 	 *
 	 * @return	SpoonFormImage
@@ -257,5 +277,29 @@ class SiteFormImage extends SpoonFormImage
 		}
 
 		return $this->errors;
+	}
+}
+
+/**
+ * This is our extended version of SpoonFormImage
+ *
+ * @author Tijs Verkoyen <tijs@sumocoders.be>
+ */
+class SiteFormDropdown extends SpoonFormDropdown
+{
+	/**
+	 * Retrieves the custom attributes as HTML.
+	 *
+	 * @return	string
+	 * @param	array $variables	The variables to get the attributes-HTML for.
+	 */
+	protected function getAttributesHTML(array $variables)
+	{
+		// because of our layout we have to remove the size attribute if it is 1
+		if(isset($this->attributes['size']) && $this->attributes['size'] == 1) {
+			unset($this->attributes['size']);
+		}
+
+		return parent::getAttributesHTML($variables);
 	}
 }
