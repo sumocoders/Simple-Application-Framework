@@ -546,6 +546,7 @@ class SiteDataGridFunctions
 	public static function truncate($string = null, $length, $useHellip = true)
 	{
 		// remove special chars
+		$string = strip_tags($string);
 		$string = htmlspecialchars_decode($string);
 
 		// less characters
