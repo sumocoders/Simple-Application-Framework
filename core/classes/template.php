@@ -154,6 +154,7 @@ class SiteTemplate extends SpoonTemplate
 		$this->mapModifier('truncate', array('SiteTemplateModifiers', 'truncate'));
 		$this->mapModifier('url', array('SiteTemplateModifiers', 'buildUrl'));
 		$this->mapModifier('sprintf', 'sprintf');
+		$this->mapModifier('urlise', array('SpoonFilter', 'urlise'));
 	}
 
 	/**
