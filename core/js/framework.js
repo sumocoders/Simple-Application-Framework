@@ -126,7 +126,7 @@
       }
     });
 
-    Framework.onDomReady(['_initAjax', '_initializeSearch', '_initForm', '_initTabs', '_calculateActionsWidths', 'setContentHeight']);
+    Framework.onDomReady(['_initAjax', '_initSearch', '_initForm', '_initTabs', '_calculateActionsWidths', 'setContentHeight']);
 
     Framework.prototype._initAjax = function() {
       var _this = this;
@@ -353,7 +353,7 @@
 
     false;
 
-    Framework.prototype._initializeSearch = function() {
+    Framework.prototype._initSearch = function() {
       $('.searchBox input[name=q]').autocomplete({
         position: {
           using: function(position, elements) {

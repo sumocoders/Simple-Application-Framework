@@ -55,7 +55,7 @@ class Framework extends DefaultObject
   @onDomReady [
 #    'functionname'
     '_initAjax'
-    '_initializeSearch'
+    '_initSearch'
     '_initForm'
     '_initTabs'
     '_calculateActionsWidths'
@@ -290,7 +290,7 @@ class Framework extends DefaultObject
   false
 
 # search
-  _initializeSearch: ->
+  _initSearch: ->
     $('.searchBox input[name=q]').autocomplete(
       position:
         using: (position, elements) ->
