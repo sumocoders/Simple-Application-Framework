@@ -1018,6 +1018,23 @@ dl {
             @include svg-with-png-fallback(icon_add, #1f2024 no-repeat center center, $dimensions: false);
             background-position: 26px center;
           }
+          
+          &.iconImport {
+            @include svg-with-png-fallback(icon_import, #1f2024 no-repeat center center, $dimensions: false);
+            background-position: 24px center;
+            
+          }
+          
+          &.iconContacts {
+            @include svg-with-png-fallback(icon_contacts, #1f2024 no-repeat center center, $dimensions: false);
+            background-position: 20px center;
+            
+          }
+          
+          &.iconVcard {
+            @include svg-with-png-fallback(icon_vcard, #1f2024 no-repeat center center, $dimensions: false);
+            background-position: 22px center;
+          }
         }
 
         &:hover {
