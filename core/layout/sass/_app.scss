@@ -1092,6 +1092,18 @@ dl {
 
 }
 
+#completeReminderModal {
+  form {
+    margin: 0;
+  }
+  .controls {
+    textarea {
+      width: 100%;
+      @include box-sizing(border-box);
+    }
+  }
+}
+
 #main {
   padding-top: 120px;
 }
