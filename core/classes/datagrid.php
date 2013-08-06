@@ -100,7 +100,7 @@ class SiteDataGrid extends SpoonDataGrid
 			$class .= ' action';
 
 			// rebuild value
-			$html = '<a class="iconLink" href="' . $URL . '"';
+			$html = '<a class="iconLink" href="' . $URL . '" title="' . $value . '"';
 
 			// if the action name contains delete we should ask confirmation
 			if(substr_count($name, 'delete'))
