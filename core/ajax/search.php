@@ -13,8 +13,6 @@ class AjaxCoreSearch extends AjaxBaseAction
 {
 	/**
 	 * Execute the action
-	 *
-	 * @return void
 	 */
 	public function execute()
 	{

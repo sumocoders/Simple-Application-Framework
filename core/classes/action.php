@@ -60,8 +60,6 @@ class SiteAction
 	/**
 	 * Execute the action
 	 * We will build the class name, require the class and call the execute method.
-	 *
-	 * @return void
 	 */
 	public function execute()
 	{
@@ -119,7 +117,6 @@ class SiteAction
 	 * Set the action
 	 *
 	 * @param	string $action	The action.
-	 * @return void
 	 */
 	private function setAction($action)
 	{
@@ -130,7 +127,6 @@ class SiteAction
 	 * Set the module
 	 *
 	 * @param	string $module	The module.
-	 * @return void
 	 */
 	private function setModule($module)
 	{
@@ -230,7 +226,6 @@ class SiteBaseAction
 	 * If no template is specified we build the path form the current module and action
 	 *
 	 * @param	string[optional] $template	The template to display.
-	 * @return void
 	 */
 	public function display($template = null)
 	{
@@ -248,8 +243,6 @@ class SiteBaseAction
 
 	/**
 	 * Execute the action
-	 *
-	 * @return void
 	 */
 	public function execute()
 	{
@@ -277,8 +270,6 @@ class SiteBaseAction
 
 	/**
 	 * Parse reports
-	 *
-	 * @return void
 	 */
 	public function parseReports()
 	{
@@ -311,6 +302,21 @@ class SiteBaseAction
 			// assign
 			$this->tpl->assign('error', $message);
 		}
+
+		// error provided in url?
+		$warning = SpoonFilter::getGetValue('warning', null, '');
+		if($warning != '')
+		{
+			// get message
+			$message = SiteLocale::msg(SpoonFilter::toCamelCase($warning , '-'));
+
+			// any vars?
+			$var = SpoonFilter::getGetValue('var', null, '');
+			if($var != '') $message = vsprintf($message, $var);
+
+			// assign
+			$this->tpl->assign('warning', $message);
+		}
 	}
 
 	/**
@@ -318,7 +324,6 @@ class SiteBaseAction
 	 *
 	 * @param	string $url				The URL to redirect to.
 	 * @param	int[optional] $code		The redirect code, default is 302 (found), other possibilities are: 301 (permanent), 302 (found).
-	 * @return void
 	 */
 	public function redirect($url, $code = 302)
 	{
@@ -329,7 +334,6 @@ class SiteBaseAction
 	 * Set the action, for later use
 	 *
 	 * @param	string $action	The action.
-	 * @return void
 	 */
 	private function setAction($action)
 	{
@@ -340,7 +344,6 @@ class SiteBaseAction
 	 * Set the module, for later use
 	 *
 	 * @param	string $module	The module.
-	 * @return void
 	 */
 	private function setModule($module)
 	{

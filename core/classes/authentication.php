@@ -98,8 +98,6 @@ class Authentication
 
 	/**
 	 * Log out the user
-	 *
-	 * @return void
 	 */
 	public static function logout()
 	{
@@ -155,7 +153,7 @@ class Authentication
 			);
 
 			$message = 'failed login attempt';
-			if($user->isBlocked) $message .= ' from blocked user';
+			if($return && $user->isBlocked) $message .= ' from blocked user';
 
 			// log
 			Site::getLogger()->warning(

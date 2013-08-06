@@ -15,10 +15,10 @@
 <body>
 <div id="content">
 	<div class="wrapper">
-		<div class="header">
+		<div class="header" role="alert">
 			<h1>{$error}</h1>
 		</div>
-		<a href="/" class="button"><span class="icon"></span>{$lblDashboard|ucfirst}</a>
+		<a href="/" class="button"><span class="icon"></span>{$lblHome|ucfirst}</a>
 		<div id="illustration"></div>
 	</div>
 </div>

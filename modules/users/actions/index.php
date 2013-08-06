@@ -13,8 +13,6 @@ class UsersIndex extends SiteBaseAction
 {
 	/**
 	 * Execute the action
-	 *
-	 * @return void
 	 */
 	public function execute()
 	{
@@ -25,8 +23,6 @@ class UsersIndex extends SiteBaseAction
 
 	/**
 	 * Parse
-	 *
-	 * @return void
 	 */
 	private function parse()
 	{

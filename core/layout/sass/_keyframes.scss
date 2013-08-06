@@ -1,0 +1,4 @@
+@include keyframes(loadingProgressBar) {
+  from { background-position: 100px 0; }
+  to { background-position: 0 0; }
+}

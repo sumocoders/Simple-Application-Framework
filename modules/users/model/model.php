@@ -208,7 +208,6 @@ class User
 	 *
 	 * @param	string $key		The key whereunder the value will be stored.
 	 * @param	mixed $value	The value to store.
-	 * @return void
 	 */
 	public function setSetting($key, $value)
 	{

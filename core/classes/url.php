@@ -129,6 +129,9 @@ class SiteURL
 			if(isset($_GET['sort'])) $parameters['sort'] = SpoonFilter::getGetValue('sort', array('asc', 'desc'), 'asc');
 		}
 
+		// replace underscores with dashes for nice urls
+		$action = str_replace('_', '-', $action);
+
 		// build urls
 		$url = '/' . $this->getLanguage() . '/' . $module . '/' . $action;
 
@@ -284,10 +287,6 @@ class SiteURL
 		// are there GET-parameters
 		if(isset($chunks[1]))
 		{
-			// remove from query string
-			$queryString = str_replace('?' . $chunks[1], '', $this->getQueryString());
-
-			// add parameters
 			foreach($_GET as $key => $value) $this->addParameter($value, $key);
 		}
 

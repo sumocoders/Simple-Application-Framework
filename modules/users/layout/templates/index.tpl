@@ -1,44 +1,43 @@
 {include:'{$CORE_PATH}/layout/templates/head.tpl'}
-{include:'{$CORE_PATH}/layout/templates/header.tpl'}
 {include:'{$CORE_PATH}/layout/templates/nav.tpl'}
 
-	<div id="content" class="container-fluid">
-		<section id="{$MODULE}" class="{$ACTION} row-fluid">
-			<div class="span12">
-				<header class="header buttonHolderRight">
+<div id="contentWrap">
+	<div id="content">
+		<header id="header" role="banner">
+			<div class="container">
+				<div class="title">
+					<a id="toggleMenu" class="visible-phone iconLink" href="#">{$lblMenu|uppercase}</a>
 					<h2>{$lblUsers|ucfirst}</h2>
+				</div>
+				<div class="actions">
+					<a href="#" class="dropdownToggle visible-phone" data-toggle="dropdownItems">{$lblActions|ucfirst}</a>
+					<ul class="dropdownItems">
+						<li><a class="iconAdd" href="{$var|buildurl:'add':'users'}">{$lblAdd|ucfirst}</a></li>
+					</ul>
+				</div>
+			</div>
+		</header>
 
-					<div class="btn-group">
-						<a href="{$var|buildurl:'add':'users'}" class="btn">
-							<i class="icon-plus"></i>
-							{$lblAdd|ucfirst}
-						</a>
-					</div>
-				</header>
+		{include:'{$CORE_PATH}/layout/templates/notifications.tpl'}
 
-				{option:report}
-					<div class="alert alert-success">
-						{$report}
-					</div>
-				{/option:report}
-				{option:error}
-					<div class="alert alert-error">
-						{$error}
-					</div>
-				{/option:error}
-
+		<section id="main" role="main">
+			<div class="container">
 				{option:dataGrid}
 					{$dataGrid}
 				{/option:dataGrid}
 				{option:!dataGrid}
-					<div class="alert">
-						{$msgUsersNoItems}
+					<div class="noItems" role="status">
+					<div class="iconNoItems">
+						{$lblNoItems|ucfirst}
 					</div>
+  					{$msgUsersNoItems}
+  				</div>
 				{/option:!dataGrid}
 			</div>
 		</section>
-
-		{include:'{$CORE_PATH}/layout/templates/footer.tpl'}
 	</div>
+</div>
+
+{include:'{$CORE_PATH}/layout/templates/footer.tpl'}
 </body>
 </html>

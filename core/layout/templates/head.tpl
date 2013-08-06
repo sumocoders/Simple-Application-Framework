@@ -8,7 +8,7 @@
 		{option:!pageTitle}{$SITE_DEFAULT_TITLE}{/option:!pageTitle}
 	</title>
 
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 	<meta name="description" content="">
 	<meta name="keywords" content="">
 	<meta name="author" content="SumoCoders">
@@ -34,21 +34,28 @@
 	<!--  icon for facebook -->
 	<link rel="image_src" href="/image_src.png" />
 
-	<script src="/core/js/lib.js?m={$LAST_MODIFIED}"></script>
-	<script src="/core/js/script.js?m={$LAST_MODIFIED}"></script>
+	<script>
+		var jsData = {$jsData};
+	</script>
+	<script src="/core/js/jquery.js?m={$LAST_MODIFIED}"></script>
+	<script src="/core/js/bootstrap.js?m={$LAST_MODIFIED}"></script>
+	<script src="/core/js/html2canvas.js?m={$LAST_MODIFIED}"></script>
+	<script src="/core/js/sumo_plugins.js?m={$LAST_MODIFIED}"></script>
+	<script src="/core/js/framework.js?m={$LAST_MODIFIED}"></script>
+	<script src="/core/js/framework.data.js?m={$LAST_MODIFIED}"></script>
+	<script src="/core/js/framework.locale.js?m={$LAST_MODIFIED}"></script>
+	<script src="/core/js/framework.form.js?m={$LAST_MODIFIED}"></script>
+	<script src="/core/js/app.js?m={$LAST_MODIFIED}"></script>
 	{option:javascript}
 		{iteration:javascript}
 			<script src="{$javascript.url}"></script>
 		{/iteration:javascript}
 	{/option:javascript}
-	<script>
-		var jsData = {$jsData};
-	</script>
 </head>
-<body>
+<body class="{$MODULE} {$ACTION}">
 	<!--[if lt IE 8 ]>
-		<div id="ie6" class="alert alert-block">
-			<a href="#" class="close" data-dismiss="alert">x</a>
+		<div id="ie6" class="alert alert-block" role="alert">
+			<a href="#" class="close" data-dismiss="alert" title="{$lblClose|ucfirst}">x</a>
 			{$msgOldBrowserWarning}
 		</div>
 	<![endif]-->

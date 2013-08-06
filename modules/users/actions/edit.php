@@ -37,8 +37,6 @@ class UsersEdit extends SiteBaseAction
 
 	/**
 	 * Execute the action
-	 *
-	 * @return void
 	 */
 	public function execute()
 	{
@@ -75,8 +73,6 @@ class UsersEdit extends SiteBaseAction
 
 	/**
 	 * Load the form
-	 *
-	 * @return void
 	 */
 	private function loadForm()
 	{
@@ -110,8 +106,6 @@ class UsersEdit extends SiteBaseAction
 
 	/**
 	 * Validate the form
-	 *
-	 * @return void
 	 */
 	private function validateForm()
 	{
@@ -168,9 +162,6 @@ class UsersEdit extends SiteBaseAction
 					)
 				);
 			}
-
-			// show general error
-			else $this->tpl->assign('form' . SpoonFilter::toCamelCase($this->frm->getName()) . 'HasError', true);
 		}
 	}
 }

@@ -21,8 +21,6 @@ class UsersAdd extends SiteBaseAction
 
 	/**
 	 * Execute the action
-	 *
-	 * @return void
 	 */
 	public function execute()
 	{
@@ -40,8 +38,6 @@ class UsersAdd extends SiteBaseAction
 
 	/**
 	 * Load the form
-	 *
-	 * @return void
 	 */
 	private function loadForm()
 	{
@@ -57,8 +53,6 @@ class UsersAdd extends SiteBaseAction
 
 	/**
 	 * Validate the form
-	 *
-	 * @return void
 	 */
 	private function validateForm()
 	{
@@ -94,9 +88,6 @@ class UsersAdd extends SiteBaseAction
 					)
 				);
 			}
-
-			// show general error
-			else $this->tpl->assign('form' . SpoonFilter::toCamelCase($this->frm->getName()) . 'HasError', true);
 		}
 	}
 }

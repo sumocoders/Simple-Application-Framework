@@ -63,7 +63,6 @@ class SiteTemplate extends SpoonTemplate
 	 * Add a css-file
 	 *
 	 * @param	string $url		The url of the css-file.
-	 * @return void
 	 */
 	public function addCssFile($url)
 	{
@@ -94,7 +93,6 @@ class SiteTemplate extends SpoonTemplate
 	 * Add a javascript file
 	 *
 	 * @param	string $url	The url of the js-file.
-	 * @return void
 	 */
 	public function addJavascriptFile($url)
 	{
@@ -117,7 +115,6 @@ class SiteTemplate extends SpoonTemplate
 	 * Will also assign the interface labels and all user-defined constants.
 	 *
 	 * @param	string $template	The template to display.
-	 * @return void
 	 */
 	public function display($template)
 	{
@@ -145,8 +142,6 @@ class SiteTemplate extends SpoonTemplate
 
 	/**
 	 * Map the fork-specific modifiers
-	 *
-	 * @return void
 	 */
 	private function mapCustomModifiers()
 	{
@@ -159,12 +154,11 @@ class SiteTemplate extends SpoonTemplate
 		$this->mapModifier('truncate', array('SiteTemplateModifiers', 'truncate'));
 		$this->mapModifier('url', array('SiteTemplateModifiers', 'buildUrl'));
 		$this->mapModifier('sprintf', 'sprintf');
+		$this->mapModifier('urlise', array('SpoonFilter', 'urlise'));
 	}
 
 	/**
 	 * Parse all user-defined constants
-	 *
-	 * @return void
 	 */
 	private function parseConstants()
 	{
@@ -206,8 +200,6 @@ class SiteTemplate extends SpoonTemplate
 
 	/**
 	 * Parse the external loaded files into the header
-	 *
-	 * @return void
 	 */
 	private function parseExternalFiles()
 	{
@@ -244,8 +236,18 @@ class SiteTemplate extends SpoonTemplate
 	private function parseJavascriptData()
 	{
 		$this->addJavascriptData('core', 'debug', SPOON_DEBUG);
+
 		$frm = new SiteForm(time(), null, 'post', true);
 		$this->addJavascriptData('core', 'form_token', $frm->getToken());
+
+		// get the url object, so we can pass some stuff to JS
+		if(Spoon::exists('url'))
+		{
+			$url = Spoon::get('url');
+			$this->addJavascriptData('core', 'language', $url->getLanguage());
+			$this->addJavascriptData('core', 'module', $url->getModule());
+			$this->addJavascriptData('core', 'action', $url->getAction());
+		}
 
 		if(Authentication::getLoggedInUser()) {
 			$this->addJavascriptData('core', 'currentUser', Authentication::getLoggedInUser()->toArray());
@@ -255,8 +257,6 @@ class SiteTemplate extends SpoonTemplate
 
 	/**
 	 * Parse the locale
-	 *
-	 * @return void
 	 */
 	private function parseLocale()
 	{

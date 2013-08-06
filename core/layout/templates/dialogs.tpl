@@ -1,4 +1,4 @@
-<div class="modal fade hide" id="confirmModal">
+<div class="modal fade hide" id="confirmModal" role="alertdialog">
 	<div class="modal-body">
 		<p id="confirmModalMessage">…</p>
 	</div>
@@ -8,7 +8,7 @@
 	</div>
 </div>
 
-<div class="modal fade hide" id="reportBugModal">
+<div class="modal fade hide" id="reportBugModal" role="alertdialog">
 	<div class="modal-header">
 		<button type="button" class="close" data-dismiss="modal">×</button>
 		<h3>{$lblFeedback|ucfirst}</h3>
@@ -38,13 +38,12 @@
 
 		<div class="step step3" style="display: none;">
 			<p>{$msgBugReportStep3}</p>
-
 		</div>
 	</div>
 	<div class="modal-footer">
-			<a href="#" id="reportBugPrevious" class="btn" style="display: none;">{$lblPrevious|ucfirst}</a>
-			<a href="#" id="reportBugNext" class="btn btn-primary">{$lblNext|ucfirst}</a>
-			<a href="#" id="reportBugSubmit" class="btn btn-primary disabled" style="display: none;">{$lblSend|ucfirst}</a>
-			<a href="#" id="reportBugClose" class="btn btn-primary" data-dismiss="modal" style="display: none;">{$lblOk|ucfirst}</a>
+		<a href="#" id="reportBugPrevious" class="btn" style="display: none;">{$lblPrevious|ucfirst}</a>
+		<a href="#" id="reportBugNext" class="btn btn-primary">{$lblNext|ucfirst}</a>
+		<a href="#" id="reportBugSubmit" class="btn btn-primary disabled" style="display: none;">{$lblSend|ucfirst}</a>
+		<a href="#" id="reportBugClose" class="btn btn-primary" data-dismiss="modal" style="display: none;">{$lblOk|ucfirst}</a>
 	</div>
 </div>

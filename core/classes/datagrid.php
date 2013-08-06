@@ -35,7 +35,7 @@ class SiteDataGrid extends SpoonDataGrid
 		$this->setCompileDirectory(CACHE_PATH . '/compiled_templates');
 
 		// set attributes for the data grid
-		$this->setAttributes(array('class' => 'datagrid table table-striped'));
+		$this->setAttributes(array('class' => 'table'));
 
 		// hide the id by default
 		if(in_array('id', $this->getColumns())) $this->setColumnsHidden('id');
@@ -100,7 +100,7 @@ class SiteDataGrid extends SpoonDataGrid
 			$class .= ' action';
 
 			// rebuild value
-			$html = '<a href="' . $URL . '" class="btn btn-mini';
+			$html = '<a class="iconLink" href="' . $URL . '"';
 
 			// if the action name contains delete we should ask confirmation
 			if(substr_count($name, 'delete'))
@@ -124,9 +124,8 @@ class SiteDataGrid extends SpoonDataGrid
 			$html .= $value;
 			$html .= '</a>';
 
-			$value = $html;
-
 			if($image != '') $html .= '</span>';
+			$value = $html;
 
 			// reset url
 			$URL = null;
@@ -160,7 +159,6 @@ class SiteDataGrid extends SpoonDataGrid
 	 * Defines the default URL.
 	 *
 	 * @param	string $URL		The URL to use.
-	 * @return void
 	 */
 	public function setURL($URL)
 	{
@@ -548,6 +546,7 @@ class SiteDataGridFunctions
 	public static function truncate($string = null, $length, $useHellip = true)
 	{
 		// remove special chars
+		$string = strip_tags($string);
 		$string = htmlspecialchars_decode($string);
 
 		// less characters

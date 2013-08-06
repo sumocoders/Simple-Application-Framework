@@ -75,55 +75,24 @@ class SiteLocale extends SpoonTemplate
 	public static function getPreferredLanguage()
 	{
 		// init var
-		$foundALanguage = false;
+		$language = 'nl';   // @remark: this should be the same as the default language.
 
-		// available in cookie?
-		if(SpoonCookie::exists('language') && SpoonCookie::get('language'))
+		if(isset($_SERVER['HTTP_ACCEPT_LANGUAGE']))
 		{
-			// set language
-			$language = SpoonCookie::get('language');
+			// get preferred languages
+			$browserLanguages = explode(',', $_SERVER['HTTP_ACCEPT_LANGUAGE']);
 
-			// valid language?
-			if(!in_array($language, self::$possibleLanguages))
+			// loop preferred languages
+			foreach($browserLanguages as $browserLanguage)
 			{
-				// delete cookie
-				SpoonCookie::delete('language');
+				$languageAbbreviation = substr($browserLanguage, 0, 2);
 
-				// set language to first item in the possible languages
-				$language = self::$possibleLanguages[0];
-			}
-		}
-
-		// search for browser language
-		else
-		{
-			if(isset($_SERVER['HTTP_ACCEPT_LANGUAGE']))
-			{
-				// get preferred languages
-				$browserLanguages = explode(',', $_SERVER['HTTP_ACCEPT_LANGUAGE']);
-
-				// init var
-				$foundALanguage = false;
-
-				// loop preferred languages
-				foreach($browserLanguages as $language)
+				if(in_array($languageAbbreviation, self::$possibleLanguages))
 				{
-					$languageAbbreviation = substr($language, 0, 2);
-
-					if(in_array($languageAbbreviation, self::$possibleLanguages))
-					{
-						$language = $languageAbbreviation;
-						$foundALanguage = true;
-						break;
-					}
+					$language = $languageAbbreviation;
+					break;
 				}
 			}
-
-			// no language found
-			if(!$foundALanguage) $language = 'nl';
-
-			// store in cookie
-			SpoonCookie::set('language', $language);
 		}
 
 		return $language;
@@ -155,7 +124,6 @@ class SiteLocale extends SpoonTemplate
 	 * Set the locale
 	 *
 	 * @param	string $language	The language.
-	 * @return void
 	 */
 	public static function setLocale($language)
 	{

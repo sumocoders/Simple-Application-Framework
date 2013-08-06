@@ -1,9 +1,9 @@
 /* Scaffolding */
-$bodyBackground: #F4F4F6;
-$textColor: #61615E;
+$bodyBackground: #e4e5ec;
+$textColor: #6b798d;
 
 /* Links */
-$textLinkColor: #A73E15;
+$textLinkColor: #0088cc;
 $textLinkColorHover: darken($textLinkColor, 15%);
 
 /* Typography */
@@ -17,5 +17,5 @@ $baseLineHeight: 21px;
 $altFontFamily: $serifFontFamily;
 
 /* Sprite icons path */
-$iconSpritePath: image-url("glyphicons-halflings.png", true);
-$iconWhiteSpritePath: image-url("glyphicons-halflings-white.png", true);
+//$iconSpritePath: image-url("glyphicons-halflings.png", true);
+//$iconWhiteSpritePath: image-url("glyphicons-halflings-white.png", true);

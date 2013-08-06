@@ -21,8 +21,6 @@ class UsersLogin extends SiteBaseAction
 
 	/**
 	 * Execute the action
-	 *
-	 * @return void
 	 */
 	public function execute()
 	{
@@ -49,8 +47,6 @@ class UsersLogin extends SiteBaseAction
 
 	/**
 	 * Load the form
-	 *
-	 * @return void
 	 */
 	private function loadForm()
 	{
@@ -64,8 +60,6 @@ class UsersLogin extends SiteBaseAction
 
 	/**
 	 * Validate the form
-	 *
-	 * @return void
 	 */
 	private function validateForm()
 	{

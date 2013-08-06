@@ -1,7 +1,0 @@
-#reportBugSubmitSpinnerHolder {
-	height: 20px;
-
-	#reportBugSubmitSpinner {
-		@include replace-text(inline-image("spinner.gif"));
-	}
-}
