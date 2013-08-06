@@ -47,28 +47,6 @@ class SiteLocale extends SpoonTemplate
 	}
 
 	/**
-	 * Convert the errors from the CP into readable ones
-	 *
-	 * @param	string $message		The message to convert.
-	 * @return string
-	 */
-	public static function callError($message)
-	{
-		$key = SpoonFilter::toCamelCase($message);
-		$key = str_replace('ValidationFailed:', '', $key);
-		if(substr_count($message, 'Duplicate entry ') > 0) $key = 'DuplicateEntry';
-
-		// known error?
-		if(isset(SiteLocale::$err[$key])) return SiteLocale::err($key);
-
-		// in debug-mode we don't want mail, we just want to see the error
-		if(SPOON_DEBUG) Spoon::dump($message);
-
-		// throw an exception, so we will get a mail
-		throw new Exception('Missing message: ' . $key);
-	}
-
-	/**
 	 * Get an error
 	 *
 	 * @param	string $key		The key.

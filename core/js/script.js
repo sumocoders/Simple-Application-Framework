@@ -35,8 +35,10 @@ var jsSite = {
 			var method = 'jsSite.'+ jsSite.current.module +'.init()';
 			eval(method);
 		} catch(e) {
-			if(jsSite.debug) console.log(e);
-		}
+            if(jsSite.debug) {
+                throw e;
+			}
+        }
 	},
 	// set defaults for AJAX
 	initAjax: function() {
@@ -69,6 +71,7 @@ var jsSite = {
 		$(document).ajaxStop(function() { $('#ajaxSpinner').hide(); });
 	}
 }
+
 jsSite.bugs = {
 	screenshot: null,
 	init: function() {
@@ -186,6 +189,7 @@ jsSite.data = {
 		return eval('jsSite.data.data.' + key);
 	}
 }
+
 jsSite.forms = {
 	init: function() {
 		$('form').on('submit', function() { $('#ajaxSpinner').show(); });

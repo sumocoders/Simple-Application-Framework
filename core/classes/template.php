@@ -357,6 +357,7 @@ class SiteTemplateModifiers
 
 	/**
 	 * Format a number as a float
+	 * 	syntax: {$var|formatfloat}
 	 *
 	 * @param	float $number				The number to format.
 	 * @param	int[optional] $decimals		The number of decimals.
