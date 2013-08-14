@@ -27,11 +27,11 @@
 				{/option:dataGrid}
 				{option:!dataGrid}
 					<div class="noItems" role="status">
-					<div class="iconNoItems">
-						{$lblNoItems|ucfirst}
+						<div class="iconNoItems">
+							{$lblNoItems|ucfirst}
+						</div>
+						{$msgUsersNoItems}
 					</div>
-  					{$msgUsersNoItems}
-  				</div>
 				{/option:!dataGrid}
 			</div>
 		</section>
