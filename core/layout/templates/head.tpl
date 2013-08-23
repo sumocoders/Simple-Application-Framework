@@ -38,8 +38,10 @@
 		var jsData = {$jsData};
 	</script>
 	<script src="/core/js/jquery.js?m={$LAST_MODIFIED}"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
 	<script src="/core/js/bootstrap.js?m={$LAST_MODIFIED}"></script>
 	<script src="/core/js/html2canvas.js?m={$LAST_MODIFIED}"></script>
+	<script src="/core/js/respond.js?m={$LAST_MODIFIED}"></script>
 	<script src="/core/js/sumo_plugins.js?m={$LAST_MODIFIED}"></script>
 	<script src="/core/js/framework.js?m={$LAST_MODIFIED}"></script>
 	<script src="/core/js/framework.data.js?m={$LAST_MODIFIED}"></script>
