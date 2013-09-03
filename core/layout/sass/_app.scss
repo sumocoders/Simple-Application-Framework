@@ -8,7 +8,7 @@ body {
   //overflow: hidden;
   background: #fff;
 
-  &.login, &.forgot_password {
+  &.login, &.forgot_password, &.reset_password {
     background: #e4e5ec;
   }
 }
@@ -674,7 +674,7 @@ dl {
 
 #users {
 
-  &.login, &.forgot_password {
+  &.login, &.forgot_password, &.reset_password {
 
     .logo {
       width: 150px;
@@ -1134,7 +1134,7 @@ dl {
 
   #users {
 
-    &.login, &.forgot_password {
+    &.login, &.forgot_password, &.reset_password {
       width: 400px;
       margin: 0 auto;
     }

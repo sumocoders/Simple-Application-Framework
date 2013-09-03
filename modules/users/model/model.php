@@ -2,26 +2,22 @@
 
 /**
  * User
- *
- * @package		users
- * @subpackage	model
- *
- * @author 		Tijs Verkoyen <tijs@sumocoders.be>
- * @since		1.0
+ * @package        users
+ * @subpackage    model
+ * @author        Tijs Verkoyen <tijs@sumocoders.be>
+ * @since        1.0
  */
 class User
 {
 	/**
 	 * The id of the user.
-	 *
-	 * @var	string
+	 * @var    string
 	 */
 	public $id;
 
 	/**
 	 * Textual properties
-	 *
-	 * @var	string
+	 * @var    string
 	 */
 	public $name, $email, $secret, $rawPassword, $password, $type;
 
@@ -32,23 +28,19 @@ class User
 
 	/**
 	 * DateTime properties
-	 *
 	 * @var DateTime
 	 */
 	public $createdOn, $editedOn, $blockedOn;
 
 	/**
 	 * Array properties
-	 *
-	 * @var	array
+	 * @var    array
 	 */
 	private $settings = array();
 
-
 	/**
 	 * Get a user
-	 *
-	 * @param	int $id		The id of the user.
+	 * @param    int $id        The id of the user.
 	 * @return User
 	 */
 	public static function get($id)
@@ -57,12 +49,14 @@ class User
 		$id = (int) $id;
 
 		// get data
-		$data = Site::getDB()->getRecord('SELECT i.*, UNIX_TIMESTAMP(i.created_on) AS created_on,
-											UNIX_TIMESTAMP(i.edited_on) AS edited_on,
-											UNIX_TIMESTAMP(i.blocked_on) AS blocked_on
-											FROM users AS i
-											WHERE i.id = ?',
-											array($id));
+		$data = Site::getDB()->getRecord(
+			'SELECT i.*, UNIX_TIMESTAMP(i.created_on) AS created_on,
+														UNIX_TIMESTAMP(i.edited_on) AS edited_on,
+														UNIX_TIMESTAMP(i.blocked_on) AS blocked_on
+														FROM users AS i
+														WHERE i.id = ?',
+			array($id)
+		);
 
 		// validate
 		if($data === null) return false;
@@ -79,7 +73,6 @@ class User
 
 	/**
 	 * Get a user by his email
-	 *
 	 * @param string $email
 	 * @return User
 	 */
@@ -89,12 +82,14 @@ class User
 		$email = (string) $email;
 
 		// get data
-		$data = Site::getDB()->getRecord('SELECT i.*, UNIX_TIMESTAMP(i.created_on) AS created_on,
-											UNIX_TIMESTAMP(i.edited_on) AS edited_on,
-											UNIX_TIMESTAMP(i.blocked_on) AS blocked_on
-										  FROM users AS i
-										  WHERE i.email = ?',
-										 array($email));
+		$data = Site::getDB()->getRecord(
+			'SELECT i.*, UNIX_TIMESTAMP(i.created_on) AS created_on,
+			UNIX_TIMESTAMP(i.edited_on) AS edited_on,
+			UNIX_TIMESTAMP(i.blocked_on) AS blocked_on
+			FROM users AS i
+			WHERE i.email = ?',
+			array($email)
+		);
 
 		// validate
 		if($data === null) return false;
@@ -110,21 +105,55 @@ class User
 	}
 
 	/**
+	 * Get a user by his email
+	 * @param string $hash
+	 * @return User
+	 */
+	public static function getByHash($hash)
+	{
+		// redefine
+		$username = (string) $hash;
+
+		$data = Site::getDB()->getRecord(
+			'SELECT i.*, UNIX_TIMESTAMP(i.created_on) AS created_on,
+			UNIX_TIMESTAMP(i.edited_on) AS edited_on,
+			UNIX_TIMESTAMP(i.blocked_on) AS blocked_on
+			FROM users AS i
+			WHERE i.forgot_password = ?',
+			array($hash)
+		);
+
+		// validate
+		if($data === null) return false;
+
+		// create instance
+		$item = new User();
+
+		// initialize
+		$item->initialize($data);
+
+		if($item->isBlocked) return 'blocked';
+
+		// return
+		return $item;
+	}
+
+	/**
 	 * Get all users for usage in a dropdown
-	 *
 	 * @return array
 	 */
 	public static function getForDropdown()
 	{
-		return Site::getDB()->getPairs('SELECT i.id, i.name
-										FROM users AS i
-										ORDER BY i.name');
+		return Site::getDB()->getPairs(
+			'SELECT i.id, i.name
+			FROM users AS i
+			ORDER BY i.name'
+		);
 	}
 
 	/**
 	 * Get a setting
-	 *
-	 * @param	string $key		The key whereunder the value is stored.
+	 * @param    string $key        The key whereunder the value is stored.
 	 * @return mixed
 	 */
 	public function getSetting($key)
@@ -135,8 +164,7 @@ class User
 
 	/**
 	 * Initialize the object.
-	 *
-	 * @param	array $data		The data in an array.
+	 * @param    array $data        The data in an array.
 	 * @return User
 	 */
 	public function initialize($data)
@@ -161,7 +189,6 @@ class User
 
 	/**
 	 * Save the user
-	 *
 	 * @return bool
 	 */
 	public function save()
@@ -205,9 +232,8 @@ class User
 
 	/**
 	 * Store a setting
-	 *
-	 * @param	string $key		The key whereunder the value will be stored.
-	 * @param	mixed $value	The value to store.
+	 * @param    string $key        The key whereunder the value will be stored.
+	 * @param    mixed $value    The value to store.
 	 */
 	public function setSetting($key, $value)
 	{
@@ -216,7 +242,6 @@ class User
 
 	/**
 	 * Return the object as an array
-	 *
 	 * @return array
 	 */
 	public function toArray()
@@ -236,18 +261,15 @@ class User
 
 /**
  * UsersHelper
- *
- * @package		users
- * @subpackage	helper
- *
- * @author 		Tijs Verkoyen <tijs@sumocoders.be>
- * @since		1.0
+ * @package        users
+ * @subpackage    helper
+ * @author        Tijs Verkoyen <tijs@sumocoders.be>
+ * @since        1.0
  */
 class UsersHelper
 {
 	/**
 	 * Search for users
-	 *
 	 * @param string $query    The data to look for
 	 * @return array
 	 */
