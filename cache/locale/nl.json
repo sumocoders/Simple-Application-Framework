@@ -17,7 +17,8 @@
 		"TimeIsInvalid": "Dit is een ongeldig tijdstip.",
 		"TimeIsInvalidBeforeStart": "Je kan geen tijdstip voor het start tijdstip ingeven.",
 		"JPGGIFAndPNGOnly": "Enkel jp(e)g, gif of png-bestanden zijn toegelaten.",
-		"UrlIsInvalid": "Dit is een ongeldige URL."
+		"UrlIsInvalid": "Dit is een ongeldige URL.",
+		"UsersForgotPasswordNoUserFound": "Dit emailadres is niet teruggevonden."
 	},
 	"lbl": {
 		"Actions": "acties",
@@ -114,6 +115,9 @@
 		"UsersEdit": "Gebruiker %1$s bewerken",
 		"UsersEdited": "De gebruiker %1$s werd opgeslagen.",
 		"UsersForgotPassword": "Wachtwoord vergeten?",
+		"UsersForgotPasswordSubject": "Wachtwoord vergeten?",
+		"UsersForgotPasswordBody": "Je hebt aangegeven dat je je wachtwoord vergeten bent. <br /> Gebruik onderstaande link om je wachtwoord opnieuw in te stellen.",
+		"UsersForgotPasswordEmailSent": "Een email werd verzonden.",
 		"UsersLogin": "Aanmelden",
 		"UsersLoggedInAs": "Je bent aangemeld als <strong>%1$s<\/strong>",
 		"UsersLoggedOut": "Je bent afgemeld.",

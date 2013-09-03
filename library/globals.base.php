@@ -44,6 +44,18 @@ define('SITE_DEFAULT_TITLE', '<name>'); // @todo	correct title
 define('SITE_URL', 'http://' . SITE_DOMAIN);
 
 /**
+ * Mailserver configuration
+ */
+// mail server
+define('MAIL_SERVER', '<mail_server:mail.crsolutions.be>');
+// mail port
+define('MAIL_PORT', ''<mail_port:587>'');
+// mail username
+define('MAIL_USERNAME', '<mail_username>');
+// mail password
+define('MAIL_PASSWORD', '<mail_password>');
+
+/**
  * Path configuration
  *
  * Depends on the server layout

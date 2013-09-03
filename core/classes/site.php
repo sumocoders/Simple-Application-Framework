@@ -93,6 +93,23 @@ class Site
 	}
 
 	/**
+	 * Generate a random password
+	 *
+	 * @param int $length
+	 * @return string
+	 */
+	public static function generatePassword($length, $numbersOnly = false)
+	{
+		if($numbersOnly) $charachters = range(0, 9);
+		else $charachters = array_merge(range(0, 9), range('a', 'z'));
+		shuffle($charachters);
+
+		$charachters = array_slice($charachters, 0, $length);
+
+		return implode('', $charachters);
+	}
+
+	/**
 	 * Generate thumbnails based on the folders in the path
 	 * Use
 	 * - 128x128 as folder name to generate an image where the width will be 128px and the height will be 128px

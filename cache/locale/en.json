@@ -17,7 +17,8 @@
 		"TimeIsInvalid": "This is an invalid timestamp.",
 		"TimeIsInvalidBeforeStart": "You can't enter a timestamp before the start-time.",
 		"JPGGIFAndPNGOnly": "Only jp(e)g, gif or png-files are allowed.",
-		"UrlIsInvalid": "This is an invalid URL."
+		"UrlIsInvalid": "This is an invalid URL.",
+		"UsersForgotPasswordNoUserFound": "Dit emailadres is niet teruggevonden."
 	},
 	"lbl": {
 		"Actions": "actions",
@@ -115,6 +116,9 @@
 		"UsersEdit": "Edit %1$s",
 		"UsersEdited": "The user %1$s  has been edited.",
 		"UsersForgotPassword": "Forgot your password?",
+		"UsersForgotPasswordSubject": "Forgot your password?",
+		"UsersForgotPasswordBody": "You indicated that you forgot your password.<br /> Use the link below to reset your password.",
+		"UsersForgotPasswordEmailSent": "An email has been sent.",
 		"UsersLogin": "Sign on",
 		"UsersLoggedInAs": "You are logged in as <strong>%1$s<\/strong>",
 		"UsersLoggedOut": "You have been signed out.",

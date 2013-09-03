@@ -8,7 +8,7 @@
   					<h2>{$msgUsersLogin}</h2>
   				</header>
 
-          <a href="/" class="logo">Sumocoders</a>
+          		<a href="/" class="logo">Sumocoders</a>
 
   				{form:login}
   					{option:report}<div class="alert alert-info">{$report}</div>{/option:report}
