@@ -114,6 +114,7 @@
 		"UsersAdded": "The user %1$s has been added.",
 		"UsersEdit": "Edit %1$s",
 		"UsersEdited": "The user %1$s  has been edited.",
+		"UsersForgotPassword": "Forgot your password?",
 		"UsersLogin": "Sign on",
 		"UsersLoggedInAs": "You are logged in as <strong>%1$s<\/strong>",
 		"UsersLoggedOut": "You have been signed out.",

@@ -739,6 +739,10 @@ dl {
       padding: 0 25px;
       @include border-radius(4px);
     }
+
+	.forgotPassword {
+		margin-top: 10px;
+	}
   }
 }
 

@@ -31,6 +31,11 @@
   							</div>
   						</div>
   						<button type="submit" class="btn btn-primary btn-block">{$lblSignIn|ucfirst}<i class="icon iconArrowWhiteRight"></i></button>
+						<div class="forgotPassword">
+							<small>
+								<a href="{$var|buildurl:'forgot_password':'users'}">{$msgUsersForgotPassword}</a>
+							</small>
+						</div>
   					</fieldset>
   				{/form:login}
   			</div>

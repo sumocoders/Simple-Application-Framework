@@ -113,6 +113,7 @@
 		"UsersAdded": "De gebruiker %1$s werd toegevoegd.",
 		"UsersEdit": "Gebruiker %1$s bewerken",
 		"UsersEdited": "De gebruiker %1$s werd opgeslagen.",
+		"UsersForgotPassword": "Wachtwoord vergeten?",
 		"UsersLogin": "Aanmelden",
 		"UsersLoggedInAs": "Je bent aangemeld als <strong>%1$s<\/strong>",
 		"UsersLoggedOut": "Je bent afgemeld.",
