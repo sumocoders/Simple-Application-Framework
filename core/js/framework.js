@@ -117,10 +117,16 @@
       },
       'a.confirmPostForm': {
         click: 'askConfirmationAndPostAsAForm'
+      },
+      '.nav-tabs a': {
+        click: 'changeTab'
+      },
+      '#contentOverlay': {
+        click: 'toggleSubNavigation'
       }
     });
 
-    Framework.onDomReady(['_initAjax', '_initializeSearch', '_initForm', '_calculateActionsWidths', 'setContentHeight']);
+    Framework.onDomReady(['_initAjax', '_initializeSearch', '_initForm', '_initTabs', '_calculateActionsWidths', 'setContentHeight']);
 
     Framework.prototype._initAjax = function() {
       var _this = this;
@@ -161,6 +167,22 @@
       return new Form;
     };
 
+    Framework.prototype._initTabs = function() {
+      var anchor, url;
+      url = document.location.toString();
+      if (url.match('#')) {
+        anchor = '#' + url.split('#')[1];
+        if ($('.nav-tabs a[href=' + anchor + ']').length > 0) {
+          $('.nav-tabs a[href=' + anchor + ']').tab('show');
+        }
+      }
+      return $('.tab-content .tab-pane').each(function() {
+        if ($(this).find('.error').length > 0) {
+          return $('.nav-tabs a[href="#' + $(this).attr('id') + '"]').parent().addClass('error');
+        }
+      });
+    };
+
     Framework.prototype._calculateActionsWidths = function() {
       return $('.actions li a').each(function() {
         var $this;
@@ -184,10 +206,17 @@
     };
 
     Framework.prototype._setClassesBasedOnSubNavigation = function() {
+      var $overlay;
+      $overlay = $('#contentOverlay');
       if ($('#navbar .nav ul.open').length === 0) {
-        return $('#toggleTabletNavbar, #navbar, #content, .alert').removeClass('subnav');
+        $('#toggleTabletNavbar, #navbar, #content, .alert').removeClass('subnav');
+        return $overlay.hide();
       } else {
-        return $('#toggleTabletNavbar, #navbar, #content, .alert').addClass('subnav');
+        $('#toggleTabletNavbar, #navbar, #content, .alert').addClass('subnav');
+        return $overlay.show().css({
+          'width': $('#content').width(),
+          'height': $(window).height()
+        });
       }
     };
 
@@ -196,7 +225,7 @@
       this.subNavOpen;
       $this = $(e.currentTarget);
       $subNav = $this.next('ul');
-      if ($subNav.length > 0) {
+      if ($subNav.length > 0 || $('#contentOverlay').length > 0 && !$this.parents('ul').hasClass('subNavigation')) {
         e.preventDefault();
         if (!this.subNavOpen) {
           $this.addClass('active');
@@ -307,6 +336,18 @@
     };
 
     false;
+
+    Framework.prototype.changeTab = function(e) {
+      var scrolled;
+      if (window.history && window.history.pushState) {
+        window.history.pushState({}, document.title, this.getAttribute('href'));
+      } else {
+        scrolled = $(window).scrollTop();
+        window.location.hash = '#' + this.getAttribute('href').split('#')[1];
+        $(window).scrollTop(scrolled);
+      }
+      return $(this).tab('show');
+    };
 
     Framework.prototype._initializeSearch = function() {
       $('.searchBox input[name=q]').autocomplete({

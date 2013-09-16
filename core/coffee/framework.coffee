@@ -48,12 +48,19 @@ class Framework extends DefaultObject
     # link methods
     'a.confirm': click : 'askConfirmation'
     'a.confirmPostForm': click : 'askConfirmationAndPostAsAForm'
+    
+    # tabs
+    '.nav-tabs a' : click : 'changeTab'
+    
+    #overlay
+    '#contentOverlay' : click : 'toggleSubNavigation'
 
   @onDomReady [
 #    'functionname'
     '_initAjax'
     '_initializeSearch'
     '_initForm'
+    '_initTabs'
     '_calculateActionsWidths'
     'setContentHeight'
   ]
@@ -104,6 +111,21 @@ class Framework extends DefaultObject
   _initForm: ->
     # Per form een object aanmaken
     new Form
+    
+  _initTabs: ->
+    url = document.location.toString()
+    if url.match('#')
+      anchor = '#' + url.split('#')[1]
+
+      if $('.nav-tabs a[href='+anchor+']').length > 0
+        $('.nav-tabs a[href='+anchor+']').tab('show')
+
+    $('.tab-content .tab-pane').each(() ->
+      if($(this).find('.error').length > 0)
+        $('.nav-tabs a[href="#' + $(this).attr('id') + '"]')
+          .parent()
+          .addClass('error')
+    )
 
   _calculateActionsWidths: ->
     $('.actions li a').each(->
@@ -124,19 +146,25 @@ class Framework extends DefaultObject
     $('#header').removeClass('progress progress-striped active')
 
 # Menu methods
-  _setClassesBasedOnSubNavigation: () =>
+   _setClassesBasedOnSubNavigation: () =>
+    $overlay = $('#contentOverlay')
     # we can't use toggle class as we don't know what the current state is
     if($('#navbar .nav ul.open').length == 0)
       $('#toggleTabletNavbar, #navbar, #content, .alert').removeClass('subnav')
+      $overlay.hide()
     else
       $('#toggleTabletNavbar, #navbar, #content, .alert').addClass('subnav')
+      $overlay.show().css({
+        'width' : $('#content').width(),
+        'height': $(window).height()
+      })
 
   toggleSubNavigation: (e) =>
     @subNavOpen
     $this = $(e.currentTarget)
     $subNav = $this.next('ul')
 
-    if $subNav.length > 0
+    if $subNav.length > 0 or $('#contentOverlay').length > 0 and !$this.parents('ul').hasClass('subNavigation')
       e.preventDefault()
       # not open
       if !@subNavOpen
@@ -255,6 +283,21 @@ class Framework extends DefaultObject
         $modal.off('click', '#confirmModalOk')
       )
   false
+
+#tabs
+  changeTab: (e) ->
+    # if the browser supports history.pushState(), use it to update the URL
+    # with the fragment identifier, without triggering a scroll/jump
+    if window.history && window.history.pushState
+      # an empty state object for now — either we implement a proper
+      # popstate handler ourselves, or wait for jQuery UI upstream
+      window.history.pushState({}, document.title, this.getAttribute('href'))
+    else
+      scrolled = $(window).scrollTop()
+      window.location.hash = '#'+ this.getAttribute('href').split('#')[1]
+      $(window).scrollTop(scrolled)
+
+    $(this).tab('show')
 
 # search
   _initializeSearch: ->

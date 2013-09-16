@@ -1,12 +1,12 @@
 // Import fonts
 
 @import 'fonts:*';
-@import "compass_twitter_bootstrap_awesome";
 
 body {
   font-family: $opensans-regular-webfont;
   //overflow: hidden;
   background: #fff;
+  padding: 0;
 
   &.login {
     background: #e4e5ec;
@@ -26,6 +26,7 @@ body {
 /* Styling for forms */
 @import "_forms";
 
+
 /* Styling for datagrids */
 @import "_datagrids";
 
@@ -43,10 +44,10 @@ body {
   width: 100%;
   height: 165px;
   border: none;
-  
+
   &:hover {
     border: none;
-  }
+}
 }
 
 // Links
@@ -94,6 +95,25 @@ input[type="color"],
   max-width: 100%;
 }
 
+input {
+  box-shadow: none;
+}
+
+input[type="file"] {
+  line-height: $baseFontSize;
+}
+
+textarea {
+  @include box-sizing(border-box);
+  //height: 45px;
+  padding: 10px;
+  @include box-shadow(none);
+  border: 2px solid #b6bcd0;
+  background: #f8f9fc;
+  width: 100%;
+  max-width: 100%;
+}
+
 input[type="text"]:focus,
 input[type="password"]:focus,
 input[type="datetime"]:focus,
@@ -126,41 +146,38 @@ input:focus:invalid:focus {
   color: #7093c3;
 }
 
+select {
+  height: 45px;
+  max-width: 100%;
+}
+
 .form-horizontal {
-  
+
   .control-label {
     padding-top: 12px;
   }
 }
 
 label {
+  display: inline-block;
   
-  &.checkbox {
-    margin-bottom: 20px;
+  &.checkbox,
+  &.radio {
+    margin-bottom: 5px;
+    display: block;
   }
 }
 
-// Search auto-complete
-.ui-corner-all {
-  @include border-radius(0);
+.inputRadio {
+  @include box-shadow(none);
 }
 
-.ui-menu {
+.control-group {
   
-  .ui-menu-item {
+  .controls {
     
-    a {
-      border-bottom: 1px solid #aaa;
-      padding: 10px;
-      text-shadow: none;
-      cursor: pointer;
-      
-      &:hover,
-      &.ui-state-focus {
-        background: #dfdfdf;
-        color: #393b42;
-        text-shadow: none;
-      }
+    .inputRadio {
+      width: auto;
     }
   }
 }
@@ -172,7 +189,7 @@ label {
   background: #4ab0ce;
   @include box-shadow(none);
   border: none;
-  height: 45px;
+  height: auto;
   text-shadow: none;
   line-height: 45px;
   padding-top: 0;
@@ -245,23 +262,23 @@ label {
 
     }
   }
-  
+
   &.btn-large {
     font-size: 1.57 * $baseFontSize;
-    height: 50px;
+    //height: 50px;
     line-height: 50px;
   }
-  
+
   &.btn-small {
     font-size: $baseFontSize;
     line-height: 30px;
-    height: 30px;
+    //height: 30px;
   }
-  
+
   &.btn-mini {
     font-size: 0.9 * $baseFontSize;
     line-height: 26px;
-    height: 26px;
+    //height: 26px;
   }
 
   .caret {
@@ -271,6 +288,10 @@ label {
 
   i {
     margin-top: 4px !important;
+  }
+  
+  &.top {
+    margin-top: 25px;
   }
 }
 
@@ -301,10 +322,14 @@ label {
 }
 
 .input-prepend {
-  
+
   .btn {
     margin-right: -2px;
   }
+}
+
+.completeReminder {
+  float: right;
 }
 
 // Messages
@@ -330,6 +355,10 @@ label {
 
   & > li {
 
+	&.error a {
+		color: #b94a48 !important;
+	}
+
     & > a {
       @include border-radius(0);
 
@@ -344,6 +373,14 @@ label {
     margin-right: 2px;
     //border-bottom: 2px solid #fff;
     margin-bottom: -2px;
+
+	&.error {
+		border-color: #b94a48;
+
+		a {
+			color: #b94a48 !important;
+		}
+	}
 
     & > a {
       background: #fff;
@@ -360,23 +397,23 @@ label {
       }
     }
   }
-  
+
   &.nav-stacked {
-    
+
     & > .active {
       border: none;
       margin-bottom: 0;
       margin-right: 0;
-      
+
       & > a {
         background: #4ab0ce;
         border-top: 1px solid #ddd;
         color: #fff;
         margin-right: 0;
-        
+
         &:hover {
           border-width: 1px;
-        }
+}
       }
     }
   }
@@ -494,29 +531,37 @@ label {
   }
 }
 
-// tables 
+// tables
 
 .table {
-  
+
+  select {
+    height: auto;
+  }
+
   thead {
-    
+
     tr {
-      
+    
+      th {
+        white-space: nowrap;
+      }
+
       &:last-child {
-        
+
         th {
           border-bottom: 2px solid #ddd;
         }
       }
     }
   }
-  
+
   tfoot {
-    
+
     tr {
-      
+
       &:first-child {
-        
+
         td {
           border-top: 2px solid #ddd;
         }
@@ -529,7 +574,7 @@ label {
 
 pre,
 code {
-  
+
   ol,
   ul {
     margin-bottom: 0;
@@ -550,6 +595,11 @@ code {
   text-shadow: none;
   padding: 0 0 0 25px;
   line-height: 40px;
+  
+  a {
+    color: #fff;
+    border-bottom: 1px solid #fff;
+  }
 
   .container {
     padding: 0;
@@ -566,6 +616,7 @@ code {
     margin: 0;
     top: 0;
     @include transition(all 150ms);
+    border: none;
   }
 
   &.alert-success {
@@ -584,6 +635,12 @@ code {
   &.alert-warning {
     background-color: #d0b15c;
     z-index: 99;
+    color: #c09853;
+    
+    a {
+      color: darken(#c09853, 10%);
+      border-bottom: darken(#c09853, 10%);
+    }
 
     .close {
       background-color: #b38e2a;
@@ -626,12 +683,12 @@ code {
 // nav pills & list
 
 .nav-pills {
-  
+
   & > .active {
-    
+
     & > a {
       background-color: #4ab0ce;
-      
+
       &:hover {
         background: #4ab0ce;
       }
@@ -640,12 +697,12 @@ code {
 }
 
 .nav-list {
-  
+
   & > .active {
-    
+
     & > a {
       background: #4ab0ce;
-      
+
       &:hover {
         background: #4ab0ce;
       }
@@ -656,13 +713,28 @@ code {
 // Lists
 
 dl {
-  
+
   dt {
     font-family: $opensans-bold-webfont;
   }
 }
 
 //Users
+
+.control-group {
+  .controls {
+    width: 100%;
+    
+    input {
+      width: 100%;
+      @include box-sizing(border-box);
+    }
+    
+    .inputCheckbox {
+      width: inherit;
+    }
+  }
+}
 
 #users {
 
@@ -678,7 +750,7 @@ dl {
 
     .control-group {
       margin-bottom: 27px;
-      
+
       .controls {
         width: 100%;
       }
@@ -769,6 +841,18 @@ dl {
           background-color: #fff;
           color: #0f0f0f;
         }
+        
+        &:focus {
+          background-color: #c0c4d3;
+          outline: none;
+          @include box-shadow(none);
+          color: #fff;
+          
+          &.toggleSubNavigation {
+            @include svg-with-png-fallback(icon_subnav_focus  , no-repeat 95% center, $dimensions: false);
+            background-color: #c0c4d3;
+          }
+        }
       }
 
       &#user {
@@ -783,6 +867,18 @@ dl {
           &.active {
             background-color: #fff;
             color: #0f0f0f;
+          }
+          
+          &:focus {
+            background-color: #c0c4d3;
+            outline: none;
+            @include box-shadow(none);
+            color: #fff;
+            
+            &.toggleSubNavigation {
+              @include svg-with-png-fallback(icon_subnav_focus  , no-repeat 95% center, $dimensions: false);
+              background-color: #c0c4d3;
+            }
           }
 
         }
@@ -807,6 +903,14 @@ dl {
 
             &:hover {
               background: lighten(#222329, 10%);
+            }
+            
+            &:focus {
+              background-color: #c0c4d3;
+              outline: none;
+              @include box-shadow(none);
+              color: #fff;
+              text-decoration: none;
             }
           }
         }
@@ -867,11 +971,11 @@ dl {
   .icon-search {
     @include svg-with-png-fallback(icon_search, no-repeat);
     display: block;
-    
+
     &:before {
       display: none;
-    }
   }
+}
 }
 
 #toggleTabletNavbar {
@@ -928,6 +1032,7 @@ dl {
     @include svg-with-png-fallback(icon_show_menu_mobile, no-repeat);
     @include squish-text;
     margin: 19px 16px 0 0;
+    border: none;
   }
 
   .title {
@@ -961,10 +1066,10 @@ dl {
       @include squish-text;
       float: right;
       border: none;
-      
+
       &:hover {
         border: none;
-      }
+    }
     }
 
     ul {
@@ -1010,8 +1115,32 @@ dl {
             @include svg-with-png-fallback(icon_add, #1f2024 no-repeat center center, $dimensions: false);
             background-position: 26px center;
           }
+          &.iconImport {
+            @include svg-with-png-fallback(icon_import, #1f2024 no-repeat center center, $dimensions: false);
+            background-position: 26px center;
+          }
+          &.iconContacts {
+            @include svg-with-png-fallback(icon_contacts, #1f2024 no-repeat center center, $dimensions: false);
+            background-position: 26px center;
+            
+          }
+          &.iconVcard {
+            @include svg-with-png-fallback(icon_vcard, #1f2024 no-repeat center center, $dimensions: false);
+            background-position: 26px center;
+          }
+          &.iconPreview {
+            @include svg-with-png-fallback(icon_preview, #1f2024 no-repeat center center, $dimensions: false);
+            background-position: 23px center;
+          }
+          &.iconEdit {
+            @include svg-with-png-fallback(icon_edit, #1f2024 no-repeat center center, $dimensions: false);
+            background-position: 23px center;
+          }
+          &.iconDelete {
+            @include svg-with-png-fallback(icon_delete, #1f2024 no-repeat center center, $dimensions: false);
+            background-position: 23px center;
+          }
         }
-
         &:hover {
           a {
             background-color: #4ba75f;
@@ -1069,6 +1198,29 @@ dl {
 
 #main {
   padding-top: 120px;
+}
+
+#completeReminderModal {
+  form {
+    margin: 0;
+  }
+  .controls {
+    textarea {
+      width: 100%;
+      @include box-sizing(border-box);
+    }
+  }
+}
+
+// This is the content overlay which appears when the subnav is open
+
+#contentOverlay {
+  position: fixed;
+  right: -230px;
+  top: 0;
+  z-index: 999999;
+  display: block;
+  cursor: default;
 }
 
 @media screen and (min-width: 767px) {
@@ -1258,14 +1410,14 @@ dl {
       }
     }
   }
-  
+
   .taskbar {
-    
+
     .actions {
       position: absolute;
     }
   }
-  
+
   #content {
     @include box-sizing(border-box);
     padding-left: 50px;
@@ -1311,7 +1463,9 @@ dl {
     padding-left: 265px;
 
     &.subnav {
-      padding-left: 495px;
+      //padding-left: 495px;
+      float: right;
+      margin-right: -230px;
 
       #header {
         padding-right: 495px;
