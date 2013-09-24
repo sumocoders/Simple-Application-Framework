@@ -67,18 +67,11 @@ begin
 			ln -sf #{shared_path}/config/library/globals.php #{release_path}/library/globals.php
 		}
 
-		folders = capture("ls -1 #{release_path}/files").split(/\r?\n/)
-
-		# loop the folders
-		folders.each do |folder|
-			# copy them to the shared path, remove them from the release and symlink them
-			run %{
-				mkdir -p #{shared_path}/files/#{folder} &&
-				cp -r #{release_path}/files/#{folder} #{shared_path}/files/ &&
-				rm -rf #{release_path}/files/#{folder} &&
-				ln -s #{shared_path}/files/#{folder} #{release_path}/files/#{folder}
-			}
-		end
+		# Symlink the files
+		run %{
+            rm -rf #{release_path}/files &&
+            ln -sf #{shared_path}/files #{release_path}/files
+        }
 	end
 
 rescue LoadError
