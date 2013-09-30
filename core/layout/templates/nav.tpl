@@ -32,6 +32,7 @@
 				<li>
 					<a href="{$var|buildurl:'typography':'example'}" class="toggleSubNavigation">Bootstrap</a>
 					<ul class="subNavigation">
+					  <li><a href="{$var|buildurl:'sumo':'example'}">SumoCoders</a></li>
 						<li><a href="{$var|buildurl:'typography':'example'}">Typography</a></li>
 						<li><a href="{$var|buildurl:'code':'example'}">Code</a></li>
 						<li><a href="{$var|buildurl:'tables':'example'}">Tables</a></li>
