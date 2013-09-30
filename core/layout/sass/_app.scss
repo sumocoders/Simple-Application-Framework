@@ -1088,12 +1088,10 @@ dl {
           display: block;
           background-color: #1f2024;
           height: 65px;
-          //width: 65px;
           padding-left: 70px;
           margin-bottom: 4px;
           @include transition(all 500ms);
           @include box-sizing(border-box);
-          //font-family: $opensans-semibold-webfont;
           font-size: 1.29 * $baseFontSize;
           color: #1f2024;
           border: none;
@@ -1141,13 +1139,15 @@ dl {
             background-position: 23px center;
           }
         }
+        
         &:hover {
           a {
-            background-color: #4ba75f;
+            background-color: #4ba75f !important;
             color: #fff;
             border: none;
           }
         }
+
       }
     }
   }
