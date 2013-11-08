@@ -1007,6 +1007,7 @@ dl {
           text-decoration: none;
           line-height: 65px;
           overflow: hidden;
+          white-space: nowrap;
 
           &.iconList {
             @include svg-with-png-fallback(icon_list, #1f2024 no-repeat, $dimensions: false);
