@@ -40,12 +40,6 @@ class UsersEdit extends SiteBaseAction
 	 */
 	public function execute()
 	{
-		// check if admin
-		if(!$this->currentUser->isAdmin)
-		{
-			Site::displayError('Forbidden', 403);
-		}
-
 		$this->id = $this->url->getParameter(1, 'int');
 		if($this->id == '')
 		{
@@ -102,6 +96,7 @@ class UsersEdit extends SiteBaseAction
 	{
 		$this->frm->parse($this->tpl);
 		$this->tpl->assign('item', $this->item->toArray());
+		$this->tpl->assign('isAdmin', $this->currentUser->isAdmin);
 	}
 
 	/**

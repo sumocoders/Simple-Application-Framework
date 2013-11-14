@@ -9,12 +9,14 @@
 					<a id="toggleMenu" class="visible-phone iconLink" href="#">{$lblMenu|uppercase}</a>
 					<h2>{$msgUsersEdit|sprintf:{$item.name}}</h2>
 				</div>
-				<div class="actions">
-					<a href="#" class="dropdownToggle visible-phone" data-toggle="dropdownItems">{$lblActions|ucfirst}</a>
-					<ul class="dropdownItems">
-						<li><a class="iconList" href="{$var|buildurl:'index':'users'}">{$lblOverview|ucfirst}</a></li>
-					</ul>
-				</div>
+				{option:isAdmin}
+					<div class="actions">
+						<a href="#" class="dropdownToggle visible-phone" data-toggle="dropdownItems">{$lblActions|ucfirst}</a>
+						<ul class="dropdownItems">
+							<li><a class="iconList" href="{$var|buildurl:'index':'users'}">{$lblOverview|ucfirst}</a></li>
+						</ul>
+					</div>
+				{/option:isAdmin}
 			</div>
 		</header>
 
