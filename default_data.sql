@@ -10,9 +10,9 @@ CREATE TABLE IF NOT EXISTS `users` (
   `created_on` datetime NOT NULL,
   `edited_on` datetime DEFAULT NULL,
   `blocked_on` datetime DEFAULT NULL,
-	`deleted` enum('N','Y') NOT NULL DEFAULT 'N',
-	`forgot_password` varchar(255) NOT NULL,
-	PRIMARY KEY (`id`)
+  `deleted` enum('N','Y') NOT NULL DEFAULT 'N',
+  `forgot_password` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 ;
 
 INSERT INTO `users` (`id`, `name`, `password`, `email`, `secret`, `type`, `data`, `blocked`, `created_on`, `edited_on`, `blocked_on`, `deleted_on`) VALUES
