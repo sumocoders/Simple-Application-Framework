@@ -104,7 +104,7 @@ class SiteDataGrid extends SpoonDataGrid
 
 			// if the action name contains delete we should ask confirmation
 			if(substr_count($name, 'delete'))
-            {
+			{
 				$html .= ' confirm" data-message="' . SiteLocale::msg('AreYouSure');
 			}
 			if($isExternal) $html .= '" target="_blank';
