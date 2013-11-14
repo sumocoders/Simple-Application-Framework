@@ -100,11 +100,11 @@ class SiteDataGrid extends SpoonDataGrid
 			$class .= ' action';
 
 			// rebuild value
-			$html = '<a class="iconLink" href="' . $URL . '" title="' . $value . '"';
+			$html = '<a href="' . $URL . '" title="' . $value . '" class="iconLink';
 
 			// if the action name contains delete we should ask confirmation
 			if(substr_count($name, 'delete'))
-			{
+            {
 				$html .= ' confirm" data-message="' . SiteLocale::msg('AreYouSure');
 			}
 			if($isExternal) $html .= '" target="_blank';
@@ -114,17 +114,17 @@ class SiteDataGrid extends SpoonDataGrid
 			{
 				$html .= '<span class="add-on"><i class="' . $image . '"></i></span>';
 				$html .= '<span class="hide">';
-
-				// reset the image because we added it ourselves
-				$image = null;
-
 				$class .= ' actionSmall';
 			}
 
 			$html .= $value;
-			$html .= '</a>';
 
-			if($image != '') $html .= '</span>';
+			if($image != '') {
+				$html .= '</span>';
+				// reset the image because we added it ourselves
+				$image = null;
+			}
+			$html .= '</a>';
 			$value = $html;
 
 			// reset url
