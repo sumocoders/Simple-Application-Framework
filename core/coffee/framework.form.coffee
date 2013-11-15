@@ -83,7 +83,7 @@ class Form
     )
 
   _dateFields: ->
-    $.datepicker.setDefaults Form._dateFieldOptions
+    $.datepicker.setDefaults @_dateFieldOptions
 
   _normalDateFields: ->
     $('.inputDatefieldNormal').each(() ->
