@@ -18,7 +18,7 @@
                     <tr>
                         <td class="center logo">
                             <center>
-                                <img alt="logo" class="center" src="images/logo.gif">
+                                <img alt="logo" class="center" src="{$SITE_URL}/core/layout/templates/mails/images/logo.gif">
                             </center>
                         </td>
                     </tr>
