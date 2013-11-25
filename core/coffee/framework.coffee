@@ -24,6 +24,7 @@ class DefaultObject
     $document = $(document)
     for selector, actions of @events
       for action, callback of actions
+        throw callback + " doesn't exists" unless @[callback]
         $document.on(action, selector, @[callback])
 
 class Framework extends DefaultObject
