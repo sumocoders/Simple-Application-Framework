@@ -17,7 +17,7 @@ class Data
     module = chunks[0]
 
     if chunks.length >= 2
-      dataKey = chunks.splice(1).join '.'
+      dataKey = chunks.splice(1, 1).join '.'
       value = @data[module][dataKey]
     else
       value = @data[module]
