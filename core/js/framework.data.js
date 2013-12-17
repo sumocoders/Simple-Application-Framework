@@ -31,7 +31,7 @@
       chunks = key.split('.');
       module = chunks[0];
       if (chunks.length >= 2) {
-        dataKey = chunks.splice(1).join('.');
+        dataKey = chunks.splice(1, 1).join('.');
         value = this.data[module][dataKey];
       } else {
         value = this.data[module];

@@ -65,6 +65,9 @@
           _results1 = [];
           for (action in actions) {
             callback = actions[action];
+            if (!this[callback]) {
+              throw "" + callback + " doesn't exist when trying to bind " + action + " on " + selector;
+            }
             _results1.push($document.on(action, selector, this[callback]));
           }
           return _results1;

@@ -91,41 +91,41 @@ class Form
     )
 
   _startingFromDateFields: =>
-    $('.inputDatefieldFrom').each(() ->
-      $this = $(this)
-      startDate = Form._parseDate($this, 'startdate')
+    $('.inputDatefieldFrom').each((i, el) =>
+      $el = $(el)
+      startDate = @_parseDate($el, 'startdate')
 
-      $this.datepicker()
+      $el.datepicker()
         .datepicker('option', 'minDate', startDate)
       if new Date() < startDate
-        $this.datepicker('option', 'defaultDate', startDate)
+        $el.datepicker('option', 'defaultDate', startDate)
     )
 
-  _untilDateFields: ->
-    $('.inputDatefieldTill').each(() ->
-      $this = $(this)
-      endDate = Form._parseDate($this, 'enddate')
+  _untilDateFields: =>
+    $('.inputDatefieldTill').each((i, el) =>
+      $el = $(el)
+      endDate = @_parseDate($el, 'enddate')
 
-      $this.datepicker()
+      $el.datepicker()
         .datepicker('option', 'maxDate', endDate)
       if new Date() > endDate
-        $this.datepicker('option', 'defaultDate', endDate)
+        $el.datepicker('option', 'defaultDate', endDate)
     )
 
-  _rangeDateFields: ->
-    $('.inputDatefieldRange').each(() ->
-      $this = $(this)
-      startDate = Form._parseDate($this, 'startdate')
-      endDate = Form._parseDate($this, 'enddate')
+  _rangeDateFields: =>
+    $('.inputDatefieldRange').each((i, el) =>
+      $el = $(el)
+      startDate = @_parseDate($el, 'startdate')
+      endDate = @_parseDate($el, 'enddate')
 
-      $this.datepicker()
+      $el.datepicker()
         .datepicker('option', 'minDate', startDate)
         .datepicker('option', 'maxDate', endDate)
 
       if new Date() < startDate
-        $this.datepicker('option', 'defaultDate', startDate)
+        $el.datepicker('option', 'defaultDate', startDate)
       if new Date() > endDate
-        $this.datepicker('option', 'defaultDate', endDate)
+        $el.datepicker('option', 'defaultDate', endDate)
     )
 
   # fixes
