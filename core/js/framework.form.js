@@ -6,6 +6,8 @@
 
   Form = (function() {
     function Form() {
+      this._rangeDateFields = __bind(this._rangeDateFields, this);
+      this._untilDateFields = __bind(this._untilDateFields, this);
       this._startingFromDateFields = __bind(this._startingFromDateFields, this);
       this._dateFields();
       this._normalDateFields();
@@ -41,7 +43,7 @@
     };
 
     Form.prototype._dateFields = function() {
-      return $.datepicker.setDefaults(Form._dateFieldOptions);
+      return $.datepicker.setDefaults(this._dateFieldOptions);
     };
 
     Form.prototype._normalDateFields = function() {
@@ -51,41 +53,44 @@
     };
 
     Form.prototype._startingFromDateFields = function() {
-      return $('.inputDatefieldFrom').each(function() {
-        var $this, startDate;
-        $this = $(this);
-        startDate = Form._parseDate($this, 'startdate');
-        $this.datepicker().datepicker('option', 'minDate', startDate);
+      var _this = this;
+      return $('.inputDatefieldFrom').each(function(i, el) {
+        var $el, startDate;
+        $el = $(el);
+        startDate = _this._parseDate($el, 'startdate');
+        $el.datepicker().datepicker('option', 'minDate', startDate);
         if (new Date() < startDate) {
-          return $this.datepicker('option', 'defaultDate', startDate);
+          return $el.datepicker('option', 'defaultDate', startDate);
         }
       });
     };
 
     Form.prototype._untilDateFields = function() {
-      return $('.inputDatefieldTill').each(function() {
-        var $this, endDate;
-        $this = $(this);
-        endDate = Form._parseDate($this, 'enddate');
-        $this.datepicker().datepicker('option', 'maxDate', endDate);
+      var _this = this;
+      return $('.inputDatefieldTill').each(function(i, el) {
+        var $el, endDate;
+        $el = $(el);
+        endDate = _this._parseDate($el, 'enddate');
+        $el.datepicker().datepicker('option', 'maxDate', endDate);
         if (new Date() > endDate) {
-          return $this.datepicker('option', 'defaultDate', endDate);
+          return $el.datepicker('option', 'defaultDate', endDate);
         }
       });
     };
 
     Form.prototype._rangeDateFields = function() {
-      return $('.inputDatefieldRange').each(function() {
-        var $this, endDate, startDate;
-        $this = $(this);
-        startDate = Form._parseDate($this, 'startdate');
-        endDate = Form._parseDate($this, 'enddate');
-        $this.datepicker().datepicker('option', 'minDate', startDate).datepicker('option', 'maxDate', endDate);
+      var _this = this;
+      return $('.inputDatefieldRange').each(function(i, el) {
+        var $el, endDate, startDate;
+        $el = $(el);
+        startDate = _this._parseDate($el, 'startdate');
+        endDate = _this._parseDate($el, 'enddate');
+        $el.datepicker().datepicker('option', 'minDate', startDate).datepicker('option', 'maxDate', endDate);
         if (new Date() < startDate) {
-          $this.datepicker('option', 'defaultDate', startDate);
+          $el.datepicker('option', 'defaultDate', startDate);
         }
         if (new Date() > endDate) {
-          return $this.datepicker('option', 'defaultDate', endDate);
+          return $el.datepicker('option', 'defaultDate', endDate);
         }
       });
     };
