@@ -5,15 +5,14 @@
     __indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
 
   Form = (function() {
-    function Form() {
+    Form.prototype.form = null;
+
+    function Form(form) {
       this._rangeDateFields = __bind(this._rangeDateFields, this);
       this._untilDateFields = __bind(this._untilDateFields, this);
       this._startingFromDateFields = __bind(this._startingFromDateFields, this);
+      this.form = form;
       this._dateFields();
-      this._normalDateFields();
-      this._startingFromDateFields();
-      this._untilDateFields();
-      this._rangeDateFields();
       this._fixPlaceholders();
       this._hijackSubmit();
     }
@@ -43,18 +42,22 @@
     };
 
     Form.prototype._dateFields = function() {
-      return $.datepicker.setDefaults(this._dateFieldOptions);
+      $.datepicker.setDefaults(this._dateFieldOptions);
+      this._normalDateFields();
+      this._startingFromDateFields();
+      this._untilDateFields();
+      return this._rangeDateFields();
     };
 
     Form.prototype._normalDateFields = function() {
-      return $('.inputDatefieldNormal').each(function() {
+      return $(this.form).find('.inputDatefieldNormal').each(function() {
         return $(this).datepicker();
       });
     };
 
     Form.prototype._startingFromDateFields = function() {
       var _this = this;
-      return $('.inputDatefieldFrom').each(function(i, el) {
+      return $(this.form).find('.inputDatefieldFrom').each(function(i, el) {
         var $el, startDate;
         $el = $(el);
         startDate = _this._parseDate($el, 'startdate');
@@ -67,7 +70,7 @@
 
     Form.prototype._untilDateFields = function() {
       var _this = this;
-      return $('.inputDatefieldTill').each(function(i, el) {
+      return $(this.form).find('.inputDatefieldTill').each(function(i, el) {
         var $el, endDate;
         $el = $(el);
         endDate = _this._parseDate($el, 'enddate');
@@ -80,7 +83,7 @@
 
     Form.prototype._rangeDateFields = function() {
       var _this = this;
-      return $('.inputDatefieldRange').each(function(i, el) {
+      return $(this.form).find('.inputDatefieldRange').each(function(i, el) {
         var $el, endDate, startDate;
         $el = $(el);
         startDate = _this._parseDate($el, 'startdate');
