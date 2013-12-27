@@ -210,11 +210,13 @@
     };
 
     Framework.prototype.showLoadingBar = function() {
-      return $('#header').addClass('progress progress-striped active');
+      $('#header').addClass('progress progress-striped active');
+      $('#header .container').addClass('bar');
     };
 
     Framework.prototype.hideLoadingBar = function() {
-      return $('#header').removeClass('progress progress-striped active');
+      $('#header').removeClass('progress progress-striped active');
+      $('#header .container').removeClass('bar');
     };
 
     Framework.prototype._setClassesBasedOnSubNavigation = function() {
