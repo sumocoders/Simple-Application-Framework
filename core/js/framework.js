@@ -165,15 +165,13 @@
 
     Framework.prototype._initForm = function() {
       return $('form').each(function() {
-        var className;
-        className = $(this).data('formClass');
-        if (!className) {
-          className = 'Form';
-        }
+        var className, formClass;
+        className = $(this).data('formClass') || 'Form';
         if (!window[className]) {
           throw className + ' is not defined';
         }
-        return new window[className](this);
+        formClass = window[className];
+        return new formClass(this);
       });
     };
 

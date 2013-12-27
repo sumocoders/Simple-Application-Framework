@@ -107,15 +107,11 @@ class Framework extends DefaultObject
     )
 
   _initForm: ->
-    $('form').each(() ->
-      className = $(this).data('formClass')
-      className = 'Form' unless className
-
-      if !window[className]
-        throw className + ' is not defined'
-
-      new window[className](this)
-    );
+    $('form').each ->
+      className = $(this).data('formClass') || 'Form'
+      throw className + ' is not defined' unless window[className]
+      formClass = window[className]
+      new formClass(this)
 
   _initTabs: ->
     url = document.location.toString()
