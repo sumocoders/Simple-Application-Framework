@@ -89,12 +89,12 @@ class Form
     @_rangeDateFields()
 
   _normalDateFields: ->
-    $('.inputDatefieldNormal').each(() ->
+    $(@form).find('.inputDatefieldNormal').each(() ->
       $(this).datepicker()
     )
 
   _startingFromDateFields: =>
-    $('.inputDatefieldFrom').each((i, el) =>
+    $(@form).find('.inputDatefieldFrom').each((i, el) =>
       $el = $(el)
       startDate = @_parseDate($el, 'startdate')
 
@@ -105,7 +105,7 @@ class Form
     )
 
   _untilDateFields: =>
-    $('.inputDatefieldTill').each((i, el) =>
+    $(@form).find('.inputDatefieldTill').each((i, el) =>
       $el = $(el)
       endDate = @_parseDate($el, 'enddate')
 
@@ -116,7 +116,7 @@ class Form
     )
 
   _rangeDateFields: =>
-    $('.inputDatefieldRange').each((i, el) =>
+    $(@form).find('.inputDatefieldRange').each((i, el) =>
       $el = $(el)
       startDate = @_parseDate($el, 'startdate')
       endDate = @_parseDate($el, 'enddate')
