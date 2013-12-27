@@ -111,6 +111,9 @@ class Framework extends DefaultObject
       className = $(this).data('formClass')
       className = "Form" unless className
 
+      if !window[className]
+        throw className + ' is not defined'
+
       new window[className](this)
     );
 
