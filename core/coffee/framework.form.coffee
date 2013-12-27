@@ -1,10 +1,6 @@
 class Form
   constructor: ->
     @_dateFields()
-    @_normalDateFields()
-    @_startingFromDateFields()
-    @_untilDateFields()
-    @_rangeDateFields()
     @_fixPlaceholders()
     @_hijackSubmit()
 
@@ -84,6 +80,10 @@ class Form
 
   _dateFields: ->
     $.datepicker.setDefaults @_dateFieldOptions
+    @_normalDateFields()
+    @_startingFromDateFields()
+    @_untilDateFields()
+    @_rangeDateFields()
 
   _normalDateFields: ->
     $('.inputDatefieldNormal').each(() ->
