@@ -1,5 +1,8 @@
 class Form
-  constructor: ->
+  form: null,
+
+  constructor: (form) ->
+    @form = form
     @_dateFields()
     @_fixPlaceholders()
     @_hijackSubmit()
