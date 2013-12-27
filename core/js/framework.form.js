@@ -102,7 +102,7 @@
       var $input;
       jQuery.support.placeholder = (__indexOf.call(document.createElement('input'), 'placeholder') >= 0);
       if (!jQuery.support.placeholder) {
-        $input = $('input[placeholder]');
+        $input = $(this.form).find('input[placeholder]');
         $input.on('focus', function() {
           var $this;
           $this = $(this);
@@ -129,8 +129,8 @@
     };
 
     Form.prototype._hijackSubmit = function() {
-      return $('form').on('submit', function(e) {
-        return App.current.showLoadingBar();
+      return $(this.form).on('submit', function(e) {
+        App.current.showLoadingBar();
       });
     };
 

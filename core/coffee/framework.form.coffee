@@ -143,7 +143,7 @@ class Form
       ('placeholder' in document.createElement('input'))
 
     if !jQuery.support.placeholder
-      $input = $('input[placeholder]')
+      $input = $(@form).find('input[placeholder]')
 
       $input.on('focus', ->
         $this = $(this)
@@ -169,9 +169,10 @@ class Form
             $(this).val('')
 
   _hijackSubmit: ->
-    $('form').on('submit', (e) ->
+    $(@form).on('submit', (e) ->
       # @todo trigger event instead of calling "remote" code
       App.current.showLoadingBar()
+      return
     )
 
 window.Form = Form
