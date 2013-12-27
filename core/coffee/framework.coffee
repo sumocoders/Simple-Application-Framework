@@ -57,6 +57,10 @@ class Framework extends DefaultObject
     # tabs
     '.nav-tabs a' : click : 'changeTab'
 
+    # loading bar
+    'document' : show_loading_bar : 'showLoadingBar'
+    'document' : hide_loading_bar : 'hideLoadingBar'
+
   @onDomReady [
 #    'functionname'
     '_initAjax'
@@ -104,10 +108,10 @@ class Framework extends DefaultObject
 
     # show spinners
     $(document).ajaxStart(() =>
-      @showLoadingBar()
+      $.event.trigger('show_loading_bar');
     )
     $(document).ajaxStop(() =>
-      @hideLoadingBar()
+      $.event.trigger('hide_loading_bar');
     )
 
   _initForm: ->
@@ -278,7 +282,7 @@ class Framework extends DefaultObject
 
     $('#confirmModal').modal('hide')
     $('body').append($form)
-    @showLoadingBar()
+    $.event.trigger('show_loading_bar');
     $form.submit()
   false
 

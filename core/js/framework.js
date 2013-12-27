@@ -68,7 +68,11 @@
             if (!this[callback]) {
               throw "" + callback + " doesn't exist when trying to bind " + action + " on " + selector;
             }
-            _results1.push($document.on(action, selector, this[callback]));
+            if (selector === 'document') {
+              _results1.push($document.on(action, this[callback]));
+            } else {
+              _results1.push($document.on(action, selector, this[callback]));
+            }
           }
           return _results1;
         }).call(this));
@@ -123,6 +127,12 @@
       },
       '.nav-tabs a': {
         click: 'changeTab'
+      },
+      'document': {
+        show_loading_bar: 'showLoadingBar'
+      },
+      'document': {
+        hide_loading_bar: 'hideLoadingBar'
       }
     });
 
@@ -156,10 +166,10 @@
         return false;
       });
       $(document).ajaxStart(function() {
-        return _this.showLoadingBar();
+        return $.event.trigger('show_loading_bar');
       });
       return $(document).ajaxStop(function() {
-        return _this.hideLoadingBar();
+        return $.event.trigger('hide_loading_bar');
       });
     };
 
@@ -321,7 +331,7 @@
       }
       $('#confirmModal').modal('hide');
       $('body').append($form);
-      this.showLoadingBar();
+      $.event.trigger('show_loading_bar');
       return $form.submit();
     };
 
