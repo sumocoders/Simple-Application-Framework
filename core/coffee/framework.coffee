@@ -25,7 +25,11 @@ class DefaultObject
     for selector, actions of @events
       for action, callback of actions
         throw "#{callback} doesn't exist when trying to bind #{action} on #{selector}" unless @[callback]
-        $document.on(action, selector, @[callback])
+
+        if selector == 'document'
+          $document.on(action, @[callback])
+        else
+          $document.on(action, selector, @[callback])
 
 class Framework extends DefaultObject
   @events
