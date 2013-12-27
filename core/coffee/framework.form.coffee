@@ -87,11 +87,13 @@ class Form
     @_startingFromDateFields()
     @_untilDateFields()
     @_rangeDateFields()
+    return
 
   _normalDateFields: ->
     $(@form).find('.inputDatefieldNormal').each(() ->
       $(this).datepicker()
     )
+    return
 
   _startingFromDateFields: =>
     $(@form).find('.inputDatefieldFrom').each((i, el) =>
@@ -103,6 +105,7 @@ class Form
       if new Date() < startDate
         $el.datepicker('option', 'defaultDate', startDate)
     )
+    return
 
   _untilDateFields: =>
     $(@form).find('.inputDatefieldTill').each((i, el) =>
@@ -114,6 +117,7 @@ class Form
       if new Date() > endDate
         $el.datepicker('option', 'defaultDate', endDate)
     )
+    return
 
   _rangeDateFields: =>
     $(@form).find('.inputDatefieldRange').each((i, el) =>
@@ -130,6 +134,7 @@ class Form
       if new Date() > endDate
         $el.datepicker('option', 'defaultDate', endDate)
     )
+    return
 
   # fixes
   _fixPlaceholders: ->
