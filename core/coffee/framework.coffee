@@ -109,7 +109,7 @@ class Framework extends DefaultObject
   _initForm: ->
     $('form').each(() ->
       className = $(this).data('formClass')
-      className = "Form" unless className
+      className = 'Form' unless className
 
       if !window[className]
         throw className + ' is not defined'

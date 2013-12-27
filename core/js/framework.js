@@ -168,9 +168,12 @@
         var className;
         className = $(this).data('formClass');
         if (!className) {
-          className = "Form";
+          className = 'Form';
         }
-        return eval("new " + className + "(this)");
+        if (!window[className]) {
+          throw className + ' is not defined';
+        }
+        return new window[className](this);
       });
     };
 
