@@ -164,7 +164,14 @@
     };
 
     Framework.prototype._initForm = function() {
-      return new Form;
+      return $('form').each(function() {
+        var className;
+        className = $(this).data('formClass');
+        if (!className) {
+          className = "Form";
+        }
+        return eval("new " + className + "(this)");
+      });
     };
 
     Framework.prototype._initTabs = function() {

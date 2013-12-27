@@ -107,8 +107,12 @@ class Framework extends DefaultObject
     )
 
   _initForm: ->
-    # Per form een object aanmaken
-    new Form
+    $('form').each(() ->
+      className = $(this).data('formClass')
+      className = "Form" unless className
+
+      eval("new " + className + "(this)")
+    );
 
   _initTabs: ->
     url = document.location.toString()
