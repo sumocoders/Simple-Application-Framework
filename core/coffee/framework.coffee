@@ -111,7 +111,7 @@ class Framework extends DefaultObject
       className = $(this).data('formClass')
       className = "Form" unless className
 
-      eval("new " + className + "(this)")
+      new window[className](this)
     );
 
   _initTabs: ->
