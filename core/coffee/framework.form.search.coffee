@@ -3,7 +3,7 @@ class SearchForm extends Form
     @_initSearch()
 
   _initSearch: ->
-    $('.searchBox input[name=q]').autocomplete(
+    $('.searchBox input[name=q]', @form).autocomplete(
       position:
         using: (position, elements) ->
           newPosition =
@@ -39,7 +39,7 @@ class SearchForm extends Form
         $(e.target).val(ui.item.value.label)
     )
 
-    $('.searchBox input[name=q]').each (idx,element) =>
+    $('.searchBox input[name=q]', @form).each (idx,element) =>
       $(element).data('ui-autocomplete')._renderItem = @renderItem
 
     return
