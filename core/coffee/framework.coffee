@@ -25,7 +25,11 @@ class DefaultObject
     for selector, actions of @events
       for action, callback of actions
         throw "#{callback} doesn't exist when trying to bind #{action} on #{selector}" unless @[callback]
-        $document.on(action, selector, @[callback])
+
+        if selector == 'document'
+          $document.on(action, @[callback])
+        else
+          $document.on(action, selector, @[callback])
 
 class Framework extends DefaultObject
   @events
@@ -52,6 +56,12 @@ class Framework extends DefaultObject
 
     # tabs
     '.nav-tabs a' : click : 'changeTab'
+
+    # loading bar
+    'document' :
+      form_submitting : 'showLoadingBar'
+      ajax_start : 'showLoadingBar'
+      ajax_stop : 'hideLoadingBar'
 
   @onDomReady [
 #    'functionname'
@@ -99,10 +109,10 @@ class Framework extends DefaultObject
 
     # show spinners
     $(document).ajaxStart(() =>
-      @showLoadingBar()
+      $.event.trigger('ajax_start')
     )
     $(document).ajaxStop(() =>
-      @hideLoadingBar()
+      $.event.trigger('ajax_stop')
     )
 
   _initForm: ->
@@ -276,7 +286,7 @@ class Framework extends DefaultObject
 
     $('#confirmModal').modal('hide')
     $('body').append($form)
-    @showLoadingBar()
+    $.event.trigger('show_loading_bar')
     $form.submit()
   false
 

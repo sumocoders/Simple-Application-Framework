@@ -169,10 +169,8 @@ class Form
             $(this).val('')
 
   _hijackSubmit: ->
-    $(@form).on('submit', (e) ->
-      # @todo trigger event instead of calling "remote" code
-      App.current.showLoadingBar()
-      return
+    $('form').on('submit', (e) ->
+      $(this).trigger('form_submitting')
     )
 
 window.Form = Form

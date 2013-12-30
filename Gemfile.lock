@@ -1,18 +1,25 @@
 GEM
   remote: http://rubygems.org/
   specs:
+    activesupport (4.0.2)
+      i18n (~> 0.6, >= 0.6.4)
+      minitest (~> 4.2)
+      multi_json (~> 1.3)
+      thread_safe (~> 0.1)
+      tzinfo (~> 0.3.37)
+    atomic (1.1.14)
     capistrano (2.15.5)
       highline
       net-scp (>= 1.0.0)
       net-sftp (>= 2.0.0)
       net-ssh (>= 2.0.14)
       net-ssh-gateway (>= 1.1.0)
-    chunky_png (1.2.8)
+    chunky_png (1.2.9)
     compass (0.12.2)
       chunky_png (~> 1.2)
       fssm (>= 0.2.7)
       sass (~> 3.1)
-    compass_sumo (0.4.1)
+    compass_sumo (0.4.2)
       compass
       ttfunk
     compass_twitter_bootstrap (2.3.1)
@@ -24,24 +31,32 @@ GEM
     forkcms_deploy (2.4.2)
       capistrano (>= 2.0.0)
     fssm (0.2.10)
-    highline (1.6.19)
+    highline (1.6.20)
+    i18n (0.6.9)
+    minitest (4.7.5)
+    multi_json (1.8.2)
     net-scp (1.1.2)
       net-ssh (>= 2.6.5)
     net-sftp (2.1.2)
       net-ssh (>= 2.6.5)
-    net-ssh (2.6.8)
+    net-ssh (2.7.0)
     net-ssh-gateway (1.2.0)
       net-ssh (>= 2.6.5)
-    sass (3.2.10)
-    sumodev_deploy (0.4.3)
+    sass (3.2.13)
+    sumodev_deploy (0.4.4)
+      activesupport
+      capistrano
     thor (0.18.1)
+    thread_safe (0.1.3)
+      atomic
     ttfunk (1.0.3)
+    tzinfo (0.3.38)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  capistrano
+  capistrano (~> 2.15)
   compass
   compass_sumo
   compass_twitter_bootstrap (= 2.3.1)
