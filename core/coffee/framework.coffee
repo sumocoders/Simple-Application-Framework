@@ -110,10 +110,10 @@ class Framework extends DefaultObject
 
     # show spinners
     $(document).ajaxStart(() =>
-      $.event.trigger('ajax_start');
+      $.event.trigger('ajax_start')
     )
     $(document).ajaxStop(() =>
-      $.event.trigger('ajax_stop');
+      $.event.trigger('ajax_stop')
     )
 
   _initForm: ->
@@ -284,7 +284,7 @@ class Framework extends DefaultObject
 
     $('#confirmModal').modal('hide')
     $('body').append($form)
-    $.event.trigger('show_loading_bar');
+    $.event.trigger('show_loading_bar')
     $form.submit()
   false
 
