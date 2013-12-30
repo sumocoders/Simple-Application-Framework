@@ -50,14 +50,15 @@
     };
 
     Form.prototype._normalDateFields = function() {
-      $(this.form).find('.inputDatefieldNormal').each(function() {
-        return $(this).datepicker();
+      var _this = this;
+      $('.inputDatefieldNormal', this.form).each(function(i, el) {
+        return $(_this).datepicker();
       });
     };
 
     Form.prototype._startingFromDateFields = function() {
       var _this = this;
-      $(this.form).find('.inputDatefieldFrom').each(function(i, el) {
+      $('.inputDatefieldFrom', this.form).each(function(i, el) {
         var $el, startDate;
         $el = $(el);
         startDate = _this._parseDate($el, 'startdate');
@@ -70,7 +71,7 @@
 
     Form.prototype._untilDateFields = function() {
       var _this = this;
-      $(this.form).find('.inputDatefieldTill').each(function(i, el) {
+      $('.inputDatefieldTill', this.form).each(function(i, el) {
         var $el, endDate;
         $el = $(el);
         endDate = _this._parseDate($el, 'enddate');
@@ -83,7 +84,7 @@
 
     Form.prototype._rangeDateFields = function() {
       var _this = this;
-      $(this.form).find('.inputDatefieldRange').each(function(i, el) {
+      $('.inputDatefieldRange', this.form).each(function(i, el) {
         var $el, endDate, startDate;
         $el = $(el);
         startDate = _this._parseDate($el, 'startdate');
