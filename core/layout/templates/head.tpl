@@ -44,6 +44,7 @@
 	<script src="/core/js/framework.data.js?m={$LAST_MODIFIED}"></script>
 	<script src="/core/js/framework.locale.js?m={$LAST_MODIFIED}"></script>
 	<script src="/core/js/framework.form.js?m={$LAST_MODIFIED}"></script>
+	<script src="/core/js/framework.form.search.js?m={$LAST_MODIFIED}"></script>
 	<script src="/core/js/app.js?m={$LAST_MODIFIED}"></script>
 	{option:javascript}
 		{iteration:javascript}

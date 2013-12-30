@@ -63,7 +63,7 @@
 		</ul>
 	</div>
 	<div id="searchBox" class="desktop searchBox" role="search">
-		<form action="#">
+		<form action="#" data-form-class="SearchForm">
 			<div class="controls">
 				<input id="searchQuery" name="q" type="search" placeholder="{$lblSearch|ucfirst}" class="input-medium">
 				<button type="submit" class="btn">
