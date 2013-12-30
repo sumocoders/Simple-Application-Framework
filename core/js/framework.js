@@ -130,6 +130,8 @@
       },
       'document': {
         form_submitting: 'showLoadingBar',
+        ajax_start: 'showLoadingBar',
+        ajax_stop: 'hideLoadingBar'
       }
     });
 
@@ -163,10 +165,10 @@
         return false;
       });
       $(document).ajaxStart(function() {
-        return $.event.trigger('show_loading_bar');
+        return $.event.trigger('ajax_start');
       });
       return $(document).ajaxStop(function() {
-        return $.event.trigger('hide_loading_bar');
+        return $.event.trigger('ajax_stop');
       });
     };
 

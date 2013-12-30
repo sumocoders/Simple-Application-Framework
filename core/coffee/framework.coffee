@@ -58,8 +58,10 @@ class Framework extends DefaultObject
     '.nav-tabs a' : click : 'changeTab'
 
     # loading bar
-    'document' : show_loading_bar : 'showLoadingBar'
-    'document' : hide_loading_bar : 'hideLoadingBar'
+    'document' :
+      form_submitting : 'showLoadingBar'
+      ajax_start : 'showLoadingBar'
+      ajax_stop : 'hideLoadingBar'
 
   @onDomReady [
 #    'functionname'
@@ -108,10 +110,10 @@ class Framework extends DefaultObject
 
     # show spinners
     $(document).ajaxStart(() =>
-      $.event.trigger('show_loading_bar');
+      $.event.trigger('ajax_start');
     )
     $(document).ajaxStop(() =>
-      $.event.trigger('hide_loading_bar');
+      $.event.trigger('ajax_stop');
     )
 
   _initForm: ->
