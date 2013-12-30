@@ -127,7 +127,7 @@
 
     Form.prototype._hijackSubmit = function() {
       return $('form').on('submit', function(e) {
-        return $.event.trigger('show_loading_bar');
+        return $(this).trigger('form_submitting');
       });
     };
 

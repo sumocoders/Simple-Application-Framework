@@ -162,7 +162,7 @@ class Form
 
   _hijackSubmit: ->
     $('form').on('submit', (e) ->
-      $.event.trigger('show_loading_bar');
+      $(this).trigger('form_submitting')
     )
 
 window.Form = Form

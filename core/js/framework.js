@@ -129,10 +129,7 @@
         click: 'changeTab'
       },
       'document': {
-        show_loading_bar: 'showLoadingBar'
-      },
-      'document': {
-        hide_loading_bar: 'hideLoadingBar'
+        form_submitting: 'showLoadingBar',
       }
     });
 
