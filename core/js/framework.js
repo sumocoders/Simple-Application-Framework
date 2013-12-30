@@ -68,7 +68,11 @@
             if (!this[callback]) {
               throw "" + callback + " doesn't exist when trying to bind " + action + " on " + selector;
             }
-            _results1.push($document.on(action, selector, this[callback]));
+            if (selector === 'document') {
+              _results1.push($document.on(action, this[callback]));
+            } else {
+              _results1.push($document.on(action, selector, this[callback]));
+            }
           }
           return _results1;
         }).call(this));
@@ -123,6 +127,11 @@
       },
       '.nav-tabs a': {
         click: 'changeTab'
+      },
+      'document': {
+        form_submitting: 'showLoadingBar',
+        ajax_start: 'showLoadingBar',
+        ajax_stop: 'hideLoadingBar'
       }
     });
 
@@ -156,10 +165,10 @@
         return false;
       });
       $(document).ajaxStart(function() {
-        return _this.showLoadingBar();
+        return $.event.trigger('ajax_start');
       });
       return $(document).ajaxStop(function() {
-        return _this.hideLoadingBar();
+        return $.event.trigger('ajax_stop');
       });
     };
 
@@ -210,11 +219,13 @@
     };
 
     Framework.prototype.showLoadingBar = function() {
-      return $('#header').addClass('progress progress-striped active');
+      $('#header').addClass('progress progress-striped active');
+      $('#header .container').addClass('bar');
     };
 
     Framework.prototype.hideLoadingBar = function() {
-      return $('#header').removeClass('progress progress-striped active');
+      $('#header').removeClass('progress progress-striped active');
+      $('#header .container').removeClass('bar');
     };
 
     Framework.prototype._setClassesBasedOnSubNavigation = function() {
@@ -319,7 +330,7 @@
       }
       $('#confirmModal').modal('hide');
       $('body').append($form);
-      this.showLoadingBar();
+      $.event.trigger('show_loading_bar');
       return $form.submit();
     };
 
