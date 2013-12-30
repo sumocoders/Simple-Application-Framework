@@ -39,7 +39,7 @@
               for (_i = 0, _len = _ref.length; _i < _len; _i++) {
                 value = _ref[_i];
                 items.push({
-                  label: value.label + ' (' + value.module + ')',
+                  label: "" + value.label + " (" + value.module + ")",
                   value: value
                 });
               }

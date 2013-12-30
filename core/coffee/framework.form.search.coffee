@@ -21,7 +21,7 @@ class SearchForm extends Form
             for value in data.data
               items.push(
                 {
-                  label: value.label + ' (' + value.module + ')'
+                  label: "#{value.label} (#{value.module})"
                   value: value
                 }
               )
