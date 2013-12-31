@@ -12,8 +12,10 @@
     }
 
     SearchForm.prototype._initSearch = function() {
-      var _this = this;
-      $('.searchBox input[name=q]', this.form).autocomplete({
+      var $searchField,
+        _this = this;
+      $searchField = $('.searchBox input[name=q]', this.form);
+      $searchField.autocomplete({
         position: {
           using: function(position, elements) {
             var newPosition;
@@ -62,7 +64,7 @@
           return $(e.target).val(ui.item.value.label);
         }
       });
-      $('.searchBox input[name=q]', this.form).each(function(idx, element) {
+      $searchField.each(function(idx, element) {
         return $(element).data('ui-autocomplete')._renderItem = _this.renderItem;
       });
     };
