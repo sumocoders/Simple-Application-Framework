@@ -1,10 +1,9 @@
 class Form
-  constructor: ->
+  form: null,
+
+  constructor: (form) ->
+    @form = form
     @_dateFields()
-    @_normalDateFields()
-    @_startingFromDateFields()
-    @_untilDateFields()
-    @_rangeDateFields()
     @_fixPlaceholders()
     @_hijackSubmit()
 
@@ -84,14 +83,20 @@ class Form
 
   _dateFields: ->
     $.datepicker.setDefaults @_dateFieldOptions
+    @_normalDateFields()
+    @_startingFromDateFields()
+    @_untilDateFields()
+    @_rangeDateFields()
+    return
 
   _normalDateFields: ->
-    $('.inputDatefieldNormal').each(() ->
-      $(this).datepicker()
+    $('.inputDatefieldNormal', @form).each((i, el) =>
+      $(el).datepicker()
     )
+    return
 
   _startingFromDateFields: =>
-    $('.inputDatefieldFrom').each((i, el) =>
+    $('.inputDatefieldFrom', @form).each((i, el) =>
       $el = $(el)
       startDate = @_parseDate($el, 'startdate')
 
@@ -100,9 +105,10 @@ class Form
       if new Date() < startDate
         $el.datepicker('option', 'defaultDate', startDate)
     )
+    return
 
   _untilDateFields: =>
-    $('.inputDatefieldTill').each((i, el) =>
+    $('.inputDatefieldTill', @form).each((i, el) =>
       $el = $(el)
       endDate = @_parseDate($el, 'enddate')
 
@@ -111,9 +117,10 @@ class Form
       if new Date() > endDate
         $el.datepicker('option', 'defaultDate', endDate)
     )
+    return
 
   _rangeDateFields: =>
-    $('.inputDatefieldRange').each((i, el) =>
+    $('.inputDatefieldRange', @form).each((i, el) =>
       $el = $(el)
       startDate = @_parseDate($el, 'startdate')
       endDate = @_parseDate($el, 'enddate')
@@ -127,6 +134,7 @@ class Form
       if new Date() > endDate
         $el.datepicker('option', 'defaultDate', endDate)
     )
+    return
 
   # fixes
   _fixPlaceholders: ->
@@ -135,7 +143,7 @@ class Form
       ('placeholder' in document.createElement('input'))
 
     if !jQuery.support.placeholder
-      $input = $('input[placeholder]')
+      $input = $(@form).find('input[placeholder]')
 
       $input.on('focus', ->
         $this = $(this)
