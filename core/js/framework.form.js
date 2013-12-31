@@ -52,7 +52,7 @@
     Form.prototype._normalDateFields = function() {
       var _this = this;
       $('.inputDatefieldNormal', this.form).each(function(i, el) {
-        return $(_this).datepicker();
+        return $(el).datepicker();
       });
     };
 

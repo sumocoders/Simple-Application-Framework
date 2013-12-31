@@ -91,7 +91,7 @@ class Form
 
   _normalDateFields: ->
     $('.inputDatefieldNormal', @form).each((i, el) =>
-      $(this).datepicker()
+      $(el).datepicker()
     )
     return
 
