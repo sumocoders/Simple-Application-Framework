@@ -35,11 +35,9 @@ body {
 // DEFINE THE COMPANY LOGO HERE
 
 .logo {
-  @include svg-with-png-fallback(logo_sumocoders, no-repeat, $dimensions: false);
-  background-color: #e84914;
+  @include svg-with-png-fallback(logo_sumocoders, #e84914 no-repeat center center, $dimensions: false);
   display: block;
   @include squish-text;
-  background-position: center center;
   width: 100%;
   height: 165px;
   border: none;
@@ -965,8 +963,7 @@ dl {
 
     .dropdownToggle {
       display: block;
-      @include svg-with-png-fallback(icon_cogwheel, no-repeat center center, $dimensions: false);
-      background-color: rgba(0,0,0,0.46);
+      @include svg-with-png-fallback(icon_cogwheel, rgba(0,0,0,0.46) no-repeat center center, $dimensions: false);
       height: 65px;
       width: 70px;
       margin-bottom: 4px;
@@ -1010,35 +1007,27 @@ dl {
           white-space: nowrap;
 
           &.iconList {
-            @include svg-with-png-fallback(icon_list, #1f2024 no-repeat, $dimensions: false);
-            background-position: 22px center;
+            @include svg-with-png-fallback(icon_list, #1f2024 no-repeat 22px center, $dimensions: false);
           }
 
           &.iconPrint {
-            @include svg-with-png-fallback(icon_print, #1f2024 no-repeat center center, $dimensions: false);
-            background-position: 23px center;
+            @include svg-with-png-fallback(icon_print, #1f2024 no-repeat 23px center, $dimensions: false);
           }
 
           &.iconAdd {
-            @include svg-with-png-fallback(icon_add, #1f2024 no-repeat center center, $dimensions: false);
-            background-position: 26px center;
+            @include svg-with-png-fallback(icon_add, #1f2024 no-repeat 26px center, $dimensions: false);
           }
           
           &.iconImport {
-            @include svg-with-png-fallback(icon_import, #1f2024 no-repeat center center, $dimensions: false);
-            background-position: 24px center;
-            
+            @include svg-with-png-fallback(icon_import, #1f2024 no-repeat 24px center, $dimensions: false);
           }
           
           &.iconContacts {
-            @include svg-with-png-fallback(icon_contacts, #1f2024 no-repeat center center, $dimensions: false);
-            background-position: 20px center;
-            
+            @include svg-with-png-fallback(icon_contacts, #1f2024 no-repeat 20px center, $dimensions: false);
           }
           
           &.iconVcard {
-            @include svg-with-png-fallback(icon_vcard, #1f2024 no-repeat center center, $dimensions: false);
-            background-position: 22px center;
+            @include svg-with-png-fallback(icon_vcard, #1f2024 no-repeat 22px center, $dimensions: false);
           }
         }
 
@@ -1212,10 +1201,8 @@ dl {
     height: 100%;
     width: 100px;
     left: -50px;
-    @include svg-with-png-fallback(arrow_show_menu, no-repeat, $dimensions: false);
-    background-position: 60px center;
+    @include svg-with-png-fallback(arrow_show_menu, #1f2024 no-repeat 60px center, $dimensions: false);
     @include squish-text;
-    background-color: #1f2024;
     z-index: 25;
     @include transition(left 250ms);
 

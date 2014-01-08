@@ -2,6 +2,7 @@
 <html lang="{$LANGUAGE}">
 <head>
 	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
 	<title>
 		{option:pageTitle}{$pageTitle}{/option:pageTitle}
@@ -18,7 +19,20 @@
 		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
 
-	<link rel="stylesheet" href="/core/layout/css/style.css?m={$LAST_MODIFIED}">
+    {* Load full css if browser is > IE9 or not IE9 *}
+    <!--[if gt IE 9]>
+        <link rel="stylesheet" href="/core/layout/css/style.css?m={$LAST_MODIFIED}">
+    <![endif]-->
+    <!--[if !IE]> -->
+        <link rel="stylesheet" href="/core/layout/css/style.css?m={$LAST_MODIFIED}">
+    <!-- <![endif]-->
+
+    {* Load css and bootstrap seperately if <= IE9 *}
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/core/layout/css/bootstrap.min.css?m={$LAST_MODIFIED}">
+        <link rel="stylesheet" href="/core/layout/css/bootstrap-responsive.min.css?m={$LAST_MODIFIED}">
+        <link rel="stylesheet" href="/core/layout/css/style_ie.css?m={$LAST_MODIFIED}">
+    <![endif]-->
 	{option:css}
 		{iteration:css}
 			<link rel="stylesheet" href="{$css.url}">
@@ -40,12 +54,14 @@
 	<script src="/core/js/jquery.js?m={$LAST_MODIFIED}"></script>
 	<script src="/core/js/bootstrap.js?m={$LAST_MODIFIED}"></script>
 	<script src="/core/js/sumo_plugins.js?m={$LAST_MODIFIED}"></script>
-	<script src="/core/js/framework.js?m={$LAST_MODIFIED}"></script>
 	<script src="/core/js/framework.data.js?m={$LAST_MODIFIED}"></script>
 	<script src="/core/js/framework.locale.js?m={$LAST_MODIFIED}"></script>
 	<script src="/core/js/framework.form.js?m={$LAST_MODIFIED}"></script>
+	<script src="/core/js/framework.js?m={$LAST_MODIFIED}"></script>
 	<script src="/core/js/framework.form.search.js?m={$LAST_MODIFIED}"></script>
 	<script src="/core/js/app.js?m={$LAST_MODIFIED}"></script>
+	<script src="/core/js/respond.min.js?m={$LAST_MODIFIED}"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
 	{option:javascript}
 		{iteration:javascript}
 			<script src="{$javascript.url}"></script>
