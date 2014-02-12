@@ -56,17 +56,23 @@ class Authentication
 
 			$url = Spoon::get('url');
 
-			// not login page
-			if($url->getModule() != 'users') SpoonHTTP::redirect($url->buildUrl('login', 'users', null, array('redirect' => '/' . $url->getQueryString())), 403);
+			/**
+			 * This is the list of allowed Routes without authentication.
+			 * Per module with public actions, you should create an array key (name of the module),
+			 * and a value (another array with allowed actions). See the 'users' example.
+			 */
+			$allowedRoutes = array(
+				'users' => array('logout', 'login', 'forgot_password', 'reset_password'),
+			);
 
-			// not logout
-			elseif(!in_array($url->getAction(), array('logout', 'login', 'forgot_password', 'reset_password')))
-			{
+			if (!isset($allowedRoutes[$url->getModule()]) || !in_array($url->getAction(), $allowedRoutes[$url->getModule()])) {
 				SpoonHTTP::redirect(
 					$url->buildUrl(
-						'login', 'users', null,
+						'login',
+						'users',
+						null,
 						array(
-						     'redirect' => '/' . $url->getQueryString()
+							'redirect' => '/' . $url->getQueryString()
 						)
 					),
 					403
