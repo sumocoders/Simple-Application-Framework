@@ -1007,27 +1007,42 @@ dl {
           white-space: nowrap;
 
           &.iconList {
-            @include svg-with-png-fallback(icon_list, #1f2024 no-repeat 22px center, $dimensions: false);
+            @include svg-with-png-fallback(icon_list, #1f2024 no-repeat, $dimensions: false);
+            background-position: 22px center;
           }
 
           &.iconPrint {
-            @include svg-with-png-fallback(icon_print, #1f2024 no-repeat 23px center, $dimensions: false);
+            @include svg-with-png-fallback(icon_print, #1f2024 no-repeat center center, $dimensions: false);
+            background-position: 23px center;
           }
 
           &.iconAdd {
-            @include svg-with-png-fallback(icon_add, #1f2024 no-repeat 26px center, $dimensions: false);
+            @include svg-with-png-fallback(icon_add, #1f2024 no-repeat center center, $dimensions: false);
+            background-position: 26px center;
           }
-          
           &.iconImport {
-            @include svg-with-png-fallback(icon_import, #1f2024 no-repeat 24px center, $dimensions: false);
+            @include svg-with-png-fallback(icon_import, #1f2024 no-repeat center center, $dimensions: false);
+            background-position: 26px center;
           }
-          
           &.iconContacts {
-            @include svg-with-png-fallback(icon_contacts, #1f2024 no-repeat 20px center, $dimensions: false);
+            @include svg-with-png-fallback(icon_contacts, #1f2024 no-repeat center center, $dimensions: false);
+            background-position: 26px center;
           }
-          
           &.iconVcard {
-            @include svg-with-png-fallback(icon_vcard, #1f2024 no-repeat 22px center, $dimensions: false);
+            @include svg-with-png-fallback(icon_vcard, #1f2024 no-repeat center center, $dimensions: false);
+            background-position: 26px center;
+          }
+          &.iconPreview {
+            @include svg-with-png-fallback(icon_preview, #1f2024 no-repeat center center, $dimensions: false);
+            background-position: 23px center;
+          }
+          &.iconEdit {
+            @include svg-with-png-fallback(icon_edit, #1f2024 no-repeat center center, $dimensions: false);
+            background-position: 23px center;
+          }
+          &.iconDelete {
+            @include svg-with-png-fallback(icon_delete, #1f2024 no-repeat center center, $dimensions: false);
+            background-position: 23px center;
           }
         }
 
