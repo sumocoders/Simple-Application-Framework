@@ -28,7 +28,7 @@ class Authentication
 		$data = $db->getRecord('SELECT u.*, UNIX_TIMESTAMP(u.created_on) AS created_on, UNIX_TIMESTAMP(u.edited_on) AS edited_on
 								FROM users_sessions AS i
 								INNER JOIN users AS u ON i.user_id = u.id
-								WHERE i.session_id = ? AND i.edited_on > ?',
+								WHERE i.session_id = ? AND i.edited_on > ? AND u.deleted = "N"',
 								array(SpoonSession::getSessionId(), Site::getUTCDate(null, (time() - (2 * 60 * 60)))));
 
 		// any data?
