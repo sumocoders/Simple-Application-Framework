@@ -1,4 +1,4 @@
-/**
+`/**
  * Multiple select box
  *
  * @author	Tijs Verkoyen <tijs@sumocoders.be>
@@ -110,3 +110,4 @@
 		});
 	};
 })(jQuery);
+`

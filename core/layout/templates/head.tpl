@@ -51,17 +51,12 @@
 	<script>
 		var jsData = {$jsData};
 	</script>
-	<script src="/core/js/jquery.js?m={$LAST_MODIFIED}"></script>
-	<script src="/core/js/bootstrap.js?m={$LAST_MODIFIED}"></script>
-	<script src="/core/js/sumo_plugins.js?m={$LAST_MODIFIED}"></script>
-	<script src="/core/js/framework.data.js?m={$LAST_MODIFIED}"></script>
-	<script src="/core/js/framework.locale.js?m={$LAST_MODIFIED}"></script>
-	<script src="/core/js/framework.form.js?m={$LAST_MODIFIED}"></script>
-	<script src="/core/js/framework.js?m={$LAST_MODIFIED}"></script>
-	<script src="/core/js/framework.form.search.js?m={$LAST_MODIFIED}"></script>
-	<script src="/core/js/app.js?m={$LAST_MODIFIED}"></script>
-	<script src="/core/js/respond.min.js?m={$LAST_MODIFIED}"></script>
+	<script src="/core/js/lib.min.js?m={$LAST_MODIFIED}"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+    <script src="/core/js/framework.min.js?m={$LAST_MODIFIED}"></script>
+    <script src="/core/js/app.js?m={$LAST_MODIFIED}"></script>
+
+
 	{option:javascript}
 		{iteration:javascript}
 			<script src="{$javascript.url}"></script>
