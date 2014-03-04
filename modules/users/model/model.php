@@ -87,7 +87,7 @@ class User
 			UNIX_TIMESTAMP(i.edited_on) AS edited_on,
 			UNIX_TIMESTAMP(i.blocked_on) AS blocked_on
 			FROM users AS i
-			WHERE i.email = ?',
+			WHERE i.email = ? AND i.deleted = "N"',
 			array($email)
 		);
 
