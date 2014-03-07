@@ -71,6 +71,8 @@ class SiteForm extends SpoonForm
 	public function addImage($name, $class = 'inputFile', $classError = 'inputFileError')
 	{
 		$this->add(new SiteFormImage($name, $class, $classError));
+		// only accept pictures
+		$this->getField($name)->setAttributes(array('accept' => 'image/*'));
 		return $this->getField($name);
 	}
 
