@@ -20,7 +20,7 @@
 		"TimeIsInvalidBeforeStart": "You can't enter a timestamp before the start-time.",
 		"JPGGIFAndPNGOnly": "Only jp(e)g, gif or png-files are allowed.",
 		"UrlIsInvalid": "This is an invalid URL.",
-		"UsersForgotPasswordNoUserFound": "Dit emailadres is niet teruggevonden."
+		"UsersForgotPasswordNoUserFound": "This email address was not found."
 	},
 	"lbl": {
 		"Actions": "actions",
