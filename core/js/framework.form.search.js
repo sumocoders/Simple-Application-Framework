@@ -7,14 +7,15 @@
   SearchForm = (function(_super) {
     __extends(SearchForm, _super);
 
-    function SearchForm() {
+    function SearchForm(form) {
+      SearchForm.__super__.constructor.call(this, form);
       this._initSearch();
     }
 
     SearchForm.prototype._initSearch = function() {
       var $searchField,
         _this = this;
-      $searchField = $('.searchBox input[name=q]', this.form);
+      $searchField = $('input#searchQuery[name=q]', this.form);
       $searchField.autocomplete({
         position: {
           using: function(position, elements) {

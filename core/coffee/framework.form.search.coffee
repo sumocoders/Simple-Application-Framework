@@ -1,9 +1,10 @@
 class SearchForm extends Form
-  constructor: ->
+  constructor: (form) ->
+    super(form)
     @_initSearch()
 
   _initSearch: ->
-    $searchField = $('.searchBox input[name=q]', @form);
+    $searchField = $('input#searchQuery[name=q]', @form);
 
     $searchField.autocomplete(
       position:
