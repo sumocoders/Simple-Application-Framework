@@ -3,13 +3,13 @@
 /**
  * This class is extended by the models to make logging easier
  *
- * @package        defaultObject
+ * @package        defaultEntity
  * @subpackage     core
  *
  * @author         Jelmer Prins <jelmer@sumocoders.be>
  * @since          1.0
  */
-class DefaultObject
+abstract class DefaultEntity
 {
     /**
      * User id of the creator

@@ -7,7 +7,7 @@
  * @author        Tijs Verkoyen <tijs@sumocoders.be>
  * @since        1.0
  */
-class User extends DefaultObject
+class User extends DefaultEntity
 {
     /**
      * The id of the user.
