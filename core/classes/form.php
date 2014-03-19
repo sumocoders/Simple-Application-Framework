@@ -76,6 +76,34 @@ class SiteForm extends SpoonForm
 		return $this->getField($name);
 	}
 
+    /**
+     * Adds Google Maps map with hidden field for location.
+     *
+     * @return  SiteFormMaps
+     * @param   string $name            The base name for the inputfields and id of the mapcontainer
+     * @param   array  $center          Coords of the center point
+     * @param   int    $zoom            Zoom level
+     * @param   array  $markers         Markers to place on the map array(array('lat'=>..., 'lng'=>...), ...)
+     * @param   bool   $multipleMarkers Allow multiple markers to be set
+     * @param   bool   $centerMarkers   Position the map so that all markers are visible (overwrites zoom and center)
+     * @param   int    $width           Width of the map
+     * @param   int    $height          Height of the map
+     */
+    public function addMap(
+        $name,
+        $center = array('lat' => 51.072102, 'lng' => 3.737269),
+        $zoom = 15,
+        $markers = array(),
+        $multipleMarkers = false,
+        $centerMarkers = false,
+        $width = 880,
+        $height = 440
+    ) {
+        $this->add(new SiteFormMaps($name, $center, $zoom, $markers, $multipleMarkers, $centerMarkers, $width, $height));
+
+        return $this->getField($name);
+    }
+    
 	/**
 	 * Generates an example template, based on the elements already added.
 	 *
@@ -304,4 +332,234 @@ class SiteFormDropdown extends SpoonFormDropdown
 
 		return parent::getAttributesHTML($variables);
 	}
+}
+
+/**
+ * Adds a map where one or multiple markers can be placed location can be set
+ *
+ * @author Jelmer Prins <jelmer@sumocoders.be>
+ */
+class SiteFormMaps extends SpoonFormInput
+{
+    /**
+     * The base id for the inputfields
+     * @var string
+     */
+    private $id;
+
+    /**
+     * The base name for the inputfields
+     * @var string
+     */
+    private $name;
+
+    /**
+     * Initial location on the map
+     * @var array
+     */
+    private $center;
+
+    /**
+     * Initial zoom level of the map
+     * @var int
+     */
+    private $zoom;
+
+    /**
+     * Array with markers for on the map
+     * @var array
+     */
+    private $markers;
+
+    /**
+     * Array with the latitudes of the markers
+     * @var array
+     */
+    private $lats;
+
+    /**
+     * Array with the longitudes of the markers
+     * @var array
+     */
+    private $lngs;
+
+    /**
+     * Allow multiple markers to be set
+     * @var   bool
+     */
+    private $multipleMarkers;
+
+    /**
+     * this will position the map so that all markers are visible (overwrites zoom and center)
+     * @var bool
+     */
+    private $centerMarkers;
+
+    /**
+     * Width of the map
+     * @var int
+     */
+    private $width;
+    /**
+     * Height of the map
+     * @var int
+     */
+    private $height;
+
+    /**
+     * Class constructor.
+     * @param string $name
+     * @param array  $center
+     * @param int    $zoom
+     * @param array  $markers           Markers to place on the map array(array('lat'=>..., 'lng'=>...), ...)
+     * @param bool   $multipleMarkers
+     * @param bool   $centerMarkers
+     * @param int    $width
+     * @param int    $height
+     */
+    public function __construct(
+        $name,
+        $center = array('lat' => 51.072102, 'lng' => 3.737269),
+        $zoom = 15,
+        $markers = array(),
+        $multipleMarkers = false,
+        $centerMarkers = false,
+        $width = 880,
+        $height = 440
+    ) {
+        $this->name = (string) $name;
+        $this->center = (array) $center;
+        $this->zoom = (int) $zoom;
+        $this->markers = (array) $markers;
+        $this->multipleMarkers = $multipleMarkers;
+        $this->centerMarkers = (bool) $centerMarkers;
+        $this->width = (int) $width;
+        $this->height = (int) $height;
+        $this->id = SpoonFilter::toCamelCase((string) $name, '_', true);
+
+        $this->attributes['id'] = $this->id;
+        $this->attributes['name'] = $this->name;
+
+        $this->lats = array();
+        $this->lngs = array();
+        foreach ($this->markers as $marker) {
+            $this->lats[] = $marker['lat'];
+            $this->lngs[] = $marker['lng'];
+        }
+
+        $this->value = array(
+            'lat' => $this->lats,
+            'lng' => $this->lngs,
+            'zoom' => $this->zoom
+        );
+    }
+
+    /**
+     * @param   SpoonTemplate $template
+     * @return  string
+     */
+    public function parse(SpoonTemplate $template = null)
+    {
+        // map container
+        $mapContainer = '<div class="googleMapsMap" id="' . $this->id . '" ';
+        $mapContainer .= 'data-multipleMarkers="' . var_export(
+                $this->multipleMarkers,
+                true
+            ) . '" data-centerMarkers="' . var_export($this->centerMarkers, true) . '" ';
+        $mapContainer .= 'style="width:' . $this->width . 'px;height:' . $this->height . 'px"></div>';
+
+        //hidden field for lat
+        $hiddenLat = '<input type="hidden" id="' . $this->id . '_lat" name="' . $this->name . '[lat]" value="' . implode(
+                ',',
+                $this->lats
+            ) . '" />';
+
+        //hidden field for lng
+        $hiddenLng = '<input type="hidden" id="' . $this->id . '_lng" name="' . $this->name . '[lng]" value="' . implode(
+                ',',
+                $this->lngs
+            ) . '" />';
+
+        //hidden field for zoom
+        $hiddenZoom = '<input type="hidden" id="' . $this->id . '_zoom" name="' . $this->name . '[zoom]" value="' . $this->zoom . '" />';
+
+        //hidden field for center
+        $hiddenCenter = '<input type="hidden" id="' . $this->id . '_center" name="' . $this->name . '[center]" value="' . implode(
+                ',',
+                $this->center
+            ) . '" />';
+
+        //output
+        $output = $mapContainer . $hiddenLat . $hiddenLng . $hiddenZoom . $hiddenCenter;
+        // template
+        if ($template !== null) {
+            $template->addJavascriptFile('/core/js/framework.googlemaps.js');
+            $template->assign('map' . SpoonFilter::toCamelCase($this->name), $output);
+            $template->assign(
+                'map' . SpoonFilter::toCamelCase($this->name) . 'Error',
+                ($this->errors != '') ? '<span class="formError">' . $this->errors . '</span>' : ''
+            );
+        }
+
+        return $output;
+    }
+
+    /**
+     * Retrieve the initial or submitted value.
+     * @return    array
+     */
+    public function getValue()
+    {
+        // redefine default value
+        $value = $this->value;
+        // added to form
+        if ($this->isSubmitted()) {
+            // post/get data
+            $data = $this->getMethod(true);
+
+            // submitted by post/get (may be empty)
+            if (isset($data[$this->attributes['name']])) {
+                // value
+                $value = $data[$this->getName()];
+                $value['lat'] = explode(',', $value['lat']);
+                $value['lng'] = explode(',', $value['lng']);
+                $value['center'] = explode(',', $value['center']);
+                $value['markers'] = array();
+                if (sizeof($value['lng']) === sizeof($value['lat'])) {
+                    for ($i = sizeof($value['lng']) - 1 ; $i >= 0; $i--) {
+                        $value['markers'][] = array(
+                            'lat' => $value['lat'][$i],
+                            'lng' => $value['lng'][$i]
+                        );
+                    }
+                }
+            }
+        }
+
+        return $value;
+    }
+
+    /**
+     * Checks if this field was submitted & filled.
+     *
+     * @return    bool
+     * @param    string [optional] $error        The error message to set.
+     */
+    public function isFilled($error = null)
+    {
+        // post/get data
+        $data = $this->getMethod(true);
+        $value = isset($data[$this->getName()])
+            ? $data[$this->getName()]
+            : array();
+        if (empty($value['lat']) || empty($value['lng']) || empty($value['zoom']) || empty($value['center'])) {
+            if ($error !== null) {
+                $this->setError($error);
+            }
+
+            return false;
+        }
+
+        return true;
+    }
 }
