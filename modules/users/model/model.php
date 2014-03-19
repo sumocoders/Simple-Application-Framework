@@ -7,7 +7,7 @@
  * @author        Tijs Verkoyen <tijs@sumocoders.be>
  * @since        1.0
  */
-class User
+class User extends DefaultObject
 {
 	/**
 	 * The id of the user.
@@ -169,6 +169,7 @@ class User
 	 */
 	public function initialize($data)
 	{
+        parent::initialize($data);
 		if(isset($data['id'])) $this->id = (int) $data['id'];
 		if(isset($data['name'])) $this->name = (string) $data['name'];
 		if(isset($data['email'])) $this->email = (string) $data['email'];
@@ -183,8 +184,6 @@ class User
 		if($this->type == 'admin') $this->isAdmin = true;
 		if(isset($data['blocked'])) $this->isBlocked = ($data['blocked'] == 'Y');
 		if(isset($data['deleted'])) $this->isDeleted = ($data['deleted'] == 'Y');
-		if(isset($data['created_on'])) $this->createdOn = new DateTime('@' . $data['created_on']);
-		if(isset($data['edited_on'])) $this->editedOn = new DateTime('@' . $data['edited_on']);
 		if(isset($data['blocked_on'])) $this->blockedOn = new DateTime('@' . $data['blocked_on']);
 	}
 
@@ -194,39 +193,28 @@ class User
 	 */
 	public function save()
 	{
-		$this->editedOn = new DateTime();
-
+        $item = parent::save();
 		// build record
-		$item['name'] = $this->name;
-		$item['email'] = $this->email;
-		$item['secret'] = $this->secret;
-		$item['type'] = $this->type;
 		$item['data'] = serialize(array('settings' => $this->settings));
 		$item['blocked'] = ($this->isBlocked) ? 'Y' : 'N';
 		$item['deleted'] = ($this->isDeleted) ? 'Y' : 'N';
-		$item['edited_on'] = Site::getUTCDate('Y-m-d H:i:s', $this->editedOn->getTimestamp());
 		$item['blocked_on'] = ($this->isBlocked) ? Site::getUTCDate('Y-m-d H:i:s', $this->blockedOn->getTimestamp()) : null;
+
+        // unset what we don't need
+        unset($item['is_admin']);
+        unset($item['is_blocked']);
+        unset($item['is_deleted']);
+        unset($item['raw_password']);
+        unset($item['created_by']);
 
 		// new password?
 		if($this->rawPassword != null) $item['password'] = sha1(md5($this->rawPassword) . $this->secret);
-
 		// non existing
 		if($this->id === null)
 		{
-			$this->createdOn = new DateTime();
-			$item['created_on'] = Site::getUTCDate('Y-m-d H:i:s', $this->createdOn->getTimestamp());
 			$this->id = Site::getDB(true)->insert('users', $item);
 		}
 		else Site::getDB(true)->update('users', $item, 'id = ?', $this->id);
-
-		// log
-		Site::getLogger()->notice(
-			'user saved',
-			array(
-			     'object' => $this,
-			     'by' => Authentication::getLoggedInUser()
-			)
-		);
 
 		// return
 		return true;
@@ -240,24 +228,6 @@ class User
 	public function setSetting($key, $value)
 	{
 		$this->settings[(string) $key] = $value;
-	}
-
-	/**
-	 * Return the object as an array
-	 * @return array
-	 */
-	public function toArray()
-	{
-		// build array
-		$item['id'] = $this->id;
-		$item['name'] = $this->name;
-		$item['email'] = $this->email;
-		$item['type'] = $this->type;
-		$item['isAdmin'] = $this->isAdmin;
-		$item['createdOn'] = ($this->createdOn !== null) ? $this->createdOn->getTimestamp() : null;
-		$item['editedOn'] = ($this->editedOn !== null) ? $this->editedOn->getTimestamp() : null;
-
-		return $item;
 	}
 }
 
