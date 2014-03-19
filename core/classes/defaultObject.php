@@ -39,10 +39,10 @@ class DefaultObject
 			$this->createdBy = (int) $data['created_by'];
 		}
 		if (isset($data['created_on'])) {
-			$this->createdOn = new DateTime($data['created_on']);
+			$this->createdOn = new DateTime('@' . $data['created_on']);
 		}
 		if (isset($data['edited_on'])) {
-			$this->editedOn = new DateTime($data['edited_on']);
+			$this->editedOn = new DateTime('@' . $data['edited_on']);
 		}
 	}
 
@@ -58,6 +58,9 @@ class DefaultObject
             $this->createdBy = Authentication::getLoggedInUser()->id;
         }
         $item = $this->toArray();
+        $item['created_on'] = Site::getUTCDate('Y-m-d H:i:s', $item['created_on']);
+        $item['edited_on'] = Site::getUTCDate('Y-m-d H:i:s', $item['edited_on']);
+
         $this->log('save');
 		return $item;
 	}
@@ -75,8 +78,8 @@ class DefaultObject
 			$item[$key] = $val;
 		}
 		//convert time
-		$item['created_on'] = Site::getUTCDate('Y-m-d H:i:s', $item['created_on']->getTimestamp());
-		$item['edited_on'] = Site::getUTCDate('Y-m-d H:i:s', $item['edited_on']->getTimestamp());
+        $item['created_on'] = ($item['created_on'] !== null) ? $item['created_on']->getTimestamp() : null;
+        $item['edited_on'] = ($item['edited_on'] !== null) ? $item['edited_on']->getTimestamp() : null;
 		return $item;
 	}
 
