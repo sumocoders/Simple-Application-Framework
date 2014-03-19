@@ -11,47 +11,47 @@
  */
 class DefaultObject
 {
-	/**
-	 * User id of the creator
-	 * @var int
-	 */
-	public $createdBy;
+    /**
+     * User id of the creator
+     * @var int
+     */
+    public $createdBy;
 
-	/**
-	 * Time of creation
-	 * @var DateTime
-	 */
-	public $createdOn;
+    /**
+     * Time of creation
+     * @var DateTime
+     */
+    public $createdOn;
 
-	/**
-	 * Time of the last update
-	 * @var DateTime
-	 */
-	public $editedOn;
+    /**
+     * Time of the last update
+     * @var DateTime
+     */
+    public $editedOn;
 
-	/**
-	 * initialized the log data
-	 * @param array $data
-	 */
-	public function initialize($data)
-	{
-		if (isset($data['created_by'])) {
-			$this->createdBy = (int) $data['created_by'];
-		}
-		if (isset($data['created_on'])) {
-			$this->createdOn = new DateTime('@' . $data['created_on']);
-		}
-		if (isset($data['edited_on'])) {
-			$this->editedOn = new DateTime('@' . $data['edited_on']);
-		}
-	}
+    /**
+     * initialized the log data
+     * @param array $data
+     */
+    public function initialize($data)
+    {
+        if (isset($data['created_by'])) {
+            $this->createdBy = (int) $data['created_by'];
+        }
+        if (isset($data['created_on'])) {
+            $this->createdOn = new DateTime('@' . $data['created_on']);
+        }
+        if (isset($data['edited_on'])) {
+            $this->editedOn = new DateTime('@' . $data['edited_on']);
+        }
+    }
 
-	/**
-	 * saves the log data
-	 * @return array
-	 */
-	public function save()
-	{
+    /**
+     * saves the log data
+     * @return array
+     */
+    public function save()
+    {
         $this->editedOn = new DateTime();
         if ($this->createdOn === null) {
             $this->createdOn = new DateTime();
@@ -62,36 +62,36 @@ class DefaultObject
         $item['edited_on'] = Site::getUTCDate('Y-m-d H:i:s', $item['edited_on']);
 
         $this->log('save');
-		return $item;
-	}
+        return $item;
+    }
 
-	/**
-	 * Return the object as an array
-	 * @return array
-	 */
-	public function toArray()
-	{
-		$item = array();
-		foreach ($this as $key => $val) {
-			//convert php to mysql name
-			$key = self::camelToUnderscore($key);
-			$item[$key] = $val;
-		}
-		//convert time
+    /**
+     * Return the object as an array
+     * @return array
+     */
+    public function toArray()
+    {
+        $item = array();
+        foreach ($this as $key => $val) {
+            //convert php to mysql name
+            $key = self::camelToUnderscore($key);
+            $item[$key] = $val;
+        }
+        //convert time
         $item['created_on'] = ($item['created_on'] !== null) ? $item['created_on']->getTimestamp() : null;
         $item['edited_on'] = ($item['edited_on'] !== null) ? $item['edited_on']->getTimestamp() : null;
-		return $item;
-	}
+        return $item;
+    }
 
-	/**
-	 * Converts camelCase to camel_case
-	 * @param   string $string
-	 * @return  string
-	 */
-	public static function camelToUnderscore($string)
-	{
-		return strtolower(preg_replace('/([a-z])([A-Z])/', '$1_$2', $string));
-	}
+    /**
+     * Converts camelCase to camel_case
+     * @param   string $string
+     * @return  string
+     */
+    public static function camelToUnderscore($string)
+    {
+        return strtolower(preg_replace('/([a-z])([A-Z])/', '$1_$2', $string));
+    }
 
     /**
      * @param string $action The action that just happened
