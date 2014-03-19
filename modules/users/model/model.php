@@ -201,7 +201,7 @@ class User extends DefaultObject
         $item['blocked_on'] = ($this->isBlocked) ? Site::getUTCDate('Y-m-d H:i:s', $this->blockedOn->getTimestamp()) : null;
 
         // unset what we don't need
-        unset($item['is_admin']);
+        unset($item['isAdmin']);
         unset($item['is_blocked']);
         unset($item['is_deleted']);
         unset($item['raw_password']);
@@ -228,6 +228,20 @@ class User extends DefaultObject
     public function setSetting($key, $value)
     {
         $this->settings[(string) $key] = $value;
+    }
+
+    /**
+     * Return the object as an array
+     * @return array
+     */
+    public function toArray()
+    {
+        $item = parent::toArray();
+        // admin check in templates
+        unset($item['is_admin']);
+        $item['isAdmin'] = $this->isAdmin;
+
+        return $item;
     }
 }
 
