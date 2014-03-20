@@ -47,7 +47,7 @@ class UsersEdit extends SiteBaseAction
 		}
 
 		// check if admin or editing yourself
-		if(!$this->currentUser->isAdmin && $this->currentUser->id != $this->id)
+		if(!$this->currentUser->isAdmin() && $this->currentUser->getId() != $this->id)
 		{
 			Site::displayError('Forbidden', 403);
 		}
@@ -74,15 +74,15 @@ class UsersEdit extends SiteBaseAction
 		$this->frm = new SiteForm('edit');
 
 		// create elements
-		$this->frm->addText('email', $this->item->email)->setAttributes(array('type' => 'email', 'required' => null));
-		$this->frm->addText('name', $this->item->name)->setAttributes(array('required' => null));
+		$this->frm->addText('email', $this->item->getEmail())->setAttributes(array('type' => 'email', 'required' => null));
+		$this->frm->addText('name', $this->item->getName())->setAttributes(array('required' => null));
 		$this->frm->addPassword('password')->setAttributes(array('autocomplete' => 'off'));
-		$this->frm->addDropdown('type', array('user' => 'user', 'admin' => 'admin'), $this->item->type);
+		$this->frm->addDropdown('type', array('user' => 'user', 'admin' => 'admin'), $this->item->getType());
 
-		if($this->currentUser->isAdmin)
+		if($this->currentUser->isAdmin())
 		{
-			$this->frm->addCheckbox('blocked', ($this->item->isBlocked));
-			if($this->item->id == $this->currentUser->id)
+			$this->frm->addCheckbox('blocked', ($this->item->isBlocked()));
+			if($this->item->getId() == $this->currentUser->getId())
 			{
 				$this->frm->getField('blocked')->setAttributes(array('disabled' => 'disabled'));
 			}
@@ -96,7 +96,7 @@ class UsersEdit extends SiteBaseAction
 	{
 		$this->frm->parse($this->tpl);
 		$this->tpl->assign('item', $this->item->toArray());
-		$this->tpl->assign('isAdmin', $this->currentUser->isAdmin);
+		$this->tpl->assign('isAdmin', $this->currentUser->isAdmin());
 	}
 
 	/**
@@ -115,36 +115,36 @@ class UsersEdit extends SiteBaseAction
 			if($this->frm->isCorrect())
 			{
 				// set properties
-				$this->item->name = $this->frm->getField('name')->getValue();
-				$this->item->email = $this->frm->getField('email')->getValue();
+				$this->item->setName($this->frm->getField('name')->getValue());
+				$this->item->setEmail($this->frm->getField('email')->getValue());
 
 				if($this->frm->getField('password')->isFilled())
 				{
-					$this->item->secret = md5(uniqid());
-					$this->item->rawPassword = $this->frm->getField('password')->getValue();
+					$this->item->setSecret(md5(uniqid()));
+					$this->item->setRawPassword($this->frm->getField('password')->getValue());
 				}
 
-				if($this->currentUser->isAdmin)
+				if($this->currentUser->isAdmin())
 				{
-					$this->item->type = $this->frm->getField('type')->getValue();
-					$this->item->isBlocked = $this->frm->getField('blocked')->getValue();
+					$this->item->setType($this->frm->getField('type')->getValue());
+					$this->item->setIsBlocked($this->frm->getField('blocked')->getChecked());
 
-					if($this->item->isBlocked && $this->item->blockedOn === null)
+					if($this->item->isBlocked() && $this->item->getBlockedOn() === null)
 					{
-						$this->item->blockedOn = new DateTime();
+						$this->item->setBlockedOn(new DateTime());
 					}
 				}
 
 				// save
 				$this->item->save();
 
-				if($this->currentUser->isAdmin)
+				if($this->currentUser->isAdmin())
 				{
 					// redirect
 					$this->redirect(
 						$this->url->buildUrl(
 							'index', null, null,
-							array('report' => 'edited', 'var' => $this->item->name, 'id' => $this->item->id)
+							array('report' => 'edited', 'var' => $this->item->getName(), 'id' => $this->item->getId())
 						)
 					);
 				}
@@ -152,8 +152,8 @@ class UsersEdit extends SiteBaseAction
 				// redirect
 				$this->redirect(
 					$this->url->buildUrl(
-						'edit', null, $this->item->id,
-						array('report' => 'edited', 'var' => $this->item->name, 'id' => $this->item->id)
+						'edit', null, $this->item->getId(),
+						array('report' => 'edited', 'var' => $this->item->getName(), 'id' => $this->item->getId())
 					)
 				);
 			}

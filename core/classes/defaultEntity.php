@@ -55,7 +55,7 @@ abstract class DefaultEntity
         $this->editedOn = new DateTime();
         if ($this->createdOn === null) {
             $this->createdOn = new DateTime();
-            $this->createdBy = Authentication::getLoggedInUser()->id;
+            $this->createdBy = Authentication::getLoggedInUser()->getId();
         }
         $item = array();
         foreach ($this->toArray() as $key => $value) {
