@@ -57,10 +57,12 @@ abstract class DefaultEntity
             $this->createdOn = new DateTime();
             $this->createdBy = Authentication::getLoggedInUser()->id;
         }
-        $item = $this->toArray();
+        $item = array();
+        foreach ($this->toArray() as $key => $value) {
+            $item[self::camelToUnderscore($key)] = $value;
+        }
         $item['created_on'] = Site::getUTCDate('Y-m-d H:i:s', $item['created_on']);
         $item['edited_on'] = Site::getUTCDate('Y-m-d H:i:s', $item['edited_on']);
-
         $this->log('save');
         return $item;
     }
@@ -73,13 +75,11 @@ abstract class DefaultEntity
     {
         $item = array();
         foreach ($this as $key => $val) {
-            //convert php to mysql name
-            $key = self::camelToUnderscore($key);
             $item[$key] = $val;
         }
         //convert time
-        $item['created_on'] = ($item['created_on'] !== null) ? $item['created_on']->getTimestamp() : null;
-        $item['edited_on'] = ($item['edited_on'] !== null) ? $item['edited_on']->getTimestamp() : null;
+        $item['createdOn'] = ($item['createdOn'] !== null) ? $item['createdOn']->getTimestamp() : null;
+        $item['editedOn'] = ($item['editedOn'] !== null) ? $item['editedOn']->getTimestamp() : null;
         return $item;
     }
 
