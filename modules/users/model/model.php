@@ -2,45 +2,66 @@
 
 /**
  * User
- * @package        users
- * @subpackage    model
- * @author        Tijs Verkoyen <tijs@sumocoders.be>
- * @since        1.0
+ * @package    users
+ * @subpackage model
+ * @author     Tijs Verkoyen <tijs@sumocoders.be>
+ * @author     Jonas De Keukelaere <jonas@sumocoders.be>
+ * @since      1.0
  */
 class User extends DefaultEntity
 {
     /**
      * The id of the user.
-     * @var    string
+     *
+     * @var string
      */
-    public $id;
+    protected $id;
 
     /**
      * Textual properties
-     * @var    string
+     *
+     * @var string
      */
-    public $name, $email, $secret, $rawPassword, $password, $type;
+    protected $name;
+    /** @var string */
+    protected $email;
+    /** @var string */
+    protected $secret;
+    /** @var string */
+    protected $rawPassword;
+    /** @var string */
+    protected $password;
+    /** @var string */
+    protected $type;
 
     /**
      * Boolean properties
+     *
+     * @var bool
      */
-    public $isAdmin = false, $isBlocked = false, $isDeleted = false;
+    protected $isAdmin = false;
+    /** @var bool */
+    protected $isBlocked = false;
+    /** @var bool */
+    protected $isDeleted = false;
 
     /**
      * DateTime properties
+     *
      * @var DateTime
      */
-    public $blockedOn;
+    protected $blockedOn;
 
     /**
      * Array properties
-     * @var    array
+     *
+     * @var array
      */
-    private $settings = array();
+    protected $settings = array();
 
     /**
      * Get a user
-     * @param    int $id        The id of the user.
+     * @param int $id The id of the user.
      * @return User
      */
     public static function get($id)
@@ -51,15 +72,17 @@ class User extends DefaultEntity
         // get data
         $data = Site::getDB()->getRecord(
             'SELECT i.*, UNIX_TIMESTAMP(i.created_on) AS created_on,
-                                                        UNIX_TIMESTAMP(i.edited_on) AS edited_on,
-                                                        UNIX_TIMESTAMP(i.blocked_on) AS blocked_on
-                                                        FROM users AS i
-                                                        WHERE i.id = ?',
+            UNIX_TIMESTAMP(i.edited_on) AS edited_on,
+            UNIX_TIMESTAMP(i.blocked_on) AS blocked_on
+            FROM users AS i
+            WHERE i.id = ?',
             array($id)
         );
 
         // validate
-        if($data === null) return false;
+        if ($data === null) {
+            return false;
+        }
 
         // create instance
         $item = new User();
@@ -69,6 +92,14 @@ class User extends DefaultEntity
 
         // return
         return $item;
+    }
+
+    /**
+     * @return DateTime
+     */
+    public function getBlockedOn()
+    {
+        return $this->blockedOn;
     }
 
     /**
@@ -92,7 +123,9 @@ class User extends DefaultEntity
         );
 
         // validate
-        if($data === null) return false;
+        if ($data === null) {
+            return false;
+        }
 
         // create instance
         $item = new User();
@@ -105,14 +138,14 @@ class User extends DefaultEntity
     }
 
     /**
-     * Get a user by his email
+     * Get a user by his hash
      * @param string $hash
      * @return User
      */
     public static function getByHash($hash)
     {
         // redefine
-        $username = (string) $hash;
+        $hash = (string) $hash;
 
         $data = Site::getDB()->getRecord(
             'SELECT i.*, UNIX_TIMESTAMP(i.created_on) AS created_on,
@@ -124,7 +157,9 @@ class User extends DefaultEntity
         );
 
         // validate
-        if($data === null) return false;
+        if ($data === null) {
+            return false;
+        }
 
         // create instance
         $item = new User();
@@ -132,10 +167,20 @@ class User extends DefaultEntity
         // initialize
         $item->initialize($data);
 
-        if($item->isBlocked) return 'blocked';
+        if ($item->isBlocked()) {
+            return 'blocked';
+        }
 
         // return
         return $item;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
     }
 
     /**
@@ -152,39 +197,143 @@ class User extends DefaultEntity
     }
 
     /**
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getRawPassword()
+    {
+        return $this->rawPassword;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSecret()
+    {
+        return $this->secret;
+    }
+
+    /**
      * Get a setting
-     * @param    string $key        The key whereunder the value is stored.
+     * @param    string $key The key whereunder the value is stored.
      * @return mixed
      */
     public function getSetting($key)
     {
-        if(!isset($this->settings[$key])) return null;
-        else return $this->settings[$key];
+        if (!isset($this->settings[$key])) {
+            return null;
+        } else {
+            return $this->settings[$key];
+        }
+    }
+
+    /**
+     * @return array
+     */
+    public function getSettings()
+    {
+        return $this->settings;
+    }
+
+    /**
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
     }
 
     /**
      * Initialize the object.
-     * @param    array $data        The data in an array.
+     * @param    array $data The data in an array.
      * @return User
      */
     public function initialize($data)
     {
         parent::initialize($data);
-        if(isset($data['id'])) $this->id = (int) $data['id'];
-        if(isset($data['name'])) $this->name = (string) $data['name'];
-        if(isset($data['email'])) $this->email = (string) $data['email'];
-        if(isset($data['password'])) $this->password = (string) $data['password'];
-        if(isset($data['secret'])) $this->secret = (string) $data['secret'];
-        if(isset($data['type'])) $this->type = (string) $data['type'];
-        if(isset($data['data']))
-        {
-            $data['data'] = unserialize($data['data']);
-            if(isset($data['data']['settings'])) $this->settings = $data['data']['settings'];
+        if (isset($data['id'])) {
+            $this->setId($data['id']);
         }
-        if($this->type == 'admin') $this->isAdmin = true;
-        if(isset($data['blocked'])) $this->isBlocked = ($data['blocked'] == 'Y');
-        if(isset($data['deleted'])) $this->isDeleted = ($data['deleted'] == 'Y');
-        if(isset($data['blocked_on'])) $this->blockedOn = new DateTime('@' . $data['blocked_on']);
+        if (isset($data['name'])) {
+            $this->setName($data['name']);
+        }
+        if (isset($data['email'])) {
+            $this->setEmail($data['email']);
+        }
+        if (isset($data['password'])) {
+            $this->setPassword($data['password']);
+        }
+        if (isset($data['secret'])) {
+            $this->setSecret($data['secret']);
+        }
+        if (isset($data['type'])) {
+            $this->setType($data['type']);
+        }
+        if (isset($data['data'])) {
+            $data['data'] = unserialize($data['data']);
+            if (isset($data['data']['settings'])) {
+                $this->setSettings($data['data']['settings']);
+            }
+        }
+        if ($this->getType() == 'admin') {
+            $this->setIsAdmin(true);
+        }
+        if (isset($data['blocked'])) {
+            $this->setIsBlocked($data['blocked'] == 'Y');
+        }
+        if (isset($data['deleted'])) {
+            $this->setIsDeleted($data['deleted'] == 'Y');
+        }
+        if (isset($data['blocked_on'])) {
+            $this->setBlockedOn(new DateTime('@' . $data['blocked_on']));
+        }
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isAdmin()
+    {
+        return $this->isAdmin;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isBlocked()
+    {
+        return $this->isBlocked;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isDeleted()
+    {
+        return $this->isDeleted;
     }
 
     /**
@@ -195,59 +344,164 @@ class User extends DefaultEntity
     {
         $item = parent::save();
         // build record
-        $item['data'] = serialize(array('settings' => $this->settings));
-        $item['blocked'] = ($this->isBlocked) ? 'Y' : 'N';
-        $item['deleted'] = ($this->isDeleted) ? 'Y' : 'N';
-        $item['blocked_on'] = ($this->isBlocked) ? Site::getUTCDate('Y-m-d H:i:s', $this->blockedOn->getTimestamp()) : null;
+        $item['data'] = serialize(array('settings' => $this->getSettings()));
+        $item['blocked'] = ($this->isBlocked()) ? 'Y' : 'N';
+        $item['deleted'] = ($this->isDeleted()) ? 'Y' : 'N';
+        $item['blocked_on'] = ($this->isBlocked()) ? Site::getUTCDate(
+            'Y-m-d H:i:s',
+            $this->getBlockedOn()->getTimestamp()
+        ) : null;
 
         // unset what we don't need
         unset($item['is_admin']);
         unset($item['is_blocked']);
         unset($item['is_deleted']);
         unset($item['raw_password']);
+        unset($item['settings']);
         unset($item['created_by']);
+        unset($item['edited_by']);
 
         // new password?
-        if($this->rawPassword != null) $item['password'] = sha1(md5($this->rawPassword) . $this->secret);
-        // non existing
-        if($this->id === null)
-        {
-            $this->id = Site::getDB(true)->insert('users', $item);
+        if ($this->getRawPassword() != null) {
+            $item['password'] = sha1(md5($this->getRawPassword()) . $this->getSecret());
         }
-        else Site::getDB(true)->update('users', $item, 'id = ?', $this->id);
+        // non existing
+        if ($this->getId() === null) {
+            $this->setId(Site::getDB(true)->insert('users', $item));
+        } else {
+            Site::getDB(true)->update('users', $item, 'id = ?', $this->getId());
+        }
 
         // return
         return true;
     }
 
     /**
+     * @param DateTime $blockedOn
+     */
+    public function setBlockedOn(DateTime $blockedOn)
+    {
+        $this->blockedOn = $blockedOn;
+    }
+
+    /**
+     * @param string $email
+     */
+    public function setEmail($email)
+    {
+        $this->email = (string) $email;
+    }
+
+    /**
+     * @param string $id
+     */
+    public function setId($id)
+    {
+        $this->id = (int) $id;
+    }
+
+    /**
+     * @param boolean $isAdmin
+     */
+    public function setIsAdmin($isAdmin)
+    {
+        $this->isAdmin = $isAdmin;
+    }
+
+    /**
+     * @param boolean $isBlocked
+     */
+    public function setIsBlocked($isBlocked)
+    {
+        $this->isBlocked = $isBlocked;
+    }
+
+    /**
+     * @param boolean $isDeleted
+     */
+    public function setIsDeleted($isDeleted)
+    {
+        $this->isDeleted = $isDeleted;
+    }
+
+    /**
+     * @param string $name
+     */
+    public function setName($name)
+    {
+        $this->name = (string) $name;
+    }
+
+    /**
+     * @param string $password
+     */
+    public function setPassword($password)
+    {
+        $this->password = (string) $password;
+    }
+
+    /**
+     * @param string $rawPassword
+     */
+    public function setRawPassword($rawPassword)
+    {
+        $this->rawPassword = $rawPassword;
+    }
+
+    /**
+     * @param string $secret
+     */
+    public function setSecret($secret)
+    {
+        $this->secret = (string) $secret;
+    }
+
+    /**
      * Store a setting
-     * @param    string $key        The key whereunder the value will be stored.
-     * @param    mixed $value    The value to store.
+     * @param  string $key   The key whereunder the value will be stored.
+     * @param  mixed  $value The value to store.
      */
     public function setSetting($key, $value)
     {
         $this->settings[(string) $key] = $value;
     }
+
+    /**
+     * @param array $settings
+     */
+    public function setSettings(array $settings)
+    {
+        $this->settings = $settings;
+    }
+
+    /**
+     * @param string $type
+     */
+    public function setType($type)
+    {
+        $this->type = (string) $type;
+    }
 }
 
 /**
  * UsersHelper
- * @package        users
- * @subpackage    helper
- * @author        Tijs Verkoyen <tijs@sumocoders.be>
- * @since        1.0
+ * @package     users
+ * @subpackage  helper
+ * @author      Tijs Verkoyen <tijs@sumocoders.be>
+ * @since       1.0
  */
 class UsersHelper
 {
     /**
      * Search for users
-     * @param string $query    The data to look for
+     * @param string $query The data to look for
      * @return array
      */
     public static function search($query)
     {
-        if(!Authentication::getLoggedInUser()->isAdmin) return array();
+        if (!Authentication::getLoggedInUser()->isAdmin()) {
+            return array();
+        }
 
         $return = array();
 
@@ -258,13 +512,11 @@ class UsersHelper
             array('N', $query . '%', $query . '%')
         );
 
-        if(!empty($data))
-        {
+        if (!empty($data)) {
             $urlObject = new SiteURL();
             $url = $urlObject->buildUrl('edit', 'users');
 
-            foreach($data as $row)
-            {
+            foreach ($data as $row) {
                 $return[] = array(
                     'label' => $row['name'],
                     'url' => $url . '/' . $row['id'],

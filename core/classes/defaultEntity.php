@@ -24,6 +24,13 @@ abstract class DefaultEntity
     public $createdOn;
 
     /**
+     * User id of the editor
+     *
+     * @var int
+     */
+    public $editedBy;
+
+    /**
      * Time of the last update
      * @var DateTime
      */
@@ -36,14 +43,49 @@ abstract class DefaultEntity
     public function initialize($data)
     {
         if (isset($data['created_by'])) {
-            $this->createdBy = (int) $data['created_by'];
+            $this->setCreatedBy($data['created_by']);
         }
         if (isset($data['created_on'])) {
-            $this->createdOn = new DateTime('@' . $data['created_on']);
+            $this->setCreatedOn(new DateTime('@' . $data['created_on']));
+        }
+        if (isset($data['edited_by'])) {
+            $this->setEditedBy($data['edited_by']);
         }
         if (isset($data['edited_on'])) {
-            $this->editedOn = new DateTime('@' . $data['edited_on']);
+            $this->setEditedOn(new DateTime('@' . $data['edited_on']));
         }
+    }
+
+    /**
+     * @return int
+     */
+    public function getCreatedBy()
+    {
+        return $this->createdBy;
+    }
+
+    /**
+     * @return DateTime
+     */
+    public function getCreatedOn()
+    {
+        return $this->createdOn;
+    }
+
+    /**
+     * @return int
+     */
+    public function getEditedBy()
+    {
+        return $this->editedBy;
+    }
+
+    /**
+     * @return DateTime
+     */
+    public function getEditedOn()
+    {
+        return $this->editedOn;
     }
 
     /**
@@ -52,10 +94,11 @@ abstract class DefaultEntity
      */
     public function save()
     {
-        $this->editedOn = new DateTime();
-        if ($this->createdOn === null) {
-            $this->createdOn = new DateTime();
-            $this->createdBy = Authentication::getLoggedInUser()->id;
+        $this->setEditedOn(new DateTime());
+        $this->setEditedBy(Authentication::getLoggedInUser()->getId());
+        if ($this->getCreatedOn() === null) {
+            $this->setCreatedOn(new DateTime());
+            $this->setCreatedBy(Authentication::getLoggedInUser()->getId());
         }
         $item = array();
         foreach ($this->toArray() as $key => $value) {
@@ -65,6 +108,38 @@ abstract class DefaultEntity
         $item['edited_on'] = Site::getUTCDate('Y-m-d H:i:s', $item['edited_on']);
         $this->log('save');
         return $item;
+    }
+
+    /**
+     * @param int $createdBy
+     */
+    public function setCreatedBy($createdBy)
+    {
+        $this->createdBy = (int) $createdBy;
+    }
+
+    /**
+     * @param DateTime $createdOn
+     */
+    public function setCreatedOn(DateTime $createdOn)
+    {
+        $this->createdOn = $createdOn;
+    }
+
+    /**
+     * @param int $editedBy
+     */
+    public function setEditedBy($editedBy)
+    {
+        $this->editedBy = (int) $editedBy;
+    }
+
+    /**
+     * @param DateTime $editedOn
+     */
+    public function setEditedOn(DateTime $editedOn)
+    {
+        $this->editedOn = $editedOn;
     }
 
     /**

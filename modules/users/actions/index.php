@@ -27,7 +27,7 @@ class UsersIndex extends SiteBaseAction
 	private function parse()
 	{
 		// check if admin
-		if(!$this->currentUser->isAdmin)
+		if(!$this->currentUser->isAdmin())
 		{
 			Site::displayError('Forbidden', 403);
 		}

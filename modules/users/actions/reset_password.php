@@ -102,12 +102,12 @@ class UsersResetPassword extends SiteBaseAction
 			{
 				Authentication::login($this->user);
 
-                $this->user->secret = md5(uniqid());
-                $this->user->rawPassword = $this->frm->getField('password')->getValue();
+                $this->user->setSecret(md5(uniqid()));
+                $this->user->setRawPassword($this->frm->getField('password')->getValue());
 
                 $this->user->save();
 
-                Site::getDB(true)->update('users', array('forgot_password' => null), 'id = ?', $this->user->id);
+                Site::getDB(true)->update('users', array('forgot_password' => null), 'id = ?', $this->user->getId());
 
 				// redirect
 				$this->redirect('/');
