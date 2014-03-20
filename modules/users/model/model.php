@@ -359,6 +359,7 @@ class User extends DefaultEntity
         unset($item['raw_password']);
         unset($item['settings']);
         unset($item['created_by']);
+        unset($item['edited_by']);
 
         // new password?
         if ($this->getRawPassword() != null) {

@@ -24,6 +24,13 @@ abstract class DefaultEntity
     public $createdOn;
 
     /**
+     * User id of the editor
+     *
+     * @var int
+     */
+    public $editedBy;
+
+    /**
      * Time of the last update
      * @var DateTime
      */
@@ -40,6 +47,9 @@ abstract class DefaultEntity
         }
         if (isset($data['created_on'])) {
             $this->createdOn = new DateTime('@' . $data['created_on']);
+        }
+        if (isset($data['edited_by'])) {
+            $this->editedBy = (int) $data['edited_by'];
         }
         if (isset($data['edited_on'])) {
             $this->editedOn = new DateTime('@' . $data['edited_on']);
