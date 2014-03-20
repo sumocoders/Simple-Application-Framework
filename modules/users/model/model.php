@@ -30,7 +30,7 @@ class User extends DefaultEntity
      * DateTime properties
      * @var DateTime
      */
-    public $createdOn, $editedOn, $blockedOn;
+    public $blockedOn;
 
     /**
      * Array properties
