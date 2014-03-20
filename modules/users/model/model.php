@@ -5,6 +5,7 @@
  * @package    users
  * @subpackage model
  * @author     Tijs Verkoyen <tijs@sumocoders.be>
+ * @author     Jonas De Keukelaere <jonas@sumocoders.be>
  * @since      1.0
  */
 class User extends DefaultEntity
@@ -130,15 +131,14 @@ class User extends DefaultEntity
     }
 
     /**
-     * Get a user by his email
+     * Get a user by his hash
      * @param string $hash
      * @return User
      */
     public static function getByHash($hash)
     {
-        // todo fix this method
         // redefine
-        $username = (string) $hash;
+        $hash = (string) $hash;
 
         $data = Site::getDB()->getRecord(
             'SELECT i.*, UNIX_TIMESTAMP(i.created_on) AS created_on,
