@@ -39,11 +39,9 @@ class User extends DefaultEntity
      *
      * @var bool
      */
-    protected $isAdmin = false;
+    protected $blocked = false;
     /** @var bool */
-    protected $isBlocked = false;
-    /** @var bool */
-    protected $isDeleted = false;
+    protected $deleted = false;
 
     /**
      * DateTime properties
@@ -298,14 +296,11 @@ class User extends DefaultEntity
                 $this->setSettings($data['data']['settings']);
             }
         }
-        if ($this->getType() == 'admin') {
-            $this->setIsAdmin(true);
-        }
         if (isset($data['blocked'])) {
-            $this->setIsBlocked($data['blocked'] == 'Y');
+            $this->setBlocked($data['blocked'] == 'Y');
         }
         if (isset($data['deleted'])) {
-            $this->setIsDeleted($data['deleted'] == 'Y');
+            $this->setDeleted($data['deleted'] == 'Y');
         }
         if (isset($data['blocked_on'])) {
             $this->setBlockedOn(new DateTime('@' . $data['blocked_on']));
@@ -317,7 +312,7 @@ class User extends DefaultEntity
      */
     public function isAdmin()
     {
-        return $this->isAdmin;
+        return $this->getType() == 'admin';
     }
 
     /**
@@ -325,7 +320,7 @@ class User extends DefaultEntity
      */
     public function isBlocked()
     {
-        return $this->isBlocked;
+        return $this->blocked;
     }
 
     /**
@@ -333,7 +328,7 @@ class User extends DefaultEntity
      */
     public function isDeleted()
     {
-        return $this->isDeleted;
+        return $this->deleted;
     }
 
     /**
@@ -401,27 +396,19 @@ class User extends DefaultEntity
     }
 
     /**
-     * @param boolean $isAdmin
-     */
-    public function setIsAdmin($isAdmin)
-    {
-        $this->isAdmin = $isAdmin;
-    }
-
-    /**
      * @param boolean $isBlocked
      */
-    public function setIsBlocked($isBlocked)
+    public function setBlocked($isBlocked)
     {
-        $this->isBlocked = $isBlocked;
+        $this->blocked = $isBlocked;
     }
 
     /**
      * @param boolean $isDeleted
      */
-    public function setIsDeleted($isDeleted)
+    public function setDeleted($isDeleted)
     {
-        $this->isDeleted = $isDeleted;
+        $this->deleted = $isDeleted;
     }
 
     /**
