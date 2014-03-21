@@ -102,7 +102,7 @@ abstract class DefaultEntity
         }
         $item = array();
         foreach ($this->toArray() as $key => $value) {
-            $item[self::camelToUnderscore($key)] = $value;
+            $item[Site::camelToUnderscore($key)] = $value;
         }
         $item['created_on'] = Site::getUTCDate('Y-m-d H:i:s', $item['created_on']);
         $item['edited_on'] = Site::getUTCDate('Y-m-d H:i:s', $item['edited_on']);
@@ -156,16 +156,6 @@ abstract class DefaultEntity
         $item['createdOn'] = ($item['createdOn'] !== null) ? $item['createdOn']->getTimestamp() : null;
         $item['editedOn'] = ($item['editedOn'] !== null) ? $item['editedOn']->getTimestamp() : null;
         return $item;
-    }
-
-    /**
-     * Converts camelCase to camel_case
-     * @param   string $string
-     * @return  string
-     */
-    public static function camelToUnderscore($string)
-    {
-        return strtolower(preg_replace('/([a-z])([A-Z])/', '$1_$2', $string));
     }
 
     /**

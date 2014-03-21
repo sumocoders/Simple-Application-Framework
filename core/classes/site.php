@@ -13,6 +13,7 @@ use Monolog\Handler\StreamHandler;
  * @subpackage	core
  *
  * @author 		Tijs Verkoyen <tijs@sumocoders.be>
+ * @author 		Jelmer Prins <jelmer@sumocoders.be>
  * @since		1.0
  */
 class Site
@@ -75,6 +76,16 @@ class Site
 		// return
 		return $string;
 	}
+
+    /**
+     * Converts camelCase to camel_case
+     * @param   string $string
+     * @return  string
+     */
+    public static function camelToUnderscore($string)
+    {
+        return strtolower(preg_replace('/([a-z])([A-Z])/', '$1_$2', $string));
+    }
 
 	/**
 	 * Display an error
