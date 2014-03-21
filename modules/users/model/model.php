@@ -18,40 +18,70 @@ class User extends DefaultEntity
     protected $id;
 
     /**
-     * Textual properties
+     * Name of user
      *
      * @var string
      */
     protected $name;
-    /** @var string */
+
+    /**
+     * E-mail address of user
+     *
+     * @var string
+     */
     protected $email;
-    /** @var string */
+
+    /**
+     * Secret of user his password
+     *
+     * @var string
+     */
     protected $secret;
-    /** @var string */
+
+    /**
+     * Raw password to set new password
+     *
+     * @var string
+     */
     protected $rawPassword;
-    /** @var string */
+
+    /**
+     * Encrypted password to check login
+     *
+     * @var string
+     */
     protected $password;
-    /** @var string */
+
+    /**
+     * User type, "user" or "admin"
+     *
+     * @var string
+     */
     protected $type;
 
     /**
-     * Boolean properties
+     * Is user blocked?
      *
      * @var bool
      */
     protected $blocked = false;
-    /** @var bool */
+
+    /**
+     * Is user deleted?
+     *
+     * @var bool
+     */
     protected $deleted = false;
 
     /**
-     * DateTime properties
+     * When was user blocked?
      *
      * @var DateTime
      */
     protected $blockedOn;
 
     /**
-     * Array properties
+     * User settings
      *
      * @var array
      */
