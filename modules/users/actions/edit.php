@@ -127,7 +127,7 @@ class UsersEdit extends SiteBaseAction
 				if($this->currentUser->isAdmin())
 				{
 					$this->item->setType($this->frm->getField('type')->getValue());
-					$this->item->setIsBlocked($this->frm->getField('blocked')->getChecked());
+					$this->item->setBlocked($this->frm->getField('blocked')->getChecked());
 
 					if($this->item->isBlocked() && $this->item->getBlockedOn() === null)
 					{

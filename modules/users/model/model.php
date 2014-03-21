@@ -18,42 +18,70 @@ class User extends DefaultEntity
     protected $id;
 
     /**
-     * Textual properties
+     * Name of user
      *
      * @var string
      */
     protected $name;
-    /** @var string */
+
+    /**
+     * E-mail address of user
+     *
+     * @var string
+     */
     protected $email;
-    /** @var string */
+
+    /**
+     * Secret of user his password
+     *
+     * @var string
+     */
     protected $secret;
-    /** @var string */
+
+    /**
+     * Raw password to set new password
+     *
+     * @var string
+     */
     protected $rawPassword;
-    /** @var string */
+
+    /**
+     * Encrypted password to check login
+     *
+     * @var string
+     */
     protected $password;
-    /** @var string */
+
+    /**
+     * User type, "user" or "admin"
+     *
+     * @var string
+     */
     protected $type;
 
     /**
-     * Boolean properties
+     * Is user blocked?
      *
      * @var bool
      */
-    protected $isAdmin = false;
-    /** @var bool */
-    protected $isBlocked = false;
-    /** @var bool */
-    protected $isDeleted = false;
+    protected $blocked = false;
 
     /**
-     * DateTime properties
+     * Is user deleted?
+     *
+     * @var bool
+     */
+    protected $deleted = false;
+
+    /**
+     * When was user blocked?
      *
      * @var DateTime
      */
     protected $blockedOn;
 
     /**
-     * Array properties
+     * User settings
      *
      * @var array
      */
@@ -298,14 +326,11 @@ class User extends DefaultEntity
                 $this->setSettings($data['data']['settings']);
             }
         }
-        if ($this->getType() == 'admin') {
-            $this->setIsAdmin(true);
-        }
         if (isset($data['blocked'])) {
-            $this->setIsBlocked($data['blocked'] == 'Y');
+            $this->setBlocked($data['blocked'] == 'Y');
         }
         if (isset($data['deleted'])) {
-            $this->setIsDeleted($data['deleted'] == 'Y');
+            $this->setDeleted($data['deleted'] == 'Y');
         }
         if (isset($data['blocked_on'])) {
             $this->setBlockedOn(new DateTime('@' . $data['blocked_on']));
@@ -317,7 +342,7 @@ class User extends DefaultEntity
      */
     public function isAdmin()
     {
-        return $this->isAdmin;
+        return $this->getType() == 'admin';
     }
 
     /**
@@ -325,7 +350,7 @@ class User extends DefaultEntity
      */
     public function isBlocked()
     {
-        return $this->isBlocked;
+        return $this->blocked;
     }
 
     /**
@@ -333,7 +358,7 @@ class User extends DefaultEntity
      */
     public function isDeleted()
     {
-        return $this->isDeleted;
+        return $this->deleted;
     }
 
     /**
@@ -401,27 +426,19 @@ class User extends DefaultEntity
     }
 
     /**
-     * @param boolean $isAdmin
-     */
-    public function setIsAdmin($isAdmin)
-    {
-        $this->isAdmin = $isAdmin;
-    }
-
-    /**
      * @param boolean $isBlocked
      */
-    public function setIsBlocked($isBlocked)
+    public function setBlocked($isBlocked)
     {
-        $this->isBlocked = $isBlocked;
+        $this->blocked = $isBlocked;
     }
 
     /**
      * @param boolean $isDeleted
      */
-    public function setIsDeleted($isDeleted)
+    public function setDeleted($isDeleted)
     {
-        $this->isDeleted = $isDeleted;
+        $this->deleted = $isDeleted;
     }
 
     /**

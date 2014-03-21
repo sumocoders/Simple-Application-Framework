@@ -175,7 +175,7 @@ class Authentication
 			// when someone has attempted to login for 7 times we will block the user.
 			if($user && $attempts >= 7)
 			{
-				$user->setIsBlocked(true);
+				$user->setBlocked(true);
 				if($user->getBlockedOn() === null) $user->setBlockedOn(new DateTime());
 				$user->save();
 
