@@ -12,29 +12,36 @@
 abstract class DefaultEntity
 {
     /**
+     * The id of the entity.
+     *
+     * @var string
+     */
+    protected $id;
+
+    /**
      * User id of the creator
      * @var int
      */
-    public $createdBy;
+    protected $createdBy;
 
     /**
      * Time of creation
      * @var DateTime
      */
-    public $createdOn;
+    protected $createdOn;
 
     /**
      * User id of the editor
      *
      * @var int
      */
-    public $editedBy;
+    protected $editedBy;
 
     /**
      * Time of the last update
      * @var DateTime
      */
-    public $editedOn;
+    protected $editedOn;
 
     /**
      * initialized the log data
@@ -140,6 +147,14 @@ abstract class DefaultEntity
     public function setEditedOn(DateTime $editedOn)
     {
         $this->editedOn = $editedOn;
+    }
+
+    /**
+     * @param string $id
+     */
+    public function setId($id)
+    {
+        $this->id = (int) $id;
     }
 
     /**

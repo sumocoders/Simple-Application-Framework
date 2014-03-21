@@ -11,13 +11,6 @@
 class User extends DefaultEntity
 {
     /**
-     * The id of the user.
-     *
-     * @var string
-     */
-    protected $id;
-
-    /**
      * Name of user
      *
      * @var string
@@ -415,14 +408,6 @@ class User extends DefaultEntity
     public function setEmail($email)
     {
         $this->email = (string) $email;
-    }
-
-    /**
-     * @param string $id
-     */
-    public function setId($id)
-    {
-        $this->id = (int) $id;
     }
 
     /**
