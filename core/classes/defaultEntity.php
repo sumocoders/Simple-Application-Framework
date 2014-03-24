@@ -62,6 +62,14 @@ abstract class DefaultEntity
             $this->setEditedOn(new DateTime('@' . $data['edited_on']));
         }
     }
+    
+    /**
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
     /**
      * @return int

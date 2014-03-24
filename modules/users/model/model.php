@@ -220,14 +220,6 @@ class User extends DefaultEntity
     /**
      * @return string
      */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @return string
-     */
     public function getPassword()
     {
         return $this->password;
