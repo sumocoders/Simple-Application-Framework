@@ -186,9 +186,7 @@
 
   GoogleMaps.current = new GoogleMaps();
 
-  $(function() {
-    return GoogleMaps.current.domReady();
-  });
+  $(function() {});
 
   window.GoogleMaps = GoogleMaps;
 

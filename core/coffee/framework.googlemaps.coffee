@@ -159,6 +159,5 @@ class GoogleMaps extends Framework
 GoogleMaps.current = new GoogleMaps()
 
 $ ->
-  GoogleMaps.current.domReady()
 
 window.GoogleMaps = GoogleMaps
