@@ -153,11 +153,11 @@ class GoogleMaps extends Framework
   #    '#element' : event : 'functionName'
 
   @onDomReady [
-    'Load'
   ]
 
 GoogleMaps.current = new GoogleMaps()
 
 $ ->
+  GoogleMaps.current.Load()
 
 window.GoogleMaps = GoogleMaps

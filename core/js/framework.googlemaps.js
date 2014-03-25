@@ -178,7 +178,7 @@
 
     GoogleMaps.events;
 
-    GoogleMaps.onDomReady(['Load']);
+    GoogleMaps.onDomReady([]);
 
     return GoogleMaps;
 
@@ -186,7 +186,9 @@
 
   GoogleMaps.current = new GoogleMaps();
 
-  $(function() {});
+  $(function() {
+    return GoogleMaps.current.Load();
+  });
 
   window.GoogleMaps = GoogleMaps;
 
