@@ -90,7 +90,7 @@ class Authentication
 	{
 		// build item
 		$item['session_id'] = SpoonSession::getSessionId();
-		$item['user_id'] = $user->id;
+		$item['user_id'] = $user->getId();
 		$item['edited_on'] = Site::getUTCDate();
 
 		// insert new session
@@ -133,7 +133,7 @@ class Authentication
 		if($user !== false)
 		{
 			// check if given password match
-			if(!$user->isBlocked && $user->password == sha1(md5($password) . $user->secret))
+			if(!$user->isBlocked() && $user->getPassword() == sha1(md5($password) . $user->getSecret()))
 			{
 				// reset the login-attempts
 				Site::getDB(true)->delete('users_login_attempts', 'login = ?', $email);
@@ -161,7 +161,7 @@ class Authentication
 			);
 
 			$message = 'failed login attempt';
-			if($user !== false && $user->isBlocked) $message .= ' from blocked user';
+			if($user !== false && $user->isBlocked()) $message .= ' from blocked user';
 
 			// log
 			Site::getLogger()->warning(
@@ -175,8 +175,8 @@ class Authentication
 			// when someone has attempted to login for 7 times we will block the user.
 			if($user && $attempts >= 7)
 			{
-				$user->isBlocked = true;
-				if($user->blockedOn === null) $user->blockedOn = new DateTime();
+				$user->setBlocked(true);
+				if($user->getBlockedOn() === null) $user->setBlockedOn(new DateTime());
 				$user->save();
 
 				// log

@@ -83,7 +83,7 @@ class UsersForgotPassword extends SiteBaseAction
 			if($user == false) {
                 $this->tpl->assign('error', true);
                 $this->frm->getField('email')->addError('&nbsp;');
-			} elseif($user->isBlocked) {
+			} elseif($user->isBlocked()) {
                 $this->frm->getField('email')->addError(SiteLocale::err('BlockedUser'));
             }
 
@@ -91,7 +91,7 @@ class UsersForgotPassword extends SiteBaseAction
 			if($this->frm->isCorrect())
 			{
                 $hash = Site::generatePassword(64);
-                Site::getDB(true)->update('users', array('forgot_password' => $hash), 'id = ?', $user->id);
+                Site::getDB(true)->update('users', array('forgot_password' => $hash), 'id = ?', $user->getId());
 
                 $resetURL = SITE_URL . $this->url->buildUrl('reset_password', 'users', '', array('token' => $hash));
 

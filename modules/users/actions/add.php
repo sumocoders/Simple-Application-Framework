@@ -25,7 +25,7 @@ class UsersAdd extends SiteBaseAction
 	public function execute()
 	{
 		// check if admin
-		if(!$this->currentUser->isAdmin)
+		if(!$this->currentUser->isAdmin())
 		{
 			Site::displayError('Forbidden', 403);
 		}
@@ -71,11 +71,11 @@ class UsersAdd extends SiteBaseAction
 				$item = new User();
 
 				// set properties
-				$item->name = $this->frm->getField('name')->getValue();
-				$item->email = $this->frm->getField('email')->getValue();
-				$item->type = $this->frm->getField('type')->getValue();
-				$item->secret = md5(uniqid());
-				$item->rawPassword = $this->frm->getField('password')->getValue();
+				$item->setName($this->frm->getField('name')->getValue());
+				$item->setEmail($this->frm->getField('email')->getValue());
+				$item->setType($this->frm->getField('type')->getValue());
+				$item->setSecret(md5(uniqid()));
+				$item->setRawPassword($this->frm->getField('password')->getValue());
 
 				// save
 				$item->save();
@@ -84,7 +84,7 @@ class UsersAdd extends SiteBaseAction
 				$this->redirect(
 					$this->url->buildUrl(
 						'index', null, null,
-						array('report' => 'added', 'var' => $item->name, 'id' => $item->id)
+						array('report' => 'added', 'var' => $item->getName(), 'id' => $item->getId())
 					)
 				);
 			}
