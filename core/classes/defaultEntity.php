@@ -64,7 +64,7 @@ abstract class DefaultEntity
     }
     
     /**
-     * @return string
+     * @return int
      */
     public function getId()
     {
@@ -158,7 +158,7 @@ abstract class DefaultEntity
     }
 
     /**
-     * @param string $id
+     * @param int $id
      */
     public function setId($id)
     {
