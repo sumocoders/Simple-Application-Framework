@@ -44,7 +44,7 @@
 								{$txtPassword} {$txtPasswordError}
 							</div>
 						</div>
-						{option:currentUser.isAdmin}
+						{option:isAdmin}
 							<div class="control-group{option:ddmTypeError} error{/option:ddmTypeError}">
 								<label for="type" class="control-label">{$lblType|ucfirst}<abbr title="{$msgRequired}">*</abbr></label>
 								<div class="controls">
@@ -58,7 +58,7 @@
 									</label>
 								</div>
 							</div>
-						{/option:currentUser.isAdmin}
+						{/option:isAdmin}
 
 						<div class="form-actions">
 							<input type="submit" class="btn btn-primary" name="ok" value="{$lblEdit|ucfirst}">
