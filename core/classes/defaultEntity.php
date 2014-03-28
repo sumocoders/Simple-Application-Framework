@@ -14,7 +14,7 @@ abstract class DefaultEntity
     /**
      * The id of the entity.
      *
-     * @var string
+     * @var int
      */
     protected $id;
 
