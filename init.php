@@ -70,7 +70,8 @@ class Init
 	public static function autoLoader($class)
 	{
 		$exceptions = array(
-			'ajaxaction' => 'ajax_action'
+			'ajaxaction' => 'ajax_action',
+			'defaultentity' => 'default_entity'
 		);
 
 		// ignore case
