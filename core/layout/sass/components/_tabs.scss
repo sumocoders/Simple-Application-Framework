@@ -3,64 +3,71 @@
  * States: Error, warning, succes, ...
  */
 
+.nav-tabs, .nav-pills {
+  margin-bottom: 20px;
+}
+
 .nav-tabs {
   border-bottom: 2px solid #dbdde6;
 
-  & > li {
+  > li {
 
-    & > a {
+    > a {
       @include border-radius(0);
 
       &:hover {
         border-bottom-color: #eee;
       }
     }
-  }
 
-  & > .active {
-    border-top: 3px solid #6d8393;
-    margin-right: 2px;
-    //border-bottom: 2px solid #fff;
-    margin-bottom: -2px;
+    &.active {
+      border-top: 3px solid #6d8393;
+      margin-right: 2px;
+      //border-bottom: 2px solid #fff;
+      margin-bottom: -2px;
 
-    &.error {
-      border-color: #b94a48;
+      &.error {
+        border-color: #b94a48;
 
-      a {
-        color: #b94a48 !important;
+        a {
+          color: #b94a48 !important;
+        }
       }
-    }
 
-    & > a {
-      background: #fff;
-      @include border-radius(0);
-      border-left: 2px solid #dbdde6;
-      border-right: 2px solid #dbdde6;
-      border-top: none;
-      margin-right: 0;
-
-      &:hover {
+      > a,
+      > a:hover,
+      > a:focus {
         border-left: 2px solid #dbdde6;
         border-right: 2px solid #dbdde6;
         border-top: none;
       }
+      > a {
+        @include border-radius(0);
+        margin-right: 0;
+      }
     }
   }
-
   &.nav-stacked {
 
-    & > .active {
+    > li.active {
       border: none;
+      border-left: 3px solid #6d8393;
       margin-bottom: 0;
       margin-right: 0;
 
-      & > a {
-        background: #4ab0ce;
+      > a,
+      > a:hover {
+        border-top-color: #ddd;
+        border-style: solid;
+        border-width: 1px;
+      }
+      > a {
         border-top: 1px solid #ddd;
-        color: #fff;
+        color: #555555;
         margin-right: 0;
 
-        &:hover {
+        &:hover,
+        &:focus {
           border-width: 1px;
         }
       }
@@ -154,6 +161,36 @@
           border-top: 2px solid #dbdde6;
           border-right: none;
         }
+      }
+    }
+  }
+}
+
+// nav pills & list
+
+.nav-pills {
+
+  & > .active {
+
+    & > a {
+      background-color: #4ab0ce;
+
+      &:hover {
+        background: #4ab0ce;
+      }
+    }
+  }
+}
+
+.nav-list {
+
+  & > .active {
+
+    & > a {
+      background: #4ab0ce;
+
+      &:hover {
+        background: #4ab0ce;
       }
     }
   }

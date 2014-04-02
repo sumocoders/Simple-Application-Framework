@@ -124,19 +124,6 @@ body {
 
 .table {
 
-  thead {
-
-    tr {
-
-      &:last-child {
-
-        th {
-          border-bottom: 2px solid #ddd;
-        }
-      }
-    }
-  }
-
   tfoot {
 
     tr {
@@ -163,11 +150,8 @@ code {
   }
 }
 
-// Labels {
-
-.label {
-  text-shadow: none;
-  //@include border-radius(0);
+pre {
+  @include font-size(13);
 }
 
 // Wells
@@ -176,36 +160,6 @@ code {
   @include box-shadow(none);
   //@include border-radius(0);
   border: 2px solid #b6bcd0;
-}
-
-// nav pills & list
-
-.nav-pills {
-
-  & > .active {
-
-    & > a {
-      background-color: #4ab0ce;
-
-      &:hover {
-        background: #4ab0ce;
-      }
-    }
-  }
-}
-
-.nav-list {
-
-  & > .active {
-
-    & > a {
-      background: #4ab0ce;
-
-      &:hover {
-        background: #4ab0ce;
-      }
-    }
-  }
 }
 
 // Lists
