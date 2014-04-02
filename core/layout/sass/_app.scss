@@ -1,12 +1,11 @@
 // Import fonts
 
 @import 'fonts:*';
-@import "compass_twitter_bootstrap_awesome";
 
 body {
+  background: #fff;
   font-family: $opensans-regular-webfont;
   //overflow: hidden;
-  background: #fff;
 
   &.login, &.forgot_password, &.reset_password {
     background: #e4e5ec;
@@ -23,120 +22,16 @@ body {
 @import "_jquery_ui";
 @import "_jquery_plugins";
 
-/* Styling for forms */
-@import "_forms";
-
 /* Styling for datagrids */
 @import "_datagrids";
 
-/* Typography */
-@import "_typography";
 
-// DEFINE THE COMPANY LOGO HERE
-
-.logo {
-  @include svg-with-png-fallback(logo_sumocoders, #e84914 no-repeat center center, $dimensions: false);
-  display: block;
-  @include squish-text;
-  width: 100%;
-  height: 165px;
-  border: none;
-
-  &:hover {
-    border: none;
-  }
-}
-
-// Links
-
-a {
-
-  &:hover {
-    text-decoration: none;
-  }
-}
-
-.container {
-  width: auto;
-  padding: 0 20px;
-}
 
 #ajaxSpinner {
   display: none;
 }
 
-// FORM ELEMENTS
 
-input[type="text"],
-input[type="password"],
-input[type="datetime"],
-input[type="datetime-local"],
-input[type="date"],
-input[type="month"],
-input[type="time"],
-input[type="week"],
-input[type="number"],
-input[type="email"],
-input[type="url"],
-input[type="search"],
-input[type="tel"],
-input[type="color"],
-.uneditable-input {
-  @include box-sizing(border-box);
-  height: 45px;
-  padding: 10px;
-  @include box-shadow(none);
-  border: 2px solid #b6bcd0;
-  background: #f8f9fc;
-  width: 220px;
-  max-width: 100%;
-}
-
-input[type="text"]:focus,
-input[type="password"]:focus,
-input[type="datetime"]:focus,
-input[type="datetime-local"]:focus,
-input[type="date"]:focus,
-input[type="month"]:focus,
-input[type="time"]:focus,
-input[type="week"]:focus,
-input[type="number"]:focus,
-input[type="email"]:focus,
-input[type="url"]:focus,
-input[type="search"]:focus,
-input[type="tel"]:focus,
-input[type="color"]:focus,
-.uneditable-input:focus {
-  @include box-shadow(none);
-  border: 2px solid #747e9f;
-
-}
-
-.uneditable-input {
-  opacity: 0.5;
-}
-
-input:focus:invalid:focus {
-  @include box-shadow(none);
-}
-
-.control-label {
-  color: #7093c3;
-}
-
-.form-horizontal {
-
-  .control-label {
-    padding-top: 12px;
-  }
-}
-
-label {
-
-  &.checkbox {
-    margin-bottom: 20px;
-  }
-}
 
 // Search auto-complete
 .ui-corner-all {
@@ -160,123 +55,6 @@ label {
         text-shadow: none;
       }
     }
-  }
-}
-
-//buttons & add-ons
-
-.btn {
-  @include box-sizing(border-box);
-  background: #4ab0ce;
-  @include box-shadow(none);
-  border: none;
-  height: 45px;
-  text-shadow: none;
-  line-height: 45px;
-  padding-top: 0;
-  padding-bottom: 0;
-  color: #fff;
-  font-family: $opensans-bold-webfont;
-  @include border-radius(2px);
-  font-size: 18px;
-
-  &:hover {
-    background: darken(#4ab0ce, 10%);
-    @include transition(all 150ms);
-    color: #fff;
-    border-bottom: none;
-  }
-
-  &.btn-primary {
-    background: #3dae50;
-
-    &:hover {
-      background: darken(#3dae50, 10%);
-    }
-  }
-
-  &.btn-info {
-    background: #747e9f;
-
-    &:hover {
-      background: darken(#747e9f, 10%);
-    }
-  }
-
-  &.btn-success {
-    background: #5bb75b;
-
-    &:hover {
-      background: darken(#5bb75b, 10%);
-    }
-  }
-
-  &.btn-warning {
-    background: #f9a834;
-
-    &:hover {
-      background: darken(#f9a834, 10%);
-    }
-  }
-
-  &.btn-danger {
-    background: #db4f4a;
-
-    &:hover {
-      background: darken(#db4f4a, 10%);
-    }
-  }
-
-  &.btn-inverse {
-    background: #373737;
-
-    &:hover {
-      background: darken(#373737, 10%);
-    }
-  }
-
-  &.btn-link {
-    background: none;
-    color: #666;
-
-    &:hover {
-
-    }
-  }
-
-  &.btn-large {
-    font-size: 1.57 * $baseFontSize;
-    height: 50px;
-    line-height: 50px;
-  }
-
-  &.btn-small {
-    font-size: $baseFontSize;
-    line-height: 30px;
-    height: 30px;
-  }
-
-  &.btn-mini {
-    font-size: 0.9 * $baseFontSize;
-    line-height: 26px;
-    height: 26px;
-  }
-
-  .caret {
-    margin-top: 21px;
-    border-top-color: #fff;
-  }
-
-  i {
-    margin-top: 4px !important;
-  }
-}
-
-.btn-group {
-
-  .btn {
-    margin-right: 2px;
-    margin-bottom: 2px;
   }
 }
 
@@ -540,77 +318,6 @@ code {
   ul {
     margin-bottom: 0;
     margin-left: 40px;
-  }
-}
-
-// alerts
-
-.alert {
-  position: fixed;
-  margin-top: 65px;
-  border: none;
-  width: 100%;
-  @include box-sizing(border-box);
-  @include border-radius(0);
-  color: #fff;
-  text-shadow: none;
-  padding: 0 0 0 25px;
-  line-height: 40px;
-
-  .container {
-    padding: 0;
-  }
-
-  .close {
-    @include svg-with-png-fallback(icon_close, no-repeat center center, $dimensions: false);
-    @include squish-text;
-    width: 70px;
-    height: 40px;
-    @include box-sizing(border-box);
-    opacity: 1;
-    right: 0;
-    margin: 0;
-    top: 0;
-    @include transition(all 150ms);
-  }
-
-  &.alert-success {
-    background: #56b989;
-    z-index: 9;
-
-    .close {
-      background-color: #3c9469;
-
-      &:hover {
-        background-color: darken(#3c9469, 10%);
-      }
-    }
-  }
-
-  &.alert-warning {
-    background-color: #d0b15c;
-    z-index: 99;
-
-    .close {
-      background-color: #b38e2a;
-
-      &:hover {
-        background-color: darken(#b38e2a, 10%);
-      }
-    }
-  }
-
-  &.alert-error {
-    background-color: #ca5121;
-    z-index: 999;
-
-    .close {
-      background-color: #9f360c;
-
-      &:hover {
-        background-color: darken(#9f360c, 10%);
-      }
-    }
   }
 }
 

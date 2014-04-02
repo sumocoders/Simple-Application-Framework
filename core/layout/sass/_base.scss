@@ -2,11 +2,11 @@
 @import "_variables.scss";
 
 /* Some imports */
-@import "compass_twitter_bootstrap";
-@import "compass_twitter_bootstrap/responsive-768px-979px";
-@import "compass_twitter_bootstrap/responsive-1200px-min";
-@import "compass_twitter_bootstrap/responsive-utilities";
 @import "compass/css3";
 @import "compass/typography";
 @import "compass/utilities";
 @import "compass_sumo";
+@import "bootstrap";
+
+/* Mixins */
+@import "_mixins.scss";

@@ -1,0 +1,119 @@
+/**
+ * Defining buttons & add-ons
+ * States: Error, warning, succes, ...
+ */
+
+ // BUTTONS
+.btn {
+  @include box-sizing(border-box);
+  background: #4ab0ce;
+  @include box-shadow(none);
+  border: none;
+  height: 45px;
+  text-shadow: none;
+  line-height: 45px;
+  padding-top: 0;
+  padding-bottom: 0;
+  color: #fff;
+  font-family: $opensans-bold-webfont;
+  @include border-radius(2px);
+  font-size: 18px;
+
+  &:hover {
+    background: darken(#4ab0ce, 10%);
+    @include transition(all 150ms);
+    color: #fff;
+    border-bottom: none;
+  }
+
+  .caret {
+    margin-top: 21px;
+    border-top-color: #fff;
+  }
+
+  i {
+    margin-top: 4px !important;
+  }
+
+  // States
+  &.btn-primary {
+    background: #3dae50;
+
+    &:hover {
+      background: darken(#3dae50, 10%);
+    }
+  }
+
+  &.btn-info {
+    background: #747e9f;
+
+    &:hover {
+      background: darken(#747e9f, 10%);
+    }
+  }
+
+  &.btn-success {
+    background: #5bb75b;
+
+    &:hover {
+      background: darken(#5bb75b, 10%);
+    }
+  }
+
+  &.btn-warning {
+    background: #f9a834;
+
+    &:hover {
+      background: darken(#f9a834, 10%);
+    }
+  }
+
+  &.btn-danger {
+    background: #db4f4a;
+
+    &:hover {
+      background: darken(#db4f4a, 10%);
+    }
+  }
+
+  &.btn-inverse {
+    background: #373737;
+
+    &:hover {
+      background: darken(#373737, 10%);
+    }
+  }
+
+  &.btn-link {
+    background: none;
+    color: #666;
+
+    &:hover {
+
+    }
+  }
+
+  &.btn-large {
+    font-size: 1.57 * $baseFontSize;
+    height: 50px;
+    line-height: 50px;
+  }
+
+  &.btn-small {
+    font-size: $baseFontSize;
+    line-height: 30px;
+    height: 30px;
+  }
+
+  &.btn-mini {
+    font-size: 0.9 * $baseFontSize;
+    line-height: 26px;
+    height: 26px;
+  }
+
+  // btn-group
+  .btn-group & {
+    margin-right: 2px;
+    margin-bottom: 2px;
+  }
+}

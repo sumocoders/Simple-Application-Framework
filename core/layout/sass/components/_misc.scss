@@ -1,0 +1,26 @@
+/**
+ * Defining components used in header, nav, footer
+ * States: Error, warning, succes, ...
+ */
+
+// LINKS
+a {
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+// DEFINE THE COMPANY LOGO HERE
+.logo {
+  @include svg-with-png-fallback(logo_sumocoders, #e84914 no-repeat center center, $dimensions: false);
+  display: block;
+  @include squish-text;
+  width: 100%;
+  height: 165px;
+  border: none;
+
+  &:hover {
+    border: none;
+  }
+}

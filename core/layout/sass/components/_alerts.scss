@@ -1,0 +1,86 @@
+/**
+ * Defining alerts
+ * States: Error, warning, succes, ...
+ */
+
+// ALERTS
+.alert {
+  position: fixed;
+  margin-top: 65px;
+  border: none;
+  width: 100%;
+  @include box-sizing(border-box);
+  @include border-radius(0);
+  color: #fff;
+  text-shadow: none;
+  padding: 0 0 0 25px;
+  line-height: 40px;
+
+  .container {
+    padding: 0;
+  }
+
+  .close {
+    @include svg-with-png-fallback(icon_close, no-repeat center center, $dimensions: false);
+    @include squish-text;
+    width: 70px;
+    height: 40px;
+    @include box-sizing(border-box);
+    opacity: 1;
+    right: 0;
+    margin: 0;
+    top: 0;
+    @include transition(all 150ms);
+  }
+
+  // States
+  &.alert-success {
+    background: #56b989;
+    z-index: 9;
+
+    .close {
+      background-color: #3c9469;
+
+      &:hover {
+        background-color: darken(#3c9469, 10%);
+      }
+    }
+  }
+
+  &.alert-warning {
+    background-color: #d0b15c;
+    z-index: 99;
+
+    .close {
+      background-color: #b38e2a;
+
+      &:hover {
+        background-color: darken(#b38e2a, 10%);
+      }
+    }
+  }
+
+  &.alert-error {
+    background-color: #ca5121;
+    z-index: 999;
+
+    .close {
+      background-color: #9f360c;
+
+      &:hover {
+        background-color: darken(#9f360c, 10%);
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  .alert {
+    padding-right: 265px;
+    @include transition(padding-right 250ms);
+
+    &.subnav {
+      padding-right: 495px;
+    }
+  }
+}

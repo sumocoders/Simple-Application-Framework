@@ -1,2 +1,11 @@
 @import '_base';
 @import '_app';
+
+/* Typography */
+@import "theme/_typography";
+
+/* Components */
+@import "components/_misc";
+@import "components/_forms";
+@import "components/_btn";
+@import "components/_alerts";
