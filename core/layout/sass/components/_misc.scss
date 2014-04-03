@@ -3,7 +3,7 @@
  * States: Error, warning, succes, ...
  */
 
-// LINKS
+// Links
 a {
 
   &:hover {
@@ -23,4 +23,20 @@ a {
   &:hover {
     border: none;
   }
+}
+
+
+// pre and code blocks
+pre,
+code {
+
+  ol,
+  ul {
+    margin-bottom: 0;
+    margin-left: 40px;
+  }
+}
+
+pre {
+  @include font-size(13);
 }

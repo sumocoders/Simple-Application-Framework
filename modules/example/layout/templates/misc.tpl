@@ -28,13 +28,13 @@
 				<h3>Optional classes</h3>
 				<p>Control padding and rounded corners with two optional modifier classes.</p>
 				<div class="bs-docs-example">
-					<div class="well well-large">
+					<div class="well well-lg">
 						Look, I'm in a well!
 					</div>
 				</div>
 				<pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"well well-large"</span><span class="tag">&gt;</span></li><li class="L1"><span class="pln">  ...</span></li><li class="L2"><span class="tag">&lt;/div&gt;</span></li></ol></pre>
 				<div class="bs-docs-example">
-					<div class="well well-small">
+					<div class="well well-sm">
 						Look, I'm in a well!
 					</div>
 				</div>

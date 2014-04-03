@@ -70,9 +70,7 @@ input:focus:invalid:focus {
   }
 }
 
-label {
-
-  &.checkbox {
-    margin-bottom: 20px;
-  }
+label.checkbox,
+.form-horizontal .checkbox {
+  margin-bottom: 20px;
 }

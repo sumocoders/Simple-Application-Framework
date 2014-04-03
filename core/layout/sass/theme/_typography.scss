@@ -52,16 +52,21 @@ strong {
 }
 
 h1, h2, h3, h4, h5 {
-  font-family: $opensans-bold-webfont;
   font-weight: 100;
   margin-bottom: 12px;
 }
 h1, h2 {
   line-height: 1.2;
 }
-h4, h5 {
+h1, h2, h3 {
+  font-family: $opensans-bold-webfont;
+}
+h4, h5, h6 {
   font-family: $OpenSans-Semibold-webfont;
   margin-bottom: 10.5px;
+}
+h3, h4, h5, h6 {
+  color: #8d94ab;
 }
 h1 {
   color: #464242;
@@ -79,15 +84,16 @@ h3 {
   @include font-size(17);
 }
 h4 {
-  color: #8d94ab;
   //font-size: 1.1em;
   @include font-size(15);
   margin-bottom: 10.5px;
 }
 h5 {
-  color: #8d94ab;
   //font-size: 1em;
   @include font-size(14);
+}
+h6 {
+  @include font-size(12);
 }
 
 @media screen and (min-width: 767px) {

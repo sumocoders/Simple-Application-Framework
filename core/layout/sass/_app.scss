@@ -120,39 +120,9 @@ body {
   }
 }
 
-// tables
 
-.table {
 
-  tfoot {
 
-    tr {
-
-      &:first-child {
-
-        td {
-          border-top: 2px solid #ddd;
-        }
-      }
-    }
-  }
-}
-
-// pre and code blocks
-
-pre,
-code {
-
-  ol,
-  ul {
-    margin-bottom: 0;
-    margin-left: 40px;
-  }
-}
-
-pre {
-  @include font-size(13);
-}
 
 // Wells
 
@@ -450,7 +420,7 @@ dl {
 
   h2 {
     color: #fff;
-    font-size: 1.2 * $baseFontSize;
+    @include font-size(1.2 * $baseFont);
     text-transform: uppercase;
     font-family: $opensans-bold-webfont;
     margin-top: 22px;
@@ -748,7 +718,7 @@ dl {
   }
 
     h2 {
-      font-size: 1.71 * $baseFontSize;
+      @include font-size(1.71 * $baseFont);
     }
 
     .actions {

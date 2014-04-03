@@ -24,6 +24,7 @@
 					<h3>Praesent commodo cursus magna, vel scelerisque nisl consectetur et h3.</h3>
 					<h4>Morbi leo risus, porta ac consectetur ac, vestibulum at eros h4.</h4>
 					<h5>Maecenas sed diam eget risus varius blandit sit amet non magna h5.</h5>
+					<h6>Praesent commodo cursus magna, vel scelerisque nisl consectetur et h6.</h6>
 				</div>
 
 				<h2 id="body-copy">Body copy</h2>
@@ -81,8 +82,9 @@
 					<p class="text-left">Left aligned text.</p>
 					<p class="text-center">Center aligned text.</p>
 					<p class="text-right">Right aligned text.</p>
+					<p class="text-justify">This is some justified text.</p>
 				</div>
-				<pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><span class="tag">&lt;p</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"text-left"</span><span class="tag">&gt;</span><span class="pln">Left aligned text.</span><span class="tag">&lt;/p&gt;</span></li><li class="L1"><span class="tag">&lt;p</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"text-center"</span><span class="tag">&gt;</span><span class="pln">Center aligned text.</span><span class="tag">&lt;/p&gt;</span></li><li class="L2"><span class="tag">&lt;p</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"text-right"</span><span class="tag">&gt;</span><span class="pln">Right aligned text.</span><span class="tag">&lt;/p&gt;</span></li></ol></pre>
+				<pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><span class="tag">&lt;p</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"text-left"</span><span class="tag">&gt;</span><span class="pln">Left aligned text.</span><span class="tag">&lt;/p&gt;</span></li><li class="L1"><span class="tag">&lt;p</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"text-center"</span><span class="tag">&gt;</span><span class="pln">Center aligned text.</span><span class="tag">&lt;/p&gt;</span></li><li class="L2"><span class="tag">&lt;p</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"text-right"</span><span class="tag">&gt;</span><span class="pln">Right aligned text.</span><span class="tag">&lt;/p&gt;</span></li><li class="L3"><span class="tag">&lt;p</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"text-justify"</span><span class="tag">&gt;</span><span class="pln">Justified text.</span><span class="tag">&lt;/p&gt;</span></li></ol></pre>
 
 				<h3>Emphasis classes</h3>
 				<p>Convey meaning through color with a handful of emphasis utility classes.</p>
