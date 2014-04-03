@@ -92,14 +92,14 @@
 						</div><!-- /btn-group -->
 					</div><!-- /btn-toolbar -->
 				</div>
-				<pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"btn-group"</span><span class="tag">&gt;</span></li><li class="L1"><span class="pln">  </span><span class="tag">&lt;a</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"btn dropdown-toggle"</span><span class="pln"> </span><span class="atn">data-toggle</span><span class="pun">=</span><span class="atv">"dropdown"</span><span class="pln"> </span><span class="atn">href</span><span class="pun">=</span><span class="atv">"#"</span><span class="tag">&gt;</span></li><li class="L2"><span class="pln">    Action</span></li><li class="L3"><span class="pln">    </span><span class="tag">&lt;span</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"caret"</span><span class="tag">&gt;&lt;/span&gt;</span></li><li class="L4"><span class="pln">  </span><span class="tag">&lt;/a&gt;</span></li><li class="L5"><span class="pln">  </span><span class="tag">&lt;ul</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"dropdown-menu"</span><span class="tag">&gt;</span></li><li class="L6"><span class="pln">    </span><span class="com">&lt;!-- dropdown menu links --&gt;</span></li><li class="L7"><span class="pln">  </span><span class="tag">&lt;/ul&gt;</span></li><li class="L8"><span class="tag">&lt;/div&gt;</span></li></ol></pre>
+				<pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"btn-group"</span><span class="tag">&gt;</span></li><li class="L1"><span class="pln">  </span><span class="tag">&lt;button</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"btn dropdown-toggle"</span><span class="pln"> </span><span class="atn">data-toggle</span><span class="pun">=</span><span class="atv">"dropdown"</span><span class="pln"> </span><span class="atn">href</span><span class="pun">=</span><span class="atv">"#"</span><span class="tag">&gt;</span></li><li class="L2"><span class="pln">    Action</span></li><li class="L3"><span class="pln">    </span><span class="tag">&lt;span</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"caret"</span><span class="tag">&gt;&lt;/span&gt;</span></li><li class="L4"><span class="pln">  </span><span class="tag">&lt;/button&gt;</span></li><li class="L5"><span class="pln">  </span><span class="tag">&lt;ul</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"dropdown-menu"</span><span class="tag">&gt;</span></li><li class="L6"><span class="pln">    </span><span class="com">&lt;!-- dropdown menu links --&gt;</span></li><li class="L7"><span class="pln">  </span><span class="tag">&lt;/ul&gt;</span></li><li class="L8"><span class="tag">&lt;/div&gt;</span></li></ol></pre>
 
 				<h3>Works with all button sizes</h3>
-				<p>Button dropdowns work at any size:  <code>.btn-large</code>, <code>.btn-small</code>, or <code>.btn-mini</code>.</p>
+				<p>Button dropdowns work at any size:  <code>.btn-lg</code>, <code>.btn-sm</code>, or <code>.btn-xs</code>.</p>
 				<div class="bs-docs-example">
 					<div class="btn-toolbar" style="margin: 0;">
 						<div class="btn-group">
-							<button class="btn btn-large dropdown-toggle" data-toggle="dropdown">Large button <span class="caret"></span></button>
+							<button class="btn btn-lg dropdown-toggle" data-toggle="dropdown">Large button <span class="caret"></span></button>
 							<ul class="dropdown-menu">
 								<li><a href="#">Action</a></li>
 								<li><a href="#">Another action</a></li>
@@ -109,7 +109,7 @@
 							</ul>
 						</div><!-- /btn-group -->
 						<div class="btn-group">
-							<button class="btn btn-small dropdown-toggle" data-toggle="dropdown">Small button <span class="caret"></span></button>
+							<button class="btn btn-sm dropdown-toggle" data-toggle="dropdown">Small button <span class="caret"></span></button>
 							<ul class="dropdown-menu">
 								<li><a href="#">Action</a></li>
 								<li><a href="#">Another action</a></li>
@@ -119,7 +119,7 @@
 							</ul>
 						</div><!-- /btn-group -->
 						<div class="btn-group">
-							<button class="btn btn-mini dropdown-toggle" data-toggle="dropdown">Mini button <span class="caret"></span></button>
+							<button class="btn btn-xs dropdown-toggle" data-toggle="dropdown">Mini button <span class="caret"></span></button>
 							<ul class="dropdown-menu">
 								<li><a href="#">Action</a></li>
 								<li><a href="#">Another action</a></li>
@@ -225,12 +225,12 @@
 				<pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"btn-group"</span><span class="tag">&gt;</span></li><li class="L1"><span class="pln">  </span><span class="tag">&lt;button</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"btn"</span><span class="tag">&gt;</span><span class="pln">Action</span><span class="tag">&lt;/button&gt;</span></li><li class="L2"><span class="pln">  </span><span class="tag">&lt;button</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"btn dropdown-toggle"</span><span class="pln"> </span><span class="atn">data-toggle</span><span class="pun">=</span><span class="atv">"dropdown"</span><span class="tag">&gt;</span></li><li class="L3"><span class="pln">    </span><span class="tag">&lt;span</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"caret"</span><span class="tag">&gt;&lt;/span&gt;</span></li><li class="L4"><span class="pln">  </span><span class="tag">&lt;/button&gt;</span></li><li class="L5"><span class="pln">  </span><span class="tag">&lt;ul</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"dropdown-menu"</span><span class="tag">&gt;</span></li><li class="L6"><span class="pln">    </span><span class="com">&lt;!-- dropdown menu links --&gt;</span></li><li class="L7"><span class="pln">  </span><span class="tag">&lt;/ul&gt;</span></li><li class="L8"><span class="tag">&lt;/div&gt;</span></li></ol></pre>
 
 				<h3>Sizes</h3>
-				<p>Utilize the extra button classes <code>.btn-mini</code>, <code>.btn-small</code>, or <code>.btn-large</code> for sizing.</p>
+				<p>Utilize the extra button classes <code>.btn-xs</code>, <code>.btn-sm</code>, or <code>.btn-lg</code> for sizing.</p>
 				<div class="bs-docs-example">
 					<div class="btn-toolbar">
 						<div class="btn-group">
-							<button class="btn btn-large">Large action</button>
-							<button class="btn btn-large dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+							<button class="btn btn-lg">Large action</button>
+							<button class="btn btn-lg dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
 							<ul class="dropdown-menu">
 								<li><a href="#">Action</a></li>
 								<li><a href="#">Another action</a></li>
@@ -242,8 +242,8 @@
 					</div><!-- /btn-toolbar -->
 					<div class="btn-toolbar">
 						<div class="btn-group">
-							<button class="btn btn-small">Small action</button>
-							<button class="btn btn-small dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+							<button class="btn btn-sm">Small action</button>
+							<button class="btn btn-sm dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
 							<ul class="dropdown-menu">
 								<li><a href="#">Action</a></li>
 								<li><a href="#">Another action</a></li>
@@ -255,8 +255,8 @@
 					</div><!-- /btn-toolbar -->
 					<div class="btn-toolbar">
 						<div class="btn-group">
-							<button class="btn btn-mini">Mini action</button>
-							<button class="btn btn-mini dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+							<button class="btn btn-xs">Mini action</button>
+							<button class="btn btn-xs dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
 							<ul class="dropdown-menu">
 								<li><a href="#">Action</a></li>
 								<li><a href="#">Another action</a></li>

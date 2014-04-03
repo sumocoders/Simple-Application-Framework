@@ -55,31 +55,6 @@ body {
   }
 }
 
-.input-append,
-.input-prepend {
-  .add-on {
-    @include box-sizing(border-box);
-    background: #b6bcd0;
-    @include box-shadow(none);
-    border-color: #b6bcd0;
-    border-width: 2px;
-    height: 45px;
-    text-shadow: none;
-    line-height: 45px;
-    padding-top: 0;
-    padding-bottom: 0;
-    color: #5a627f;
-    font-family: $opensans-bold-webfont;
-  }
-}
-
-.input-prepend {
-
-  .btn {
-    margin-right: -2px;
-  }
-}
-
 // Messages
 
 .alert-info {

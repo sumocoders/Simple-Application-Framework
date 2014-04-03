@@ -66,7 +66,7 @@
 
 				<h3>Justified button groups</h3>
 				<p>Make a group of buttons stretch at equal sizes to span the entire width of its parent. Also works with button dropdowns within the button group.</p>
-				<h5>Buttons justified with <code>&lt;a&gt;</code> element</h5>
+				<h4>Buttons justified with <code>&lt;a&gt;</code> element</h4>
 				<div class="bs-docs-example">
 					<div class="btn-group btn-group-justified">
 						<a class="btn" role="button">Left</a>
@@ -75,7 +75,7 @@
 					</div>
 				</div>
 				<pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"btn-group btn-group-justified"</span><span class="tag">&gt;</span></li><li class="L1"><span class="pln">  </span><span class="tag">&lt;a</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"btn"</span><span class="tag">&gt;</span>Left<span class="tag">&lt;/a&gt;</span></li><li class="L2"><span class="pln">  ...</span></li><li class="L3"><span class="tag">&lt;/div&gt;</span></li></ol></pre>
-				<h5>Buttons justified with <code>&lt;button&gt;</code> element</h5>
+				<h4>Buttons justified with <code>&lt;button&gt;</code> element</h4>
 				<div class="bs-docs-example">
 					<div class="btn-group btn-group-justified">
 						<div class="btn-group">
