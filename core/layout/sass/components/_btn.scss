@@ -94,26 +94,32 @@
   }
 
   &.btn-lg {
-    font-size: 1.57 * $baseFontSize;
+    @include font-size(1.57 * $baseFont);
     height: 50px;
     line-height: 50px;
   }
 
   &.btn-sm {
-    font-size: $baseFontSize;
+    @include font-size($baseFont);
     line-height: 30px;
     height: 30px;
   }
 
   &.btn-xs {
-    font-size: 0.9 * $baseFontSize;
+    @include font-size(0.9 * $baseFont);
     line-height: 26px;
     height: 26px;
   }
+}
 
-  // btn-group
-  .btn-group & {
+// btn-group
+.btn-group {
+  .btn {
     margin-right: 2px;
     margin-bottom: 2px;
   }
+}
+
+.btn-group-justified > button.btn {
+  width: auto;
 }

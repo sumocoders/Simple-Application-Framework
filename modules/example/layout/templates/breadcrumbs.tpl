@@ -39,5 +39,3 @@
 </div>
 
 {include:'{$CORE_PATH}/layout/templates/footer.tpl'}
-</body>
-</html>

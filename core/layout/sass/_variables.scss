@@ -11,11 +11,13 @@ $sansFontFamily: "Dosis Medium", Helvetica, Arial, sans-serif;
 $serifFontFamily: Georgia, "Times New Roman", Times, serif;
 $monoFontFamily: Menlo, Monaco, Consolas, "Courier New", monospace;
 
-// Set base font to 16 (without px) so it can be used with the font-size mixin
-$baseFont: 16;
-$baseFontSize: 16px;
+// Set base font (without px) so it can be used with the font-size mixin
+$baseFont: 14;
+$baseFontSize: 14px;
 $baseFontFamily: $sansFontFamily;
-$baseLineHeight: 24px;
+// Set base line-height (without px) so it can be used with the font-size mixin
+$baseLine: 20;
+$baseLineHeight: 20px;
 $altFontFamily: $serifFontFamily;
 
 /* Sprite icons path */

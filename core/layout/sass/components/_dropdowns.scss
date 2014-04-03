@@ -1,0 +1,17 @@
+/**
+ * Defining components dropdowns
+ * States: Error, warning, succes, ...
+ */
+
+// Dropdowns
+.dropdown {
+  ul {
+    @include box-shadow(none);
+    background: #f9f9f9;
+    border-color: #cccdd7;
+  }
+}
+
+.dropdown-menu {
+  @include font-size(14);
+}

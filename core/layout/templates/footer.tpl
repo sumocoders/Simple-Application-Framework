@@ -3,3 +3,5 @@
 </div>
 
 {include:'{$CORE_PATH}/layout/templates/dialogs.tpl'}
+</body>
+</html>
