@@ -4,30 +4,31 @@
  */
 
 .btn {
-  @include box-sizing(border-box);
   background: #4ab0ce;
-  @include box-shadow(none);
   border: none;
+  @include border-radius(2px);
+  @include box-sizing(border-box);
+  @include box-shadow(none);
+  color: #fff;
+  font-family: $opensans-bold-webfont;
+  @include font-size(18px);
   height: 45px;
-  text-shadow: none;
   line-height: 45px;
   padding-top: 0;
   padding-bottom: 0;
-  color: #fff;
-  font-family: $opensans-bold-webfont;
-  @include border-radius(2px);
-  font-size: 18px;
+  text-shadow: none;
 
   &:hover {
     background: darken(#4ab0ce, 10%);
-    @include transition(all 150ms);
-    color: #fff;
     border-bottom: none;
+    color: #fff;
+    @include transition(all 150ms);
+
   }
 
   .caret {
-    margin-top: 21px;
     border-top-color: #fff;
+    margin-top: 21px;
   }
 
   i {
@@ -92,19 +93,19 @@
     }
   }
 
-  &.btn-large {
+  &.btn-lg {
     font-size: 1.57 * $baseFontSize;
     height: 50px;
     line-height: 50px;
   }
 
-  &.btn-small {
+  &.btn-sm {
     font-size: $baseFontSize;
     line-height: 30px;
     height: 30px;
   }
 
-  &.btn-mini {
+  &.btn-xs {
     font-size: 0.9 * $baseFontSize;
     line-height: 26px;
     height: 26px;

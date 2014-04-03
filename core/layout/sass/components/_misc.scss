@@ -40,3 +40,10 @@ code {
 pre {
   @include font-size(13);
 }
+
+@media screen and (min-width: 767px) {
+  // Responsive menu item
+  .visible-phone {
+    display: none !important;
+  }
+}
