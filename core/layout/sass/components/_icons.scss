@@ -12,7 +12,7 @@
 // No items message
 
 .noItems {
-  @include font-size(1.71 * $baseFont);
+  font-size: 1.71 * $baseFontSize;
   color: #c8c9d2;
   font-family: $opensans-bold-webfont;
   text-align: center;

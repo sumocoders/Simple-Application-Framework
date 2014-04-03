@@ -8,5 +8,24 @@
 @import "compass_sumo";
 @import "bootstrap";
 
+// Import fonts
+@import 'fonts:*';
+
+/* Glyphicons, font-awesome */
+@import "_glyphicons";
+@import "_font-awesome";
+
 /* Mixins */
 @import "_mixins.scss";
+
+/* Typography */
+@import "theme/_typography";
+
+/* Components */
+@import "components/_alerts";
+@import "components/_btn";
+@import "components/_forms";
+@import "components/_icons";
+@import "components/_misc";
+@import "components/_tabs";
+@import "components/_tables";
