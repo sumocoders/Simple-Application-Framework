@@ -11,6 +11,11 @@ a {
   }
 }
 
+// Ajax spinner
+#ajaxSpinner {
+  display: none;
+}
+
 // DEFINE THE COMPANY LOGO HERE
 .logo {
   @include svg-with-png-fallback(logo_sumocoders, #e84914 no-repeat center center, $dimensions: false);
@@ -24,7 +29,6 @@ a {
     border: none;
   }
 }
-
 
 // pre and code blocks
 pre,
@@ -41,9 +45,14 @@ pre {
   @include font-size(13);
 }
 
+
+// Media query min-width 767px
 @media screen and (min-width: 767px) {
   // Responsive menu item
   .visible-phone {
     display: none !important;
   }
 }
+
+// Media query min-width 1025px
+@media screen and (min-width: 1025px) {}

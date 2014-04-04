@@ -23,13 +23,6 @@ body {
 @import "_datagrids";
 
 
-
-#ajaxSpinner {
-  display: none;
-}
-
-
-
 // Search auto-complete
 .ui-corner-all {
   @include border-radius(0);
