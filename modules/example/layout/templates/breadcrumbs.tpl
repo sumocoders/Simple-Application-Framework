@@ -18,21 +18,22 @@
 			<div class="container">
 				<h2>Examples</h2>
 				<p>A single example shown as it might be displayed across multiple pages.</p>
+				<p>Separators are automatically added in CSS through <code>:before</code> and <code>content</code>.</p>
 				<div class="bs-docs-example">
 					<ul class="breadcrumb">
 						<li class="active">Home</li>
 					</ul>
 					<ul class="breadcrumb">
-						<li><a href="#">Home</a> <span class="divider">/</span></li>
+						<li><a href="#">Home</a></li>
 						<li class="active">Library</li>
 					</ul>
 					<ul class="breadcrumb" style="margin-bottom: 5px;">
-						<li><a href="#">Home</a> <span class="divider">/</span></li>
-						<li><a href="#">Library</a> <span class="divider">/</span></li>
+						<li><a href="#">Home</a></li>
+						<li><a href="#">Library</a></li>
 						<li class="active">Data</li>
 					</ul>
 				</div>
-				<pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><span class="tag">&lt;ul</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"breadcrumb"</span><span class="tag">&gt;</span></li><li class="L1"><span class="pln">  </span><span class="tag">&lt;li&gt;&lt;a</span><span class="pln"> </span><span class="atn">href</span><span class="pun">=</span><span class="atv">"#"</span><span class="tag">&gt;</span><span class="pln">Home</span><span class="tag">&lt;/a&gt;</span><span class="pln"> </span><span class="tag">&lt;span</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"divider"</span><span class="tag">&gt;</span><span class="pln">/</span><span class="tag">&lt;/span&gt;&lt;/li&gt;</span></li><li class="L2"><span class="pln">  </span><span class="tag">&lt;li&gt;&lt;a</span><span class="pln"> </span><span class="atn">href</span><span class="pun">=</span><span class="atv">"#"</span><span class="tag">&gt;</span><span class="pln">Library</span><span class="tag">&lt;/a&gt;</span><span class="pln"> </span><span class="tag">&lt;span</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"divider"</span><span class="tag">&gt;</span><span class="pln">/</span><span class="tag">&lt;/span&gt;&lt;/li&gt;</span></li><li class="L3"><span class="pln">  </span><span class="tag">&lt;li</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"active"</span><span class="tag">&gt;</span><span class="pln">Data</span><span class="tag">&lt;/li&gt;</span></li><li class="L4"><span class="tag">&lt;/ul&gt;</span></li></ol></pre>
+				<pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><span class="tag">&lt;ul</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"breadcrumb"</span><span class="tag">&gt;</span></li><li class="L1"><span class="pln">  </span><span class="tag">&lt;li&gt;&lt;a</span><span class="pln"> </span><span class="atn">href</span><span class="pun">=</span><span class="atv">"#"</span><span class="tag">&gt;</span><span class="pln">Home</span><span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span></li><li class="L2"><span class="pln">  </span><span class="tag">&lt;li&gt;&lt;a</span><span class="pln"> </span><span class="atn">href</span><span class="pun">=</span><span class="atv">"#"</span><span class="tag">&gt;</span><span class="pln">Library</span><span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span></li><li class="L3"><span class="pln">  </span><span class="tag">&lt;li</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"active"</span><span class="tag">&gt;</span><span class="pln">Data</span><span class="tag">&lt;/li&gt;</span></li><li class="L4"><span class="tag">&lt;/ul&gt;</span></li></ol></pre>
 			</div>
 		</section>
 	</div>

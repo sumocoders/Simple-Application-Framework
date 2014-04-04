@@ -73,6 +73,12 @@
   }
 }
 
+@media screen and (min-width: 767px) {
+  .alert {
+    padding-right: 50px;
+  }
+}
+
 @media screen and (min-width: 1025px) {
   .alert {
     padding-right: 265px;

@@ -61,31 +61,6 @@ body {
   background-color: #B6BCD0;
 }
 
-// Progress bar for loading stuff
-
-.progress {
-  @include border-radius(0);
-  margin-bottom: 0;
-  overflow: visible;
-
-  .bar {
-    width: 100%;
-    @include background-size(100px 100px);
-    text-align: left;
-  }
-
-  &.active {
-
-    .bar {
-      @include animate(loadingProgressBar 2s linear 0s infinite);
-    }
-  }
-}
-
-
-
-
-
 // Wells
 
 .well {
@@ -282,7 +257,7 @@ dl {
 
   &.progress-striped {
 
-    .bar {
+    .progress-bar {
       background-color: #393b42;
     }
   }
@@ -483,19 +458,6 @@ dl {
     padding: 0;
   }
 
-  // Progress bar for loading stuff
-
-  .progress {
-
-    .bar {
-      width: 100%;
-    }
-  }
-
-  .alert {
-    padding-right: 50px;
-  }
-
   #navbar {
     z-index: 30;
     width: 265px;
@@ -681,16 +643,6 @@ dl {
 }
 
 @media screen and (min-width: 1025px) {
-
-  .alert {
-    padding-right: 265px;
-    @include transition(padding-right 250ms);
-
-    &.subnav {
-      padding-right: 495px;
-    }
-  }
-
   #navbar {
     //position: fixed;
     left: 0;

@@ -1,0 +1,34 @@
+/**
+ * Defining progress bar
+ * States: Error, warning, succes, ...
+ */
+
+// Progress bar for loading stuff
+.progress {
+  @include border-radius(0);
+  margin-bottom: 0;
+  overflow: visible;
+
+  .progress-bar {
+    width: 100%;
+    @include background-size(100px 100px);
+    text-align: left;
+  }
+
+  &.active {
+
+    .progress-bar {
+      @include animate(loadingProgressBar 2s linear 0s infinite);
+    }
+  }
+}
+
+@media screen and (min-width: 767px) {
+// Progress bar for loading stuff
+  .progress {
+
+    .progress-bar {
+      width: 100%;
+    }
+  }
+}
