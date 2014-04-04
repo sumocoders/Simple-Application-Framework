@@ -133,6 +133,11 @@ input:focus:invalid:focus {
   }
 }
 
+label, input, button, select, textarea {
+  @include line-height(21);
+  font-weight: normal;
+}
+
 label.checkbox,
 .form-horizontal .checkbox {
   margin-bottom: 20px;

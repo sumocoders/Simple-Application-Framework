@@ -103,82 +103,6 @@ dl {
   }
 }
 
-//Users
-
-#users {
-
-  &.login, &.forgot_password, &.reset_password {
-
-    .logo {
-      width: 150px;
-      height: 150px;
-      @include border-radius(50%);
-      margin: 10% auto;
-      border: none;
-    }
-
-    .control-group {
-      margin-bottom: 27px;
-
-      .controls {
-        width: 100%;
-      }
-    }
-
-    .control-label {
-      font-family: $opensans-bold-webfont;
-      font-size: 1.29 * $baseFontSize;
-      color: #597192;
-      margin-bottom: 15px;
-    }
-
-    .add-on {
-      width: 13.75%;
-      height: 45px;
-      @include box-sizing(border-box);
-      background-color: #b6bcd0;
-      border: none;
-
-      &.username {
-        @include svg-with-png-fallback(icon_user, no-repeat #b6bcd0 center center, $dimensions: false);
-      }
-
-      &.password {
-        @include svg-with-png-fallback(icon_lock, no-repeat #b6bcd0 center center, $dimensions: false);
-      }
-    }
-
-    input[type="password"],
-    input[type="email"] {
-      width: 86.25%;
-      @include border-radius(0 4px 4px 0);
-      -webkit-appearance: none;
-    }
-
-    .btn {
-      margin-top: 46px;
-      text-align: left;
-      padding-left: 21px;
-      padding-right: 21px;
-
-      .icon {
-        float: right;
-        margin-top: 13px !important;
-      }
-    }
-
-    .alert {
-      position: relative;
-      padding: 0 25px;
-      @include border-radius(4px);
-    }
-
-	.forgotPassword {
-		margin-top: 10px;
-	}
-  }
-}
-
 // NAVBAR MOBILE FUNCTIONALITY
 
 #navbar {
@@ -570,14 +494,6 @@ dl {
 
   .alert {
     padding-right: 50px;
-  }
-
-  #users {
-
-    &.login, &.forgot_password, &.reset_password {
-      width: 400px;
-      margin: 0 auto;
-    }
   }
 
   #navbar {

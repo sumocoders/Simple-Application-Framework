@@ -18,8 +18,8 @@
 					<fieldset>
 						<div class="control-group{option:txtLoginError} error{/option:txtLoginError}">
 							<label class="control-label" for="login">{$lblEmail|ucfirst}<abbr title="{$msgRequired}">*</abbr></label>
-							<div class="controls input-prepend">
-								<div class="add-on username"></div>
+							<div class="controls input-group">
+								<div class="input-group-addon username"></div>
 								{$txtEmail} {$txtEmailError}
 							</div>
 						</div>

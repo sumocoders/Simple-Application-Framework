@@ -3,10 +3,10 @@
  */
 
 a {
- // border-bottom: 1px solid $textLinkColor;
+  border-bottom: 1px solid $textLinkColor;
 
   &:hover {
-    //border-bottom: 1px solid $textLinkColorHover;
+    border-bottom: 1px solid $textLinkColorHover;
   }
 
   &.iconLink {
