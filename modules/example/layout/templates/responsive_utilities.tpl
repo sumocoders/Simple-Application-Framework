@@ -7,7 +7,7 @@
 			<div class="container bar">
 				<div class="title">
 					<a id="toggleMenu" class="visible-phone iconLink" href="#">{$lblMenu|uppercase}</a>
-					<h2>Images</h2>
+					<h2>Responsive utilities</h2>
 				</div>
 			</div>
 		</header>
