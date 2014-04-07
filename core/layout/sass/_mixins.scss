@@ -28,10 +28,3 @@
     clear: both;
   }
 }
-
-// Mixin to hide text of element
-@mixin hideText {
-  text-indent: -999em;
-  letter-spacing: -999em;
-  overflow: hidden;
-}

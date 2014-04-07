@@ -7,16 +7,15 @@
   background: #4ab0ce;
   border: none;
   @include border-radius(2px);
-  @include box-sizing(border-box);
   @include box-shadow(none);
   color: #fff;
   font-family: $opensans-bold-webfont;
-  @include font-size(18);
-  height: 45px;
-  line-height: 45px;
-  padding-top: 0;
-  padding-bottom: 0;
-  text-shadow: none;
+  @include font-size($baseFont);
+  //height: 45px;
+  //line-height: 45px;
+  //padding-top: 0;
+  //padding-bottom: 0;
+  //text-shadow: none;
 
   &:hover {
     background: darken(#4ab0ce, 10%);
@@ -96,29 +95,31 @@
 .btn-group-lg > .btn,
 .btn-group-sm > .btn,
 .btn-group-xs > .btn {
-  padding-top: 0;
-  padding-bottom: 0;
+  //padding-top: 0;
+  //padding-bottom: 0;
 }
 
 .btn-group-lg > .btn,
 .btn.btn-lg {
   @include font-size(1.57 * $baseFont);
-  height: 50px;
-  line-height: 50px;
+  //height: 50px;
+  //line-height: 50px;
 }
 
 .btn-group-sm > .btn,
 .btn.btn-sm {
-  @include font-size($baseFont);
-  line-height: 30px;
-  height: 30px;
+  //@include font-size($baseFont);
+  //line-height: 30px;
+  //height: 30px;
 }
 
+.btn-group-sm > .btn,
+.btn.btn-sm,
 .btn-group-xs > .btn,
 .btn.btn-xs {
   @include font-size(0.9 * $baseFont);
-  line-height: 26px;
-  height: 26px;
+  //line-height: 26px;
+  //height: 26px;
 }
 
 .btn-group-justified > button.btn {

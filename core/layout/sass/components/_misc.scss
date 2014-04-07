@@ -1,5 +1,5 @@
 /**
- * Defining components used in header, nav, footer
+ * Defining components used in header, nav, footer, misc tpl
  * States: Error, warning, succes, ...
  */
 
@@ -45,6 +45,20 @@ pre {
   @include font-size(13);
 }
 
+// Wells
+.well {
+  @include box-shadow(none);
+  //@include border-radius(0);
+  border: 2px solid #b6bcd0;
+}
+
+// Lists
+dl {
+
+  dt {
+    font-family: $opensans-bold-webfont;
+  }
+}
 
 // Media query min-width 767px
 @media screen and (min-width: 767px) {
