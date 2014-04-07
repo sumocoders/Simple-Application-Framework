@@ -1,0 +1,152 @@
+/**
+ * Defining navbar and other navs
+ * States: Error, warning, succes, ...
+ */
+
+// NAVBAR MOBILE FUNCTIONALITY
+#navbar {
+  position: fixed;
+  z-index: 10;
+  background: #e4e5ec;
+  width: 85%;
+  overflow-y: scroll;
+  padding-bottom: 45px;
+  height: 100%;
+
+  .container {
+    padding: 0;
+  }
+
+  .nav {
+
+    li {
+      border-bottom: 2px solid #c0c4d3;
+
+      a {
+        color: #8d94ab;
+        padding: 21px 18px;
+        text-transform: uppercase;
+        font-family: $opensans-bold-webfont;
+        border: none;
+
+        &.toggleSubNavigation {
+          @include svg-with-png-fallback(icon_subnav, no-repeat 95% center, $dimensions: false);
+        }
+
+        &.active {
+          background-color: #fff;
+          color: #0f0f0f;
+        }
+      }
+
+      &#user {
+
+        &>a {
+          padding-top: 19px;
+          color: #464242;
+          font-family: $opensans-bold-webfont;
+          font-size: 1.29 * $baseFontSize;
+          position: relative;
+
+          &.active {
+            background-color: #fff;
+            color: #0f0f0f;
+          }
+
+        }
+      }
+
+      .subNavigation {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        //height: 0;
+        //overflow: hidden;
+        display: none;
+        //@include transition(all 250ms);
+
+        li {
+          border-bottom-color: #3b3c48;
+
+          a {
+            background: #222329;
+            color: #818696;
+            display: block;
+
+            &:hover {
+              background: lighten(#222329, 10%);
+            }
+          }
+        }
+
+        &.open {
+          //height: auto;
+        }
+      }
+    }
+  }
+}
+
+// Media query min-width 767px
+@media screen and (min-width: 767px) {
+  #navbar {
+    z-index: 30;
+    width: 265px;
+    left: -265px;
+    height: 100%;
+    @include transition(all 250ms);
+
+    &.open {
+      left: 0;
+      @include transition(all 250ms);
+
+      &.subnav {
+        padding-right: 230px;
+      }
+    }
+
+    .nav {
+
+      li {
+
+        .subNavigation {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+          height: 100% !important;
+          display: block !important;
+          @include transition(width 250ms);
+          position: fixed;
+          width: 0;
+          overflow: scroll;
+          left: 265px;
+          top: 0;
+          background: #222329;
+
+          li {
+            border-bottom-color: #3b3c48;
+
+            a {
+              background: #222329;
+              color: #818696;
+              display: block;
+              white-space: nowrap;
+            }
+          }
+
+          &.open {
+            width: 230px;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Media query min-width 1025px
+@media screen and (min-width: 1025px) {
+  #navbar {
+    left: 0;
+    top: 0;
+  }
+}

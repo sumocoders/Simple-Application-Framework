@@ -89,7 +89,7 @@
 				<h3>Emphasis classes</h3>
 				<p>Convey meaning through color with a handful of emphasis utility classes.</p>
 				<div class="bs-docs-example">
-					<p class="muted">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</p>
+					<p class="text-muted">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</p>
 					<p class="text-warning">Etiam porta sem malesuada magna mollis euismod.</p>
 					<p class="text-error">Donec ullamcorper nulla non metus auctor fringilla.</p>
 					<p class="text-info">Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis.</p>
@@ -161,24 +161,24 @@
 				<p>Style and content changes for simple variations on a standard blockquote.</p>
 
 				<h4>Naming a source</h4>
-				<p>Add <code>&lt;small&gt;</code> tag for identifying the source. Wrap the name of the source work in <code>&lt;cite&gt;</code>.</p>
+				<p>Add <code>&lt;footer&gt;</code> tag for identifying the source. Wrap the name of the source work in <code>&lt;cite&gt;</code>.</p>
 				<div class="bs-docs-example">
 					<blockquote>
 						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-						<small>Someone famous in <cite title="Source Title">Source Title</cite></small>
+						<footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
 					</blockquote>
 				</div>
-				<pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><span class="tag">&lt;blockquote&gt;</span></li><li class="L1"><span class="pln">  </span><span class="tag">&lt;p&gt;</span><span class="pln">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</span><span class="tag">&lt;/p&gt;</span></li><li class="L2"><span class="pln">  </span><span class="tag">&lt;small&gt;</span><span class="pln">Someone famous </span><span class="tag">&lt;cite</span><span class="pln"> </span><span class="atn">title</span><span class="pun">=</span><span class="atv">"Source Title"</span><span class="tag">&gt;</span><span class="pln">Source Title</span><span class="tag">&lt;/cite&gt;&lt;/small&gt;</span></li><li class="L3"><span class="tag">&lt;/blockquote&gt;</span></li></ol></pre>
+				<pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><span class="tag">&lt;blockquote&gt;</span></li><li class="L1"><span class="pln">  </span><span class="tag">&lt;p&gt;</span><span class="pln">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</span><span class="tag">&lt;/p&gt;</span></li><li class="L2"><span class="pln">  </span><span class="tag">&lt;footer&gt;</span><span class="pln">Someone famous </span><span class="tag">&lt;cite</span><span class="pln"> </span><span class="atn">title</span><span class="pun">=</span><span class="atv">"Source Title"</span><span class="tag">&gt;</span><span class="pln">Source Title</span><span class="tag">&lt;/cite&gt;&lt;/footer&gt;</span></li><li class="L3"><span class="tag">&lt;/blockquote&gt;</span></li></ol></pre>
 
 				<h4>Alternate displays</h4>
-				<p>Use <code>.pull-right</code> for a floated, right-aligned blockquote.</p>
+				<p>Use <code>.blockquote-reverse</code>  for a blockquote with right-aligned content.</p>
 				<div class="bs-docs-example" style="overflow: hidden;">
 					<blockquote class="pull-right">
 						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
 						<small>Someone famous in <cite title="Source Title">Source Title</cite></small>
 					</blockquote>
 				</div>
-				<pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><span class="tag">&lt;blockquote</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"pull-right"</span><span class="tag">&gt;</span></li><li class="L1"><span class="pln">  ...</span></li><li class="L2"><span class="tag">&lt;/blockquote&gt;</span></li></ol></pre>
+				<pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><span class="tag">&lt;blockquote</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"blockquote-reverse"</span><span class="tag">&gt;</span></li><li class="L1"><span class="pln">  ...</span></li><li class="L2"><span class="tag">&lt;/blockquote&gt;</span></li></ol></pre>
 
 
 				<hr class="bs-docs-separator">
@@ -252,13 +252,13 @@
 				<h3>Inline</h3>
 				<p>Place all list items on a single line with <code>inline-block</code> and some light padding.</p>
 				<div class="bs-docs-example">
-					<ul class="inline">
+					<ul class="list-inline">
 						<li>Lorem ipsum</li>
 						<li>Phasellus iaculis</li>
 						<li>Nulla volutpat</li>
 					</ul>
 				</div>
-				<pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><span class="tag">&lt;ul</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"inline"</span><span class="tag">&gt;</span></li><li class="L1"><span class="pln">  </span><span class="tag">&lt;li&gt;</span><span class="pln">...</span><span class="tag">&lt;/li&gt;</span></li><li class="L2"><span class="tag">&lt;/ul&gt;</span></li></ol></pre>
+				<pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><span class="tag">&lt;ul</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"list-inline"</span><span class="tag">&gt;</span></li><li class="L1"><span class="pln">  </span><span class="tag">&lt;li&gt;</span><span class="pln">...</span><span class="tag">&lt;/li&gt;</span></li><li class="L2"><span class="tag">&lt;/ul&gt;</span></li></ol></pre>
 
 				<h3>Description</h3>
 				<p>A list of terms with their associated descriptions.</p>

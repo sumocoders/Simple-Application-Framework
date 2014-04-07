@@ -23,9 +23,9 @@
 				<p>Wrap a series of buttons with <code>.btn</code> in <code>.btn-group</code>.</p>
 				<div class="bs-docs-example">
 					<div class="btn-group" style="margin: 9px 0 5px;">
-						<button class="btn" type="button">Left</button>
-						<button class="btn" type="button">Middle</button>
-						<button class="btn" type="button">Right</button>
+						<button class="btn btn-default" type="button">Left</button>
+						<button class="btn btn-default" type="button">Middle</button>
+						<button class="btn btn-default" type="button">Right</button>
 					</div>
 				</div>
 				<pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"btn-group"</span><span class="tag">&gt;</span></li><li class="L1"><span class="pln">  </span><span class="tag">&lt;button</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"btn"</span><span class="pln"> </span><span class="atn">type</span><span class="pun">=</span><span class="atv">"button"</span><span class="tag">&gt;</span><span class="pln">Left</span><span class="tag">&lt;/button&gt;</span></li><li class="L2"><span class="pln">  </span><span class="tag">&lt;button</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"btn"</span><span class="pln"> </span><span class="atn">type</span><span class="pun">=</span><span class="atv">"button"</span><span class="tag">&gt;</span><span class="pln">Middle</span><span class="tag">&lt;/button&gt;</span></li><li class="L3"><span class="pln">  </span><span class="tag">&lt;button</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"btn"</span><span class="pln"> </span><span class="atn">type</span><span class="pun">=</span><span class="atv">"button"</span><span class="tag">&gt;</span><span class="pln">Right</span><span class="tag">&lt;/button&gt;</span></li><li class="L4"><span class="tag">&lt;/div&gt;</span></li></ol></pre>
@@ -92,6 +92,42 @@
 
 				<pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"btn-group btn-group-justified"</span><span class="tag">&gt;</span></li><li class="L1"><span class="pln">  </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"btn-group"</span><span class="tag">&gt;</span></li><li class="L2"><span class="pln">    </span><span class="tag">&lt;button</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"btn"</span><span class="tag">&gt;</span>Left<span class="tag">&lt;/button&gt;</span></li><li class="L3"><span class="pln">    </span><span class="pln">  ...</span></li><li class="L4"><span class="pln">  </span><span class="tag">&lt;/div&gt;</span></li><li class="L5"><span class="tag">&lt;/div&gt;</span></li></ol></pre>
 				<p><span class="label label-info">Heads up!</span> Justified button groups use <code>display: table-cell</code> to align them. The borders between them are doubled. In regular button-groups <code>margin-left: -1px</code> is used to stack these borders, but margin does not work with <code>display: table-cell</code>.</p>
+
+				<h3>Sizing</h3>
+				<p>Instead of applying button sizing classes to every button in a group, just add <code>.btn-group-*</code> to the <code>.btn-group</code>.</p>
+				<div class="bs-docs-example">
+			    <div role="toolbar" class="btn-toolbar">
+			      <div class="btn-group btn-group-lg">
+			        <button class="btn btn-default" type="button">Left</button>
+			        <button class="btn btn-default" type="button">Middle</button>
+			        <button class="btn btn-default" type="button">Right</button>
+			      </div>
+			    </div>
+			    <div role="toolbar" class="btn-toolbar">
+			      <div class="btn-group">
+			        <button class="btn btn-default" type="button">Left</button>
+			        <button class="btn btn-default" type="button">Middle</button>
+			        <button class="btn btn-default" type="button">Right</button>
+			      </div>
+			    </div>
+			    <div role="toolbar" class="btn-toolbar">
+			      <div class="btn-group btn-group-sm">
+			        <button class="btn btn-default" type="button">Left</button>
+			        <button class="btn btn-default" type="button">Middle</button>
+			        <button class="btn btn-default" type="button">Right</button>
+			      </div>
+			    </div>
+			    <div role="toolbar" class="btn-toolbar">
+			      <div class="btn-group btn-group-xs">
+			        <button class="btn btn-default" type="button">Left</button>
+			        <button class="btn btn-default" type="button">Middle</button>
+			        <button class="btn btn-default" type="button">Right</button>
+			      </div>
+			    </div>
+			  </div>
+
+			  <h3>Nesting</h3>
+			  <p>Place a <code>.btn-group</code> within another <code>.btn-group</code> when you want dropdown menus mixed with a series of buttons.</p>
 
 
 				<hr class="bs-docs-separator">

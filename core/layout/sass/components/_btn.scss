@@ -76,14 +76,6 @@
     }
   }
 
-  &.btn-inverse {
-    background: #373737;
-
-    &:hover {
-      background: darken(#373737, 10%);
-    }
-  }
-
   &.btn-link {
     background: none;
     color: #666;
@@ -91,24 +83,6 @@
     &:hover {
 
     }
-  }
-
-  &.btn-lg {
-    @include font-size(1.57 * $baseFont);
-    height: 50px;
-    line-height: 50px;
-  }
-
-  &.btn-sm {
-    @include font-size($baseFont);
-    line-height: 30px;
-    height: 30px;
-  }
-
-  &.btn-xs {
-    @include font-size(0.9 * $baseFont);
-    line-height: 26px;
-    height: 26px;
   }
 }
 
@@ -118,6 +92,33 @@
     margin-right: 2px;
     margin-bottom: 2px;
   }
+}
+.btn-group-lg > .btn,
+.btn-group-sm > .btn,
+.btn-group-xs > .btn {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.btn-group-lg > .btn,
+.btn.btn-lg {
+  @include font-size(1.57 * $baseFont);
+  height: 50px;
+  line-height: 50px;
+}
+
+.btn-group-sm > .btn,
+.btn.btn-sm {
+  @include font-size($baseFont);
+  line-height: 30px;
+  height: 30px;
+}
+
+.btn-group-xs > .btn,
+.btn.btn-xs {
+  @include font-size(0.9 * $baseFont);
+  line-height: 26px;
+  height: 26px;
 }
 
 .btn-group-justified > button.btn {

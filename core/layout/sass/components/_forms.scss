@@ -20,8 +20,7 @@ input[type="email"],
 input[type="url"],
 input[type="search"],
 input[type="tel"],
-input[type="color"],
-.uneditable-input {
+input[type="color"] {
   @include box-sizing(border-box);
   height: 45px;
   padding: 10px;
@@ -45,31 +44,9 @@ input[type="email"]:focus,
 input[type="url"]:focus,
 input[type="search"]:focus,
 input[type="tel"]:focus,
-input[type="color"]:focus,
-.uneditable-input:focus {
+input[type="color"]:focus {
   @include box-shadow(none);
   border: 2px solid #747e9f;
-}
-
-input[type="text"].input-xs,
-input[type="password"].input-xs,
-input[type="datetime"].input-xs,
-input[type="datetime-local"].input-xs,
-input[type="date"].input-xs,
-input[type="month"].input-xs,
-input[type="time"].input-xs,
-input[type="week"].input-xs,
-input[type="number"].input-xs,
-input[type="email"].input-xs,
-input[type="url"].input-xs,
-input[type="search"].input-xs,
-input[type="tel"].input-xs,
-input[type="color"].input-xs,
-.uneditable-input.input-xs {
-  @include font-size(11);
-  height: 26px;
-  line-height: 1.2;
-  padding: 2px 5px;
 }
 
 input[type="text"].input-sm,
@@ -85,8 +62,7 @@ input[type="email"].input-sm,
 input[type="url"].input-sm,
 input[type="search"].input-sm,
 input[type="tel"].input-sm,
-input[type="color"].input-sm,
-.uneditable-input.input-sm {
+input[type="color"].input-sm {
   @include font-size(12);
   height: 30px;
   line-height: 1.5;
@@ -106,16 +82,11 @@ input[type="email"].input-lg,
 input[type="url"].input-lg,
 input[type="search"].input-lg,
 input[type="tel"].input-lg,
-input[type="color"].input-lg,
-.uneditable-input.input-lg {
+input[type="color"].input-lg {
   @include font-size(18);
   height: 46px;
   line-height: 1.33;
   padding: 10px 16px;
-}
-
-.uneditable-input {
-  opacity: 0.5;
 }
 
 input:focus:invalid:focus {
@@ -133,12 +104,11 @@ input:focus:invalid:focus {
   }
 }
 
-label, input, button, select, textarea {
+input, button, select, textarea {
   @include line-height(21);
   font-weight: normal;
 }
 
-label.checkbox,
 .form-horizontal .checkbox {
   margin-bottom: 20px;
 }
