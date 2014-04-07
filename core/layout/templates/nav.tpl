@@ -38,6 +38,7 @@
 						<li><a href="{$var|buildurl:'forms':'example'}">Forms</a></li>
 						<li><a href="{$var|buildurl:'buttons':'example'}">Buttons</a></li>
 						<li><a href="{$var|buildurl:'images':'example'}">Images</a></li>
+						<li><a href="{$var|buildurl:'responsive-utilities':'example'}">Responsive utilities</a></li>
 						<li><a href="{$var|buildurl:'icons':'example'}">Icons by Glyphicons</a></li>
 
 						<li><a href="{$var|buildurl:'dropdowns':'example'}">Dropdowns</a></li>
@@ -52,6 +53,7 @@
 						<li><a href="{$var|buildurl:'alerts':'example'}">Alerts</a></li>
 						<li><a href="{$var|buildurl:'progress-bars':'example'}">Progress bars</a></li>
 						<li><a href="{$var|buildurl:'media-object':'example'}">Media object</a></li>
+						<li><a href="{$var|buildurl:'panels':'example'}">Panels</a></li>
 						<li><a href="{$var|buildurl:'misc':'example'}">Misc</a></li>
 					</ul>
 				</li>
