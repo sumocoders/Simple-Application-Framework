@@ -71,6 +71,18 @@
       }
     }
   }
+
+  &.alert-info {
+    background-color: #B6BCD0;
+
+    .close {
+      background-color: #8c93ab;
+
+      &:hover {
+        background-color: darken(#8c93ab, 10%);
+      }
+    }
+  }
 }
 
 // Media query min-width 767px

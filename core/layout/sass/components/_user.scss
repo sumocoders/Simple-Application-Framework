@@ -37,17 +37,15 @@
 
       .input-group-addon,
       .btn,
-      .form-control,
-      input {
+      .form-control {
         display: inline-block;
         float: none;
-        height: 45px;
-        line-height: 30px;
         vertical-align: middle;
       }
       .input-group-addon,
       .btn {
         border: none;
+        height: 46px;
         padding: 0 5px;
         width: 13.75%;
 
@@ -59,9 +57,9 @@
           @include svg-with-png-fallback(icon_lock, no-repeat #b6bcd0 center center, $dimensions: false);
         }
       }
-
-      input {
+      .form-control {
         border: 2px solid #B6BCD0;
+        @include font-size(14);
         margin-left: -4px;
       }
     }
@@ -81,13 +79,11 @@
 
       .icon {
         float: right;
-        //margin-top: 13px !important;
       }
     }
 
     button[type="submit"] {
       background: #3dae50;
-      //@include font-size(18);
       white-space: normal;
       &:hover {
         background: darken(#3dae50, 10%);

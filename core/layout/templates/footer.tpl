@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row hidden-md hidden-lg">
-	  <a href="#" class="pull-right backToTop"><i class="glyphicon glyphicon-circle-arrow-up"></i> {$msgBackToTop}</a>
+	  <a href="#" class="pull-right backToTop"><i class="fa fa-arrow-circle-up"></i> {$msgBackToTop}</a>
   </div>
 </div>
 

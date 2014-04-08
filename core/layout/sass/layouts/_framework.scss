@@ -1,7 +1,3 @@
-// Import fonts
-
-@import 'fonts:*';
-
 body {
   background: #fff;
   font-family: $opensans-regular-webfont;
@@ -11,17 +7,6 @@ body {
     background: #e4e5ec;
   }
 }
-
-// Import animation keyframes
-@import "_keyframes";
-
-/* Styling for our own jQuery UI and our plugins */
-@import "_jquery-ui-1.10.3";
-@import "_jquery_plugins";
-
-/* Styling for datagrids */
-@import "_datagrids";
-
 
 // Search auto-complete
 .ui-corner-all {
@@ -47,14 +32,6 @@ body {
     }
   }
 }
-
-// Messages
-
-.alert-info {
-  background-color: #B6BCD0;
-}
-
-
 
 #toggleTabletNavbar {
   display: none;

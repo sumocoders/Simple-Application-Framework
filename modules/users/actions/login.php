@@ -54,8 +54,8 @@ class UsersLogin extends SiteBaseAction
 		$this->frm = new SiteForm('login');
 
 		// create elements
-		$this->frm->addText('login')->setAttributes(array('type' => 'email', 'required' => null));
-		$this->frm->addPassword('password')->setAttributes(array('required' => null));
+		$this->frm->addText('login')->setAttributes(array('type' => 'email', 'required' => null, 'class' => 'form-control input-lg'));
+		$this->frm->addPassword('password')->setAttributes(array('required' => null, 'class' => 'form-control input-lg'));
 	}
 
 	/**
