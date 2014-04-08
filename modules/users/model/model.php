@@ -475,6 +475,19 @@ class User extends DefaultEntity
     {
         $this->type = (string) $type;
     }
+
+    /**
+     * Return the object as an array
+     *
+     * @return array
+     */
+    public function toArray()
+    {
+        $item = parent::toArray();
+        $item['isAdmin'] = $this->isAdmin();
+
+        return $item;
+    }
 }
 
 /**
