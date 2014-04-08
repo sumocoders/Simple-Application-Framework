@@ -490,7 +490,7 @@
 				<h3>Validation states</h3>
 				<p>Bootstrap includes validation styles for error, warning, and success states on form controls. To use, add <code>.has-warning</code>, <code>.has-error</code>, or <code>.has-success</code> to the parent element. Any <code>.control-label</code>, <code>.form-control</code>, and <code>.help-block</code> within that element will receive the validation styles.</p>
 
-				<form class="bs-docs-example form-horizontal">
+				<form class="bs-docs-example">
 					<div class="form-group has-warning">
 						<label class="control-label" for="inputWarning">Input with warning</label>
 						<input class="form-control" type="text" id="inputWarning">
@@ -537,13 +537,15 @@
 					</div>
 				</form>
 
-                <h4>tagBox</h4>
-                <form class="bs-docs-example form-horizontal">
-                    <div class="form-group">
-                        <label for="tagBox">Tags</label>
-                        <input type="text" placeholder="Tags" id="tagBox" class="form-control tag-box">
-                    </div>
-                </form>
+        <h4>tagBox</h4>
+        <form class="bs-docs-example form-horizontal">
+          <div class="form-group">
+            <label class="control-label col-xs-1" for="tagBox">Tags</label>
+            <div class="col-xs-11">
+            	<input type="text" placeholder="Tags" id="tagBox" class="form-control tag-box">
+            </div>
+          </div>
+        </form>
 			</div>
 		</section>
 	</div>

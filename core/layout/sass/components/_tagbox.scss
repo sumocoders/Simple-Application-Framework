@@ -1,0 +1,17 @@
+/**
+ * Defining tagbox
+ * States: Error, warning, succes, ...
+ */
+
+.tagsWrapper {
+  .badge {
+    font-weight: normal;
+    margin-top: 5px;
+
+    a {
+      border-bottom: none;
+      color: #fff;
+      margin-left: 2px;
+    }
+  }
+}
