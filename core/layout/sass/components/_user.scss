@@ -27,6 +27,7 @@
     .control-label {
       font-family: $opensans-bold-webfont;
       @include font-size(1.29 * $baseFont);
+      font-weight: normal;
       color: #597192;
       margin-bottom: 15px;
     }

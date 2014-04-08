@@ -16,9 +16,9 @@
 					{option:error}<div class="alert alert-error">{$errUsersForgotPasswordNoUserFound}</div>{/option:error}
 
 					<fieldset>
-						<div class="control-group{option:txtLoginError} error{/option:txtLoginError}">
+						<div class="form-group{option:txtLoginError} error{/option:txtLoginError}">
 							<label class="control-label" for="login">{$lblEmail|ucfirst}<abbr title="{$msgRequired}">*</abbr></label>
-							<div class="controls input-group">
+							<div class="input-group">
 								<div class="input-group-addon username"></div>
 								{$txtEmail} {$txtEmailError}
 							</div>

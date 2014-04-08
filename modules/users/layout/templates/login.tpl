@@ -15,17 +15,17 @@
   					{option:error}<div class="alert alert-error">{$errAuthenticationError}</div>{/option:error}
 
   					<fieldset>
-  						<div class="control-group{option:txtLoginError} error{/option:txtLoginError}">
+  						<div class="form-group{option:txtLoginError} error{/option:txtLoginError}">
   							<label class="control-label" for="login">{$lblLogin|ucfirst}<abbr title="{$msgRequired}">*</abbr></label>
-  							<div class="controls input-group">
+  							<div class="input-group">
   							  <div class="input-group-addon username"></div>
   								{$txtLogin} {$txtLoginError}
   							</div>
   						</div>
 
-  						<div class="control-group{option:txtPasswordError} error{/option:txtPasswordError}">
+  						<div class="form-group{option:txtPasswordError} error{/option:txtPasswordError}">
   							<label class="control-label" for="password">{$lblPassword|ucfirst}<abbr title="{$msgRequired}">*</abbr></label>
-  							<div class="controls input-group">
+  							<div class="input-group">
   							  <div class="input-group-addon password"></div>
   								{$txtPassword} {$txtPasswordError}
   							</div>

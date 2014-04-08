@@ -24,29 +24,21 @@
 			<div class="container">
 				{form:add}
 					<div class="form">
-						<div class="control-group{option:txtEmailError} error{/option:txtEmailError}">
+						<div class="form-group{option:txtEmailError} error{/option:txtEmailError}">
 							<label for="email" class="control-label">{$lblEmail|ucfirst}<abbr title="{$msgRequired}">*</abbr></label>
-							<div class="controls">
-								{$txtEmail} {$txtEmailError}
-							</div>
+							{$txtEmail} {$txtEmailError}
 						</div>
-						<div class="control-group{option:txtNameError} error{/option:txtNameError}">
+						<div class="form-group{option:txtNameError} error{/option:txtNameError}">
 							<label for="name" class="control-label">{$lblName|ucfirst}<abbr title="{$msgRequired}">*</abbr></label>
-							<div class="controls">
-								{$txtName} {$txtNameError}
-							</div>
+							{$txtName} {$txtNameError}
 						</div>
-						<div class="control-group{option:txtPasswordError} error{/option:txtPasswordError}">
+						<div class="form-group{option:txtPasswordError} error{/option:txtPasswordError}">
 							<label for="password" class="control-label">{$lblPassword|ucfirst}<abbr title="{$msgRequired}">*</abbr></label>
-							<div class="controls">
-								{$txtPassword} {$txtPasswordError}
-							</div>
+							{$txtPassword} {$txtPasswordError}
 						</div>
-						<div class="control-group{option:ddmTypeError} error{/option:ddmTypeError}">
+						<div class="form-group{option:ddmTypeError} error{/option:ddmTypeError}">
 							<label for="type" class="control-label">{$lblType|ucfirst}<abbr title="{$msgRequired}">*</abbr></label>
-							<div class="controls">
-								{$ddmType} {$ddmTypeError}
-							</div>
+							{$ddmType} {$ddmTypeError}
 						</div>
 
 						<div class="form-actions">

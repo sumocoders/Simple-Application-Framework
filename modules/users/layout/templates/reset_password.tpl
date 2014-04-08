@@ -16,17 +16,17 @@
 					{option:txtPasswordConfirmError}<div class="alert alert-error">{$txtPasswordConfirmError}</div>{/option:txtPasswordConfirmError}
 
 					<fieldset>
-						<div class="control-group{option:txtPasswordError} error{/option:txtPasswordError}">
+						<div class="form-group{option:txtPasswordError} error{/option:txtPasswordError}">
 							<label class="control-label" for="password">{$lblPassword|ucfirst}<abbr title="{$msgRequired}">*</abbr></label>
-							<div class="controls input-group">
+							<div class="input-group">
 								<div class="input-group-addon password"></div>
 								{$txtPassword} {$txtPasswordError}
 							</div>
 						</div>
 
-						<div class="control-group{option:txtPasswordConfirmError} error{/option:txtPasswordConfirmError}">
+						<div class="form-group{option:txtPasswordConfirmError} error{/option:txtPasswordConfirmError}">
 							<label class="control-label" for="passwordConfirm">{$lblConfirm|ucfirst}<abbr title="{$msgRequired}">*</abbr></label>
-							<div class="controls input-group">
+							<div class="input-group">
 								<div class="input-group-addon password"></div>
 								{$txtPasswordConfirm} {$txtPasswordConfirmError}
 							</div>
