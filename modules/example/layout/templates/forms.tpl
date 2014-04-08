@@ -518,21 +518,21 @@
 						<label class="control-label col-xs-3" for="inputWarning">Input with warning</label>
 						<div class="col-xs-9">
 							<input class="form-control" type="text" id="inputWarning">
-							<span class="glyphicon glyphicon-warning-sign form-control-feedback"></span>
+							<span class="fa fa-warning form-control-feedback"></span>
 						</div>
 					</div>
 					<div class="form-group has-error has-feedback">
 						<label class="control-label col-xs-3" for="inputError">Input with error</label>
 						<div class="col-xs-9">
 							<input class="form-control" type="text" id="inputError">
-							<span class="glyphicon glyphicon-remove form-control-feedback"></span>
+							<span class="fa fa-times form-control-feedback"></span>
 						</div>
 					</div>
 					<div class="form-group has-success has-feedback">
 						<label class="control-label col-xs-3" for="inputSuccess">Input with success</label>
 						<div class="col-xs-9">
 							<input class="form-control" type="text" id="inputSuccess">
-							<span class="glyphicon glyphicon-ok form-control-feedback"></span>
+							<span class="fa fa-check form-control-feedback"></span>
 						</div>
 					</div>
 				</form>

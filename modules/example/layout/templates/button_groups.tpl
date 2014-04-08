@@ -56,10 +56,10 @@
 				<p>Make a set of buttons appear vertically stacked rather than horizontally.</p>
 				<div class="bs-docs-example">
 					<div class="btn-group btn-group-vertical">
-						<button type="button" class="btn" type="button"><i class="glyphicon glyphicon-align-left"></i></button>
-						<button type="button" class="btn" type="button"><i class="glyphicon glyphicon-align-center"></i></button>
-						<button type="button" class="btn" type="button"><i class="glyphicon glyphicon-align-right"></i></button>
-						<button type="button" class="btn" type="button"><i class="glyphicon glyphicon-align-justify"></i></button>
+						<button type="button" class="btn" type="button"><i class="fa fa-align-left"></i></button>
+						<button type="button" class="btn" type="button"><i class="fa fa-align-center"></i></button>
+						<button type="button" class="btn" type="button"><i class="fa fa-align-right"></i></button>
+						<button type="button" class="btn" type="button"><i class="fa fa-align-justify"></i></button>
 					</div>
 				</div>
 				<pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"btn-group btn-group-vertical"</span><span class="tag">&gt;</span></li><li class="L1"><span class="pln">  ...</span></li><li class="L2"><span class="tag">&lt;/div&gt;</span></li></ol></pre>

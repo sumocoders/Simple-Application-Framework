@@ -263,7 +263,7 @@
       // build the list
       function build() {
         var html = '';
-        if(elements.length == 0 && options.emptyMessage != '') html = '<span class="muted">' + options.emptyMessage + '</span>';
+        if(elements.length == 0 && options.emptyMessage != '') html = '<span class="text-muted">' + options.emptyMessage + '</span>';
         else {
           for(var i in elements) {
             html += '	<span class="badge">' +
