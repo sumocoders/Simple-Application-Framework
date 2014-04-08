@@ -118,16 +118,16 @@
 				<h3>Button element</h3>
 				<p>Add the <code>disabled</code> attribute to <code>&lt;button&gt;</code> buttons.</p>
 				<p class="bs-docs-example">
-					<button type="button" class="btn btn-lg btn-primary disabled" disabled="disabled">Primary button</button>
-					<button type="button" class="btn btn-default btn-lg" disabled="">Button</button>
+					<button type="button" class="btn btn-lg btn-primary" disabled="disabled">Primary button</button>
+					<button type="button" class="btn btn-default btn-lg" disabled="disabled">Button</button>
 				</p>
-				<pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><span class="tag">&lt;button</span><span class="pln"> </span><span class="atn">type</span><span class="pun">=</span><span class="atv">"button"</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"btn btn-lg btn-primary disabled"</span><span class="pln"> </span><span class="atn">disabled</span><span class="pun">=</span><span class="atv">"disabled"</span><span class="tag">&gt;</span><span class="pln">Primary button</span><span class="tag">&lt;/button&gt;</span></li><li class="L1"><span class="tag">&lt;button</span><span class="pln"> </span><span class="atn">type</span><span class="pun">=</span><span class="atv">"button"</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"btn btn-default btn-lg"</span><span class="pln"> </span><span class="atn">disabled</span><span class="tag">&gt;</span><span class="pln">Button</span><span class="tag">&lt;/button&gt;</span></li></ol></pre>
+				<pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><span class="tag">&lt;button</span><span class="pln"> </span><span class="atn">type</span><span class="pun">=</span><span class="atv">"button"</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"btn btn-lg btn-primary"</span><span class="pln"> </span><span class="atn">disabled</span><span class="pun">=</span><span class="atv">"disabled"</span><span class="tag">&gt;</span><span class="pln">Primary button</span><span class="tag">&lt;/button&gt;</span></li><li class="L1"><span class="tag">&lt;button</span><span class="pln"> </span><span class="atn">type</span><span class="pun">=</span><span class="atv">"button"</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"btn btn-default btn-lg"</span><span class="pln"> </span><span class="atn">disabled</span><span class="pun">=</span><span class="atv">"disabled"</span><span class="tag">&gt;</span><span class="pln">Button</span><span class="tag">&lt;/button&gt;</span></li></ol></pre>
 
 
 				<h2>One class, multiple tags</h2>
 				<p>Use the <code>.btn</code> class on an <code>&lt;a&gt;</code>, <code>&lt;button&gt;</code>, or <code>&lt;input&gt;</code> element.</p>
 				<form class="bs-docs-example">
-					<a class="btn" href="">Link</a>
+					<a class="btn btn-default" href="">Link</a>
 					<button class="btn btn-default" type="submit">Button</button>
 					<input class="btn btn-default" type="button" value="Input">
 					<input class="btn btn-default" type="submit" value="Submit">

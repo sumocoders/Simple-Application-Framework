@@ -32,7 +32,7 @@
 							</div>
 						</div>
 
-						<button type="submit" class="btn btn-primary btn-block">{$lblSend|ucfirst}<i class="icon iconArrowWhiteRight"></i></button>
+						<button type="submit" class="btn btn-lg btn-block">{$lblSend|ucfirst}<i class="icon iconArrowWhiteRight"></i></button>
 					</fieldset>
 				{/form:resetPassword}
 			</div>

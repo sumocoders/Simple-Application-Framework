@@ -67,9 +67,10 @@
 
     input[type="password"],
     input[type="email"] {
-      width: 86.25%;
-      @include border-radius(0 4px 4px 0);
       -webkit-appearance: none;
+      @include border-radius(0 4px 4px 0);
+      padding: 10px;
+      width: 86.25%;
     }
 
     .btn {
@@ -80,13 +81,17 @@
 
       .icon {
         float: right;
-        margin-top: 13px !important;
+        //margin-top: 13px !important;
       }
     }
 
     button[type="submit"] {
-      @include font-size(18);
+      background: #3dae50;
+      //@include font-size(18);
       white-space: normal;
+      &:hover {
+        background: darken(#3dae50, 10%);
+      }
     }
 
     .alert {

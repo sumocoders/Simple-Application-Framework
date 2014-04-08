@@ -1,8 +1,7 @@
 <nav id="navbar" role="navigation">
 	<a href="/" rel="home" class="logo hidden-xs">{$SITE_DEFAULT_TITLE}</a>
 
-	{* @todo mathias twee keer zelfde id mag niet he *}
-	<div class="mobile searchBox" role="search">
+	<div class="searchBox" role="search">
 		<form action="#">
 			<div class="controls">
 				<input id="searchQuery" name="q" type="search" placeholder="{$lblSearch|ucfirst}" class="form-control">
@@ -64,7 +63,7 @@
 			{/option:currentUser.isAdmin}
 		</ul>
 	</div>
-	<div class="desktop searchBox" role="search">
+	<!-- <div class="desktop searchBox" role="search">
 		<form action="#" data-form-class="SearchForm">
 			<div class="controls">
 				<input id="searchQuery" name="q" type="search" placeholder="{$lblSearch|ucfirst}" class="form-control">
@@ -74,6 +73,6 @@
 				</button>
 			</div>
 		</form>
-	</div>
+	</div> -->
 </nav>
 <a href="#" id="toggleTabletNavbar">{$lblMenu|uppercase}</a>
