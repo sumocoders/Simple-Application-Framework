@@ -536,6 +536,14 @@
 						</div>
 					</div>
 				</form>
+
+                <h4>tagBox</h4>
+                <form class="bs-docs-example form-horizontal">
+                    <div class="form-group">
+                        <label for="tagBox">Tags</label>
+                        <input type="text" placeholder="Tags" id="tagBox" class="form-control tag-box">
+                    </div>
+                </form>
 			</div>
 		</section>
 	</div>
