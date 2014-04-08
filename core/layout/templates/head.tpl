@@ -53,6 +53,7 @@
 	</script>
 	<script src="/core/js/jquery.js?m={$LAST_MODIFIED}"></script>
 	<script src="/core/js/bootstrap.min.js?m={$LAST_MODIFIED}"></script>
+    <script src="/core/js/typeahead.js?m={$LAST_MODIFIED}"></script>
 	<script src="/core/js/sumo_plugins.js?m={$LAST_MODIFIED}"></script>
 	<script src="/core/js/framework.data.js?m={$LAST_MODIFIED}"></script>
 	<script src="/core/js/framework.locale.js?m={$LAST_MODIFIED}"></script>

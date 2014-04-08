@@ -21,7 +21,7 @@
 				<div class="control-group">
 					<label for="reportBugDescription" class="control-label">{$lblDescription|ucfirst}<abbr title="{$msgRequired}">*</abbr></label>
 					<div class="controls">
-						<textarea id="reportBugDescription" class="input-xlarge" name="reportBugDescription" rows="6" cols="80"></textarea>
+						<textarea id="reportBugDescription" class="input-xlarge form-control" name="reportBugDescription" rows="6" cols="80"></textarea>
 						<span id="reportBugDescriptionError" class="formError" style="display: none;">{$errFieldIsRequired}</span>
 					</div>
 				</div>

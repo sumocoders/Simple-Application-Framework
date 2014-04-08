@@ -40,6 +40,25 @@ class SiteForm extends SpoonForm
 		return $this->getField($name);
 	}
 
+    /**
+     * Adds a single datefield.
+     *
+     * @return	SpoonFormDate
+     * @param	string $name					The name.
+     * @param	string[optional] $value			The initial value.
+     * @param	string[optional] $mask			The mask to use.
+     * @param	string[optional] $class			The CSS-class to be used.
+     * @param	string[optional] $classError	The CSS-class to be used when there is an error.
+     */
+    public function addDate($name, $value = null, $mask = null, $class = 'inputDate form-control', $classError = 'inputDateError')
+    {
+        // add element
+        $this->add(new SpoonFormDate($name, $value, $mask, $class, $classError));
+
+        // return element
+        return $this->getField($name);
+    }
+
 	/**
 	 * Adds a single dropdown.
 	 *
@@ -51,7 +70,7 @@ class SiteForm extends SpoonForm
 	 * @param	string[optional] $class				The CSS-class to be used.
 	 * @param	string[optional] $classError		The CSS-class to be used when there is an error.
 	 */
-	public function addDropdown($name, array $values = null, $selected = null, $multipleSelection = false, $class = 'inputDropdown', $classError = 'inputDropdownError')
+	public function addDropdown($name, array $values = null, $selected = null, $multipleSelection = false, $class = 'inputDropdown form-control', $classError = 'inputDropdownError')
 	{
 		// add element
 		$this->add(new SiteFormDropdown($name, $values, $selected, $multipleSelection, $class, $classError));
@@ -101,6 +120,83 @@ class SiteForm extends SpoonForm
     ) {
         $this->add(new SiteFormMaps($name, $center, $zoom, $markers, $multipleMarkers, $centerMarkers, $width, $height));
 
+        return $this->getField($name);
+    }
+
+    /**
+     * Adds a single password field.
+     *
+     * @return	SpoonFormPassword
+     * @param	string $name					The name.
+     * @param	string[optional] $value			The initial value.
+     * @param	int[optional] $maxlength		The maximum-length the value can be.
+     * @param	string[optional] $class			The CSS-class to be used.
+     * @param	string[optional] $classError	The CSS-class to be used when there is an error.
+     * @param	bool[optional] $HTML			Is HTML allowed?
+     */
+    public function addPassword($name, $value = null, $maxlength = null, $class = 'inputPassword form-control', $classError = 'inputPasswordError', $HTML = false)
+    {
+        // add element
+        $this->add(new SpoonFormPassword($name, $value, $maxlength, $class, $classError, $HTML));
+
+        // return element
+        return $this->getField($name);
+    }
+
+    /**
+     * Adds a single textfield.
+     *
+     * @return	SpoonFormText
+     * @param	string $name					The name.
+     * @param	string[optional] $value			The initial value.
+     * @param	int[optional] $maxlength		The maximum-length the value can be.
+     * @param	string[optional] $class			The CSS-class to be used.
+     * @param	string[optional] $classError	The CSS-class to be used when there is an error.
+     * @param	bool[optional] $HTML			Is HTML allowed?
+     */
+    public function addText($name, $value = null, $maxlength = null, $class = 'inputText form-control', $classError = 'inputTextError', $HTML = false)
+    {
+        // add element
+        $this->add(new SpoonFormText($name, $value, $maxlength, $class, $classError, $HTML));
+
+        // return element
+        return $this->getField($name);
+    }
+
+    /**
+     * Adds a single textarea.
+     *
+     * @return	SpoonFormTextarea
+     * @param	string $name					The name.
+     * @param	string[optional] $value			The initial value.
+     * @param	string[optional] $class			The CSS-class to be used.
+     * @param	string[optional] $classError	The CSS-class to be used when there is an error.
+     * @param	bool[optional] $HTML			Is HTML allowed?
+     */
+    public function addTextarea($name, $value = null, $class = 'inputTextarea form-control', $classError = 'inputTextareaError', $HTML = false)
+    {
+        // add element
+        $this->add(new SpoonFormTextarea($name, $value, $class, $classError, $HTML));
+
+        // return element
+        return $this->getField($name);
+    }
+
+    /**
+     * Adds a single timefield.
+     *
+     * @return	SpoonFormTime
+     * @param	string $name					The name.
+     * @param	string[optional] $value			The initial value.
+     * @param	string[optional] $class			The CSS-class to be used.
+     * @param	string[optional] $classError	The CSS-class to be used when there is an error.
+     */
+    public function addTime($name, $value = null, $class = 'inputTime form-control', $classError = 'inputTimeError')
+    {
+        // add element
+        $this->add(new SpoonFormTime($name, $value, $class, $classError));
+
+        // return element
         return $this->getField($name);
     }
     
