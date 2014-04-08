@@ -43,7 +43,7 @@
 						<p>
 							<a href="#url-off-the-form" class="btn btn-danger confirmPostForm"
 								data-field-form="delete" data-field-form-id="1" data-message="{$msgAreYouSure}">
-								<i class="icon-trash icon-white"></i>&nbsp;&nbsp;{$lblDelete|ucfirst}
+								<i class="glyphicon glyphicon-remove"></i>&nbsp;&nbsp;{$lblDelete|ucfirst}
 							</a>
 						</p>
 					</div>

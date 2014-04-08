@@ -38,8 +38,8 @@
       .btn,
       .form-control,
       input {
-        @include box-sizing(border-box);
         display: inline-block;
+        float: none;
         height: 45px;
         line-height: 30px;
         vertical-align: middle;
@@ -65,8 +65,7 @@
       }
     }
 
-    input[type="password"],
-    input[type="email"] {
+    .form-control {
       -webkit-appearance: none;
       @include border-radius(0 4px 4px 0);
       padding: 10px;
