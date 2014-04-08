@@ -6,7 +6,7 @@
 		<header id="header" role="banner">
 			<div class="container bar">
 				<div class="title">
-					<a id="toggleMenu" class="visible-phone iconLink" href="#">{$lblMenu|uppercase}</a>
+					<a id="toggleMenu" class="visible-xs iconLink" href="#">{$lblMenu|uppercase}</a>
 					<h2>Typography</h2>
 				</div>
 			</div>
@@ -229,7 +229,7 @@
 				<h3>Unstyled</h3>
 				<p>Remove the default <code>list-style</code> and left padding on list items (immediate children only).</p>
 				<div class="bs-docs-example">
-					<ul class="unstyled">
+					<ul class="list-unstyled">
 						<li>Lorem ipsum dolor sit amet</li>
 						<li>Consectetur adipiscing elit</li>
 						<li>Integer molestie lorem at massa</li>
@@ -247,7 +247,7 @@
 						<li>Eget porttitor lorem</li>
 					</ul>
 				</div>
-				<pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><span class="tag">&lt;ul</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"unstyled"</span><span class="tag">&gt;</span></li><li class="L1"><span class="pln">  </span><span class="tag">&lt;li&gt;</span><span class="pln">...</span><span class="tag">&lt;/li&gt;</span></li><li class="L2"><span class="tag">&lt;/ul&gt;</span></li></ol></pre>
+				<pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><span class="tag">&lt;ul</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"list-unstyled"</span><span class="tag">&gt;</span></li><li class="L1"><span class="pln">  </span><span class="tag">&lt;li&gt;</span><span class="pln">...</span><span class="tag">&lt;/li&gt;</span></li><li class="L2"><span class="tag">&lt;/ul&gt;</span></li></ol></pre>
 
 				<h3>Inline</h3>
 				<p>Place all list items on a single line with <code>inline-block</code> and some light padding.</p>

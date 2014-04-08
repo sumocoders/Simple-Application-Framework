@@ -2,8 +2,8 @@
 
 	<div class="container">
 		<section id="{$MODULE}" class="{$ACTION}">
-		  <div class="row-fluid">
-  			<div class="span12">
+		  <div class="row">
+  			<div class="col-xs-12">
   				<header class="header hide">
   					<h2>{$msgUsersLogin}</h2>
   				</header>

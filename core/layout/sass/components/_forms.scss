@@ -7,90 +7,33 @@ label abbr[title], label abbr[data-original-title] {
   border: none;
 }
 
-// input[type="text"],
-// input[type="password"],
-// input[type="datetime"],
-// input[type="datetime-local"],
-// input[type="date"],
-// input[type="month"],
-// input[type="time"],
-// input[type="week"],
-// input[type="number"],
-// input[type="email"],
-// input[type="url"],
-// input[type="search"],
-// input[type="tel"],
-// input[type="color"],
 .form-control {
-  @include box-sizing(border-box);
-  height: 45px;
-  padding: 10px;
-  @include box-shadow(none);
-  border: 2px solid #b6bcd0;
   background: #f8f9fc;
-  width: 220px;
-  max-width: 100%;
+  @include box-shadow(none);
+  //height: 45px;
+  //padding: 10px;
+  //border: 2px solid #b6bcd0;
+  //width: 220px;
+  //max-width: 100%;
 }
 
-// input[type="text"]:focus,
-// input[type="password"]:focus,
-// input[type="datetime"]:focus,
-// input[type="datetime-local"]:focus,
-// input[type="date"]:focus,
-// input[type="month"]:focus,
-// input[type="time"]:focus,
-// input[type="week"]:focus,
-// input[type="number"]:focus,
-// input[type="email"]:focus,
-// input[type="url"]:focus,
-// input[type="search"]:focus,
-// input[type="tel"]:focus,
-// input[type="color"]:focus,
 .form-control:focus {
   @include box-shadow(none);
   border: 2px solid #747e9f;
 }
 
-// input[type="text"].input-sm,
-// input[type="password"].input-sm,
-// input[type="datetime"].input-sm,
-// input[type="datetime-local"].input-sm,
-// input[type="date"].input-sm,
-// input[type="month"].input-sm,
-// input[type="time"].input-sm,
-// input[type="week"].input-sm,
-// input[type="number"].input-sm,
-// input[type="email"].input-sm,
-// input[type="url"].input-sm,
-// input[type="search"].input-sm,
-// input[type="tel"].input-sm,
-// input[type="color"].input-sm,
 .form-control.input-sm {
   @include font-size(12);
-  height: 30px;
-  line-height: 1.5;
-  padding: 5px 10px;
+  // height: 30px;
+  // line-height: 1.5;
+  // padding: 5px 10px;
 }
 
-// input[type="text"].input-lg,
-// input[type="password"].input-lg,
-// input[type="datetime"].input-lg,
-// input[type="datetime-local"].input-lg,
-// input[type="date"].input-lg,
-// input[type="month"].input-lg,
-// input[type="time"].input-lg,
-// input[type="week"].input-lg,
-// input[type="number"].input-lg,
-// input[type="email"].input-lg,
-// input[type="url"].input-lg,
-// input[type="search"].input-lg,
-// input[type="tel"].input-lg,
-// input[type="color"].input-lg,
 .form-control.input-lg {
   @include font-size(18);
-  height: 46px;
-  line-height: 1.33;
-  padding: 10px 16px;
+  // height: 46px;
+  // line-height: 1.33;
+  // padding: 10px 16px;
 }
 
 input:focus:invalid:focus {
@@ -104,7 +47,7 @@ input:focus:invalid:focus {
 .form-horizontal {
 
   .control-label {
-    padding-top: 12px;
+    //padding-top: 12px;
   }
 }
 

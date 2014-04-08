@@ -6,7 +6,7 @@
 		<header id="header" role="banner">
 			<div class="container bar">
 				<div class="title">
-					<a id="toggleMenu" class="visible-phone iconLink" href="#">{$lblMenu|uppercase}</a>
+					<a id="toggleMenu" class="visible-xs iconLink" href="#">{$lblMenu|uppercase}</a>
 					<h2>Dropdown menus</h2>
 				</div>
 			</div>
@@ -67,7 +67,7 @@
 				<!--<div class="bs-docs-example bs-docs-example-submenus clearfix">-->
 
 					<!-- <div class="pull-left">
-						<p class="muted">Default</p>
+						<p class="text-muted">Default</p>
 						<div class="dropdown clearfix">
 							<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display: block; position: static; margin-bottom: 5px;">
 								<li><a tabindex="-1" href="#">Action</a></li>
@@ -89,7 +89,7 @@
 					</div>
 
 					<div class="pull-left">
-						<p class="muted">Dropup</p>
+						<p class="text-muted">Dropup</p>
 						<div class="dropup">
 							<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display: block; position: static; margin-bottom: 5px;">
 								<li><a tabindex="-1" href="#">Action</a></li>
@@ -111,7 +111,7 @@
 					</div>
 
 					<div class="pull-left">
-						<p class="muted">Left submenu</p>
+						<p class="text-muted">Left submenu</p>
 						<div class="dropdown">
 							<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display: block; position: static; margin-bottom: 5px;">
 								<li><a tabindex="-1" href="#">Action</a></li>

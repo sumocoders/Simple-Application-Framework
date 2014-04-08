@@ -6,7 +6,7 @@
 		<header id="header" role="banner">
 			<div class="container bar">
 				<div class="title">
-					<a id="toggleMenu" class="visible-phone iconLink" href="#">{$lblMenu|uppercase}</a>
+					<a id="toggleMenu" class="visible-xs iconLink" href="#">{$lblMenu|uppercase}</a>
 					<h2>Tables</h2>
 				</div>
 			</div>
@@ -213,8 +213,8 @@
 				<p>Use contextual classes to color table rows.</p>
 				<table class="table table-bordered table-striped">
 					<colgroup>
-						<col class="span1">
-						<col class="span7">
+						<col class="col-xs-1">
+						<col class="col-xs-7">
 					</colgroup>
 					<thead>
 					<tr>
@@ -372,8 +372,8 @@
 				<p>List of supported table HTML elements and how they should be used.</p>
 				<table class="table table-bordered table-striped">
 					<colgroup>
-						<col class="span1">
-						<col class="span7">
+						<col class="col-xs-1">
+						<col class="col-xs-7">
 					</colgroup>
 					<thead>
 					<tr>

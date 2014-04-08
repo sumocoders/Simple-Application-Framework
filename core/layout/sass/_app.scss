@@ -54,7 +54,7 @@ body {
   background-color: #B6BCD0;
 }
 
-#searchBox {
+.searchBox {
   position: relative;
 
   &.mobile {
@@ -349,7 +349,7 @@ body {
     padding: 0;
   }
 
-  #searchBox {
+  .searchBox {
     width: 265px;
 
     #searchQuery {
@@ -503,7 +503,7 @@ body {
     display: none;
   }
 
-  #searchBox {
+  .searchBox {
     position: fixed;
     bottom: 0;
 

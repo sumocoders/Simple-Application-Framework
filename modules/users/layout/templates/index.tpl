@@ -6,11 +6,11 @@
 		<header id="header" role="banner">
 			<div class="container">
 				<div class="title">
-					<a id="toggleMenu" class="visible-phone iconLink" href="#">{$lblMenu|uppercase}</a>
+					<a id="toggleMenu" class="visible-xs iconLink" href="#">{$lblMenu|uppercase}</a>
 					<h2>{$lblUsers|ucfirst}</h2>
 				</div>
 				<div class="actions">
-					<a href="#" class="dropdownToggle visible-phone" data-toggle="dropdownItems">{$lblActions|ucfirst}</a>
+					<a href="#" class="dropdownToggle visible-xs" data-toggle="dropdownItems">{$lblActions|ucfirst}</a>
 					<ul class="dropdownItems">
 						<li><a class="iconAdd" href="{$var|buildurl:'add':'users'}">{$lblAdd|ucfirst}</a></li>
 					</ul>

@@ -61,12 +61,7 @@ dl {
 }
 
 // Media query min-width 767px
-@media screen and (min-width: 767px) {
-  // Responsive menu item
-  .visible-phone {
-    display: none !important;
-  }
-}
+@media screen and (min-width: 767px) {}
 
 // Media query min-width 1025px
 @media screen and (min-width: 1025px) {}
