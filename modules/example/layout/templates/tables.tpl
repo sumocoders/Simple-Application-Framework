@@ -21,32 +21,32 @@
 				<div class="bs-docs-example">
 					<table class="table">
 						<thead>
-						<tr>
-							<th>#</th>
-							<th>First Name</th>
-							<th>Last Name</th>
-							<th>Username</th>
-						</tr>
-						</thead>
-						<tbody>
-						<tr>
-							<td>1</td>
-							<td>Mark</td>
-							<td>Otto</td>
-							<td>@mdo</td>
-						</tr>
-						<tr>
-							<td>2</td>
-							<td>Jacob</td>
-							<td>Thornton</td>
-							<td>@fat</td>
-						</tr>
-						<tr>
-							<td>3</td>
-							<td>Larry</td>
-							<td>the Bird</td>
-							<td>@twitter</td>
-						</tr>
+    						<tr>
+    							<th>#</th>
+    							<th>First Name</th>
+    							<th>Last Name</th>
+    							<th>Username</th>
+    						</tr>
+    					</thead>
+    					<tbody>
+    						<tr>
+    							<td>1</td>
+    							<td>Mark</td>
+    							<td>Otto</td>
+    							<td>@mdo</td>
+    						</tr>
+    						<tr>
+    							<td>2</td>
+    							<td>Jacob</td>
+    							<td>Thornton</td>
+    							<td>@fat</td>
+    						</tr>
+    						<tr>
+    							<td>3</td>
+    							<td>Larry</td>
+    							<td>the Bird</td>
+    							<td>@twitter</td>
+    						</tr>
 						</tbody>
 					</table>
 				</div>
@@ -64,32 +64,32 @@
 				<div class="bs-docs-example">
 					<table class="table table-striped">
 						<thead>
-						<tr>
-							<th>#</th>
-							<th>First Name</th>
-							<th>Last Name</th>
-							<th>Username</th>
-						</tr>
+    						<tr>
+    							<th>#</th>
+    							<th>First Name</th>
+    							<th>Last Name</th>
+    							<th>Username</th>
+    						</tr>
 						</thead>
 						<tbody>
-						<tr>
-							<td>1</td>
-							<td>Mark</td>
-							<td>Otto</td>
-							<td>@mdo</td>
-						</tr>
-						<tr>
-							<td>2</td>
-							<td>Jacob</td>
-							<td>Thornton</td>
-							<td>@fat</td>
-						</tr>
-						<tr>
-							<td>3</td>
-							<td>Larry</td>
-							<td>the Bird</td>
-							<td>@twitter</td>
-						</tr>
+    						<tr>
+    							<td>1</td>
+    							<td>Mark</td>
+    							<td>Otto</td>
+    							<td>@mdo</td>
+    						</tr>
+    						<tr>
+    							<td>2</td>
+    							<td>Jacob</td>
+    							<td>Thornton</td>
+    							<td>@fat</td>
+    						</tr>
+    						<tr>
+    							<td>3</td>
+    							<td>Larry</td>
+    							<td>the Bird</td>
+    							<td>@twitter</td>
+    						</tr>
 						</tbody>
 					</table>
 				</div>
@@ -100,36 +100,36 @@
 				<div class="bs-docs-example">
 					<table class="table table-bordered">
 						<thead>
-						<tr>
-							<th>#</th>
-							<th>First Name</th>
-							<th>Last Name</th>
-							<th>Username</th>
-						</tr>
+    						<tr>
+    							<th>#</th>
+    							<th>First Name</th>
+    							<th>Last Name</th>
+    							<th>Username</th>
+    						</tr>
 						</thead>
 						<tbody>
-						<tr>
-							<td rowspan="2">1</td>
-							<td>Mark</td>
-							<td>Otto</td>
-							<td>@mdo</td>
-						</tr>
-						<tr>
-							<td>Mark</td>
-							<td>Otto</td>
-							<td>@TwBootstrap</td>
-						</tr>
-						<tr>
-							<td>2</td>
-							<td>Jacob</td>
-							<td>Thornton</td>
-							<td>@fat</td>
-						</tr>
-						<tr>
-							<td>3</td>
-							<td colspan="2">Larry the Bird</td>
-							<td>@twitter</td>
-						</tr>
+    						<tr>
+    							<td rowspan="2">1</td>
+    							<td>Mark</td>
+    							<td>Otto</td>
+    							<td>@mdo</td>
+    						</tr>
+    						<tr>
+    							<td>Mark</td>
+    							<td>Otto</td>
+    							<td>@TwBootstrap</td>
+    						</tr>
+    						<tr>
+    							<td>2</td>
+    							<td>Jacob</td>
+    							<td>Thornton</td>
+    							<td>@fat</td>
+    						</tr>
+    						<tr>
+    							<td>3</td>
+    							<td colspan="2">Larry the Bird</td>
+    							<td>@twitter</td>
+    						</tr>
 						</tbody>
 					</table>
 				</div>
@@ -140,31 +140,31 @@
 				<div class="bs-docs-example">
 					<table class="table table-hover">
 						<thead>
-						<tr>
-							<th>#</th>
-							<th>First Name</th>
-							<th>Last Name</th>
-							<th>Username</th>
-						</tr>
+    						<tr>
+    							<th>#</th>
+    							<th>First Name</th>
+    							<th>Last Name</th>
+    							<th>Username</th>
+    						</tr>
 						</thead>
 						<tbody>
-						<tr>
-							<td>1</td>
-							<td>Mark</td>
-							<td>Otto</td>
-							<td>@mdo</td>
-						</tr>
-						<tr>
-							<td>2</td>
-							<td>Jacob</td>
-							<td>Thornton</td>
-							<td>@fat</td>
-						</tr>
-						<tr>
-							<td>3</td>
-							<td colspan="2">Larry the Bird</td>
-							<td>@twitter</td>
-						</tr>
+    						<tr>
+    							<td>1</td>
+    							<td>Mark</td>
+    							<td>Otto</td>
+    							<td>@mdo</td>
+    						</tr>
+    						<tr>
+    							<td>2</td>
+    							<td>Jacob</td>
+    							<td>Thornton</td>
+    							<td>@fat</td>
+    						</tr>
+    						<tr>
+    							<td>3</td>
+    							<td colspan="2">Larry the Bird</td>
+    							<td>@twitter</td>
+    						</tr>
 						</tbody>
 					</table>
 				</div>
@@ -175,31 +175,31 @@
 				<div class="bs-docs-example">
 					<table class="table table-condensed">
 						<thead>
-						<tr>
-							<th>#</th>
-							<th>First Name</th>
-							<th>Last Name</th>
-							<th>Username</th>
-						</tr>
+    						<tr>
+    							<th>#</th>
+    							<th>First Name</th>
+    							<th>Last Name</th>
+    							<th>Username</th>
+    						</tr>
 						</thead>
 						<tbody>
-						<tr>
-							<td>1</td>
-							<td>Mark</td>
-							<td>Otto</td>
-							<td>@mdo</td>
-						</tr>
-						<tr>
-							<td>2</td>
-							<td>Jacob</td>
-							<td>Thornton</td>
-							<td>@fat</td>
-						</tr>
-						<tr>
-							<td>3</td>
-							<td colspan="2">Larry the Bird</td>
-							<td>@twitter</td>
-						</tr>
+    						<tr>
+    							<td>1</td>
+    							<td>Mark</td>
+    							<td>Otto</td>
+    							<td>@mdo</td>
+    						</tr>
+    						<tr>
+    							<td>2</td>
+    							<td>Jacob</td>
+    							<td>Thornton</td>
+    							<td>@fat</td>
+    						</tr>
+    						<tr>
+    							<td>3</td>
+    							<td colspan="2">Larry the Bird</td>
+    							<td>@twitter</td>
+    						</tr>
 						</tbody>
 					</table>
 				</div>
@@ -217,97 +217,97 @@
 						<col class="col-xs-7">
 					</colgroup>
 					<thead>
-					<tr>
-						<th>Class</th>
-						<th>Description</th>
-					</tr>
+    					<tr>
+    						<th>Class</th>
+    						<th>Description</th>
+    					</tr>
 					</thead>
 					<tbody>
-					<tr>
-						<td>
-							<code>.active</code>
-						</td>
-						<td>Applies the hover color to a particular row or cell.</td>
-					</tr>
-					<tr>
-						<td>
-							<code>.success</code>
-						</td>
-						<td>Indicates a successful or positive action.</td>
-					</tr>
-					<tr>
-						<td>
-							<code>.error</code>
-						</td>
-						<td>Indicates a dangerous or potentially negative action.</td>
-					</tr>
-					<tr>
-						<td>
-							<code>.warning</code>
-						</td>
-						<td>Indicates a warning that might need attention.</td>
-					</tr>
-					<tr>
-						<td>
-							<code>.danger</code>
-						</td>
-						<td>Indicates a dangerous or potentially negative action.</td>
-					</tr>
-					<tr>
-						<td>
-							<code>.info</code>
-						</td>
-						<td>Used as an alternative to the default styles.</td>
-					</tr>
+    					<tr>
+    						<td>
+    							<code>.active</code>
+    						</td>
+    						<td>Applies the hover color to a particular row or cell.</td>
+    					</tr>
+    					<tr>
+    						<td>
+    							<code>.success</code>
+    						</td>
+    						<td>Indicates a successful or positive action.</td>
+    					</tr>
+    					<tr>
+    						<td>
+    							<code>.error</code>
+    						</td>
+    						<td>Indicates a dangerous or potentially negative action.</td>
+    					</tr>
+    					<tr>
+    						<td>
+    							<code>.warning</code>
+    						</td>
+    						<td>Indicates a warning that might need attention.</td>
+    					</tr>
+    					<tr>
+    						<td>
+    							<code>.danger</code>
+    						</td>
+    						<td>Indicates a dangerous or potentially negative action.</td>
+    					</tr>
+    					<tr>
+    						<td>
+    							<code>.info</code>
+    						</td>
+    						<td>Used as an alternative to the default styles.</td>
+    					</tr>
 					</tbody>
 				</table>
 				<div class="bs-docs-example">
 					<table class="table">
 						<thead>
-						<tr>
-							<th>#</th>
-							<th>Product</th>
-							<th>Payment Taken</th>
-							<th>Status</th>
-						</tr>
+    						<tr>
+    							<th>#</th>
+    							<th>Product</th>
+    							<th>Payment Taken</th>
+    							<th>Status</th>
+    						</tr>
 						</thead>
 						<tbody>
-						<tr class="active">
-							<td>1</td>
-							<td>TB - Monthly</td>
-							<td>01/04/2012</td>
-							<td>Approved</td>
-						</tr>
-						<tr class="success">
-							<td>1</td>
-							<td>TB - Monthly</td>
-							<td>01/04/2012</td>
-							<td>Approved</td>
-						</tr>
-						<tr class="error">
-							<td>2</td>
-							<td>TB - Monthly</td>
-							<td>02/04/2012</td>
-							<td>Declined</td>
-						</tr>
-						<tr class="warning">
-							<td>3</td>
-							<td>TB - Monthly</td>
-							<td>03/04/2012</td>
-							<td>Pending</td>
-						</tr>
-						<tr class="danger">
-							<td>4</td>
-							<td>TB - Monthly</td>
-							<td>04/04/2012</td>
-							<td>Call in to confirm</td>
-						</tr>
-						<tr class="info">
-							<td>4</td>
-							<td>TB - Monthly</td>
-							<td>04/04/2012</td>
-							<td>Call in to confirm</td>
-						</tr>
+    						<tr class="active">
+    							<td>1</td>
+    							<td>TB - Monthly</td>
+    							<td>01/04/2012</td>
+    							<td>Approved</td>
+    						</tr>
+    						<tr class="success">
+    							<td>1</td>
+    							<td>TB - Monthly</td>
+    							<td>01/04/2012</td>
+    							<td>Approved</td>
+    						</tr>
+    						<tr class="error">
+    							<td>2</td>
+    							<td>TB - Monthly</td>
+    							<td>02/04/2012</td>
+    							<td>Declined</td>
+    						</tr>
+    						<tr class="warning">
+    							<td>3</td>
+    							<td>TB - Monthly</td>
+    							<td>03/04/2012</td>
+    							<td>Pending</td>
+    						</tr>
+    						<tr class="danger">
+    							<td>4</td>
+    							<td>TB - Monthly</td>
+    							<td>04/04/2012</td>
+    							<td>Call in to confirm</td>
+    						</tr>
+    						<tr class="info">
+    							<td>4</td>
+    							<td>TB - Monthly</td>
+    							<td>04/04/2012</td>
+    							<td>Call in to confirm</td>
+    						</tr>
 						</tbody>
 					</table>
 				</div>
@@ -319,54 +319,53 @@
 				<p>Create responsive tables by wrapping any <code>.table</code> in <code>.table-responsive</code> to make them scroll horizontally up to small devices (under 768px). When viewing on anything larger than 768px wide, you will not see any difference in these tables.
 				<div class="bs-docs-example">
 					<div class="table-responsive">
-			      <table class="table">
-			        <thead>
-			          <tr>
-			            <th>#</th>
-			            <th>Table heading</th>
-			            <th>Table heading</th>
-			            <th>Table heading</th>
-			            <th>Table heading</th>
-			            <th>Table heading</th>
-			            <th>Table heading</th>
-			          </tr>
-			        </thead>
-			        <tbody>
-			          <tr>
-			            <td>1</td>
-			            <td>Table cell</td>
-			            <td>Table cell</td>
-			            <td>Table cell</td>
-			            <td>Table cell</td>
-			            <td>Table cell</td>
-			            <td>Table cell</td>
-			          </tr>
-			          <tr>
-			            <td>2</td>
-			            <td>Table cell</td>
-			            <td>Table cell</td>
-			            <td>Table cell</td>
-			            <td>Table cell</td>
-			            <td>Table cell</td>
-			            <td>Table cell</td>
-			          </tr>
-			          <tr>
-			            <td>3</td>
-			            <td>Table cell</td>
-			            <td>Table cell</td>
-			            <td>Table cell</td>
-			            <td>Table cell</td>
-			            <td>Table cell</td>
-			            <td>Table cell</td>
-			          </tr>
-			        </tbody>
-			      </table>
-			    </div>
-			   </div>
-			   <pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"table-responsive"</span><span class="tag">&gt;</span></li><li class="L1"><span class="pln">  </span><span class="tag">&lt;table</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"table"</span><span class="pun">&gt;</span></li><li class="L2"><span class="pln">    ...</span><li class="L3"><span class="pln">  </span><span class="tag">&lt;/table&gt;</span></li><li class="L4"><span class="tag">&lt;/div&gt;</span></li></ol></pre>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Table heading</th>
+                                    <th>Table heading</th>
+                                    <th>Table heading</th>
+                                    <th>Table heading</th>
+                                    <th>Table heading</th>
+                                    <th>Table heading</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Table cell</td>
+                                    <td>Table cell</td>
+                                    <td>Table cell</td>
+                                    <td>Table cell</td>
+                                    <td>Table cell</td>
+                                    <td>Table cell</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Table cell</td>
+                                    <td>Table cell</td>
+                                    <td>Table cell</td>
+                                    <td>Table cell</td>
+                                    <td>Table cell</td>
+                                    <td>Table cell</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Table cell</td>
+                                    <td>Table cell</td>
+                                    <td>Table cell</td>
+                                    <td>Table cell</td>
+                                    <td>Table cell</td>
+                                    <td>Table cell</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"table-responsive"</span><span class="tag">&gt;</span></li><li class="L1"><span class="pln">  </span><span class="tag">&lt;table</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"table"</span><span class="pun">&gt;</span></li><li class="L2"><span class="pln">    ...</span><li class="L3"><span class="pln">  </span><span class="tag">&lt;/table&gt;</span></li><li class="L4"><span class="tag">&lt;/div&gt;</span></li></ol></pre>
 
 				<hr class="bs-docs-separator">
-
 
 				<h2>Supported table markup</h2>
 				<p>List of supported table HTML elements and how they should be used.</p>

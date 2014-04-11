@@ -20,26 +20,26 @@
 				<p>Individual form controls automatically receive some global styling. All textual <code>&lt;input&gt;</code>, <code>&lt;textarea&gt;</code>, and <code>&lt;select&gt;</code> elements with <code>.form-control</code> are set to <code>width: 100%;</code> by default. Wrap labels and controls in <code>.form-group</code> for optimum spacing.</p>
 				<div class="bs-docs-example">
 					<form role="form">
-			      <div class="form-group">
-			        <label for="exampleInputEmail1">Email address</label>
-			        <input type="email" placeholder="Enter email" id="exampleInputEmail1" class="form-control">
-			      </div>
-			      <div class="form-group">
-			        <label for="exampleInputPassword1">Password</label>
-			        <input type="password" placeholder="Password" id="exampleInputPassword1" class="form-control">
-			      </div>
-			      <div class="form-group">
-			        <label for="exampleInputFile">File input</label>
-			        <input type="file" id="exampleInputFile">
-			        <p class="help-block">Example block-level help text here.</p>
-			      </div>
-			      <div class="checkbox">
-			        <label>
-			          <input type="checkbox"> Check me out
-			        </label>
-			      </div>
-			      <button class="btn btn-default" type="submit">Submit</button>
-			    </form>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Email address</label>
+                            <input type="email" placeholder="Enter email" id="exampleInputEmail1" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Password</label>
+                            <input type="password" placeholder="Password" id="exampleInputPassword1" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputFile">File input</label>
+                            <input type="file" id="exampleInputFile">
+                            <p class="help-block">Example block-level help text here.</p>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox"> Check me out
+                            </label>
+                        </div>
+                        <button class="btn btn-default" type="submit">Submit</button>
+    			    </form>
 				</div>
 				<pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><span class="tag">&lt;form</span><span class="pln"> </span><span class="atn">role</span><span class="pun">=</span><span class="atv">"role"</span><span class="tag">&gt;</span></li><li class="L1"><span class="pln">  </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"form-group"</span><span class="tag">&gt;</span></li><li class="L2"><span class="pln">    </span><span class="tag">&lt;label</span><span class="pln"> </span><span class="atn">for</span><span class="pun">=</span><span class="atv">"exampleInputEmail1"</span><span class="tag">&gt;</span>Email address<span class="tag">&lt;/label&gt;</span></li><li class="L3"><span class="pln">    </span><span class="tag">&lt;input</span><span class="pln"> </span><span class="atn">type</span><span class="pun">=</span><span class="atv">"email"</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"form-control"</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">"exampleInputEmail1"</span><span class="pln"> </span><span class="atn">placeholder</span><span class="pun">=</span><span class="atv">"Enter email"</span><span class="tag">&gt;</span></li><li class="L4"><span class="pln">  </span><span class="tag">&lt;/div&gt;</span></li><li class="L5"><span class="pln">  </span>...</li><li class="L6"><span class="pln">  </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"form-group"</span><span class="tag">&gt;</span></li><li class="L7"><span class="pln">    </span><span class="tag">&lt;label</span><span class="pln"> </span><span class="atn">for</span><span class="pun">=</span><span class="atv">"exampleInputFile"</span><span class="tag">&gt;</span>File input<span class="tag">&lt;/label&gt;</span></li><li class="L8"><span class="pln">    </span><span class="tag">&lt;input</span><span class="pln"> </span><span class="atn">type</span><span class="pun">=</span><span class="atv">"file"</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">"exampleInputFile"</span><span class="tag">&gt;</span></li><li class="L9"><span class="pln">    </span><span class="tag">&lt;p</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"help-block"</span><span class="tag">&gt;</span>Example block-level help text here.<span class="tag">&lt;/p&gt;</span></li><li class="L10"><span class="pln">  </span><span class="tag">&lt;/div&gt;</span></li><li class="L11"><span class="pln">  </span><span class="tag">&lt;button</span><span class="pln"> </span><span class="atn">type</span><span class="pun">=</span><span class="atv">"submit"</span><span class="atn">class</span><span class="pun">=</span><span class="atv">"btn btn-default"</span><span class="tag">&gt;</span>Submit<span class="tag">&lt;/button&gt;</span></li><li class="L12"><span class="tag">&lt;/form&gt;</span></li></ol></pre>
 
@@ -60,22 +60,22 @@
 				<p>Add <code>.form-inline</code> for left-aligned labels and inline-block controls for a compact layout.</p>
 				<div class="bs-docs-example">
 					<form role="form" class="form-inline">
-			      <div class="form-group">
-			        <label for="exampleInputEmail2" class="sr-only">Email address</label>
-			        <input type="email" placeholder="Enter email" id="exampleInputEmail2" class="form-control input-sm">
-			      </div>
-			      <div class="form-group">
-			        <label for="exampleInputPassword2" class="sr-only">Password</label>
-			        <input type="password" placeholder="Password" id="exampleInputPassword2" class="form-control input-sm">
-			      </div>
-			      <div class="checkbox">
-			        <label>
-			          <input type="checkbox"> Remember me
-			        </label>
-			      </div>
-			      <button class="btn btn-default btn-sm" type="submit">Sign in</button>
-			    </form>
-			  </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail2" class="sr-only">Email address</label>
+                            <input type="email" placeholder="Enter email" id="exampleInputEmail2" class="form-control input-sm">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword2" class="sr-only">Password</label>
+                            <input type="password" placeholder="Password" id="exampleInputPassword2" class="form-control input-sm">
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox"> Remember me
+                            </label>
+                        </div>
+                        <button class="btn btn-default btn-sm" type="submit">Sign in</button>
+                    </form>
+                </div>
 				<pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><span class="tag">&lt;form</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"form-inline"</span><span class="tag">&gt;</span></li><li class="L1"><span class="pln">  </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"form-group"</span><span class="tag">&gt;</span></li><li class="L2"><span class="pln">    </span><span class="tag">&lt;label</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"sr-only"</span><span class="pln"> </span><span class="atn">for</span><span class="pun">=</span><span class="atv">"exampleInputEmail2"</span><span class="tag">&gt;</span>Email address<span class="tag">&lt;/label&gt;</span></li><li class="L3"><span class="pln">    </span><span class="tag">&lt;input</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"form-control input-sm"</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">"exampleInputEmail2"</span><span class="pln"> </span><span class="atn">placeholder</span><span class="pun">=</span><span class="atv">"Enter email"</span><span class="tag">&gt;</span></li><li class="L4"><span class="pln">  </span><span class="tag">&lt;/div&gt;</span></li><li class="L5"><span class="pln">  </span>...</li><li class="L5"><span class="pln">  </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"checkbox"</span><span class="tag">&gt;</span></li><li class="L6"><span class="pln">    </span><span class="tag">&lt;label&gt;</span></li><li class="L7"><span class="pln">      </span><span class="tag">&lt;input</span><span class="pln"> </span><span class="atn">type</span><span class="pun">=</span><span class="atv">"checkbox"</span><span class="tag">&gt;</span></li><li class="L7"><span class="pln">    </span><span class="tag">&lt;label&gt;</span></li><li class="L8"><span class="pln">  </span><span class="tag">&lt;div&gt;</span></li><li class="L9"><span class="pln">  </span><span class="tag">&lt;button</span><span class="pln"> </span><span class="atn">type</span><span class="pun">=</span><span class="atv">"submit"</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"btn"</span><span class="tag">&gt;</span><span class="pln">Sign in</span><span class="tag">&lt;/button&gt;</span></li><li class="L10"><span class="tag">&lt;/form&gt;</span></li></ol></pre>
 
 				<h3>Horizontal form</h3>
@@ -199,22 +199,22 @@
 				<h3>Static control</h3>
 				<p>When you need to place plain text next to a form label within a horizontal form, use the <code>.form-control-static</code> class on a <code>&lt;p&gt;</code>.</p>
 				<div class="bs-example">
-			    <form role="form" class="form-horizontal">
-			      <div class="form-group">
-			        <label class="col-sm-2 control-label">Email</label>
-			        <div class="col-sm-10">
-			          <p class="form-control-static">email@example.com</p>
-			        </div>
-			      </div>
-			      <div class="form-group">
-			        <label class="col-sm-2 control-label" for="inputPassword">Password</label>
-			        <div class="col-sm-10">
-			          <input type="password" placeholder="Password" id="inputPassword" class="form-control">
-			        </div>
-			      </div>
-			    </form>
-			  </div>
-      	<pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><span class="tag">&lt;form</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"form-horizontal"</span><span class="tag">&gt;</span></li><li class="L1"><span class="pln">  </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"form-group"</span><span class="tag">&gt;</span></li><li class="L2"><span class="pln">    </span><span class="tag">&lt;label</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"control-label col-sm-2"</span><span class="tag">&gt;</span>Email<span class="tag">&lt;/label&gt;</li><li class="L3"><span class="pln">    </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"col-sm-10"</span><span class="tag">&gt;</span></li><li class="L4"><span class="pln">    </span><span class="tag">&lt;p</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"form-control-static"</span><span class="tag">&gt;</span>email@example.com<span class="tag">&lt;/p&gt;</li><li class="L5"><span class="pln">  </span><span class="tag">&lt;/div&gt;</li><li class="L6"><span class="tag">&lt;/form&gt;</li></ol></pre>
+    			    <form role="form" class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Email</label>
+                            <div class="col-sm-10">
+                                <p class="form-control-static">email@example.com</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="inputPassword">Password</label>
+                            <div class="col-sm-10">
+                                <input type="password" placeholder="Password" id="inputPassword" class="form-control">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><span class="tag">&lt;form</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"form-horizontal"</span><span class="tag">&gt;</span></li><li class="L1"><span class="pln">  </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"form-group"</span><span class="tag">&gt;</span></li><li class="L2"><span class="pln">    </span><span class="tag">&lt;label</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"control-label col-sm-2"</span><span class="tag">&gt;</span>Email<span class="tag">&lt;/label&gt;</li><li class="L3"><span class="pln">    </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"col-sm-10"</span><span class="tag">&gt;</span></li><li class="L4"><span class="pln">    </span><span class="tag">&lt;p</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"form-control-static"</span><span class="tag">&gt;</span>email@example.com<span class="tag">&lt;/p&gt;</li><li class="L5"><span class="pln">  </span><span class="tag">&lt;/div&gt;</li><li class="L6"><span class="tag">&lt;/form&gt;</li></ol></pre>
 
 				<hr class="bs-docs-separator">
 

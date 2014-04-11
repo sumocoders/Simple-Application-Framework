@@ -78,17 +78,17 @@
 					</tr>
 					</thead>
 					<tbody>
-					<tr>
-						<td>
-							Default
-						</td>
-						<td>
-							<span class="badge">1</span>
-						</td>
-						<td>
-							<code>&lt;span class="badge"&gt;1&lt;/span&gt;</code>
-						</td>
-					</tr>
+    					<tr>
+    						<td>
+    							Default
+    						</td>
+    						<td>
+    							<span class="badge">1</span>
+    						</td>
+    						<td>
+    							<code>&lt;span class="badge"&gt;1&lt;/span&gt;</code>
+    						</td>
+    					</tr>
 					</tbody>
 				</table>
 
@@ -98,9 +98,9 @@
 				<h3>Adapts to active nav state</h3>
 				<p>Built-in styles are included for placing badges in active states in pill navigations</p>
 				<ul class="nav nav-pills nav-stacked">
-  				<li class="active">
-    				<a href="#"><span class="badge pull-right">42</span>Home</a>
-  				</li>
+      				<li class="active">
+        				<a href="#"><span class="badge pull-right">42</span>Home</a>
+      				</li>
 				</ul>
 				<pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><span class="tag">&lt;ul</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"nav nav-pills nav-stacked"</span><span class="tag">&gt;</span></li><li class="L1"><span class="pln">  </span><span class="tag">&lt;li</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"active"</span><span class="tag">&gt;</span></li><li class="L2"><span class="pln">    </span><span class="tag">&lt;a</span><span class="pln"> </span><span class="atn">href</span><span class="pun">=</span><span class="atv">"#"</span><span class="tag">&gt;</span></li><li class="L3"><span class="pln">      </span><span class="tag">&lt;span</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"badge pull-right"</span><span class="tag">&gt;</span>42<span class="tag">&lt;/span&gt;</span></li><li class="L4"><span class="pln">      </span>Home</li><li class="L5"><span class="pln">    </span><span class="tag">&lt;a&gt;</span><li class="L6"><span class="pln">  </span><span class="tag">&lt;/li&gt;</span></li><li class="L7"><span class="tag">&lt;ul&gt;</span></li></ol></pre>
 

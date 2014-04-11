@@ -46,9 +46,7 @@
 				<h3>Built with Less</h3>
 				<p>The typographic scale is based on two LESS variables in <strong>variables.less</strong>: <code>@baseFontSize</code> and <code>@baseLineHeight</code>. The first is the base font-size used throughout and the second is the base line-height. We use those variables and some simple math to create the margins, paddings, and line-heights of all our type and more. Customize them and Bootstrap adapts.</p>
 
-
 				<hr class="bs-docs-separator">
-
 
 				<h2 id="emphasis">Emphasis</h2>
 				<p>Make use of HTML's default emphasis tags with lightweight styles.</p>
@@ -97,9 +95,7 @@
 				</div>
 				<pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><span class="tag">&lt;p</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"muted"</span><span class="tag">&gt;</span><span class="pln">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</span><span class="tag">&lt;/p&gt;</span></li><li class="L1"><span class="tag">&lt;p</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"text-warning"</span><span class="tag">&gt;</span><span class="pln">Etiam porta sem malesuada magna mollis euismod.</span><span class="tag">&lt;/p&gt;</span></li><li class="L2"><span class="tag">&lt;p</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"text-error"</span><span class="tag">&gt;</span><span class="pln">Donec ullamcorper nulla non metus auctor fringilla.</span><span class="tag">&lt;/p&gt;</span></li><li class="L3"><span class="tag">&lt;p</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"text-info"</span><span class="tag">&gt;</span><span class="pln">Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis.</span><span class="tag">&lt;/p&gt;</span></li><li class="L4"><span class="tag">&lt;p</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"text-success"</span><span class="tag">&gt;</span><span class="pln">Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</span><span class="tag">&lt;/p&gt;</span></li></ol></pre>
 
-
 				<hr class="bs-docs-separator">
-
 
 				<h2 id="abbreviations">Abbreviations</h2>
 				<p>Stylized implementation of HTML's <code>&lt;abbr&gt;</code> element for abbreviations and acronyms to show the expanded version on hover. Abbreviations with a <code>title</code> attribute have a light dotted bottom border and a help cursor on hover, providing additional context on hover.</p>
@@ -118,9 +114,7 @@
 				</div>
 				<pre class="prettyprint"><span class="tag">&lt;abbr</span><span class="pln"> </span><span class="atn">title</span><span class="pun">=</span><span class="atv">"HyperText Markup Language"</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"initialism"</span><span class="tag">&gt;</span><span class="pln">HTML</span><span class="tag">&lt;/abbr&gt;</span></pre>
 
-
 				<hr class="bs-docs-separator">
-
 
 				<h2 id="addresses">Addresses</h2>
 				<p>Present contact information for the nearest ancestor or the entire body of work.</p>
@@ -141,9 +135,7 @@
 				</div>
 				<pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><span class="tag">&lt;address&gt;</span></li><li class="L1"><span class="pln">  </span><span class="tag">&lt;strong&gt;</span><span class="pln">Twitter, Inc.</span><span class="tag">&lt;/strong&gt;&lt;br&gt;</span></li><li class="L2"><span class="pln">  795 Folsom Ave, Suite 600</span><span class="tag">&lt;br&gt;</span></li><li class="L3"><span class="pln">  San Francisco, CA 94107</span><span class="tag">&lt;br&gt;</span></li><li class="L4"><span class="pln">  </span><span class="tag">&lt;abbr</span><span class="pln"> </span><span class="atn">title</span><span class="pun">=</span><span class="atv">"Phone"</span><span class="tag">&gt;</span><span class="pln">P:</span><span class="tag">&lt;/abbr&gt;</span><span class="pln"> (123) 456-7890</span></li><li class="L5"><span class="tag">&lt;/address&gt;</span></li><li class="L6"><span class="pln">&nbsp;</span></li><li class="L7"><span class="tag">&lt;address&gt;</span></li><li class="L8"><span class="pln">  </span><span class="tag">&lt;strong&gt;</span><span class="pln">Full Name</span><span class="tag">&lt;/strong&gt;&lt;br&gt;</span></li><li class="L9"><span class="pln">  </span><span class="tag">&lt;a</span><span class="pln"> </span><span class="atn">href</span><span class="pun">=</span><span class="atv">"mailto:#"</span><span class="tag">&gt;</span><span class="pln">first.last@example.com</span><span class="tag">&lt;/a&gt;</span></li><li class="L0"><span class="tag">&lt;/address&gt;</span></li></ol></pre>
 
-
 				<hr class="bs-docs-separator">
-
 
 				<h2 id="blockquotes">Blockquotes</h2>
 				<p>For quoting blocks of content from another source within your document.</p>
@@ -180,9 +172,7 @@
 				</div>
 				<pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><span class="tag">&lt;blockquote</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"blockquote-reverse"</span><span class="tag">&gt;</span></li><li class="L1"><span class="pln">  ...</span></li><li class="L2"><span class="tag">&lt;/blockquote&gt;</span></li></ol></pre>
 
-
 				<hr class="bs-docs-separator">
-
 
 				<!-- Lists -->
 				<h2 id="lists">Lists</h2>

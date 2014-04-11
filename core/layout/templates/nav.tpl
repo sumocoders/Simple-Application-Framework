@@ -63,16 +63,5 @@
 			{/option:currentUser.isAdmin}
 		</ul>
 	</div>
-	<!-- <div class="desktop searchBox" role="search">
-		<form action="#" data-form-class="SearchForm">
-			<div class="controls">
-				<input id="searchQuery" name="q" type="search" placeholder="{$lblSearch|ucfirst}" class="form-control">
-				<button type="submit" class="btn">
-					<i class="icon-search"></i>
-					<span class="hide">{$lblSearch|ucfirst}</span>
-				</button>
-			</div>
-		</form>
-	</div> -->
 </nav>
 <a href="#" id="toggleTabletNavbar">{$lblMenu|uppercase}</a>

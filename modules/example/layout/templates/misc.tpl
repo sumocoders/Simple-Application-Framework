@@ -93,76 +93,74 @@
 					<h3>Basic example</h3>
 					<p>The most basic list group is simply an unordered list with list items, and the proper classes. Build upon it with the options that follow, or your own CSS as needed.</p>
 					<div class="bs-docs-example">
-				    <ul class="list-group">
-				      <li class="list-group-item">Cras justo odio</li>
-				      <li class="list-group-item">Dapibus ac facilisis in</li>
-				      <li class="list-group-item">Morbi leo risus</li>
-				      <li class="list-group-item">Porta ac consectetur ac</li>
-				      <li class="list-group-item">Vestibulum at eros</li>
-				    </ul>
-				  </div>
+				        <ul class="list-group">
+                            <li class="list-group-item">Cras justo odio</li>
+                            <li class="list-group-item">Dapibus ac facilisis in</li>
+                            <li class="list-group-item">Morbi leo risus</li>
+                            <li class="list-group-item">Porta ac consectetur ac</li>
+                            <li class="list-group-item">Vestibulum at eros</li>
+				        </ul>
+                    </div>
 
-				  <h3>Badges</h3>
-				  <p>Add the badges component to any list group item and it will automatically be positioned on the right.</p>
-				  <div class="bs-docs-example">
-				    <ul class="list-group">
-				      <li class="list-group-item">
-				        <span class="badge">14</span>
-				        Cras justo odio
-				      </li>
-				      <li class="list-group-item">
-				        <span class="badge">2</span>
-				        Dapibus ac facilisis in
-				      </li>
-				      <li class="list-group-item">
-				        <span class="badge">1</span>
-				        Morbi leo risus
-				      </li>
-				    </ul>
-				  </div>
+                    <h3>Badges</h3>
+                    <p>Add the badges component to any list group item and it will automatically be positioned on the right.</p>
+                    <div class="bs-docs-example">
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <span class="badge">14</span>
+                                Cras justo odio
+                            </li>
+                            <li class="list-group-item">
+                                <span class="badge">2</span>
+                                Dapibus ac facilisis in
+                            </li>
+                            <li class="list-group-item">
+                                <span class="badge">1</span>
+                                Morbi leo risus
+                            </li>
+                        </ul>
+                    </div>
 
 					<h3>Linked items</h3>
 					<p>Linkify list group items by using anchor tags instead of list items (that also means a parent <code>&lt;div&gt;</code> instead of an <code>&lt;ul&gt;</code>). No need for individual parents around each element.
 					<div class="bs-docs-example">
 						<div class="list-group">
-				      <a class="list-group-item active" href="#">
-				        Cras justo odio
-				      </a>
-				      <a class="list-group-item" href="#">Dapibus ac facilisis in</a>
-				      <a class="list-group-item" href="#">Morbi leo risus</a>
-				      <a class="list-group-item" href="#">Porta ac consectetur ac</a>
-				      <a class="list-group-item" href="#">Vestibulum at eros</a>
-				    </div>
+                            <a class="list-group-item active" href="#">Cras justo odio</a>
+                            <a class="list-group-item" href="#">Dapibus ac facilisis in</a>
+                            <a class="list-group-item" href="#">Morbi leo risus</a>
+                            <a class="list-group-item" href="#">Porta ac consectetur ac</a>
+                            <a class="list-group-item" href="#">Vestibulum at eros</a>
+				        </div>
 					</div>
 
 					<h3>Contextual classes</h3>
 					<p>Use contextual classes to style list items, default or linked. Also includes .active state.</p>
 					<div class="bs-docs-example">
 						<ul class="list-group">
-		          <li class="list-group-item list-group-item-success">Dapibus ac facilisis in</li>
-		          <li class="list-group-item list-group-item-info">Cras sit amet nibh libero</li>
-		          <li class="list-group-item list-group-item-warning">Porta ac consectetur ac</li>
-		          <li class="list-group-item list-group-item-danger">Vestibulum at eros</li>
-		        </ul>
+                            <li class="list-group-item list-group-item-success">Dapibus ac facilisis in</li>
+                            <li class="list-group-item list-group-item-info">Cras sit amet nibh libero</li>
+                            <li class="list-group-item list-group-item-warning">Porta ac consectetur ac</li>
+                            <li class="list-group-item list-group-item-danger">Vestibulum at eros</li>
+        		        </ul>
 					</div>
 
 					<h3>Custom Content</h3>
 					<p>Add nearly any HTML within, even for linked list groups like the one below.</p>
 					<div class="bs-docs-example">
 						<div class="list-group">
-				      <a class="list-group-item active" href="#">
-				        <h4 class="list-group-item-heading">List group item heading</h4>
-				        <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-				      </a>
-				      <a class="list-group-item" href="#">
-				        <h4 class="list-group-item-heading">List group item heading</h4>
-				        <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-				      </a>
-				      <a class="list-group-item" href="#">
-				        <h4 class="list-group-item-heading">List group item heading</h4>
-				        <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-				      </a>
-				    </div>
+                            <a class="list-group-item active" href="#">
+				                <h4 class="list-group-item-heading">List group item heading</h4>
+				                <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+				            </a>
+                            <a class="list-group-item" href="#">
+				                <h4 class="list-group-item-heading">List group item heading</h4>
+				                <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                            </a>
+                            <a class="list-group-item" href="#">
+				                <h4 class="list-group-item-heading">List group item heading</h4>
+				                <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+				            </a>
+				        </div>
 					</div>
 				</section>
 			</div>

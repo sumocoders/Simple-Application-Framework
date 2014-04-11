@@ -96,49 +96,49 @@
 				<h3>Sizing</h3>
 				<p>Instead of applying button sizing classes to every button in a group, just add <code>.btn-group-*</code> to the <code>.btn-group</code>.</p>
 				<div class="bs-docs-example">
-			    <div role="toolbar" class="btn-toolbar">
-			      <div class="btn-group btn-group-lg">
-			        <button class="btn btn-default" type="button">Left</button>
-			        <button class="btn btn-default" type="button">Middle</button>
-			        <button class="btn btn-default" type="button">Right</button>
-			      </div>
-			    </div>
-			    <div role="toolbar" class="btn-toolbar">
-			      <div class="btn-group">
-			        <button class="btn btn-default" type="button">Left</button>
-			        <button class="btn btn-default" type="button">Middle</button>
-			        <button class="btn btn-default" type="button">Right</button>
-			      </div>
-			    </div>
-			    <div role="toolbar" class="btn-toolbar">
-			      <div class="btn-group btn-group-sm">
-			        <button class="btn btn-default" type="button">Left</button>
-			        <button class="btn btn-default" type="button">Middle</button>
-			        <button class="btn btn-default" type="button">Right</button>
-			      </div>
-			    </div>
-			    <div role="toolbar" class="btn-toolbar">
-			      <div class="btn-group btn-group-xs">
-			        <button class="btn btn-default" type="button">Left</button>
-			        <button class="btn btn-default" type="button">Middle</button>
-			        <button class="btn btn-default" type="button">Right</button>
-			      </div>
-			    </div>
-			  </div>
+    			    <div role="toolbar" class="btn-toolbar">
+                        <div class="btn-group btn-group-lg">
+                            <button class="btn btn-default" type="button">Left</button>
+                            <button class="btn btn-default" type="button">Middle</button>
+                            <button class="btn btn-default" type="button">Right</button>
+                        </div>
+    			    </div>
+    			    <div role="toolbar" class="btn-toolbar">
+                        <div class="btn-group">
+                            <button class="btn btn-default" type="button">Left</button>
+                            <button class="btn btn-default" type="button">Middle</button>
+                            <button class="btn btn-default" type="button">Right</button>
+                        </div>
+    			    </div>
+    			    <div role="toolbar" class="btn-toolbar">
+                        <div class="btn-group btn-group-sm">
+                            <button class="btn btn-default" type="button">Left</button>
+                            <button class="btn btn-default" type="button">Middle</button>
+                            <button class="btn btn-default" type="button">Right</button>
+                        </div>
+    			    </div>
+    			    <div role="toolbar" class="btn-toolbar">
+                        <div class="btn-group btn-group-xs">
+                            <button class="btn btn-default" type="button">Left</button>
+                            <button class="btn btn-default" type="button">Middle</button>
+                            <button class="btn btn-default" type="button">Right</button>
+                        </div>
+    			    </div>
+    			</div>
 
-			  <h3>Nesting</h3>
-			  <p>Place a <code>.btn-group</code> within another <code>.btn-group</code> when you want dropdown menus mixed with a series of buttons.</p>
-
-
-				<hr class="bs-docs-separator">
+    			<h3>Nesting</h3>
+    			<p>Place a <code>.btn-group</code> within another <code>.btn-group</code> when you want dropdown menus mixed with a series of buttons.</p>
 
 
-				<h4>Checkbox and radio flavors</h4>
-				<p>Button groups can also function as radios, where only one button may be active, or checkboxes, where any number of buttons may be active. View <a href="./javascript.html#buttons">the JavaScript docs</a> for that.</p>
+    			<hr class="bs-docs-separator">
 
-				<h4>Dropdowns in button groups</h4>
-				<p><span class="label label-info">Heads up!</span> Buttons with dropdowns must be individually wrapped in their own <code>.btn-group</code> within a <code>.btn-toolbar</code> for proper rendering.</p>
-		</div>
+
+    			<h4>Checkbox and radio flavors</h4>
+    			<p>Button groups can also function as radios, where only one button may be active, or checkboxes, where any number of buttons may be active. View <a href="./javascript.html#buttons">the JavaScript docs</a> for that.</p>
+
+    			<h4>Dropdowns in button groups</h4>
+    			<p><span class="label label-info">Heads up!</span> Buttons with dropdowns must be individually wrapped in their own <code>.btn-group</code> within a <code>.btn-toolbar</code> for proper rendering.</p>
+            </div>
 		</section>
 	</div>
 </div>

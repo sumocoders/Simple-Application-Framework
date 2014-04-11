@@ -46,8 +46,9 @@ input:focus:invalid:focus {
 
 .form-horizontal {
 
-  .control-label {
-    //padding-top: 12px;
+  .has-feedback .form-control-feedback {
+    margin-top: -7px;
+    top: 50%;
   }
 }
 

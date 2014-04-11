@@ -81,20 +81,20 @@
 				</table>
 			</div>
 			<header class="taskbar">
-			  <div class="container">
-  				<div class="title">
-  					<h2>Tellus ridiculus</h2>
-  				</div>
-  				<div class="actions">
-  					<a href="#" class="dropdownToggle visible-xs" data-toggle="dropdownItems">{$lblActions|ucfirst}</a>
-  					<ul class="dropdownItems">
-  						<li><a class="iconList" href="#">{$lblOverview|ucfirst}</a></li>
-  						<li><a class="iconPrint" href="#">{$lblPrint|ucfirst}</a></li>
-  						<Li><a class="iconAdd" href="#">{$lblAdd|ucfirst}</a></Li>
-  					</ul>
-  				</div>
-			  </div>
-			</header>
+                <div class="container">
+                    <div class="title">
+                        <h2>Tellus ridiculus</h2>
+                    </div>
+                    <div class="actions">
+                        <a href="#" class="dropdownToggle visible-xs" data-toggle="dropdownItems">{$lblActions|ucfirst}</a>
+                        <ul class="dropdownItems">
+                            <li><a class="iconList" href="#">{$lblOverview|ucfirst}</a></li>
+                            <li><a class="iconPrint" href="#">{$lblPrint|ucfirst}</a></li>
+                            <Li><a class="iconAdd" href="#">{$lblAdd|ucfirst}</a></Li>
+                        </ul>
+                    </div>
+                </div>
+            </header>
 			<div class="container">
 				<ul class="nav nav-tabs">
 					<li class="active"><a href="#home" data-toggle="tab">Home</a></li>
