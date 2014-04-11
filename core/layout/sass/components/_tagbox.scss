@@ -14,4 +14,49 @@
       margin-left: 2px;
     }
   }
+
+  .twitter-typeahead {
+    position: relative;
+    width: 100%;
+  }
+  .input-group-btn a {
+    margin-top: -6px;
+  }
+
+  .tt-dropdown-menu {
+    background: none repeat scroll 0 0 #F9F9F9;
+    border: 1px solid #CCCDD7;
+    box-shadow: none;
+    border-radius: 4px;
+    float: left;
+    font-size: 14px;
+    left: 0;
+    list-style: none outside none;
+    margin: 2px 0 0;
+    min-width: 160px;
+    padding: 5px 0;
+    position: absolute;
+    text-align: left;
+    top: 100%;
+    z-index: 1000;
+
+    .tt-suggestion p {
+      clear: both;
+      color: #333333;
+      display: block;
+      font-weight: 400;
+      line-height: 1.42857;
+      margin: 0;
+      padding: 3px 20px;
+      white-space: nowrap;
+    }
+
+    .tt-suggestion:hover,
+    .tt-suggestion:focus {
+      background-color: #f5f5f5;
+      color: #262626;
+      cursor: pointer;
+      text-decoration: none;
+    }
+  }
 }

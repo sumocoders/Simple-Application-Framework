@@ -541,7 +541,7 @@
         <form class="bs-docs-example form-horizontal">
           <div class="form-group">
             <label class="control-label col-xs-1" for="tagBox">Tags</label>
-            <div class="col-xs-11">
+            <div class="col-xs-6">
             	<input type="text" placeholder="Tags" id="tagBox" class="form-control tag-box">
             </div>
           </div>
