@@ -2,7 +2,7 @@
 	<a href="/" rel="home" class="logo hidden-xs">{$SITE_DEFAULT_TITLE}</a>
 
 	<div class="searchBox" role="search">
-		<form action="#">
+		<form action="#" data-form-class="SearchForm">
 			<div class="controls">
 				<input id="searchQuery" name="q" type="search" placeholder="{$lblSearch|ucfirst}" class="form-control">
 				<button type="submit" class="btn">
