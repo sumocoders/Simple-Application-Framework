@@ -36,11 +36,16 @@ class UsersIndex extends SiteBaseAction
 			'SELECT id, email, name
 			 FROM users'
 		);
-		$dataGrid->addColumn(
-			'edit', '', ucfirst(SiteLocale::lbl('Edit')),
-			$this->url->buildUrl('edit', null, '[id]'),
-			null, 'icon-pencil', null, true
-		);
+        $dataGrid->addColumn(
+            'edit',
+            '',
+            ucfirst(SiteLocale::lbl('Edit')),
+            $this->url->buildUrl('edit', null, '[id]'),
+            null,
+            null,
+            null,
+            true
+        );
 
 		// assign
 		if($dataGrid->getContent() != '') $this->tpl->assign('dataGrid', $dataGrid->getContent());
