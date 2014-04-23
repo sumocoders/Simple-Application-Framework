@@ -23,7 +23,6 @@
 
   $(function() {
     App.current.domReady();
-    return $('#type').multipleSelectbox();
   });
 
   window.App = App;
