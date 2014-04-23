@@ -10,5 +10,6 @@ App.current = new App()
 
 $ ->
   App.current.domReady()
+  $('#type').multipleSelectbox();
 
 window.App = App
