@@ -49,6 +49,9 @@ abstract class DefaultEntity
      */
     public function initialize($data)
     {
+        if (isset($data['id'])) {
+            $this->setId($data['id']);
+        }
         if (isset($data['created_by'])) {
             $this->setCreatedBy($data['created_by']);
         }
