@@ -3,6 +3,7 @@ class Form
 
   constructor: (form) ->
     @form = form
+    @_colourPickers()
     @_dateFields()
     @_colourPickers()
     @_editors()

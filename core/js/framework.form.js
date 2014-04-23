@@ -12,6 +12,7 @@
       this._untilDateFields = __bind(this._untilDateFields, this);
       this._startingFromDateFields = __bind(this._startingFromDateFields, this);
       this.form = form;
+      this._colourPickers();
       this._dateFields();
       this._colourPickers();
       this._editors();
