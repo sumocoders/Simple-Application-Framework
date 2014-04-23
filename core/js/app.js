@@ -22,7 +22,7 @@
   App.current = new App();
 
   $(function() {
-    App.current.domReady();
+    return App.current.domReady();
   });
 
   window.App = App;
