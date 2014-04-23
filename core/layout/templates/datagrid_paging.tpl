@@ -4,11 +4,15 @@
 		<div class="pagination pagination-centered">
 			<ul role="navigation">
 				<li{option:!pagination.show_previous} class="disabled"{/option:!pagination.show_previous}>
-					<a {option:pagination.show_previous}href="{$pagination.previous_url}"{/option:pagination.show_previous} rel="prev nofollow" title="{$previousLabel}">
-						«<span class="hide"> {$previousLabel}</span>
-					</a>
+					{option:pagination.show_previous}
+						<a href="{$pagination.previous_url}" rel="prev nofollow" title="{$previousLabel}">
+							&laquo;<span class="hide"> {$previousLabel}</span>
+						</a>
+					{/option:pagination.show_previous}
+					{option:!pagination.show_previous}
+						<span>&laquo;</span>
+					{/option:!pagination.show_previous}
 				</li>
-
 				{option:pagination.first}
 					{iteration:pagination.first}
 						<li>
@@ -50,9 +54,14 @@
 				{/option:pagination.last}
 
 				<li{option:!pagination.show_next} class="disabled"{/option:!pagination.show_next}>
-					<a {option:pagination.show_next}href="{$pagination.next_url}"{/option:pagination.show_next} rel="next nofollow" title="{$nextLabel}">
-						<span class="hide">{$nextLabel} </span>»
-					</a>
+					{option:pagination.show_next}
+						<a href="{$pagination.next_url}" rel="next nofollow" title="{$nextLabel}">
+							<span class="hide">{$nextLabel} </span>&raquo;
+						</a>
+					{/option:pagination.show_next}
+					{option:!pagination.show_next}
+						<span>&raquo;</span>
+					{/option:!pagination.show_next}
 				</li>
 			</ul>
 		</div>
