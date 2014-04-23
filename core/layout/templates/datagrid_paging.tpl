@@ -1,7 +1,7 @@
 {option:pagination}
 	{* only show the pagination if there is more than one page *}
 	{option:pagination.multiple_pages}
-		<div class="text-center pagination pagination-centered">
+		<div class="pagination pagination-centered">
 			<ul role="navigation">
 				<li{option:!pagination.show_previous} class="disabled"{/option:!pagination.show_previous}>
 					<a {option:pagination.show_previous}href="{$pagination.previous_url}"{/option:pagination.show_previous} rel="prev nofollow" title="{$previousLabel}">
