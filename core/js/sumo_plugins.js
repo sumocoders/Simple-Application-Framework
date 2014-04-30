@@ -2,6 +2,7 @@
  * Multiple select box
  *
  * @author	Tijs Verkoyen <tijs@sumocoders.be>
+ * @author	Jelmer Prins <jelmer@sumocoders.be>
  */
 (function($) {
 	$.fn.multipleSelectbox = function(options) {
@@ -18,20 +19,20 @@
 
 			if($('#elementList-' + id).length > 0) { $('#elementList-' + id).parent('.multipleSelectWrapper').remove(); }
 			var html =	'<div class="multipleSelectWrapper">' +
-			              '	<div id="elementList-' + id + '" class="multipleSelectList">' + '	</div>' +
-			              '	<div class="input-append">' +
-			              '		<select id="addValue-' + id + '" name="addValue-' + id + '">';
+					'	<div id="elementList-' + id + '" class="multipleSelectList">' + '	</div>' +
+					'	<div class="input-append">' +
+					'		<select id="addValue-' + id + '" name="addValue-' + id + '">';
 			for(var i = 0; i < possibleOptions.length; i++) {
 				html +=	'			<option value="' + $(possibleOptions[i]).attr('value') + '">' + $(possibleOptions[i]).html() + '</option>';
 			}
 			html +=		'		</select>' +
-			               '		<a href="#" id="addButton-' + id + '" class="btn">';
+					'		<a href="#" id="addButton-' + id + '" class="btn btn-small">';
 			html += 	'               <i class="icon-plus"></i>';
 			if(options.showIconOnly) html += '<span>' + options.addLabel + '</span>';
 			else html += '<span class="hidden">' + options.addLabel + '</span>';
 			html += 	'			</a>' +
-			           '      </div>' +
-			           '</div>';
+					'      </div>' +
+					'</div>';
 
 			$(this).css('visibility', 'hidden').css('position', 'absolute').css('top', '-9000px').css('left', '-9000px').attr('tabindex', '-1');
 			$(this).before(html);
@@ -44,7 +45,7 @@
 				add();
 			});
 
-			$('.deleteButton-' + id).live('click', function(e) {
+			$('.multipleSelectWrapper').delegate('.deleteButton-' + id, 'click', function(e) {
 				e.preventDefault();
 				e.stopPropagation();
 				remove($(this).data('id'));
@@ -69,13 +70,13 @@
 			}
 			function build() {
 				var html = '';
-				if(elements.length == 0 && options.emptyMessage != '') html = '<span class="muted">' + options.emptyMessage + '</span>';
+				if(elements.length == 0 && options.emptyMessage != '') html = '<span class="text-muted">' + options.emptyMessage + '</span>';
 				else {
 					for(var i in elements) {
 						html += '<span class="badge">' +
-						        '	' + $('#' + id + ' option[value=' + elements[i] + ']').html() +
-						        '	<a href="#" class="deleteButton-' + id + '" data-id="' + elements[i] + '" title="' + options.removeLabel + '"><i class="icon-remove icon-white"></i><span class="hidden">' + options.removeLabel + '</span></a>' +
-						        '</span>';
+								'	' + $('#' + id + ' option[value=' + elements[i] + ']').html() +
+								'	<a href="#" class="deleteButton-' + id + '" data-id="' + elements[i] + '" title="' + options.removeLabel + '"><i class="icon-remove glyphicon glyphicon-remove"></i><span class="hidden">' + options.removeLabel + '</span></a>' +
+								'</span>';
 						$('#addValue-' + id + ' option[value=' + elements[i] + ']').prop('disabled', true);
 					}
 				}
