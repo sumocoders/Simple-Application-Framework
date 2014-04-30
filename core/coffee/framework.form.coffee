@@ -4,6 +4,7 @@ class Form
   constructor: (form) ->
     @form = form
     @_dateFields()
+    @_colourPickers()
     @_fixPlaceholders()
     @_hijackSubmit()
 
@@ -80,6 +81,12 @@ class Form
       parseInt(data[1], 10) - 1,
       parseInt(data[2], 10)
     )
+
+  _colourPickers: ->
+    $('.inputColour', @form).each((i, el) =>
+      $(el).minicolors({inline: false,theme: 'bootstrap'})
+    )
+    return
 
   _dateFields: ->
     $.datepicker.setDefaults @_dateFieldOptions

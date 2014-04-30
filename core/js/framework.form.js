@@ -13,6 +13,7 @@
       this._startingFromDateFields = __bind(this._startingFromDateFields, this);
       this.form = form;
       this._dateFields();
+      this._colourPickers();
       this._fixPlaceholders();
       this._hijackSubmit();
     }
@@ -39,6 +40,17 @@
       }
       data = element.data(key).split('-');
       return new Date(parseInt(data[0], 10), parseInt(data[1], 10) - 1, parseInt(data[2], 10));
+    };
+
+    Form.prototype._colourPickers = function() {
+      $('.inputColour', this.form).each((function(_this) {
+        return function(i, el) {
+          return $(el).minicolors({
+            inline: false,
+            theme: 'bootstrap'
+          });
+        };
+      })(this));
     };
 
     Form.prototype._dateFields = function() {
