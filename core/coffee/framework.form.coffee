@@ -3,8 +3,10 @@ class Form
 
   constructor: (form) ->
     @form = form
+    @_colourPickers()
     @_dateFields()
     @_colourPickers()
+    @_editors()
     @_fixPlaceholders()
     @_hijackSubmit()
 
@@ -95,7 +97,10 @@ class Form
     @_untilDateFields()
     @_rangeDateFields()
     return
-
+  _editors: ->
+    $('textarea.editor', @form).each((i, el) =>
+      CKEDITOR.replace($(el).attr('id'));
+    )
   _normalDateFields: ->
     $('.inputDatefieldNormal', @form).each((i, el) =>
       $(el).datepicker()

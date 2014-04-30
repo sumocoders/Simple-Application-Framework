@@ -85,6 +85,19 @@ class SiteForm extends SpoonForm
 		return $this->getField($name);
 	}
 
+    /**
+     * Adds an editor.
+     *
+     * @param string $name
+     * @param string $value
+     * @return SpoonFormTextarea
+     */
+    public function addEditor($name, $value = null)
+    {
+        $this->add(new SiteFormEditor($name, $value, 'form-control inputTextarea editor', 'form-control inputTextareaError editor', true));
+        return $this->getField($name);
+    }
+
 	/**
 	 * Adds a image field.
 	 *
@@ -612,5 +625,28 @@ class SiteFormMaps extends SpoonFormInput
         }
 
         return true;
+    }
+}
+
+/**
+ * Class SiteFormEditor
+ * A text area with an WYSIWYG editor
+ * @author Jelmer Prins <jelmer@sumocoders.be>
+ */
+class SiteFormEditor extends SpoonFormTextarea
+{
+    /**
+     * @param   SpoonTemplate $template
+     * @return  string
+     */
+    public function parse(SpoonTemplate $template = null)
+    {
+        $output = parent::parse($template);
+        $template->assign('editor' . SpoonFilter::toCamelCase($this->getName()), $output);
+        $template->assign(
+            'editor' . SpoonFilter::toCamelCase($this->getName()) . 'Error',
+            ($this->errors != '') ? '<span class="formError">' . $this->errors . '</span>' : ''
+        );
+        return $output;
     }
 }

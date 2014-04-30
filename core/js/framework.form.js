@@ -12,8 +12,10 @@
       this._untilDateFields = __bind(this._untilDateFields, this);
       this._startingFromDateFields = __bind(this._startingFromDateFields, this);
       this.form = form;
+      this._colourPickers();
       this._dateFields();
       this._colourPickers();
+      this._editors();
       this._fixPlaceholders();
       this._hijackSubmit();
     }
@@ -59,6 +61,14 @@
       this._startingFromDateFields();
       this._untilDateFields();
       this._rangeDateFields();
+    };
+
+    Form.prototype._editors = function() {
+      return $('textarea.editor', this.form).each((function(_this) {
+        return function(i, el) {
+          return CKEDITOR.replace($(el).attr('id'));
+        };
+      })(this));
     };
 
     Form.prototype._normalDateFields = function() {
