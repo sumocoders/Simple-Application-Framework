@@ -13,7 +13,45 @@
 
     App.events;
 
-    App.onDomReady([]);
+    App.onDomReady(['heightAutocomplete']);
+
+    App.prototype.heightAutocomplete = function() {
+      var calculate, tick, ticking;
+      ticking = false;
+      calculate = function() {
+        var $autocomplete, $window, autocompleteHeight, autocompleteHeightMobile, logoHeight, navbarHeight, searchBoxHeight;
+        $window = $(window);
+        navbarHeight = $('#navbar').height();
+        searchBoxHeight = $('#navbar .searchBox').height();
+        $autocomplete = $('.ui-autocomplete');
+        logoHeight = $('#navbar .logo').height();
+        autocompleteHeight = navbarHeight - searchBoxHeight - logoHeight;
+        autocompleteHeightMobile = navbarHeight - searchBoxHeight - 25;
+        if ($window.width() < 768) {
+          $autocomplete.css({
+            'max-height': autocompleteHeightMobile
+          });
+        } else {
+          $autocomplete.css({
+            'max-height': autocompleteHeight
+          });
+        }
+
+        return ticking = false;
+      };
+      tick = function() {
+        if (!ticking) {
+          this.requestAnimationFrame(calculate);
+          return ticking = true;
+        }
+      };
+      $(window).on('load', function() {
+        return tick();
+      });
+      $(window).on('resize', function() {
+        return tick();
+      });
+    };
 
     return App;
 

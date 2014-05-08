@@ -50,6 +50,18 @@
   }
 }
 
+.ui-autocomplete {
+  overflow-y: auto;
+  position: fixed;
+}
+
+@media screen and (max-width: 766px) {
+  .ui-autocomplete {
+    top: 65px !important;
+    bottom: auto !important;
+  }
+}
+
 // Media query min-width 767px
 @media screen and (min-width: 767px) {
   .searchBox {
@@ -65,10 +77,19 @@
   }
 }
 
+@media screen and (min-width: 767px) and (max-width: 1025px) {
+  .ui-autocomplete {
+    bottom: 0 !important;
+  }
+}
+
 // Media query min-width 1025px
 @media screen and (min-width: 1025px) {
   .searchBox {
     position: fixed;
     bottom: 0;
+  }
+
+  .ui-autocomplete {
   }
 }
