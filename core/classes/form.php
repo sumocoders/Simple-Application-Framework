@@ -40,6 +40,31 @@ class SiteForm extends SpoonForm
 		return $this->getField($name);
 	}
 
+    /**
+     * Adds a single colourSelector.
+     *
+     * @return	SiteFormColour
+     * @param	string $name					The name.
+     * @param	string[optional] $value			The initial value.
+     * @param	string[optional] $class			The CSS-class to be used.
+     * @param	string[optional] $classError	The CSS-class to be used when there is an error.
+     */
+    public function addColour(
+        $name,
+        $value = '#',
+        $class = 'inputColour form-control',
+        $classError = 'inputColourError'
+    ) {
+        // add element
+        $this->add(new SiteFormColour($name, $value, 7, $class, $classError, false));
+        $this->getField($name)->setAttributes(
+            array('pattern' => '^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$')
+        );
+
+        // return element
+        return $this->getField($name);
+    }
+
 	/**
 	 * Adds a single dropdown.
 	 *
@@ -59,6 +84,19 @@ class SiteForm extends SpoonForm
 		// return element
 		return $this->getField($name);
 	}
+
+    /**
+     * Adds an editor.
+     *
+     * @param string $name
+     * @param string $value
+     * @return SpoonFormTextarea
+     */
+    public function addEditor($name, $value = null)
+    {
+        $this->add(new SiteFormEditor($name, $value, 'form-control inputTextarea editor', 'form-control inputTextareaError editor', true));
+        return $this->getField($name);
+    }
 
 	/**
 	 * Adds a image field.
@@ -308,6 +346,32 @@ class SiteFormImage extends SpoonFormImage
 
 		return $this->errors;
 	}
+}
+
+/**
+ * @author Jelmer Prins <jelmer@sumocoders.be>
+ * Class SiteFormColour
+ */
+class SiteFormColour extends SpoonFormText
+{
+    /**
+     * This function will return the errors. It is extended so we can do text checks automatically.
+     *
+     * @return string
+     */
+    public function getErrors()
+    {
+        // do an colour validation
+        if($this->isFilled())
+        {
+            $this->isValidAgainstRegexp(
+                '/#([a-f]|[A-F]|[0-9]){3}(([a-f]|[A-F]|[0-9]){3})?\b/',
+                SiteLocale::err('ColourIsInvalid')
+            );
+        }
+
+        return $this->errors;
+    }
 }
 
 /**
@@ -561,5 +625,28 @@ class SiteFormMaps extends SpoonFormInput
         }
 
         return true;
+    }
+}
+
+/**
+ * Class SiteFormEditor
+ * A text area with an WYSIWYG editor
+ * @author Jelmer Prins <jelmer@sumocoders.be>
+ */
+class SiteFormEditor extends SpoonFormTextarea
+{
+    /**
+     * @param   SpoonTemplate $template
+     * @return  string
+     */
+    public function parse(SpoonTemplate $template = null)
+    {
+        $output = parent::parse($template);
+        $template->assign('editor' . SpoonFilter::toCamelCase($this->getName()), $output);
+        $template->assign(
+            'editor' . SpoonFilter::toCamelCase($this->getName()) . 'Error',
+            ($this->errors != '') ? '<span class="formError">' . $this->errors . '</span>' : ''
+        );
+        return $output;
     }
 }

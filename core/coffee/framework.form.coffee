@@ -3,7 +3,10 @@ class Form
 
   constructor: (form) ->
     @form = form
+    @_colourPickers()
     @_dateFields()
+    @_colourPickers()
+    @_editors()
     @_fixPlaceholders()
     @_hijackSubmit()
 
@@ -81,6 +84,12 @@ class Form
       parseInt(data[2], 10)
     )
 
+  _colourPickers: ->
+    $('.inputColour', @form).each((i, el) =>
+      $(el).minicolors({inline: false,theme: 'bootstrap'})
+    )
+    return
+
   _dateFields: ->
     $.datepicker.setDefaults @_dateFieldOptions
     @_normalDateFields()
@@ -88,7 +97,10 @@ class Form
     @_untilDateFields()
     @_rangeDateFields()
     return
-
+  _editors: ->
+    $('textarea.editor', @form).each((i, el) =>
+      CKEDITOR.replace($(el).attr('id'));
+    )
   _normalDateFields: ->
     $('.inputDatefieldNormal', @form).each((i, el) =>
       $(el).datepicker()
