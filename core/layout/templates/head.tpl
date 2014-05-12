@@ -29,8 +29,7 @@
 
     {* Load css and bootstrap seperately if <= IE9 *}
     <!--[if lte IE 9]>
-        <link rel="stylesheet" href="/core/layout/css/bootstrap.min.css?m={$LAST_MODIFIED}">
-        <link rel="stylesheet" href="/core/layout/css/bootstrap-responsive.min.css?m={$LAST_MODIFIED}">
+        <link rel="stylesheet" href="/core/layout/css/bootstrap.css?m={$LAST_MODIFIED}">
         <link rel="stylesheet" href="/core/layout/css/style_ie.css?m={$LAST_MODIFIED}">
     <![endif]-->
 	{option:css}

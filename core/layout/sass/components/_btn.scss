@@ -83,6 +83,10 @@
   &.disabled {
     border-color: transparent;
   }
+
+  .no-csstransitions & {
+    filter: none;
+  }
 }
 
 // btn-group

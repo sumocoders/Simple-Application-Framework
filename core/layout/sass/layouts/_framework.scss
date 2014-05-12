@@ -156,7 +156,7 @@ body {
           white-space: nowrap;
 
           &.iconList {
-            @include svg-with-png-fallback(icon_list, #1f2024 no-repeat, $dimensions: false);
+            @include svg-with-png-fallback(icon_list, #1f2024 no-repeat center center, $dimensions: false);
             background-position: 22px center;
           }
 
@@ -200,6 +200,7 @@ body {
             background-color: #4ba75f;
             color: #fff;
             border: none;
+            width: auto;
           }
         }
       }
