@@ -105,9 +105,6 @@ class User extends DefaultEntity
      */
     public static function get($id)
     {
-        // redefine
-        $id = (int) $id;
-
         // get data
         $data = Site::getDB()->getRecord(
             'SELECT i.*, UNIX_TIMESTAMP(i.created_on) AS created_on,
@@ -115,21 +112,16 @@ class User extends DefaultEntity
             UNIX_TIMESTAMP(i.blocked_on) AS blocked_on
             FROM users AS i
             WHERE i.id = ?',
-            array($id)
+            array((int) $id)
         );
 
-        // validate
         if ($data === null) {
             return false;
         }
 
-        // create instance
         $item = new User();
-
-        // initialize
         $item->initialize($data);
 
-        // return
         return $item;
     }
 
@@ -148,31 +140,22 @@ class User extends DefaultEntity
      */
     public static function getByEmail($email)
     {
-        // redefine
-        $email = (string) $email;
-
-        // get data
         $data = Site::getDB()->getRecord(
             'SELECT i.*, UNIX_TIMESTAMP(i.created_on) AS created_on,
             UNIX_TIMESTAMP(i.edited_on) AS edited_on,
             UNIX_TIMESTAMP(i.blocked_on) AS blocked_on
             FROM users AS i
             WHERE i.email = ? AND i.deleted = "N"',
-            array($email)
+            array((string) $email)
         );
 
-        // validate
         if ($data === null) {
             return false;
         }
 
-        // create instance
         $item = new User();
-
-        // initialize
         $item->initialize($data);
 
-        // return
         return $item;
     }
 
@@ -183,34 +166,25 @@ class User extends DefaultEntity
      */
     public static function getByHash($hash)
     {
-        // redefine
-        $hash = (string) $hash;
-
         $data = Site::getDB()->getRecord(
             'SELECT i.*, UNIX_TIMESTAMP(i.created_on) AS created_on,
             UNIX_TIMESTAMP(i.edited_on) AS edited_on,
             UNIX_TIMESTAMP(i.blocked_on) AS blocked_on
             FROM users AS i
             WHERE i.forgot_password = ?',
-            array($hash)
+            array((string) $hash)
         );
 
-        // validate
         if ($data === null) {
             return false;
         }
 
-        // create instance
         $item = new User();
-
-        // initialize
         $item->initialize($data);
-
         if ($item->isBlocked()) {
             return 'blocked';
         }
 
-        // return
         return $item;
     }
 
