@@ -363,7 +363,9 @@ class User extends DefaultEntity
         ) : null;
 
         // unset what we don't need
-        unset($item['is_admin']);
+        foreach(self::getPossibleTypesForDropdown() as $value => $label) {
+            unset($item['is_' . $value]);
+        }
         unset($item['is_blocked']);
         unset($item['is_deleted']);
         unset($item['raw_password']);
