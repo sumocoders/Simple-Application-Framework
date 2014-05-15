@@ -109,7 +109,6 @@ class SiteDataGrid extends SpoonDataGrid
             }
             if($isExternal) $html .= '" target="_blank';
             $html .= '">';
-            $html .= '">';
             if (substr_count($name, 'edit')) {
                 $html .= '<span class="add-on"><i class="icon-pencil"></i></span>';
                 $html .= '<span class="hide">';
