@@ -115,14 +115,7 @@ class User extends DefaultEntity
             array((int) $id)
         );
 
-        if ($data === null) {
-            return false;
-        }
-
-        $item = new User();
-        $item->initialize($data);
-
-        return $item;
+        return self::createFromData($data);
     }
 
     /**
@@ -149,14 +142,7 @@ class User extends DefaultEntity
             array((string) $email)
         );
 
-        if ($data === null) {
-            return false;
-        }
-
-        $item = new User();
-        $item->initialize($data);
-
-        return $item;
+        return self::createFromData($data);
     }
 
     /**
@@ -179,8 +165,7 @@ class User extends DefaultEntity
             return false;
         }
 
-        $item = new User();
-        $item->initialize($data);
+        $item = self::createFromData($data);
         if ($item->isBlocked()) {
             return 'blocked';
         }
