@@ -473,6 +473,10 @@ class User extends DefaultEntity
      */
     public function setType($type)
     {
+        if (!in_array($type, array_keys(self::getPossibleTypesForDropdown()))) {
+            throw new \Exception('Invalid type');
+        }
+
         $this->type = (string) $type;
     }
 
