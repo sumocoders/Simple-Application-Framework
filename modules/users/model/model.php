@@ -475,6 +475,19 @@ class User extends DefaultEntity
     {
         $this->type = (string) $type;
     }
+
+    /**
+     * Return the object as an array
+     *
+     * @return array
+     */
+    public function toArray()
+    {
+        $data = parent::toArray();
+        $data['is' . SpoonFilter::toCamelCase($this->getType())] = true;
+
+        return $data;
+    }
 }
 
 /**
