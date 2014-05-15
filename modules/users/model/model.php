@@ -477,6 +477,19 @@ class User extends DefaultEntity
     }
 
     /**
+     * Get the possible types for a user
+     *
+     * @return array
+     */
+    public static function getPossibleTypesForDropdown()
+    {
+        return array(
+            'user' => SiteLocale::lbl('TypeUser'),
+            'admin' => SiteLocale::lbl('TypeAdmin'),
+        );
+    }
+
+    /**
      * Return the object as an array
      *
      * @return array
