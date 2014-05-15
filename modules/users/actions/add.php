@@ -48,7 +48,7 @@ class UsersAdd extends SiteBaseAction
 		$this->frm->addText('email')->setAttributes(array('type' => 'email', 'required' => null));
 		$this->frm->addText('name')->setAttributes(array('required' => null));
 		$this->frm->addPassword('password')->setAttributes(array('autocomplete' => 'off', 'required' => null));
-		$this->frm->addDropdown('type', array('user' => 'user', 'admin' => 'admin'), 'user');
+		$this->frm->addDropdown('type', User::getPossibleTypesForDropdown(), 'user');
 	}
 
 	/**

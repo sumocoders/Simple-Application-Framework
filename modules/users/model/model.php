@@ -363,7 +363,9 @@ class User extends DefaultEntity
         ) : null;
 
         // unset what we don't need
-        unset($item['is_admin']);
+        foreach (self::getPossibleTypesForDropdown() as $value => $label) {
+            unset($item['is_' . $value]);
+        }
         unset($item['is_blocked']);
         unset($item['is_deleted']);
         unset($item['raw_password']);
@@ -473,7 +475,24 @@ class User extends DefaultEntity
      */
     public function setType($type)
     {
+        if (!array_key_exists($type, self::getPossibleTypesForDropdown())) {
+            throw new \InvalidArgumentException('Invalid type');
+        }
+
         $this->type = (string) $type;
+    }
+
+    /**
+     * Get the possible types for a user
+     *
+     * @return array
+     */
+    public static function getPossibleTypesForDropdown()
+    {
+        return array(
+            'user' => SiteLocale::lbl('TypeUser'),
+            'admin' => SiteLocale::lbl('TypeAdmin'),
+        );
     }
 
     /**
