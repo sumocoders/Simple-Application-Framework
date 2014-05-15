@@ -44,10 +44,29 @@ abstract class DefaultEntity
     protected $editedOn;
 
     /**
+     * Create a entity from the given data
+     *
+     * @param array|null $data An array of data (key-value)
+     *
+     * @return bool|static
+     */
+    public static function createFromData($data = null)
+    {
+        if ($data === null) {
+            return false;
+        }
+
+        $item = new static();
+        $item->initialize($data);
+
+        return $item;
+    }
+
+    /**
      * initialized the log data
      * @param array $data
      */
-    public function initialize($data)
+    protected function initialize($data)
     {
         if (isset($data['id'])) {
             $this->setId($data['id']);

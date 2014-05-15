@@ -35,10 +35,7 @@ class Authentication
 		if($data !== null)
 		{
 			// create instance
-			$user = new User();
-
-			// initialize
-			$user->initialize($data);
+			$user = User::createFromData($data);
 
 			// login again, so we stay logged in
 			self::login($user);
