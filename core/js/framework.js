@@ -134,7 +134,7 @@
       }
     });
 
-    Framework.onDomReady(['_initAjax', '_initForm', '_initTabs', '_calculateActionsWidths', 'setContentHeight']);
+    Framework.onDomReady(['_initAjax', '_initForm', '_initTabs', '_calculateActionsWidths', 'setContentHeight', 'loginAutoFocus']);
 
     Framework.prototype._initAjax = function() {
       $.ajaxSetup({
@@ -376,6 +376,10 @@
           return $('#content').css('minHeight', $(window).height());
         }, 200);
       });
+    };
+
+    Framework.prototype.loginAutoFocus = function() {
+      return $('#users input[id="login"]').focus();
     };
 
     return Framework;
