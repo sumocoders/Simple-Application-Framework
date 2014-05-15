@@ -65,7 +65,7 @@ abstract class DefaultEntity
             $this->setEditedOn(new DateTime('@' . $data['edited_on']));
         }
     }
-    
+
     /**
      * @return int
      */
@@ -113,10 +113,15 @@ abstract class DefaultEntity
     public function save()
     {
         $this->setEditedOn(new DateTime());
-        $this->setEditedBy(Authentication::getLoggedInUser()->getId());
+        $authenticatedUser = Authentication::getLoggedInUser();
+        if ($authenticatedUser) {
+            $this->setEditedBy($authenticatedUser->getId());
+        }
         if ($this->getCreatedOn() === null) {
             $this->setCreatedOn(new DateTime());
-            $this->setCreatedBy(Authentication::getLoggedInUser()->getId());
+            if ($authenticatedUser) {
+                $this->setCreatedBy($authenticatedUser->getId());
+            }
         }
         $item = array();
         foreach ($this->toArray() as $key => $value) {
@@ -125,6 +130,7 @@ abstract class DefaultEntity
         $item['created_on'] = Site::getUTCDate('Y-m-d H:i:s', $item['created_on']);
         $item['edited_on'] = Site::getUTCDate('Y-m-d H:i:s', $item['edited_on']);
         $this->log('save');
+
         return $item;
     }
 
@@ -181,6 +187,7 @@ abstract class DefaultEntity
         //convert time
         $item['createdOn'] = ($item['createdOn'] !== null) ? $item['createdOn']->getTimestamp() : null;
         $item['editedOn'] = ($item['editedOn'] !== null) ? $item['editedOn']->getTimestamp() : null;
+
         return $item;
     }
 
@@ -190,7 +197,7 @@ abstract class DefaultEntity
     protected function log($action)
     {
         Site::getLogger()->notice(
-            get_class($this) . ' ' . (string)$action,
+            get_class($this) . ' ' . (string) $action,
             array(
                 'object' => $this,
                 'by' => Authentication::getLoggedInUser()
