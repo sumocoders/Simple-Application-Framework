@@ -363,7 +363,7 @@ class User extends DefaultEntity
         ) : null;
 
         // unset what we don't need
-        foreach(self::getPossibleTypesForDropdown() as $value => $label) {
+        foreach (self::getPossibleTypesForDropdown() as $value => $label) {
             unset($item['is_' . $value]);
         }
         unset($item['is_blocked']);
@@ -475,7 +475,7 @@ class User extends DefaultEntity
      */
     public function setType($type)
     {
-        if (!in_array($type, array_keys(self::getPossibleTypesForDropdown()))) {
+        if (!array_key_exists($type, self::getPossibleTypesForDropdown())) {
             throw new \InvalidArgumentException('Invalid type');
         }
 
