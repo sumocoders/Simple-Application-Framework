@@ -113,10 +113,15 @@ abstract class DefaultEntity
     public function save()
     {
         $this->setEditedOn(new DateTime());
-        $this->setEditedBy(Authentication::getLoggedInUser()->getId());
+        $authenticatedUser = Authentication::getLoggedInUser();
+        if ($authenticatedUser) {
+            $this->setEditedBy($authenticatedUser->getId());
+        }
         if ($this->getCreatedOn() === null) {
             $this->setCreatedOn(new DateTime());
-            $this->setCreatedBy(Authentication::getLoggedInUser()->getId());
+            if ($authenticatedUser) {
+                $this->setCreatedBy($authenticatedUser->getId());
+            }
         }
         $item = array();
         foreach ($this->toArray() as $key => $value) {
