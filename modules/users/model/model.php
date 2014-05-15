@@ -81,6 +81,24 @@ class User extends DefaultEntity
     protected $settings = array();
 
     /**
+     * Create a user from the given data
+     *
+     * @param array|null $data
+     * @return bool|User
+     */
+    public static function createFromData($data = null)
+    {
+        if ($data === null) {
+            return false;
+        }
+
+        $item = new User();
+        $item->initialize($data);
+
+        return $item;
+    }
+
+    /**
      * Get a user
      * @param int $id The id of the user.
      * @return User
