@@ -70,6 +70,7 @@ class Framework extends DefaultObject
     '_initTabs'
     '_calculateActionsWidths'
     'setContentHeight'
+    'loginAutoFocus'
   ]
 
   _initAjax: ->
@@ -315,5 +316,8 @@ class Framework extends DefaultObject
         $('#content').css('minHeight', $(window).height())
       , 200)
     )
+
+  loginAutoFocus: ->
+    $('#users input[id="login"]').focus()
 
 window.Framework = Framework
