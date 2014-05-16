@@ -23,10 +23,7 @@ class UsersAdd extends SiteBaseAction
      */
     public function execute()
     {
-        // check if admin
-        if (!$this->currentUser->isAdmin()) {
-            Site::displayError('Forbidden', 403);
-        }
+        $this->showForbiddenIfNotAllowed(array('admin'));
 
         $this->loadForm();
         $this->validateForm();

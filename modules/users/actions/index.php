@@ -26,10 +26,7 @@ class UsersIndex extends SiteBaseAction
      */
     private function parse()
     {
-        // check if admin
-        if (!$this->currentUser->isAdmin()) {
-            Site::displayError('Forbidden', 403);
-        }
+        $this->showForbiddenIfNotAllowed(array('admin'));
 
         $dataGrid = new SiteDataGridDB(
             'SELECT id, email, name
