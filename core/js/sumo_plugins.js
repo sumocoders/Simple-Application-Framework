@@ -165,7 +165,7 @@ if(jQuery) (function($) {
 				// Get/set opacity
 				case 'opacity':
 					// Getter
-					if( data === undefined ) {
+					if( data === void 0 ) {
 						// Getter
 						return $(this).attr('data-opacity');
 					} else {
@@ -187,7 +187,7 @@ if(jQuery) (function($) {
 
 				// Get/set settings on the fly
 				case 'settings':
-					if( data === undefined ) {
+					if( data === void 0 ) {
 						return $(this).data('minicolors-settings');
 					} else {
 						// Setter
@@ -206,7 +206,7 @@ if(jQuery) (function($) {
 
 				// Get/set the hex color value
 				case 'value':
-					if( data === undefined ) {
+					if( data === void 0 ) {
 						// Getter
 						return $(this).val();
 					} else {
@@ -248,7 +248,7 @@ if(jQuery) (function($) {
 				.toggleClass('minicolors-with-opacity', settings.opacity);
 
 		// Custom positioning
-		if( settings.position !== undefined ) {
+		if( settings.position !== void 0 ) {
 			$.each(settings.position.split(' '), function() {
 				minicolors.addClass('minicolors-position-' + this);
 			});
@@ -741,7 +741,7 @@ if(jQuery) (function($) {
 				rgb = hex2rgb(hex),
 				opacity = $(input).attr('data-opacity');
 		if( !rgb ) return null;
-		if( opacity !== undefined ) $.extend(rgb, { a: parseFloat(opacity) });
+		if( opacity !== void 0 ) $.extend(rgb, { a: parseFloat(opacity) });
 		return rgb;
 	}
 
@@ -751,7 +751,7 @@ if(jQuery) (function($) {
 				rgb = hex2rgb(hex),
 				opacity = $(input).attr('data-opacity');
 		if( !rgb ) return null;
-		if( opacity === undefined ) opacity = 1;
+		if( opacity === void 0 ) opacity = 1;
 		if( alpha ) {
 			return 'rgba(' + rgb.r + ', ' + rgb.g + ', ' + rgb.b + ', ' + parseFloat(opacity) + ')';
 		} else {
