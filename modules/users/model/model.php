@@ -487,7 +487,10 @@ class UsersHelper
      */
     public static function search($query)
     {
-        if (!Authentication::getLoggedInUser()->isAdmin()) {
+        if (
+            !Authentication::getLoggedInUser()
+            || !Authentication::getLoggedInUser()->isAdmin()
+        ) {
             return array();
         }
 
