@@ -223,21 +223,22 @@ class SiteBaseAction
     }
 
     /**
-     * Show an error if not all url-parameters are provided
+     * Get a required parameter, if the parameter isn't provided an error will be shown
      *
-     * @param array  $parameters
+     * @param string $key
+     * @param string $type
      * @param string $errorMessage
      * @param int    $errorCode
+     * @return mixed
      */
-    public function showErrorIfRequiredUrlParametersNotProvided(
-        array $parameters,
-        $errorMessage = 'Page not found',
-        $errorCode = 404
-    ) {
-        foreach ($parameters as $key) {
-            if ($this->url->getParameter($key) === null) {
-                Site::displayError($errorMessage, $errorCode);
-            }
+    protected function getRequiredParameter($key, $type = 'string', $errorMessage = 'Page not found', $errorCode = 404)
+    {
+        $value = $this->url->getParameter($key, $type);
+
+        if ($value === null) {
+            Site::displayError($errorMessage, $errorCode);
+        } else {
+            return $value;
         }
     }
 
