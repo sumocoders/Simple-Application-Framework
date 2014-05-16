@@ -37,11 +37,7 @@ class UsersEdit extends SiteBaseAction
      */
     public function execute()
     {
-        $this->id = $this->url->getParameter(1, 'int');
-        if ($this->id == '') {
-            Site::displayError('Page not found', 404);
-        }
-
+        $this->id = $this->getRequiredParameter(1, 'int');
         // check if admin or editing yourself
         if (!$this->currentUser->isAdmin() && $this->currentUser->getId() != $this->id) {
             Site::displayError('Forbidden', 403);

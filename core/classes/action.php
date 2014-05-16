@@ -223,6 +223,26 @@ class SiteBaseAction
     }
 
     /**
+     * Get a required parameter, if the parameter isn't provided an error will be shown
+     *
+     * @param string $key
+     * @param string $type
+     * @param string $errorMessage
+     * @param int    $errorCode
+     * @return mixed
+     */
+    protected function getRequiredParameter($key, $type = 'string', $errorMessage = 'Page not found', $errorCode = 404)
+    {
+        $value = $this->url->getParameter($key, $type);
+
+        if ($value === null) {
+            Site::displayError($errorMessage, $errorCode);
+        } else {
+            return $value;
+        }
+    }
+
+    /**
      * Show the forbidden page if an action is not allowed
      *
      * @param array $allowedTypes
