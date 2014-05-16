@@ -25,27 +25,24 @@ class Authentication
 		$db->delete('users_sessions', 'edited_on < ?', array(Site::getUTCDate(null, (time() - (2 * 60 * 60)))));
 
 		// search for session
-		$data = $db->getRecord('SELECT u.*, UNIX_TIMESTAMP(u.created_on) AS created_on, UNIX_TIMESTAMP(u.edited_on) AS edited_on
+		$data = (array) $db->getRecord('SELECT u.*, UNIX_TIMESTAMP(u.created_on) AS created_on, UNIX_TIMESTAMP(u.edited_on) AS edited_on
 								FROM users_sessions AS i
 								INNER JOIN users AS u ON i.user_id = u.id
 								WHERE i.session_id = ? AND i.edited_on > ? AND u.deleted = "N"',
 								array(SpoonSession::getSessionId(), Site::getUTCDate(null, (time() - (2 * 60 * 60)))));
 
-		// any data?
-		if ($data !== null) {
-			try {
-				// create instance
-				$user = User::createFromData($data);
+		try {
+			// create instance
+			$user = User::createFromData($data);
 
-				// login again, so we stay logged in
-				self::login($user);
+			// login again, so we stay logged in
+			self::login($user);
 
-				// return
-				return $user;
-			} catch (InvalidArgumentException $e) {
-				// Do nothing, we'll see if we need to redirect to login or allow
-				// on the current page without logging in.
-			}
+			// return
+			return $user;
+		} catch (InvalidArgumentException $e) {
+			// Do nothing, we'll see if we need to redirect to login or allow
+			// on the current page without logging in.
 		}
 
 		// no data, so redirect to login
