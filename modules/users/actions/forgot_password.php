@@ -85,8 +85,8 @@ class UsersForgotPassword extends SiteBaseAction
 					$this->frm->getField('email')->addError(SiteLocale::err('BlockedUser'));
 				}
 			} catch (InvalidArgumentException $e) {
-                $this->tpl->assign('error', true);
-                $this->frm->getField('email')->addError('&nbsp;');
+				$this->tpl->assign('error', true);
+				$this->frm->getField('email')->addError('&nbsp;');
 			}
 
 			// no errors

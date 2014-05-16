@@ -53,7 +53,7 @@ class UsersResetPassword extends SiteBaseAction
 		try {
 			$this->user = User::getByHash($hash);
 		} catch (InvalidArgumentException $e) {
-            Site::displayError(SiteLocale::err('PageNotFound'), 404);
+			Site::displayError(SiteLocale::err('PageNotFound'), 404);
 		}
 
         if ($this->user->isBlocked()) {
