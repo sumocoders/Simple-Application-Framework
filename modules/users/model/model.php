@@ -82,7 +82,11 @@ class User extends DefaultEntity
 
     /**
      * Get a user
+     *
      * @param int $id The id of the user.
+     *
+     * @throws InvalidArgumentException when no data was found for this id
+     *
      * @return User
      */
     public static function get($id)
@@ -114,7 +118,11 @@ class User extends DefaultEntity
 
     /**
      * Get a user by his email
-     * @param string $email
+     *
+     * @param string $email The user's email address
+     *
+     * @throws InvalidArgumentException when no data was found for this email address
+     *
      * @return User
      */
     public static function getByEmail($email)
@@ -137,7 +145,11 @@ class User extends DefaultEntity
 
     /**
      * Get a user by his hash
-     * @param string $hash
+     *
+     * @param string $hash The hash for the user we want to get
+     *
+     * @throws InvalidArgumentException when no data was found for this hash
+     *
      * @return User
      */
     public static function getByHash($hash)
