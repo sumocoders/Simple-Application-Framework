@@ -203,7 +203,7 @@ class SiteBaseAction
         $this->currentUser = Authentication::getLoggedInUser();
 
         // assign if there is a valid user
-        if ($this->currentUser != false) {
+        if ($this->currentUser) {
             // assign
             $this->tpl->assign('currentUser', $this->currentUser->toArray());
         }

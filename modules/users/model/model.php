@@ -82,7 +82,11 @@ class User extends DefaultEntity
 
     /**
      * Get a user
+     *
      * @param int $id The id of the user.
+     *
+     * @throws InvalidArgumentException when no data was found for this id
+     *
      * @return User
      */
     public static function get($id)
@@ -97,6 +101,10 @@ class User extends DefaultEntity
             array((int) $id)
         );
 
+        if (empty($data)) {
+            throw new InvalidArgumentException('A user with this id could not be found');
+        }
+
         return self::createFromData($data);
     }
 
@@ -110,7 +118,11 @@ class User extends DefaultEntity
 
     /**
      * Get a user by his email
-     * @param string $email
+     *
+     * @param string $email The user's email address
+     *
+     * @throws InvalidArgumentException when no data was found for this email address
+     *
      * @return User
      */
     public static function getByEmail($email)
@@ -124,12 +136,20 @@ class User extends DefaultEntity
             array((string) $email)
         );
 
+        if (empty($data)) {
+            throw new InvalidArgumentException('A user with this email address could not be found');
+        }
+
         return self::createFromData($data);
     }
 
     /**
      * Get a user by his hash
-     * @param string $hash
+     *
+     * @param string $hash The hash for the user we want to get
+     *
+     * @throws InvalidArgumentException when no data was found for this hash
+     *
      * @return User
      */
     public static function getByHash($hash)
@@ -143,16 +163,11 @@ class User extends DefaultEntity
             array((string) $hash)
         );
 
-        if ($data === null) {
-            return false;
+        if (empty($data)) {
+            throw new InvalidArgumentException('A user with this hash could not be found');
         }
 
-        $item = self::createFromData($data);
-        if ($item->isBlocked()) {
-            return 'blocked';
-        }
-
-        return $item;
+        return self::createFromData($data);
     }
 
     /**
@@ -484,7 +499,10 @@ class UsersHelper
      */
     public static function search($query)
     {
-        if (!Authentication::getLoggedInUser()->isAdmin()) {
+        if (
+            !Authentication::getLoggedInUser()
+            || !Authentication::getLoggedInUser()->isAdmin()
+        ) {
             return array();
         }
 

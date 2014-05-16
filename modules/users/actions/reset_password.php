@@ -50,10 +50,13 @@ class UsersResetPassword extends SiteBaseAction
         $hash = SpoonFilter::getGetValue('token', null, null);
         if($hash == null) Site::displayError(SiteLocale::err('PageNotFound'), 404);
 
-        $this->user = User::getByHash($hash);
+		try {
+			$this->user = User::getByHash($hash);
+		} catch (InvalidArgumentException $e) {
+			Site::displayError(SiteLocale::err('PageNotFound'), 404);
+		}
 
-        if($this->user === false || $this->user === 'blocked')
-        {
+        if ($this->user->isBlocked()) {
             Site::displayError(SiteLocale::err('PageNotFound'), 404);
         }
 

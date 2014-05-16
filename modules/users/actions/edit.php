@@ -48,8 +48,9 @@ class UsersEdit extends SiteBaseAction
         }
 
         // get item
-        $this->item = User::get($this->id);
-        if ($this->item === false) {
+        try {
+            $this->item = User::get($this->id);
+        } catch (Exception $e) {
             Site::displayError('Page not found', 404);
         }
 

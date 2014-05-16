@@ -78,14 +78,16 @@ class UsersForgotPassword extends SiteBaseAction
 			// validate required fields
 			$this->frm->getField('email')->isEmail(SiteLocale::err('EmailIsInvalid'));
 
-			$user = User::getByEmail($this->frm->getField('email')->getValue());
+			try {
+				$user = User::getByEmail($this->frm->getField('email')->getValue());
 
-			if($user == false) {
-                $this->tpl->assign('error', true);
-                $this->frm->getField('email')->addError('&nbsp;');
-			} elseif($user->isBlocked()) {
-                $this->frm->getField('email')->addError(SiteLocale::err('BlockedUser'));
-            }
+				if ($user->isBlocked()) {
+					$this->frm->getField('email')->addError(SiteLocale::err('BlockedUser'));
+				}
+			} catch (InvalidArgumentException $e) {
+				$this->tpl->assign('error', true);
+				$this->frm->getField('email')->addError('&nbsp;');
+			}
 
 			// no errors
 			if($this->frm->isCorrect())
