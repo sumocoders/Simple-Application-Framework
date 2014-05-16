@@ -46,14 +46,16 @@ abstract class DefaultEntity
     /**
      * Create a entity from the given data
      *
-     * @param array|null $data An array of data (key-value)
+     * @param array $data An array of data (key-value)
      *
-     * @return bool|static
+     * @throws InvalidArgumentException when empty array was given
+     *
+     * @return static
      */
-    public static function createFromData($data = null)
+    public static function createFromData(array $data)
     {
-        if ($data === null) {
-            return false;
+        if (empty($data)) {
+            throw new InvalidArgumentException('Can not create entity from empty array');
         }
 
         $item = new static();

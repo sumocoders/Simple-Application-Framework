@@ -97,6 +97,10 @@ class User extends DefaultEntity
             array((int) $id)
         );
 
+        if (empty($data)) {
+            throw new InvalidArgumentException('A user with this id could not be found');
+        }
+
         return self::createFromData($data);
     }
 
@@ -124,6 +128,10 @@ class User extends DefaultEntity
             array((string) $email)
         );
 
+        if (empty($data)) {
+            throw new InvalidArgumentException('A user with this email address could not be found');
+        }
+
         return self::createFromData($data);
     }
 
@@ -143,16 +151,11 @@ class User extends DefaultEntity
             array((string) $hash)
         );
 
-        if ($data === null) {
-            return false;
+        if (empty($data)) {
+            throw new InvalidArgumentException('A user with this hash could not be found');
         }
 
-        $item = self::createFromData($data);
-        if ($item->isBlocked()) {
-            return 'blocked';
-        }
-
-        return $item;
+        return self::createFromData($data);
     }
 
     /**
