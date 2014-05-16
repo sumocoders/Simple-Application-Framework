@@ -223,6 +223,25 @@ class SiteBaseAction
     }
 
     /**
+     * Show an error if not all url-parameters are provided
+     *
+     * @param array  $parameters
+     * @param string $errorMessage
+     * @param int    $errorCode
+     */
+    public function showErrorIfRequiredUrlParametersNotProvided(
+        array $parameters,
+        $errorMessage = 'Page not found',
+        $errorCode = 404
+    ) {
+        foreach ($parameters as $key) {
+            if ($this->url->getParameter($key) === null) {
+                Site::displayError($errorMessage, $errorCode);
+            }
+        }
+    }
+
+    /**
      * Show the forbidden page if an action is not allowed
      *
      * @param array $allowedTypes
