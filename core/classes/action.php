@@ -223,6 +223,18 @@ class SiteBaseAction
     }
 
     /**
+     * Show the forbidden page if an action is not allowed
+     *
+     * @param array $allowedTypes
+     */
+    public function showForbiddenIfNotAllowed(array $allowedTypes)
+    {
+        if (!in_array($this->currentUser->getType(), $allowedTypes)) {
+            Site::displayError('Forbidden', 403);
+        }
+    }
+
+    /**
      * Display, this wil output the template to the browser
      * If no template is specified we build the path form the current module and action
      *
