@@ -13,7 +13,7 @@
 					<div class="actions">
 						<a href="#" class="dropdownToggle visible-phone" data-toggle="dropdownItems">{$lblActions|ucfirst}</a>
 						<ul class="dropdownItems">
-							<li><a class="iconList" href="{$var|buildurl:'index':'users'}">{$lblOverview|ucfirst}</a></li>
+							<li><a class="iconList" href="{$var|buildurl:'index'}">{$lblOverview|ucfirst}</a></li>
 						</ul>
 					</div>
 				{/option:isAdmin}

@@ -12,7 +12,7 @@
 				<div class="actions">
 					<a href="#" class="dropdownToggle visible-phone" data-toggle="dropdownItems">{$lblActions|ucfirst}</a>
 					<ul class="dropdownItems">
-						<li><a class="iconAdd" href="{$var|buildurl:'add':'users'}">{$lblAdd|ucfirst}</a></li>
+						<li><a class="iconAdd" href="{$var|buildurl:'add'}">{$lblAdd|ucfirst}</a></li>
 					</ul>
 				</div>
 			</div>

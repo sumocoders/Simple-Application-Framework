@@ -3,11 +3,11 @@
 /**
  * UsersIndex
  *
- * @package		users
- * @subpackage	index
+ * @package        users
+ * @subpackage     index
  *
- * @author 		Tijs Verkoyen <tijs@sumocoders.be>
- * @since		1.0
+ * @author         Tijs Verkoyen <tijs@sumocoders.be>
+ * @since          1.0
  */
 class UsersIndex extends SiteBaseAction
 {
@@ -26,11 +26,7 @@ class UsersIndex extends SiteBaseAction
      */
     private function parse()
     {
-        // check if admin
-        if(!$this->currentUser->isAdmin())
-        {
-            Site::displayError('Forbidden', 403);
-        }
+        $this->showForbiddenIfNotAllowed(array('admin'));
 
         $dataGrid = new SiteDataGridDB(
             'SELECT id, email, name
@@ -48,6 +44,8 @@ class UsersIndex extends SiteBaseAction
         );
 
         // assign
-        if($dataGrid->getContent() != '') $this->tpl->assign('dataGrid', $dataGrid->getContent());
+        if ($dataGrid->getContent() != '') {
+            $this->tpl->assign('dataGrid', $dataGrid->getContent());
+        }
     }
 }
