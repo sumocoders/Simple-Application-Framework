@@ -32,49 +32,50 @@ class Authentication
 								array(SpoonSession::getSessionId(), Site::getUTCDate(null, (time() - (2 * 60 * 60)))));
 
 		// any data?
-		if($data !== null)
-		{
-			// create instance
-			$user = User::createFromData($data);
+		if ($data !== null) {
+			try {
+				// create instance
+				$user = User::createFromData($data);
 
-			// login again, so we stay logged in
-			self::login($user);
+				// login again, so we stay logged in
+				self::login($user);
 
-			// return
-			return $user;
+				// return
+				return $user;
+			} catch (InvalidArgumentException $e) {
+				// Do nothing, we'll see if we need to redirect to login or allow
+				// on the current page without logging in.
+			}
 		}
 
 		// no data, so redirect to login
-		else
-		{
-			// reset session
-			SpoonSession::destroy();
-			session_regenerate_id(true);
+		// reset session
+		SpoonSession::destroy();
+		session_regenerate_id(true);
 
-			$url = Spoon::get('url');
+		$url = Spoon::get('url');
 
-			/**
-			 * This is the list of allowed Routes without authentication.
-			 * Per module with public actions, you should create an array key (name of the module),
-			 * and a value (another array with allowed actions). See the 'users' example.
-			 */
-			$allowedRoutes = array(
-				'users' => array('logout', 'login', 'forgot_password', 'reset_password'),
+		/**
+		 * This is the list of allowed Routes without authentication.
+		 * Per module with public actions, you should create an array key (name of the module),
+		 * and a value (another array with allowed actions). See the 'users' example.
+		 */
+		$allowedRoutes = array(
+			'users' => array('logout', 'login', 'forgot_password', 'reset_password'),
+		);
+
+		if (!isset($allowedRoutes[$url->getModule()]) || !in_array($url->getAction(), $allowedRoutes[$url->getModule()])) {
+			SpoonHTTP::redirect(
+				$url->buildUrl(
+					'login',
+					'users',
+					null,
+					array(
+						'redirect' => '/' . $url->getQueryString()
+					)
+				),
+				403
 			);
-
-			if (!isset($allowedRoutes[$url->getModule()]) || !in_array($url->getAction(), $allowedRoutes[$url->getModule()])) {
-				SpoonHTTP::redirect(
-					$url->buildUrl(
-						'login',
-						'users',
-						null,
-						array(
-							'redirect' => '/' . $url->getQueryString()
-						)
-					),
-					403
-				);
-			}
 		}
 	}
 
@@ -123,76 +124,76 @@ class Authentication
 	 */
 	public static function validateLogin($email, $password)
 	{
-		// init vars
-		$return = false;
-		$user = User::getByEmail($email);
+		try {
+			$user = User::getByEmail($email);
 
-		if($user !== false)
-		{
 			// check if given password match
-			if(!$user->isBlocked() && $user->getPassword() == sha1(md5($password) . $user->getSecret()))
-			{
+			if (!$user->isBlocked() && $user->getPassword() == sha1(md5($password) . $user->getSecret())) {
 				// reset the login-attempts
 				Site::getDB(true)->delete('users_login_attempts', 'login = ?', $email);
 
-				$return = $user;
+				return $user;
 			}
+		} catch (InvalidArgumentException $e) {
+			// Do nothing. We don't care if this succeeds or not,
 		}
 
 		// should we log?
-		if(!$return)
-		{
-			// get current number of attempts
-			$attempts = (int) Site::getDB()->getVar('SELECT attempts FROM users_login_attempts WHERE login = ?', $email);
+		// get current number of attempts
+		$attempts = (int) Site::getDB()->getVar(
+			'SELECT attempts FROM users_login_attempts WHERE login = :email',
+			array('email' => $email)
+		);
 
-			// log in the db
-			Site::getDB(true)->execute(
-				'INSERT INTO users_login_attempts
-				 VALUES(:email, :attempts, :date)
-				 ON DUPLICATE KEY UPDATE attempts = :attempts, last_attempt = :date',
-				array(
-				     'email' => $email,
-				     'attempts' => $attempts + 1,
-				     'date' => Site::getUTCDate('Y-m-d H:i:s'),
-				)
-			);
+		// log in the db
+		Site::getDB(true)->execute(
+			'INSERT INTO users_login_attempts
+			 VALUES(:email, :attempts, :date)
+			 ON DUPLICATE KEY UPDATE attempts = :attempts, last_attempt = :date',
+			array(
+				 'email' => $email,
+				 'attempts' => $attempts + 1,
+				 'date' => Site::getUTCDate('Y-m-d H:i:s'),
+			)
+		);
 
-			$message = 'failed login attempt';
-			if($user !== false && $user->isBlocked()) $message .= ' from blocked user';
-
-			// log
-			Site::getLogger()->warning(
-				$message,
-				array(
-				     'email' => $email,
-				     'server' => $_SERVER,
-				)
-			);
-
-			// when someone has attempted to login for 7 times we will block the user.
-			if($user && $attempts >= 7)
-			{
-				$user->setBlocked(true);
-				if($user->getBlockedOn() === null) $user->setBlockedOn(new DateTime());
-				$user->save();
-
-				// log
-				Site::getLogger()->error(
-					'blocked user after 7 failed attempts',
-					array(
-					     'object' => $user,
-					     'attempts' => $attempts,
-					)
-				);
-			}
-
-			// if there are multiple attempts we will slow down the user
-			if($attempts >= 3)
-			{
-				sleep(($attempts - 3) * 5);
-			}
+		$message = 'failed login attempt';
+		if (isset($user) && $user->isBlocked()) {
+			$message .= ' from blocked user';
 		}
 
-		return $return;
+		// log
+		Site::getLogger()->warning(
+			$message,
+			array(
+				 'email' => $email,
+				 'server' => $_SERVER,
+			)
+		);
+
+		// when someone has attempted to login for 7 times we will block the user.
+		if (isset($user) && $attempts >= 7) {
+			$user->setBlocked(true);
+			if ($user->getBlockedOn() === null) {
+				$user->setBlockedOn(new DateTime());
+			}
+			$user->save();
+
+			// log
+			Site::getLogger()->error(
+				'blocked user after 7 failed attempts',
+				array(
+					 'object' => $user,
+					 'attempts' => $attempts,
+				)
+			);
+		}
+
+		// if there are multiple attempts we will slow down the user
+		if ($attempts >= 3) {
+			sleep(($attempts - 3) * 5);
+		}
+
+		return false;
 	}
 }
