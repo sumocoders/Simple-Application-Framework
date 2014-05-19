@@ -399,23 +399,16 @@ class SiteTemplateModifiers
      */
     public static function timeAgo($var = null)
     {
-        // redefine
         $var = (int) $var;
-
-        // invalid timestamp
         if ($var == 0) {
             return '';
         }
-
-        // get url
         $url = Spoon::get('url');
 
-        // return
-        return '<abbr title="' . SpoonDate::getDate(
-            'l j F Y H:i:s',
-            $var,
-            $url->getLanguage()
-        ) . '">' . SpoonDate::getTimeAgo($var, $url->getLanguage()) . '</abbr>';
+        $date = SpoonDate::getDate('l j F Y H:i:s', $var, $url->getLanguage());
+        $timeAgo = SpoonDate::getTimeAgo($var, $url->getLanguage());
+
+        return '<abbr title="' . $date . '">' . $timeAgo . '</abbr>';
     }
 
     /**
