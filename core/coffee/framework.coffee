@@ -246,7 +246,7 @@ class Framework extends DefaultObject
       $('html, body').stop().animate({
         scrollTop: $(hash).offset().top
       }, 500)
-    false
+      false
 
   scrollToTop: (e) ->
     e.preventDefault()
