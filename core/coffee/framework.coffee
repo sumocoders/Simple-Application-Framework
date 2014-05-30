@@ -222,12 +222,15 @@ class Framework extends DefaultObject
     e.preventDefault()
 
     $('#navbar').toggleClass('open')
+    $('#navbar .subNavigation').removeClass('open')
+    $('#toggleTabletNavbar').removeClass('subnav')
     $(e.currentTarget).toggleClass('open')
 
   toggleSmallMenu: (e) ->
     e.preventDefault()
 
     $('#content').toggleClass('open')
+    $('body').toggleClass('openMobileNav')
 
   toggleDropdown: (e) ->
     e.preventDefault()

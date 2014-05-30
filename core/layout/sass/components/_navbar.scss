@@ -108,9 +108,9 @@
       left: 0;
       @include transition(all 250ms);
 
-      &.subnav {
-        padding-right: 230px;
-      }
+      // &.subnav {
+      //   padding-right: 230px;
+      // }
     }
 
     .nav {

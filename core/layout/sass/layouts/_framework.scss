@@ -41,6 +41,10 @@ body {
   position: relative;
   //overflow-x: hidden;
   @include clearfix;
+
+  .openMobileNav & {
+    overflow-x: hidden;
+  }
 }
 
 #content {

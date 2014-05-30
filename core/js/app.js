@@ -36,7 +36,7 @@
             'max-height': autocompleteHeight
           });
         }
-
+        return;
         return ticking = false;
       };
       tick = function() {

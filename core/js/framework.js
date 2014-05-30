@@ -289,12 +289,15 @@
     Framework.prototype.toggleMediumMenu = function(e) {
       e.preventDefault();
       $('#navbar').toggleClass('open');
+      $('#navbar .subNavigation').removeClass('open');
+      $('#toggleTabletNavbar').removeClass('subnav');
       return $(e.currentTarget).toggleClass('open');
     };
 
     Framework.prototype.toggleSmallMenu = function(e) {
       e.preventDefault();
-      return $('#content').toggleClass('open');
+      $('#content').toggleClass('open');
+      return $('body').toggleClass('openMobileNav');
     };
 
     Framework.prototype.toggleDropdown = function(e) {
