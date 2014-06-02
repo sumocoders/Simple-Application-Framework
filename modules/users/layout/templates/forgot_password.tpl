@@ -2,8 +2,8 @@
 
 <div class="container">
 	<section id="{$MODULE}" class="{$ACTION}">
-		<div class="row-fluid">
-			<div class="span12">
+		<div class="row">
+			<div class="col-xs-12">
 				<header class="header hide">
 					<h2>{$msgUsersLogin}</h2>
 				</header>
@@ -16,15 +16,15 @@
 					{option:error}<div class="alert alert-error">{$errUsersForgotPasswordNoUserFound}</div>{/option:error}
 
 					<fieldset>
-						<div class="control-group{option:txtLoginError} error{/option:txtLoginError}">
+						<div class="form-group{option:txtLoginError} error{/option:txtLoginError}">
 							<label class="control-label" for="login">{$lblEmail|ucfirst}<abbr title="{$msgRequired}">*</abbr></label>
-							<div class="controls input-prepend">
-								<div class="add-on username"></div>
+							<div class="input-group">
+								<div class="input-group-addon username"></div>
 								{$txtEmail} {$txtEmailError}
 							</div>
 						</div>
 
-						<button type="submit" class="btn btn-primary btn-block">{$lblSend|ucfirst}<i class="icon iconArrowWhiteRight"></i></button>
+						<button type="submit" class="btn btn-lg btn-block">{$lblSend|ucfirst}<i class="icon iconArrowWhiteRight"></i></button>
 					</fieldset>
 				{/form:forgotPassword}
 			</div>

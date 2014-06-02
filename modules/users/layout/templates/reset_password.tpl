@@ -2,8 +2,8 @@
 
 <div class="container">
 	<section id="{$MODULE}" class="{$ACTION}">
-		<div class="row-fluid">
-			<div class="span12">
+		<div class="row">
+			<div class="col-xs-12">
 				<header class="header hide">
 					<h2>{$msgUsersLogin}</h2>
 				</header>
@@ -16,23 +16,23 @@
 					{option:txtPasswordConfirmError}<div class="alert alert-error">{$txtPasswordConfirmError}</div>{/option:txtPasswordConfirmError}
 
 					<fieldset>
-						<div class="control-group{option:txtPasswordError} error{/option:txtPasswordError}">
+						<div class="form-group{option:txtPasswordError} error{/option:txtPasswordError}">
 							<label class="control-label" for="password">{$lblPassword|ucfirst}<abbr title="{$msgRequired}">*</abbr></label>
-							<div class="controls input-prepend">
-								<div class="add-on password"></div>
+							<div class="input-group">
+								<div class="input-group-addon password"></div>
 								{$txtPassword} {$txtPasswordError}
 							</div>
 						</div>
 
-						<div class="control-group{option:txtPasswordConfirmError} error{/option:txtPasswordConfirmError}">
+						<div class="form-group{option:txtPasswordConfirmError} error{/option:txtPasswordConfirmError}">
 							<label class="control-label" for="passwordConfirm">{$lblConfirm|ucfirst}<abbr title="{$msgRequired}">*</abbr></label>
-							<div class="controls input-prepend">
-								<div class="add-on password"></div>
+							<div class="input-group">
+								<div class="input-group-addon password"></div>
 								{$txtPasswordConfirm} {$txtPasswordConfirmError}
 							</div>
 						</div>
 
-						<button type="submit" class="btn btn-primary btn-block">{$lblSend|ucfirst}<i class="icon iconArrowWhiteRight"></i></button>
+						<button type="submit" class="btn btn-lg btn-block">{$lblSend|ucfirst}<i class="icon iconArrowWhiteRight"></i></button>
 					</fieldset>
 				{/form:resetPassword}
 			</div>

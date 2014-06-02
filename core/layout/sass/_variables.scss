@@ -11,11 +11,26 @@ $sansFontFamily: "Dosis Medium", Helvetica, Arial, sans-serif;
 $serifFontFamily: Georgia, "Times New Roman", Times, serif;
 $monoFontFamily: Menlo, Monaco, Consolas, "Courier New", monospace;
 
+// Set base font (without px) so it can be used with the font-size mixin
+$baseFont: 14;
 $baseFontSize: 14px;
 $baseFontFamily: $sansFontFamily;
-$baseLineHeight: 21px;
+// Set base line-height (without px) so it can be used with the font-size mixin
+$baseLine: 20;
+$baseLineHeight: 20px;
 $altFontFamily: $serifFontFamily;
 
 /* Sprite icons path */
 //$iconSpritePath: image-url("glyphicons-halflings.png", true);
 //$iconWhiteSpritePath: image-url("glyphicons-halflings-white.png", true);
+
+//-- Iconography
+//
+
+//$fa-font-path:        "../fonts" !default;
+//$fa-font-path:        "//netdna.bootstrapcdn.com/font-awesome/4.0.3/fonts" !default; // for referencing Bootstrap CDN font files directly
+$fa-css-prefix:       fa !default;
+$fa-version:          "4.0.3" !default;
+$fa-border-color:     #eee !default;
+$fa-inverse:          #fff !default;
+$fa-li-width:        (30em / 14) !default;

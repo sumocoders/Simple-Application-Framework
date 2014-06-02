@@ -134,7 +134,7 @@
       }
     });
 
-    Framework.onDomReady(['_initAjax', '_initForm', '_initTabs', '_calculateActionsWidths', 'setContentHeight', 'loginAutoFocus']);
+    Framework.onDomReady(['_initAjax', '_initForm', '_initTabs', '_initTagBox', '_calculateActionsWidths', 'setContentHeight', 'loginAutoFocus']);
 
     Framework.prototype._initAjax = function() {
       $.ajaxSetup({
@@ -200,6 +200,16 @@
           return $('.nav-tabs a[href="#' + $(this).attr('id') + '"]').parent().addClass('error');
         }
       });
+    };
+
+    Framework.prototype._initTagBox = function() {
+      var $tags;
+      $tags = $('input.tag-box');
+      if ($tags.length > 0) {
+        return $tags.tagBox({
+          url: ''
+        });
+      }
     };
 
     Framework.prototype.changeTab = function(e) {

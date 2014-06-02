@@ -1,0 +1,22 @@
+/**
+ * Defining tables
+ * States: Error, warning, succes, ...
+ */
+
+// tables
+
+.table {
+
+  tfoot {
+
+    tr {
+
+      &:first-child {
+
+        td {
+          border-top: 2px solid #ddd;
+        }
+      }
+    }
+  }
+}

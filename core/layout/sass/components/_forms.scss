@@ -1,0 +1,62 @@
+/**
+ * Defining forms
+ * States: Error, warning, succes, ...
+ */
+
+label abbr[title], label abbr[data-original-title] {
+  border: none;
+}
+
+.form-control {
+  background: #f8f9fc;
+  @include box-shadow(none);
+  //height: 45px;
+  padding: 6px 10px;
+  //border: 2px solid #b6bcd0;
+  //width: 220px;
+  //max-width: 100%;
+}
+
+.form-control:focus {
+  @include box-shadow(none);
+  border: 2px solid #747e9f;
+}
+
+.form-control.input-sm {
+  @include font-size(12);
+  // height: 30px;
+  // line-height: 1.5;
+  // padding: 5px 10px;
+}
+
+.form-control.input-lg {
+  @include font-size(18);
+  // height: 46px;
+  // line-height: 1.33;
+  // padding: 10px 16px;
+}
+
+input:focus:invalid:focus {
+  @include box-shadow(none);
+}
+
+.control-label {
+  color: #7093c3;
+}
+
+.form-horizontal {
+
+  .has-feedback .form-control-feedback {
+    margin-top: -7px;
+    top: 50%;
+  }
+}
+
+input, button, select, textarea {
+  @include line-height(21);
+  font-weight: normal;
+}
+
+.form-horizontal .checkbox {
+  margin-bottom: 20px;
+}

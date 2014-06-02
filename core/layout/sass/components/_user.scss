@@ -1,0 +1,114 @@
+/**
+ * Defining user
+ * States: Error, warning, succes, ...
+ */
+
+// Users
+#users {
+
+  &.login, &.forgot_password, &.reset_password {
+
+    .logo {
+      width: 150px;
+      height: 150px;
+      @include border-radius(50%);
+      margin: 10% auto;
+      border: none;
+    }
+
+    .control-group {
+      margin-bottom: 27px;
+
+      .controls {
+        width: 100%;
+      }
+    }
+
+    .control-label {
+      font-family: $opensans-bold-webfont;
+      @include font-size(1.29 * $baseFont);
+      font-weight: normal;
+      color: #597192;
+      margin-bottom: 15px;
+    }
+
+    .input-group {
+      display: block;
+
+      .input-group-addon,
+      .btn,
+      .form-control {
+        display: inline-block;
+        float: none;
+        vertical-align: middle;
+      }
+      .input-group-addon,
+      .btn {
+        border: none;
+        height: 46px;
+        padding: 0 5px;
+        width: 13.75%;
+
+        &.username {
+          @include svg-with-png-fallback(icon_user, no-repeat #b6bcd0 center center, $dimensions: false);
+        }
+
+        &.password {
+          @include svg-with-png-fallback(icon_lock, no-repeat #b6bcd0 center center, $dimensions: false);
+        }
+      }
+      .form-control {
+        border: 2px solid #B6BCD0;
+        @include font-size(14);
+        margin-left: -4px;
+      }
+    }
+
+    .form-control {
+      -webkit-appearance: none;
+      @include border-radius(0 4px 4px 0);
+      padding: 10px;
+      width: 86.25%;
+    }
+
+    .btn {
+      margin-top: 46px;
+      text-align: left;
+      padding-left: 21px;
+      padding-right: 21px;
+
+      .icon {
+        float: right;
+      }
+    }
+
+    button[type="submit"] {
+      background: #3dae50;
+      white-space: normal;
+      &:hover {
+        background: darken(#3dae50, 10%);
+      }
+    }
+
+    .alert {
+      position: relative;
+      padding: 0 25px;
+      @include border-radius(4px);
+    }
+
+    .forgotPassword {
+      margin-top: 10px;
+    }
+  }
+}
+
+// Media query min-width 767px
+@media screen and (min-width: 767px) {
+  #users {
+
+    &.login, &.forgot_password, &.reset_password {
+      width: 400px;
+      margin: 0 auto;
+    }
+  }
+}

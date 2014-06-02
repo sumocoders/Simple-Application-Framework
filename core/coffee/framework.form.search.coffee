@@ -52,7 +52,7 @@ class SearchForm extends Form
       .append(
         $('<a>').append(
           item.value.label +
-          '<small class="muted"> (' + item.value.module + ')</small>'
+          '<small class="text-muted"> (' + item.value.module + ')</small>'
         )
       )
       .appendTo(ul)

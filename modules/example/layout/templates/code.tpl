@@ -6,7 +6,7 @@
 		<header id="header" role="banner">
 			<div class="container bar">
 				<div class="title">
-					<a id="toggleMenu" class="visible-phone iconLink" href="#">{$lblMenu|uppercase}</a>
+					<a id="toggleMenu" class="visible-xs iconLink" href="#">{$lblMenu|uppercase}</a>
 					<h2>Code</h2>
 				</div>
 			</div>
@@ -23,6 +23,13 @@
 				</div>
 				<pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><span class="typ">For</span><span class="pln"> example</span><span class="pun">,</span><span class="pln"> </span><span class="str">&lt;code&gt;</span><span class="pun">&amp;</span><span class="pln">lt</span><span class="pun">;</span><span class="pln">section</span><span class="pun">&amp;</span><span class="pln">gt</span><span class="pun">;&lt;/</span><span class="pln">code</span><span class="pun">&gt;</span><span class="pln"> should be wrapped </span><span class="kwd">as</span><span class="pln"> </span><span class="kwd">inline</span><span class="pun">.</span></li></ol></pre>
 
+				<h2>User input</h2>
+				<p>Use the <code>&lt;kbd&gt;</code> to indicate input that is typically entered via keyboard.</p>
+				<div class="bs-docs-example">
+					<pre>To switch directories, type <kbd>cd</kbd> followed by the name of the directory</pre>
+				</div>
+				<pre class="prettyprint linenums" style="margin-bottom: 9px;">To switch directories, type &lt;kbd&gt;cd&lt;/kbd&gt; followed by the name of the directory</span></pre>
+
 				<h2>Basic block</h2>
 				<p>Use <code>&lt;pre&gt;</code> for multiple lines of code. Be sure to escape any angle brackets in the code for proper rendering.</p>
 				<div class="bs-docs-example">
@@ -37,5 +44,3 @@
 </div>
 
 {include:'{$CORE_PATH}/layout/templates/footer.tpl'}
-</body>
-</html>
