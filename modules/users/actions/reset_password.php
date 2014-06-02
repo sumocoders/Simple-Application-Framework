@@ -78,8 +78,8 @@ class UsersResetPassword extends SiteBaseAction
 		$this->frm = new SiteForm('resetPassword');
 
 		// create elements
-        $this->frm->addPassword('password')->setAttributes(array('autocomplete' => 'off', 'required' => null));
-        $this->frm->addPassword('password_confirm')->setAttributes(array('autocomplete' => 'off', 'required' => null));
+        $this->frm->addPassword('password')->setAttributes(array('autocomplete' => 'off', 'required' => null, 'class' => 'form-control input-lg'));
+        $this->frm->addPassword('password_confirm')->setAttributes(array('autocomplete' => 'off', 'required' => null, 'class' => 'form-control input-lg'));
 	}
 
 	/**

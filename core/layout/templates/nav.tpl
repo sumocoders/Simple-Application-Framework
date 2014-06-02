@@ -1,11 +1,10 @@
 <nav id="navbar" role="navigation">
-	<a href="/" rel="home" class="logo hidden-phone">{$SITE_DEFAULT_TITLE}</a>
+	<a href="/" rel="home" class="logo hidden-xs">{$SITE_DEFAULT_TITLE}</a>
 
-	{* @todo mathias twee keer zelfde id mag niet he *}
-	<div id="searchBox" class="mobile searchBox" role="search">
+	<div class="searchBox" role="search">
 		<form action="#">
 			<div class="controls">
-				<input id="searchQuery" name="q" type="search" placeholder="{$lblSearch|ucfirst}" class="input-medium">
+				<input id="searchQuery" name="q" type="search" placeholder="{$lblSearch|ucfirst}" class="form-control">
 				<button type="submit" class="btn">
 					<i class="icon-search"></i>
 					<span class="hide">{$lblSearch|ucfirst}</span>
@@ -38,7 +37,8 @@
 						<li><a href="{$var|buildurl:'forms':'example'}">Forms</a></li>
 						<li><a href="{$var|buildurl:'buttons':'example'}">Buttons</a></li>
 						<li><a href="{$var|buildurl:'images':'example'}">Images</a></li>
-						<li><a href="{$var|buildurl:'icons':'example'}">Icons by Glyphicons</a></li>
+						<li><a href="{$var|buildurl:'responsive-utilities':'example'}">Responsive utilities</a></li>
+						<li><a href="{$var|buildurl:'icons':'example'}">Icons</a></li>
 
 						<li><a href="{$var|buildurl:'dropdowns':'example'}">Dropdowns</a></li>
 						<li><a href="{$var|buildurl:'button-groups':'example'}">Button groups</a></li>
@@ -52,6 +52,7 @@
 						<li><a href="{$var|buildurl:'alerts':'example'}">Alerts</a></li>
 						<li><a href="{$var|buildurl:'progress-bars':'example'}">Progress bars</a></li>
 						<li><a href="{$var|buildurl:'media-object':'example'}">Media object</a></li>
+						<li><a href="{$var|buildurl:'panels':'example'}">Panels</a></li>
 						<li><a href="{$var|buildurl:'misc':'example'}">Misc</a></li>
 					</ul>
 				</li>
@@ -61,17 +62,6 @@
 				</li>
 			{/option:currentUser.isAdmin}
 		</ul>
-	</div>
-	<div id="searchBox" class="desktop searchBox" role="search">
-		<form action="#" data-form-class="SearchForm">
-			<div class="controls">
-				<input id="searchQuery" name="q" type="search" placeholder="{$lblSearch|ucfirst}" class="input-medium">
-				<button type="submit" class="btn">
-					<i class="icon-search"></i>
-					<span class="hide">{$lblSearch|ucfirst}</span>
-				</button>
-			</div>
-		</form>
 	</div>
 </nav>
 <a href="#" id="toggleTabletNavbar">{$lblMenu|uppercase}</a>

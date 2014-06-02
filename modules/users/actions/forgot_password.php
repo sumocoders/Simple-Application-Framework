@@ -63,7 +63,7 @@ class UsersForgotPassword extends SiteBaseAction
 		$this->frm = new SiteForm('forgotPassword');
 
 		// create elements
-		$this->frm->addText('email')->setAttributes(array('type' => 'email', 'required' => null));
+		$this->frm->addText('email')->setAttributes(array('type' => 'email', 'required' => null, 'class' => 'form-control input-lg'));
 	}
 
 	/**

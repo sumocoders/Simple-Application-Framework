@@ -72,7 +72,7 @@
     };
 
     SearchForm.prototype.renderItem = function(ul, item) {
-      return $('<li>').append($('<a>').append(item.value.label + '<small class="muted"> (' + item.value.module + ')</small>')).appendTo(ul);
+      return $('<li>').append($('<a>').append(item.value.label + '<small class="text-muted"> (' + item.value.module + ')</small>')).appendTo(ul);
     };
 
     return SearchForm;

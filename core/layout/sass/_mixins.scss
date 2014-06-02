@@ -1,0 +1,30 @@
+/**
+ * Custom mixins
+ */
+
+// Mixin to set font size to rem with pixel fallback
+// Note: Can be used when body font-size is set to 10px (62.5%)
+@mixin font-size($font-size) {
+  font-size: $font-size + px;
+  font-size: ($font-size / 10) + rem;
+}
+
+// Mixin to set line-height to rem with pixel fallback
+// (same use as font-size mixin)
+@mixin line-height($line-height) {
+  line-height: $line-height + px;
+  line-height: ($line-height / 10) + rem;
+}
+
+// Mixin to provide full clearfix
+@mixin clearfix {
+  *zoom: 1;
+  &:before,
+  &:after {
+    content: "";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}

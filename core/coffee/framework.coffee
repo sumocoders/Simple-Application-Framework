@@ -68,6 +68,7 @@ class Framework extends DefaultObject
     '_initAjax'
     '_initForm'
     '_initTabs'
+    '_initTagBox'
     '_calculateActionsWidths'
     'setContentHeight'
     'loginAutoFocus'
@@ -137,6 +138,12 @@ class Framework extends DefaultObject
           .parent()
           .addClass('error')
     )
+
+  _initTagBox: ->
+    $tags = $('input.tag-box')
+    if $tags.length > 0
+      $tags.tagBox
+        url: ''
 
   changeTab: (e) ->
     # if the browser supports history.pushState(), use it to update the URL

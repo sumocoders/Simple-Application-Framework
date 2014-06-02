@@ -1,0 +1,148 @@
+/**
+ * Defining typography
+ */
+
+a {
+  border-bottom: 1px solid $textLinkColor;
+
+  &:hover {
+    border-bottom: 1px solid $textLinkColorHover;
+  }
+
+  &.iconLink {
+    border: none;
+
+    &:hover {
+      border: none;
+    }
+  }
+}
+
+.content a {
+	@include link-colors($textLinkColor, $textLinkColorHover, $textLinkColor, darken($textLinkColor, 7%), $textLinkColorHover);
+	padding: 1px;
+	border-bottom: 1px solid $textLinkColor;
+
+	&:visited {
+		//border-bottom: 1px solid darken($textLinkColor, 7%);
+		border: none;
+	}
+
+	&:hover {
+		text-decoration: none;
+		border-bottom: 1px solid $textLinkColorHover;
+		//border: none;
+
+		@include transition-property("color, border");
+		@include transition-duration(500ms);
+		@include transition-timing-function(ease-in);
+	}
+
+	&:focus {
+		@include border-radius(3px);
+		background-color: shade($bodyBackground, 10%);
+		@include transition-property(background);
+		@include transition-duration(500ms);
+		@include transition-timing-function(ease-in);
+	}
+}
+
+strong {
+  font-family: $opensans-bold-webfont;
+  font-weight: normal;
+}
+
+h1, h2, h3, h4, h5 {
+  font-weight: 100;
+  margin-bottom: 12px;
+}
+h1, h2 {
+  line-height: 1.2;
+}
+h1, h2, h3 {
+  font-family: $opensans-bold-webfont;
+}
+h4, h5, h6 {
+  font-family: $OpenSans-Semibold-webfont;
+  margin-bottom: 10.5px;
+}
+h3, h4, h5, h6 {
+  color: #8d94ab;
+}
+h1 {
+  color: #464242;
+	// font-size: 1.8em;
+  @include font-size(25);
+}
+h2 {
+  color: #577385;
+  //font-size: 1.5em;
+  @include font-size(21);
+}
+h3 {
+  color: #8d94ab;
+  //font-size: 1.2em;
+  @include font-size(17);
+}
+h4 {
+  //font-size: 1.1em;
+  @include font-size(15);
+  margin-bottom: 10.5px;
+}
+h5 {
+  //font-size: 1em;
+  @include font-size(14);
+}
+h6 {
+  @include font-size(12);
+}
+
+@media screen and (min-width: 767px) {
+  h1 {
+    //font-size: 2em;
+    @include font-size(28);
+  }
+  h2 {
+    //font-size: 1.7em;
+    @include font-size(24);
+  }
+  h3 {
+    //font-size: 1.4em;
+    @include font-size(20);
+  }
+  h4 {
+    //font-size: 1.3em;
+    @include font-size(18);
+  }
+  h5 {
+    //font-size: 1.1em;
+    @include font-size(15);
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  h1 {
+    //font-size: 2.4em;
+    @include font-size(34);
+  }
+  h2 {
+    //font-size: 1.9em;
+    @include font-size(27);
+  }
+  h3 {
+    //font-size: 1.5em;
+    @include font-size(21);
+  }
+  h4 {
+    //font-size: 1.4em;
+    @include font-size(20);
+  }
+  h5 {
+    //font-size: 1.3em;
+    @include font-size(18);
+  }
+}
+
+.text-info {
+  color: #6b798d;
+}

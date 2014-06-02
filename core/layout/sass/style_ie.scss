@@ -1,2 +1,23 @@
-@import '_base_ie';
-@import '_app';
+/* Some imports */
+@import "compass/css3";
+@import "compass/typography";
+@import "compass/utilities";
+@import "compass_sumo";
+
+/* Variables / configuration */
+@import "_variables.scss";
+
+/* Mixins */
+@import "_mixins.scss";
+
+/* jQuery*/
+@import "_jquery";
+
+/* Theme related */
+@import "_theme";
+
+/* Layouts */
+@import "_layouts";
+
+/* Components */
+@import "_components";

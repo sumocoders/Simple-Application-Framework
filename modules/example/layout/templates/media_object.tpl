@@ -6,7 +6,7 @@
 		<header id="header" role="banner">
 			<div class="container bar">
 				<div class="title">
-					<a id="toggleMenu" class="visible-phone iconLink" href="#">{$lblMenu|uppercase}</a>
+					<a id="toggleMenu" class="visible-xs iconLink" href="#">{$lblMenu|uppercase}</a>
 					<h2>Media object</h2>
 				</div>
 			</div>
@@ -116,5 +116,3 @@
 </div>
 
 {include:'{$CORE_PATH}/layout/templates/footer.tpl'}
-</body>
-</html>

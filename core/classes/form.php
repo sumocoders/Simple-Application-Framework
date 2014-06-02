@@ -3,51 +3,52 @@
 /**
  * This is our extended version of SpoonForm
  *
- * @package		site
- * @subpackage	core
+ * @package        site
+ * @subpackage     core
  *
- * @author		Tijs Verkoyen <tijs@sumocoders.be>
- * @since		2.0
+ * @author         Tijs Verkoyen <tijs@sumocoders.be>
+ * @since          2.0
  */
 class SiteForm extends SpoonForm
 {
-	/**
-	 * Class constructor.
-	 *
-	 * @param	string $name				Name of the form.
-	 * @param	string[optional] $action	The action (URL) whereto the form will be submitted, if not provided it will be generated.
-	 * @param	string[optional] $method	The method to use when submitting the form, default is POST.
-	 * @param	bool[optional] $useToken	Should we automagically add a form token?
-	 */
-	public function __construct($name, $action = null, $method = 'post', $useToken = false)
-	{
-		$action = ($action === null) ? '/' . trim((string) $_SERVER['REQUEST_URI'], '/') : (string) $action;
-		parent::__construct($name, $action, $method, $useToken);
-	}
+    /**
+     * Class constructor.
+     *
+     * @param    string $name  Name of the form.
+     * @param           string [optional] $action    The action (URL) whereto the form will be submitted, if not provided it will be generated.
+     * @param           string [optional] $method    The method to use when submitting the form, default is POST.
+     * @param           bool   [optional] $useToken    Should we automagically add a form token?
+     */
+    public function __construct($name, $action = null, $method = 'post', $useToken = false)
+    {
+        $action = ($action === null) ? '/' . trim((string) $_SERVER['REQUEST_URI'], '/') : (string) $action;
+        parent::__construct($name, $action, $method, $useToken);
+    }
 
-	/**
-	 * Adds a single button.
-	 *
-	 * @param string $name				The name of the button.
-	 * @param string $value				The text that should appear on the button.
-	 * @param string[optional] $type		The type of button.
-	 * @param string[optional] $class		The CSS-class for the button.
-	 * @return SpoonFormButton
-	 */
-	public function addButton($name, $value, $type = null, $class = 'inputButton btn')
-	{
-		$this->add(new SpoonFormButton($name, $value, $type, $class));
-		return $this->getField($name);
-	}
+    /**
+     * Adds a single button.
+     *
+     * @param string $name  The name of the button.
+     * @param string $value The text that should appear on the button.
+     * @param        string [optional] $type        The type of button.
+     * @param        string [optional] $class        The CSS-class for the button.
+     * @return SpoonFormButton
+     */
+    public function addButton($name, $value, $type = null, $class = 'inputButton btn')
+    {
+        $this->add(new SpoonFormButton($name, $value, $type, $class));
+
+        return $this->getField($name);
+    }
 
     /**
      * Adds a single colourSelector.
      *
-     * @return	SiteFormColour
-     * @param	string $name					The name.
-     * @param	string[optional] $value			The initial value.
-     * @param	string[optional] $class			The CSS-class to be used.
-     * @param	string[optional] $classError	The CSS-class to be used when there is an error.
+     * @return    SiteFormColour
+     * @param    string $name  The name.
+     * @param           string [optional] $value            The initial value.
+     * @param           string [optional] $class            The CSS-class to be used.
+     * @param           string [optional] $classError    The CSS-class to be used when there is an error.
      */
     public function addColour(
         $name,
@@ -61,29 +62,57 @@ class SiteForm extends SpoonForm
             array('pattern' => '^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$')
         );
 
-        // return element
         return $this->getField($name);
     }
 
-	/**
-	 * Adds a single dropdown.
-	 *
-	 * @return	SpoonFormDropdown
-	 * @param	string $name						The name.
-	 * @param	array[optional] $values				The possible values. Each value should have a label and value-key.
-	 * @param	mixed[optional] $selected			The selected value.
-	 * @param	bool[optional] $multipleSelection	Can multiple elements be selected?
-	 * @param	string[optional] $class				The CSS-class to be used.
-	 * @param	string[optional] $classError		The CSS-class to be used when there is an error.
-	 */
-	public function addDropdown($name, array $values = null, $selected = null, $multipleSelection = false, $class = 'inputDropdown', $classError = 'inputDropdownError')
-	{
-		// add element
-		$this->add(new SiteFormDropdown($name, $values, $selected, $multipleSelection, $class, $classError));
+    /**
+     * Adds a single datefield.
+     *
+     * @return    SpoonFormDate
+     * @param    string $name  The name.
+     * @param           string [optional] $value            The initial value.
+     * @param           string [optional] $mask            The mask to use.
+     * @param           string [optional] $class            The CSS-class to be used.
+     * @param           string [optional] $classError    The CSS-class to be used when there is an error.
+     */
+    public function addDate(
+        $name,
+        $value = null,
+        $mask = null,
+        $class = 'inputDate form-control',
+        $classError = 'inputDateError'
+    ) {
+        // add element
+        $this->add(new SpoonFormDate($name, $value, $mask, $class, $classError));
 
-		// return element
-		return $this->getField($name);
-	}
+        return $this->getField($name);
+    }
+
+    /**
+     * Adds a single dropdown.
+     *
+     * @return    SpoonFormDropdown
+     * @param    string $name  The name.
+     * @param           array  [optional] $values                The possible values. Each value should have a label and value-key.
+     * @param           mixed  [optional] $selected            The selected value.
+     * @param           bool   [optional] $multipleSelection    Can multiple elements be selected?
+     * @param           string [optional] $class                The CSS-class to be used.
+     * @param           string [optional] $classError        The CSS-class to be used when there is an error.
+     */
+    public function addDropdown(
+        $name,
+        array $values = null,
+        $selected = null,
+        $multipleSelection = false,
+        $class = 'inputDropdown form-control',
+        $classError = 'inputDropdownError'
+    ) {
+        // add element
+        $this->add(new SiteFormDropdown($name, $values, $selected, $multipleSelection, $class, $classError));
+
+        // return element
+        return $this->getField($name);
+    }
 
     /**
      * Adds an editor.
@@ -94,25 +123,29 @@ class SiteForm extends SpoonForm
      */
     public function addEditor($name, $value = null)
     {
-        $this->add(new SiteFormEditor($name, $value, 'form-control inputTextarea editor', 'form-control inputTextareaError editor', true));
+        $this->add(
+            new SiteFormEditor($name, $value, 'form-control inputTextarea editor', 'form-control inputTextareaError editor', true)
+        );
+
         return $this->getField($name);
     }
 
-	/**
-	 * Adds a image field.
-	 *
-	 * @return	SpoonFormImage
-	 * @param	string $name					The name.
-	 * @param	string[optional] $class			The CSS-class to be used.
-	 * @param	string[optional] $classError	The CSS-class to be used when there is an error.
-	 */
-	public function addImage($name, $class = 'inputFile', $classError = 'inputFileError')
-	{
-		$this->add(new SiteFormImage($name, $class, $classError));
-		// only accept pictures
-		$this->getField($name)->setAttributes(array('accept' => 'image/*'));
-		return $this->getField($name);
-	}
+    /**
+     * Adds a image field.
+     *
+     * @return    SpoonFormImage
+     * @param    string $name  The name.
+     * @param           string [optional] $class            The CSS-class to be used.
+     * @param           string [optional] $classError    The CSS-class to be used when there is an error.
+     */
+    public function addImage($name, $class = 'inputFile', $classError = 'inputFileError')
+    {
+        $this->add(new SiteFormImage($name, $class, $classError));
+        // only accept pictures
+        $this->getField($name)->setAttributes(array('accept' => 'image/*'));
+
+        return $this->getField($name);
+    }
 
     /**
      * Adds Google Maps map with hidden field for location.
@@ -137,168 +170,258 @@ class SiteForm extends SpoonForm
         $width = 880,
         $height = 440
     ) {
-        $this->add(new SiteFormMaps($name, $center, $zoom, $markers, $multipleMarkers, $centerMarkers, $width, $height));
+        $this->add(
+            new SiteFormMaps($name, $center, $zoom, $markers, $multipleMarkers, $centerMarkers, $width, $height)
+        );
 
         return $this->getField($name);
     }
-    
-	/**
-	 * Generates an example template, based on the elements already added.
-	 *
-	 * @return string
-	 */
-	public function getTemplateExample()
-	{
-		$fields = $this->getFields();
-		unset($fields['_utf8']);
 
-		// start form
-		$value = "\n";
-		$value .= '{form:' . $this->getName() . "}\n";
-		$value .= '	<div class="form-horizontal">' . "\n";
+    /**
+     * Adds a single password field.
+     *
+     * @return    SpoonFormPassword
+     * @param    string $name  The name.
+     * @param           string [optional] $value            The initial value.
+     * @param           int    [optional] $maxlength        The maximum-length the value can be.
+     * @param           string [optional] $class            The CSS-class to be used.
+     * @param           string [optional] $classError    The CSS-class to be used when there is an error.
+     * @param           bool   [optional] $HTML            Is HTML allowed?
+     */
+    public function addPassword(
+        $name,
+        $value = null,
+        $maxlength = null,
+        $class = 'inputPassword form-control',
+        $classError = 'inputPasswordError',
+        $HTML = false
+    ) {
+        // add element
+        $this->add(new SpoonFormPassword($name, $value, $maxlength, $class, $classError, $HTML));
 
-		/**
-		 * At first all the hidden fields need to be added to this form, since
-		 * they're not shown and are best to be put right beneath the start of the form tag.
-		 */
-		foreach($fields as $object)
-		{
-			// is a hidden field
-			if(($object instanceof SpoonFormHidden) && $object->getName() != 'form')
-			{
-				$value .= "\t" . '{$hid' . str_replace('[]', '', SpoonFilter::toCamelCase($object->getName())) . "}\n";
-			}
-		}
+        // return element
+        return $this->getField($name);
+    }
 
-		/**
-		 * Add all the objects that are NOT hidden fields. Based on the existence of some methods
-		 * errors will or will not be shown.
-		 */
-		foreach($fields as $object)
-		{
-			// NOT a hidden field
-			if(!($object instanceof SpoonFormHidden))
-			{
-				$name = str_replace('[]', '', SpoonFilter::toCamelCase($object->getName()));
+    /**
+     * Adds a single textfield.
+     *
+     * @return    SpoonFormText
+     * @param    string $name  The name.
+     * @param           string [optional] $value            The initial value.
+     * @param           int    [optional] $maxlength        The maximum-length the value can be.
+     * @param           string [optional] $class            The CSS-class to be used.
+     * @param           string [optional] $classError    The CSS-class to be used when there is an error.
+     * @param           bool   [optional] $HTML            Is HTML allowed?
+     */
+    public function addText(
+        $name,
+        $value = null,
+        $maxlength = null,
+        $class = 'inputText form-control',
+        $classError = 'inputTextError',
+        $HTML = false
+    ) {
+        // add element
+        $this->add(new SpoonFormText($name, $value, $maxlength, $class, $classError, $HTML));
 
-				// buttons
-				if($object instanceof SpoonFormButton)
-				{
-					$value .= '		<div class="control-group">' . "\n";
-					$value .= '			<div class="controls">' . "\n";
-					$value .= '				{$btn' . $name . '}' . "\n";
-					$value .= '			</div>' . "\n";
-					$value .= '		</div>' . "\n";
-				}
+        // return element
+        return $this->getField($name);
+    }
 
-				// single checkboxes
-				elseif($object instanceof SpoonFormCheckbox)
-				{
-					$value .= '		<div class="control-group{option:chk' . $name . 'Error} error{/option:chk' . $name . 'Error}">' . "\n";
-					$value .= '			<div class="controls">' . "\n";
-					$value .= '				<label for="' . $object->getAttribute('id') . '" class="checkbox">{$chk' . $name . '} ' . $name . '</label> {$chk' . $name . 'Error}' . "\n";
-					$value .= '			</div>' . "\n";
-					$value .= '		</div>' . "\n";
-				}
+    /**
+     * Adds a single textarea.
+     *
+     * @return    SpoonFormTextarea
+     * @param    string $name  The name.
+     * @param           string [optional] $value            The initial value.
+     * @param           string [optional] $class            The CSS-class to be used.
+     * @param           string [optional] $classError    The CSS-class to be used when there is an error.
+     * @param           bool   [optional] $HTML            Is HTML allowed?
+     */
+    public function addTextarea(
+        $name,
+        $value = null,
+        $class = 'inputTextarea form-control',
+        $classError = 'inputTextareaError',
+        $HTML = false
+    ) {
+        // add element
+        $this->add(new SpoonFormTextarea($name, $value, $class, $classError, $HTML));
 
-				// multi checkboxes
-				elseif($object instanceof SpoonFormMultiCheckbox)
-				{
-					$value .= '		<div class="control-group{option:chk' . $name . 'Error} error{/option:chk' . $name . 'Error}">' . "\n";
-					$value .= '			<label class="control-label">' . $name . '</label>' . "\n";
-					$value .= '			<div class="controls">' . "\n";
-					$value .= '				{iteration:' . $object->getName() . '}' . "\n";
-					$value .= '					<label for="{$' . $object->getName() . '.id}" class="checkbox">{$' . $object->getName() . '.chk' . $name . '} {$' . $object->getName() . '.label}</label>' . "\n";
-					$value .= '				{/iteration:' . $object->getName() . '}' . "\n";
-					$value .= '				{$chk' . $name . 'Error}' . "\n";
-					$value .= '			</div>' . "\n";
-					$value .= '		</div>' . "\n";
-				}
+        // return element
+        return $this->getField($name);
+    }
 
-				// dropdowns
-				elseif($object instanceof SpoonFormDropdown)
-				{
-					$value .= '		<div class="control-group{option:ddm' . $name . 'Error} error{/option:ddm' . $name . 'Error}">' . "\n";
-					$value .= '			<label for="' . $object->getAttribute('id') . '" class="control-label">' . $name;
-					if(in_array('required', array_keys($object->getAttributes())));
-					{
-						$value .= '<abbr title="{$msgRequired}">*</abbr>';
-					}
-					$value .= '</label>' . "\n";
-					$value .= '			<div class="controls">' . "\n";
-					$value .= '				{$ddm' . $name . '} {$ddm' . $name . 'Error}' . "\n";
-					$value .= '			</div>' . "\n";
-					$value .= '		</div>' . "\n";
-				}
+    /**
+     * Adds a single timefield.
+     *
+     * @return    SpoonFormTime
+     * @param    string $name  The name.
+     * @param           string [optional] $value            The initial value.
+     * @param           string [optional] $class            The CSS-class to be used.
+     * @param           string [optional] $classError    The CSS-class to be used when there is an error.
+     */
+    public function addTime($name, $value = null, $class = 'inputTime form-control', $classError = 'inputTimeError')
+    {
+        // add element
+        $this->add(new SpoonFormTime($name, $value, $class, $classError));
 
-				// filefields
-				elseif($object instanceof SpoonFormFile)
-				{
-					$value .= '		<div class="control-group{option:file' . $name . 'Error} error{/option:file' . $name . 'Error}">' . "\n";
-					$value .= '			<label for="' . $object->getAttribute('id') . '" class="control-label">' . $name;
-					if(in_array('required', array_keys($object->getAttributes())));
-					{
-						$value .= '<abbr title="{$msgRequired}">*</abbr>';
-					}
-					$value .= '</label>' . "\n";
-					$value .= '			<div class="controls">' . "\n";
-					$value .= '				{$file' . $name . '} {$file' . $name . 'Error}' . "\n";
-					$value .= '			</div>' . "\n";
-					$value .= '		</div>' . "\n";
-				}
+        // return element
+        return $this->getField($name);
+    }
 
-				// radiobuttons
-				elseif($object instanceof SpoonFormRadiobutton)
-				{
-					$value .= '		<div class="control-group{option:rbt' . $name . 'Error} error{/option:rbt' . $name . 'Error}">' . "\n";
-					$value .= '			<label class="control-label">' . $name . '</label>' . "\n";
-					$value .= '			<div class="controls">' . "\n";
-					$value .= '				{iteration:' . $object->getName() . '}' . "\n";
-					$value .= '					<label for="{$' . $object->getName() . '.id}">{$' . $object->getName() . '.rbt' . $name . '} {$' . $object->getName() . '.label}</label>' . "\n";
-					$value .= '				{/iteration:' . $object->getName() . '}' . "\n";
-					$value .= '				{$rbt' . $name . 'Error}' . "\n";
-					$value .= '			</div>' . "\n";
-					$value .= '		</div>' . "\n";
-				}
+    /**
+     * Generates an example template, based on the elements already added.
+     *
+     * @return string
+     */
+    public function getTemplateExample()
+    {
+        $fields = $this->getFields();
+        unset($fields['_utf8']);
 
-				// textfields
-				elseif(($object instanceof SpoonFormDate) || ($object instanceof SpoonFormPassword) || ($object instanceof SpoonFormTextarea) || ($object instanceof SpoonFormText) || ($object instanceof SpoonFormTime))
-				{
-					$value .= '		<div class="control-group{option:txt' . $name . 'Error} error{/option:txt' . $name . 'Error}">' . "\n";
-					$value .= '			<label for="' . $object->getAttribute('id') . '" class="control-label">' . $name;
-					if(in_array('required', array_keys($object->getAttributes())));
-					{
-						$value .= '<abbr title="{$msgRequired}">*</abbr>';
-					}
-					$value .= '</label>' . "\n";
-					$value .= '			<div class="controls">' . "\n";
-					$value .= '				{$txt' . $name . '} {$txt' . $name . 'Error}' . "\n";
-					$value .= '			</div>' . "\n";
-					$value .= '		</div>' . "\n";
-				}
-			}
-		}
+        // start form
+        $value = "\n";
+        $value .= '{form:' . $this->getName() . "}\n";
+        $value .= '	<div class="form-horizontal">' . "\n";
 
-		// close form tag
-		$value .= '	</div>' . "\n";
-		$value .= '{/form:' . $this->getName() . '}';
+        /**
+         * At first all the hidden fields need to be added to this form, since
+         * they're not shown and are best to be put right beneath the start of the form tag.
+         */
+        foreach ($fields as $object) {
+            // is a hidden field
+            if (($object instanceof SpoonFormHidden) && $object->getName() != 'form') {
+                $value .= "\t" . '{$hid' . str_replace('[]', '', SpoonFilter::toCamelCase($object->getName())) . "}\n";
+            }
+        }
 
-		return $value;
-	}
+        /**
+         * Add all the objects that are NOT hidden fields. Based on the existence of some methods
+         * errors will or will not be shown.
+         */
+        foreach ($fields as $object) {
+            // NOT a hidden field
+            if (!($object instanceof SpoonFormHidden)) {
+                $name = str_replace('[]', '', SpoonFilter::toCamelCase($object->getName()));
 
-	/**
-	 * Parse this form in the given template.
-	 *
-	 * @param	SpoonTemplate $template		The template to parse the form in.
-	 */
-	public function parse(SpoonTemplate $template)
-	{
-		parent::parse($template);
+                // buttons
+                if ($object instanceof SpoonFormButton) {
+                    $value .= '		<div class="control-group">' . "\n";
+                    $value .= '			<div class="controls">' . "\n";
+                    $value .= '				{$btn' . $name . '}' . "\n";
+                    $value .= '			</div>' . "\n";
+                    $value .= '		</div>' . "\n";
+                } // single checkboxes
+                elseif ($object instanceof SpoonFormCheckbox) {
+                    $value .= '		<div class="control-group{option:chk' . $name . 'Error} error{/option:chk' . $name . 'Error}">' . "\n";
+                    $value .= '			<div class="controls">' . "\n";
+                    $value .= '				<label for="' . $object->getAttribute(
+                            'id'
+                        ) . '" class="checkbox">{$chk' . $name . '} ' . $name . '</label> {$chk' . $name . 'Error}' . "\n";
+                    $value .= '			</div>' . "\n";
+                    $value .= '		</div>' . "\n";
+                } // multi checkboxes
+                elseif ($object instanceof SpoonFormMultiCheckbox) {
+                    $value .= '		<div class="control-group{option:chk' . $name . 'Error} error{/option:chk' . $name . 'Error}">' . "\n";
+                    $value .= '			<label class="control-label">' . $name . '</label>' . "\n";
+                    $value .= '			<div class="controls">' . "\n";
+                    $value .= '				{iteration:' . $object->getName() . '}' . "\n";
+                    $value .= '					<label for="{$' . $object->getName(
+                        ) . '.id}" class="checkbox">{$' . $object->getName(
+                              ) . '.chk' . $name . '} {$' . $object->getName() . '.label}</label>' . "\n";
+                    $value .= '				{/iteration:' . $object->getName() . '}' . "\n";
+                    $value .= '				{$chk' . $name . 'Error}' . "\n";
+                    $value .= '			</div>' . "\n";
+                    $value .= '		</div>' . "\n";
+                } // dropdowns
+                elseif ($object instanceof SpoonFormDropdown) {
+                    $value .= '		<div class="control-group{option:ddm' . $name . 'Error} error{/option:ddm' . $name . 'Error}">' . "\n";
+                    $value .= '			<label for="' . $object->getAttribute(
+                            'id'
+                        ) . '" class="control-label">' . $name;
+                    if (in_array('required', array_keys($object->getAttributes()))) {
+                        ;
+                    }
+                    {
+                        $value .= '<abbr title="{$msgRequired}">*</abbr>';
+                    }
+                    $value .= '</label>' . "\n";
+                    $value .= '			<div class="controls">' . "\n";
+                    $value .= '				{$ddm' . $name . '} {$ddm' . $name . 'Error}' . "\n";
+                    $value .= '			</div>' . "\n";
+                    $value .= '		</div>' . "\n";
+                } // filefields
+                elseif ($object instanceof SpoonFormFile) {
+                    $value .= '		<div class="control-group{option:file' . $name . 'Error} error{/option:file' . $name . 'Error}">' . "\n";
+                    $value .= '			<label for="' . $object->getAttribute(
+                            'id'
+                        ) . '" class="control-label">' . $name;
+                    if (in_array('required', array_keys($object->getAttributes()))) {
+                        ;
+                    }
+                    {
+                        $value .= '<abbr title="{$msgRequired}">*</abbr>';
+                    }
+                    $value .= '</label>' . "\n";
+                    $value .= '			<div class="controls">' . "\n";
+                    $value .= '				{$file' . $name . '} {$file' . $name . 'Error}' . "\n";
+                    $value .= '			</div>' . "\n";
+                    $value .= '		</div>' . "\n";
+                } // radiobuttons
+                elseif ($object instanceof SpoonFormRadiobutton) {
+                    $value .= '		<div class="control-group{option:rbt' . $name . 'Error} error{/option:rbt' . $name . 'Error}">' . "\n";
+                    $value .= '			<label class="control-label">' . $name . '</label>' . "\n";
+                    $value .= '			<div class="controls">' . "\n";
+                    $value .= '				{iteration:' . $object->getName() . '}' . "\n";
+                    $value .= '					<label for="{$' . $object->getName() . '.id}">{$' . $object->getName(
+                        ) . '.rbt' . $name . '} {$' . $object->getName() . '.label}</label>' . "\n";
+                    $value .= '				{/iteration:' . $object->getName() . '}' . "\n";
+                    $value .= '				{$rbt' . $name . 'Error}' . "\n";
+                    $value .= '			</div>' . "\n";
+                    $value .= '		</div>' . "\n";
+                } // textfields
+                elseif (($object instanceof SpoonFormDate) || ($object instanceof SpoonFormPassword) || ($object instanceof SpoonFormTextarea) || ($object instanceof SpoonFormText) || ($object instanceof SpoonFormTime)) {
+                    $value .= '		<div class="control-group{option:txt' . $name . 'Error} error{/option:txt' . $name . 'Error}">' . "\n";
+                    $value .= '			<label for="' . $object->getAttribute(
+                            'id'
+                        ) . '" class="control-label">' . $name;
+                    if (in_array('required', array_keys($object->getAttributes()))) {
+                        ;
+                    }
+                    {
+                        $value .= '<abbr title="{$msgRequired}">*</abbr>';
+                    }
+                    $value .= '</label>' . "\n";
+                    $value .= '			<div class="controls">' . "\n";
+                    $value .= '				{$txt' . $name . '} {$txt' . $name . 'Error}' . "\n";
+                    $value .= '			</div>' . "\n";
+                    $value .= '		</div>' . "\n";
+                }
+            }
+        }
 
-		if($this->isSubmitted() && !$this->isCorrect(true)) {
-			$template->assign('formHasError', true);
-		}
-	}
+        // close form tag
+        $value .= '	</div>' . "\n";
+        $value .= '{/form:' . $this->getName() . '}';
+
+        return $value;
+    }
+
+    /**
+     * Parse this form in the given template.
+     *
+     * @param    SpoonTemplate $template The template to parse the form in.
+     */
+    public function parse(SpoonTemplate $template)
+    {
+        parent::parse($template);
+
+        if ($this->isSubmitted() && !$this->isCorrect(true)) {
+            $template->assign('formHasError', true);
+        }
+    }
 }
 
 /**
@@ -308,44 +431,48 @@ class SiteForm extends SpoonForm
  */
 class SiteFormImage extends SpoonFormImage
 {
-	/**
-	 * Generate thumbnails based on the folders in the path
-	 * Use
-	 *  - 128x128 as folder name to generate an image that where the width will be 128px and the height will be 128px
-	 *  - 128x as folder name to generate an image that where the width will be 128px, the height will be calculated based on the aspect ratio.
-	 *  - x128 as folder name to generate an image that where the width will be 128px, the height will be calculated based on the aspect ratio.
-	 *
-	 * @param string $path
-	 * @param string $filename
-	 */
-	public function generateThumbnails($path, $filename)
-	{
-		// create folder if needed
-		if(!SpoonDirectory::exists($path . '/source')) SpoonDirectory::create($path . '/source');
+    /**
+     * Generate thumbnails based on the folders in the path
+     * Use
+     *  - 128x128 as folder name to generate an image that where the width will be 128px and the height will be 128px
+     *  - 128x as folder name to generate an image that where the width will be 128px, the height will be calculated based on the aspect ratio.
+     *  - x128 as folder name to generate an image that where the width will be 128px, the height will be calculated based on the aspect ratio.
+     *
+     * @param string $path
+     * @param string $filename
+     */
+    public function generateThumbnails($path, $filename)
+    {
+        // create folder if needed
+        if (!SpoonDirectory::exists($path . '/source')) {
+            SpoonDirectory::create($path . '/source');
+        }
 
-		// move the source file
-		$this->moveFile($path . '/source/' . $filename);
+        // move the source file
+        $this->moveFile($path . '/source/' . $filename);
 
-		// generate the thumbnails
-		Site::generateThumbnails($path, $path . '/source/' . $filename);
-	}
+        // generate the thumbnails
+        Site::generateThumbnails($path, $path . '/source/' . $filename);
+    }
 
-	/**
-	 * This function will return the errors. It is extended so we can do image checks automatically.
-	 *
-	 * @return string
-	 */
-	public function getErrors()
-	{
-		// do an image validation
-		if($this->isFilled())
-		{
-			$this->isAllowedExtension(array('jpg', 'jpeg', 'gif', 'png'), SiteLocale::err('JPGGIFAndPNGOnly'));
-			$this->isAllowedMimeType(array('image/jpeg', 'image/gif', 'image/png'), SiteLocale::err('JPGGIFAndPNGOnly'));
-		}
+    /**
+     * This function will return the errors. It is extended so we can do image checks automatically.
+     *
+     * @return string
+     */
+    public function getErrors()
+    {
+        // do an image validation
+        if ($this->isFilled()) {
+            $this->isAllowedExtension(array('jpg', 'jpeg', 'gif', 'png'), SiteLocale::err('JPGGIFAndPNGOnly'));
+            $this->isAllowedMimeType(
+                array('image/jpeg', 'image/gif', 'image/png'),
+                SiteLocale::err('JPGGIFAndPNGOnly')
+            );
+        }
 
-		return $this->errors;
-	}
+        return $this->errors;
+    }
 }
 
 /**
@@ -362,8 +489,7 @@ class SiteFormColour extends SpoonFormText
     public function getErrors()
     {
         // do an colour validation
-        if($this->isFilled())
-        {
+        if ($this->isFilled()) {
             $this->isValidAgainstRegexp(
                 '/#([a-f]|[A-F]|[0-9]){3}(([a-f]|[A-F]|[0-9]){3})?\b/',
                 SiteLocale::err('ColourIsInvalid')
@@ -381,21 +507,21 @@ class SiteFormColour extends SpoonFormText
  */
 class SiteFormDropdown extends SpoonFormDropdown
 {
-	/**
-	 * Retrieves the custom attributes as HTML.
-	 *
-	 * @return	string
-	 * @param	array $variables	The variables to get the attributes-HTML for.
-	 */
-	protected function getAttributesHTML(array $variables)
-	{
-		// because of our layout we have to remove the size attribute if it is 1
-		if(isset($this->attributes['size']) && $this->attributes['size'] == 1) {
-			unset($this->attributes['size']);
-		}
+    /**
+     * Retrieves the custom attributes as HTML.
+     *
+     * @return    string
+     * @param    array $variables The variables to get the attributes-HTML for.
+     */
+    protected function getAttributesHTML(array $variables)
+    {
+        // because of our layout we have to remove the size attribute if it is 1
+        if (isset($this->attributes['size']) && $this->attributes['size'] == 1) {
+            unset($this->attributes['size']);
+        }
 
-		return parent::getAttributesHTML($variables);
-	}
+        return parent::getAttributesHTML($variables);
+    }
 }
 
 /**
@@ -475,7 +601,7 @@ class SiteFormMaps extends SpoonFormInput
      * @param string $name
      * @param array  $center
      * @param int    $zoom
-     * @param array  $markers           Markers to place on the map array(array('lat'=>..., 'lng'=>...), ...)
+     * @param array  $markers Markers to place on the map array(array('lat'=>..., 'lng'=>...), ...)
      * @param bool   $multipleMarkers
      * @param bool   $centerMarkers
      * @param int    $width
@@ -590,7 +716,7 @@ class SiteFormMaps extends SpoonFormInput
                 $value['center'] = explode(',', $value['center']);
                 $value['markers'] = array();
                 if (sizeof($value['lng']) === sizeof($value['lat'])) {
-                    for ($i = sizeof($value['lng']) - 1 ; $i >= 0; $i--) {
+                    for ($i = sizeof($value['lng']) - 1; $i >= 0; $i--) {
                         $value['markers'][] = array(
                             'lat' => $value['lat'][$i],
                             'lng' => $value['lng'][$i]
@@ -647,6 +773,7 @@ class SiteFormEditor extends SpoonFormTextarea
             'editor' . SpoonFilter::toCamelCase($this->getName()) . 'Error',
             ($this->errors != '') ? '<span class="formError">' . $this->errors . '</span>' : ''
         );
+
         return $output;
     }
 }
