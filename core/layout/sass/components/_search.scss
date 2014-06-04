@@ -88,6 +88,10 @@
   .searchBox {
     position: fixed;
     bottom: 0;
+
+    .no-svg & {
+      z-index: 100;
+    }
   }
 
   .ui-autocomplete {
