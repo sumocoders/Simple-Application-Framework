@@ -79,7 +79,7 @@ class SiteForm extends SpoonForm
         $name,
         $value = null,
         $mask = null,
-        $class = 'inputDate form-control',
+        $class = 'inputDatefieldNormal form-control',
         $classError = 'inputDateError'
     ) {
         // add element
