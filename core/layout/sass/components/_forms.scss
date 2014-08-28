@@ -7,7 +7,8 @@ label abbr[title], label abbr[data-original-title] {
   border: none;
 }
 
-.form-control {
+.form-control,
+input.form-control {
   background: #f8f9fc;
   @include box-shadow(none);
   //height: 45px;
