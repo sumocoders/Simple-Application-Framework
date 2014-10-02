@@ -247,11 +247,23 @@ class SiteBaseAction
      *
      * @param array $allowedTypes
      */
-    public function showForbiddenIfNotAllowed(array $allowedTypes)
+    protected function showForbiddenIfNotAllowed(array $allowedTypes)
     {
-        if (!in_array($this->currentUser->getType(), $allowedTypes)) {
+        if (!$this->userIs($allowedTypes)) {
             Site::displayError('Forbidden', 403);
         }
+    }
+
+    /**
+     * Check if a user's role is in a list of given roles
+     *
+     * @param array $possibleRoles The list of possible roles
+     *
+     * @return bool To be or not to be, that's the question
+     */
+    protected function userIs(array $possibleRoles)
+    {
+        return in_array($this->currentUser->getType(), $possibleRoles);
     }
 
     /**
