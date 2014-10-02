@@ -539,6 +539,18 @@ class SiteDataGridFunctions
     }
 
     /**
+     * Show a boolean value in a datagrid as a nice font-awesome icon.
+     *
+     * @param bool $bool The boolean value
+     *
+     * @return string The font-awesome icon
+     */
+    public static function showBoolIcons($bool)
+    {
+        return '<i class="fa fa-' . (($bool == true) ? 'check' : 'ban') . '"></i>';
+    }
+
+    /**
      * Truncate a string
      *
      * @param	string[optional] $string	The string to truncate.
