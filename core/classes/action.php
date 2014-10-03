@@ -257,13 +257,13 @@ class SiteBaseAction
     /**
      * Check if a user's role is in a list of given roles
      *
-     * @param array $possibleRoles The list of possible roles
+     * @param string|array $possibleRoles The list of possible roles
      *
      * @return bool To be or not to be, that's the question
      */
-    protected function userIs(array $possibleRoles)
+    protected function userIs($possibleRoles)
     {
-        return in_array($this->currentUser->getType(), $possibleRoles);
+        return in_array($this->currentUser->getType(), (array) $possibleRoles);
     }
 
     /**
