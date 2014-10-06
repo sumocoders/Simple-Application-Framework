@@ -176,6 +176,26 @@ class SiteDataGrid extends SpoonDataGrid
         parent::setURL($URL);
     }
 
+    /**
+     * Enable drag and drop for the current datagrid
+     */
+    public function enableSequenceByDragAndDrop()
+    {
+        $this->setAttributes(array('class' => 'table sequenceByDragAndDrop'));
+        $this->setPaging(false);
+
+        try {
+            $this->setColumnHidden('sequence');
+        } catch (SpoonDatagridException $e) {
+            if ($e->getMessage() != 'The column "sequence" doesn\'t exist and therefor can\'t be set hidden.') {
+                throw $e;
+            }
+        }
+        $this->addColumn('dragAndDropHandle', null, '<i class="icon-sequence-handle"></i><span class="hidden">' . SiteLocale::lbl('Move') . '</span>');
+        $this->setColumnsSequence('dragAndDropHandle');
+        $this->setColumnAttributes('dragAndDropHandle', array('class' => 'dragAndDropHandle'));
+        $this->setRowAttributes(array('data-id' => '[id]'));
+    }
 }
 
 /**
