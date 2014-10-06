@@ -69,6 +69,7 @@ class Framework extends DefaultObject
     '_initForm'
     '_initTabs'
     '_initTagBox'
+    '_initDragAndDrop'
     '_calculateActionsWidths'
     'setContentHeight'
     'loginAutoFocus'
@@ -144,6 +145,47 @@ class Framework extends DefaultObject
     if $tags.length > 0
       $tags.tagBox
         url: ''
+
+  _initDragAndDrop: ->
+    $sequenceBody = $('.sequenceByDragAndDrop tbody')
+
+    if $sequenceBody.length > 0
+      $sequenceBody.sortable
+        items: 'tr',
+        handle: 'td.dragAndDropHandle',
+        placeholder: 'dragAndDropPlaceholder',
+        forcePlaceholderSize: true,
+        stop: (e, ui) ->
+          $table = $(this)
+
+          action = if $table.parents('table.table').data('action') then $table.parents('table.table').data('action').toString() else 'sequence'
+          module = if $table.parents('table.table').data('module') then $table.parents('table.table').data('module').toString() else Data.get('core.module')
+          extraParams = if $table.parents('table.table').data('extraParams') then $table.parents('table.table').data('extraParams') else extraParams = {}
+
+          $rows = $(this).find('tr')
+          newIdSequence = []
+          $rows.each () ->
+            newIdSequence.push($(this).data('id'))
+
+          $.ajax
+            url: '/ajax.php?module=' + module + '&action=' + action + '&language=' + Data.get('core.language')
+            data:
+              new_id_sequence: newIdSequence.join(','),
+              extra_params: extraParams
+            success: (data) ->
+              if data.code != 200
+                App.current.showMessage('error', Locale.err('GeneralError'))
+                $table.sortable('cancel');
+              else
+                $table.find('tr').removeClass('odd').removeClass('even')
+                $table.find('tr:even').addClass('odd')
+                $table.find('tr:odd').addClass('even')
+                App.current.showMessage('success', Locale.msg('SequenceAltered'))
+
+            error: () =>
+              App.current.showMessage('error', Locale.err('GeneralError'))
+              $table.sortable('cancel');
+
 
   changeTab: (e) ->
     # if the browser supports history.pushState(), use it to update the URL
