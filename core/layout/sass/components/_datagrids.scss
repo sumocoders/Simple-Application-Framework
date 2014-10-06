@@ -10,10 +10,15 @@ td.action {
 
 td.dragAndDropHandle {
   width: 29px;
+  cursor: move;
 
   i.icon-sequence-handle {
     display: inline-block;
     @include svg-with-png-fallback(icons/icon_move, no-repeat);
     background-position: top right;
   }
+}
+
+tr.dragAndDropPlaceholder {
+  min-height: 25px;
 }
