@@ -548,7 +548,7 @@ class SiteDataGridFunctions
     public static function showBoolIcons($bool)
     {
         $icon = 'ban';
-        if (in_array(mb_strtolower($bool), array('true', '1', 'y', 'yes'))) {
+        if (in_array(mb_strtolower($bool), array('true', '1', 'y', 'yes', 'on'))) {
             $icon = 'check';
         }
 
