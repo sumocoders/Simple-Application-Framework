@@ -27,7 +27,7 @@
       }
       html += '		</select>' +
           '		<a href="#" id="addButton-' + id + '" class="btn btn-small">';
-      html += '               <i class="icon-plus"></i>';
+      html += '               <i class="fa fa-plus"></i>';
       if (options.showIconOnly) {
         html += '<span>' + options.addLabel + '</span>';
       }
@@ -81,7 +81,7 @@
           for (var i in elements) {
             html += '<span class="badge">' +
                 '	' + $('#' + id + ' option[value=' + elements[i] + ']').html() +
-                '	<a href="#" class="deleteButton-' + id + '" data-id="' + elements[i] + '" title="' + options.removeLabel + '"><i class="icon-remove glyphicon glyphicon-remove"></i><span class="hidden">' + options.removeLabel + '</span></a>' +
+                '	<a href="#" class="deleteButton-' + id + '" data-id="' + elements[i] + '" title="' + options.removeLabel + '"><i class="fa fa-times"></i><span class="hidden">' + options.removeLabel + '</span></a>' +
                 '</span>';
             $('#addValue-' + id + ' option[value=' + elements[i] + ']').prop('disabled', true);
           }
