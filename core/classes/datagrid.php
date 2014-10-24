@@ -547,7 +547,8 @@ class SiteDataGridFunctions
      */
     public static function showBoolIcons($bool)
     {
-        return '<i class="fa fa-' . (($bool == true) ? 'check' : 'ban') . '"></i>';
+        return '<i class="fa fa-' .
+		    (in_array(mb_strtolower($bool), array('true', '1', 'y', 'yes'))) ? 'check' : 'ban') . '"></i>';
     }
 
     /**
