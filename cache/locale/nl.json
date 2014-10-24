@@ -114,6 +114,7 @@
     "DatePickerShortDecember":      "dec",
     "OldBrowserWarning":            "<strong>Opgelet:<\/strong> Je gebruikt een verouderde browser. Indien je de website wil zien zoals deze bedoeld is, kan je beter een nieuwe versie downloaden of een degelijke browser zoals <a href=\"http:\/\/www.getfirefox.com\">Firefox<\/a> installeren.",
     "Required":                     "Verplicht in te vullen.",
+    "SequenceAltered":              "De volgorde werd aangepast.",
     "ReportBug":                    "Meld een bug",
     "UsersAdd":                     "Gebruiker toevoegen",
     "UsersAdded":                   "De gebruiker %1$s werd toegevoegd.",

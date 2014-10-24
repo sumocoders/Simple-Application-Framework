@@ -115,6 +115,7 @@
     "OldBrowserWarning":            "<strong>Warning:<\/strong> You are using an older browser. If you want to see the site as it is intended, you may want to download a new version or a decent browser like Firefox <a href=\"http:\/\/www.getfirefox.com\">Firefox<\/a>.",
     "Required":                     "Required.",
     "ReportBug":                    "Report a bug",
+    "SequenceAltered":              "The sequence was altered",
     "UsersAdd":                     "Add a user",
     "UsersAdded":                   "The user %1$s has been added.",
     "UsersEdit":                    "Edit %1$s",

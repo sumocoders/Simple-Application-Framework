@@ -134,7 +134,7 @@
       }
     });
 
-    Framework.onDomReady(['_initAjax', '_initForm', '_initTabs', '_initTagBox', '_calculateActionsWidths', 'setContentHeight', 'loginAutoFocus']);
+    Framework.onDomReady(['_initAjax', '_initForm', '_initTabs', '_initTagBox', '_initDragAndDrop', '_calculateActionsWidths', 'setContentHeight', 'loginAutoFocus']);
 
     Framework.prototype._initAjax = function() {
       $.ajaxSetup({
@@ -208,6 +208,55 @@
       if ($tags.length > 0) {
         return $tags.tagBox({
           url: ''
+        });
+      }
+    };
+
+    Framework.prototype._initDragAndDrop = function() {
+      var $sequenceBody;
+      $sequenceBody = $('.sequenceByDragAndDrop tbody');
+      if ($sequenceBody.length > 0) {
+        return $sequenceBody.sortable({
+          items: 'tr',
+          handle: 'td.dragAndDropHandle',
+          placeholder: 'dragAndDropPlaceholder',
+          forcePlaceholderSize: true,
+          stop: function(e, ui) {
+            var $rows, $table, action, extraParams, module, newIdSequence;
+            $table = $(this);
+            action = $table.parents('table.table').data('action') ? $table.parents('table.table').data('action').toString() : 'sequence';
+            module = $table.parents('table.table').data('module') ? $table.parents('table.table').data('module').toString() : Data.get('core.module');
+            extraParams = $table.parents('table.table').data('extraParams') ? $table.parents('table.table').data('extraParams') : extraParams = {};
+            $rows = $(this).find('tr');
+            newIdSequence = [];
+            $rows.each(function() {
+              return newIdSequence.push($(this).data('id'));
+            });
+            return $.ajax({
+              url: '/ajax.php?module=' + module + '&action=' + action + '&language=' + Data.get('core.language'),
+              data: {
+                new_id_sequence: newIdSequence.join(','),
+                extra_params: extraParams
+              },
+              success: function(data) {
+                if (data.code !== 200) {
+                  App.current.showMessage('error', Locale.err('GeneralError'));
+                  return $table.sortable('cancel');
+                } else {
+                  $table.find('tr').removeClass('odd').removeClass('even');
+                  $table.find('tr:even').addClass('odd');
+                  $table.find('tr:odd').addClass('even');
+                  return App.current.showMessage('success', Locale.msg('SequenceAltered'));
+                }
+              },
+              error: (function(_this) {
+                return function() {
+                  App.current.showMessage('error', Locale.err('GeneralError'));
+                  return $table.sortable('cancel');
+                };
+              })(this)
+            });
+          }
         });
       }
     };
