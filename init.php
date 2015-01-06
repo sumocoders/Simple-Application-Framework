@@ -42,7 +42,7 @@ class Init
 
 		// require Spoon
 		require_once 'spoon/spoon.php';
-        Spoon::setDebug(SPOON_DEBUG);
+		Spoon::setDebug(SPOON_DEBUG);
 
 		/**
 		 * @remark only for SumoCoders
