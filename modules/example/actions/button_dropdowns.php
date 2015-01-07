@@ -11,11 +11,11 @@
  */
 class ExampleButtonDropdowns extends SiteBaseAction
 {
-	/**
-	 * Execute the action
-	 */
-	public function execute()
-	{
-		$this->display();
-	}
+    /**
+     * Execute the action
+     */
+    public function execute()
+    {
+        $this->display();
+    }
 }

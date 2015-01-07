@@ -38,14 +38,15 @@ class SiteDataGrid extends SpoonDataGrid
         $this->setAttributes(array('class' => 'table'));
 
         // hide the id by default
-        if(in_array('id', $this->getColumns())) $this->setColumnsHidden('id');
+        if (in_array('id', $this->getColumns())) {
+            $this->setColumnsHidden('id');
+        }
 
         // the labels
         $labels = array();
 
         // add classes on headers
-        foreach($this->getColumns() as $column)
-        {
+        foreach ($this->getColumns() as $column) {
             // class
             $this->setColumnHeaderAttributes($column, array('class' => $column));
 
@@ -89,13 +90,16 @@ class SiteDataGrid extends SpoonDataGrid
         $class = $name;
 
         // column already exists
-        if(isset($this->columns[$name])) throw new SpoonDatagridException('A column with the name "' . $name . '" already exists.');
+        if (isset($this->columns[$name])) {
+            throw new SpoonDatagridException('A column with the name "' . $name . '" already exists.');
+        }
 
         // redefine sequence
-        if($sequence === null) $sequence = count($this->columns) + 1;
+        if ($sequence === null) {
+            $sequence = count($this->columns) + 1;
+        }
 
-        if($isButton)
-        {
+        if ($isButton) {
             // add class for column
             $class .= ' action';
 
@@ -103,18 +107,18 @@ class SiteDataGrid extends SpoonDataGrid
             $html = '<a href="' . $URL . '" title="' . $value . '" class="iconLink';
 
             // if the action name contains delete we should ask confirmation
-            if(substr_count($name, 'delete'))
-            {
+            if (substr_count($name, 'delete')) {
                 $html .= ' confirm" data-message="' . SiteLocale::msg('AreYouSure');
             }
-            if($isExternal) $html .= '" target="_blank';
+            if ($isExternal) {
+                $html .= '" target="_blank';
+            }
             $html .= '">';
             if (substr_count($name, 'edit')) {
                 $html .= '<span class="add-on"><i class="fa fa-pencil"></i></span>';
                 $html .= '<span class="hide">';
             }
-            if($image != '')
-            {
+            if ($image != '') {
                 $html .= '<span class="add-on"><i class="' . $image . '"></i></span>';
                 $html .= '<span class="hide">';
                 $class .= ' actionSmall';
@@ -122,7 +126,7 @@ class SiteDataGrid extends SpoonDataGrid
 
             $html .= $value;
 
-            if($image != '') {
+            if ($image != '') {
                 $html .= '</span>';
                 // reset the image because we added it ourselves
                 $image = null;
@@ -149,10 +153,14 @@ class SiteDataGrid extends SpoonDataGrid
     public function getContent()
     {
         // mass action was set
-        if($this->tpl->getAssignedValue('massAction') !== null) $this->tpl->assign('footer', true);
+        if ($this->tpl->getAssignedValue('massAction') !== null) {
+            $this->tpl->assign('footer', true);
+        }
 
         // has paging & more than 1 page
-        elseif($this->getPaging() && $this->getNumResults() > $this->getPagingLimit()) $this->tpl->assign('footer', true);
+        elseif ($this->getPaging() && $this->getNumResults() > $this->getPagingLimit()) {
+            $this->tpl->assign('footer', true);
+        }
 
         // execute parent
         return parent::getContent();
@@ -169,8 +177,11 @@ class SiteDataGrid extends SpoonDataGrid
         $URL = (string) $URL;
 
         // append sort stuff
-        if(strpos($URL, '?') > 0) $URL .= '&offset=[offset]&order=[order]&sort=[sort]';
-        else $URL .= '?offset=[offset]&order=[order]&sort=[sort]';
+        if (strpos($URL, '?') > 0) {
+            $URL .= '&offset=[offset]&order=[order]&sort=[sort]';
+        } else {
+            $URL .= '?offset=[offset]&order=[order]&sort=[sort]';
+        }
 
         // store
         parent::setURL($URL);
@@ -226,14 +237,19 @@ class SiteDataGridPaging implements iSpoonDataGridPaging
     public static function getContent($URL, $offset, $order, $sort, $numResults, $numPerPage, $debug = true, $compileDirectory = null)
     {
         // if there is just one page we don't need paging
-        if($numResults < $numPerPage) return '';
+        if ($numResults < $numPerPage) {
+            return '';
+        }
 
         // load template
         $tpl = new SpoonTemplate();
 
         // compile directory
-        if($compileDirectory !== null) $tpl->setCompileDirectory($compileDirectory);
-        else $tpl->setCompileDirectory(dirname(__FILE__));
+        if ($compileDirectory !== null) {
+            $tpl->setCompileDirectory($compileDirectory);
+        } else {
+            $tpl->setCompileDirectory(dirname(__FILE__));
+        }
 
         // force compiling
         $tpl->setForceCompile((bool) $debug);
@@ -254,19 +270,19 @@ class SiteDataGridPaging implements iSpoonDataGridPaging
         $pagination['current_page'] = $currentPage;
 
         // as long as we are below page 7 we should show all pages starting from 1
-        if($currentPage < 8)
-        {
+        if ($currentPage < 8) {
             // init vars
             $pagesStart = 1;
             $pagesEnd = ($numPages >= 7) ? 7 : $numPages;
 
             // show last pages
-            if($numPages > 8) $showLastPages = true;
+            if ($numPages > 8) {
+                $showLastPages = true;
+            }
         }
 
         // as long as we are 7 pages from the end we should show all pages till the end
-        elseif($currentPage > ($numPages - 7))
-        {
+        elseif ($currentPage > ($numPages - 7)) {
             // init vars
             $pagesStart = ($numPages == 9) ? ($numPages - 6) : ($numPages - 7);
             $pagesEnd = $numPages;
@@ -276,8 +292,7 @@ class SiteDataGridPaging implements iSpoonDataGridPaging
         }
 
         // page 7
-        else
-        {
+        else {
             // init vars
             $pagesStart = $currentPage - 2;
             $pagesEnd = $currentPage + 2;
@@ -286,23 +301,20 @@ class SiteDataGridPaging implements iSpoonDataGridPaging
         }
 
         // show previous
-        if($currentPage > 1)
-        {
+        if ($currentPage > 1) {
             // set
             $pagination['show_previous'] = true;
             $pagination['previous_url'] = str_replace(array('[offset]', '[order]', '[sort]'), array(($offset - $numPerPage), $order, $sort), $URL);
         }
 
         // show first pages?
-        if($showFirstPages)
-        {
+        if ($showFirstPages) {
             // init var
             $pagesFirstStart = 1;
             $pagesFirstEnd = 2;
 
             // loop pages
-            for($i = $pagesFirstStart; $i <= $pagesFirstEnd; $i++)
-            {
+            for ($i = $pagesFirstStart; $i <= $pagesFirstEnd; $i++) {
                 // add
                 $pagination['first'][] = array('url' => str_replace(array('[offset]', '[order]', '[sort]'), array((($numPerPage * $i) - $numPerPage), $order, $sort), $URL),
                                                 'label' => $i);
@@ -310,8 +322,7 @@ class SiteDataGridPaging implements iSpoonDataGridPaging
         }
 
         // build array
-        for($i = $pagesStart; $i <= $pagesEnd; $i++)
-        {
+        for ($i = $pagesStart; $i <= $pagesEnd; $i++) {
             // init var
             $current = ($i == $currentPage);
 
@@ -321,15 +332,13 @@ class SiteDataGridPaging implements iSpoonDataGridPaging
         }
 
         // show last pages?
-        if($showLastPages)
-        {
+        if ($showLastPages) {
             // init var
             $pagesLastStart = $numPages - 1;
             $pagesLastEnd = $numPages;
 
             // loop pages
-            for($i = $pagesLastStart; $i <= $pagesLastEnd; $i++)
-            {
+            for ($i = $pagesLastStart; $i <= $pagesLastEnd; $i++) {
                 // add
                 $pagination['last'][] = array('url' => str_replace(array('[offset]', '[order]', '[sort]'), array((($numPerPage * $i) - $numPerPage), $order, $sort), $URL),
                                                 'label' => $i);
@@ -337,8 +346,7 @@ class SiteDataGridPaging implements iSpoonDataGridPaging
         }
 
         // show next
-        if($currentPage < $numPages)
-        {
+        if ($currentPage < $numPages) {
             // set
             $pagination['show_next'] = true;
             $pagination['next_url'] = str_replace(array('[offset]', '[order]', '[sort]'), array(($offset + $numPerPage), $order, $sort), $URL);
@@ -452,15 +460,14 @@ class SiteDataGridFunctions
         $var = '';
 
         // loop lines
-        foreach($lines as $line)
-        {
+        foreach ($lines as $line) {
             $firstChar = substr(trim($line), 0, 1);
 
-            if(in_array($firstChar, array('-', '*')))
-            {
+            if (in_array($firstChar, array('-', '*'))) {
                 $var .= '<ul><li>' . trim(substr(trim($line), 1)) . '</li></ul>';
+            } else {
+                $var .= $line . "\n";
             }
-            else $var .= $line . "\n";
         }
 
         // replace br's into p's
@@ -514,7 +521,9 @@ class SiteDataGridFunctions
         $timestamp = (int) $timestamp;
 
         // invalid timestamp
-        if($timestamp == 0) return '';
+        if ($timestamp == 0) {
+            return '';
+        }
 
         // get url
         $url = Spoon::get('url');
@@ -590,19 +599,24 @@ class SiteDataGridFunctions
         $string = htmlspecialchars_decode($string);
 
         // less characters
-        if(mb_strlen($string) <= $length) return SpoonFilter::htmlspecialchars($string);
+        if (mb_strlen($string) <= $length) {
+            return SpoonFilter::htmlspecialchars($string);
+        }
 
         // more characters
-        else
-        {
+        else {
             // hellip is seen as 1 char, so remove it from length
-            if($useHellip) $length = $length - 1;
+            if ($useHellip) {
+                $length = $length - 1;
+            }
 
             // get the amount of requested characters
             $string = mb_substr($string, 0, $length);
 
             // add hellip
-            if($useHellip) $string .= '…';
+            if ($useHellip) {
+                $string .= '…';
+            }
 
             // return
             return SpoonFilter::htmlspecialchars($string);
@@ -621,8 +635,7 @@ class SiteDataGridFunctions
     {
         $name = SpoonFilter::toCamelCase($prefix . '_' . $var);
 
-        switch($type)
-        {
+        switch ($type) {
             case 'act':
                 return SiteLocale::act($name);
             case 'err':

@@ -11,14 +11,14 @@
  */
 class UsersLogout extends SiteBaseAction
 {
-	/**
-	 * Execute the action
-	 *
-	 * @return void
-	 */
-	public function execute()
-	{
-		Authentication::logout();
-		$this->redirect($this->url->buildUrl('login', 'users', null, array('report' => 'logged-out')));
-	}
+    /**
+     * Execute the action
+     *
+     * @return void
+     */
+    public function execute()
+    {
+        Authentication::logout();
+        $this->redirect($this->url->buildUrl('login', 'users', null, array('report' => 'logged-out')));
+    }
 }

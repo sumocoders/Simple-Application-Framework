@@ -13,123 +13,127 @@
  */
 class AjaxAction
 {
-	/**
-	 * The current action
-	 *
-	 * @var	string
-	 */
-	private $action;
+    /**
+     * The current action
+     *
+     * @var	string
+     */
+    private $action;
 
-	/**
-	 * The current module
-	 *
-	 * @var	string
-	 */
-	private $module;
+    /**
+     * The current module
+     *
+     * @var	string
+     */
+    private $module;
 
-	/**
-	 * Default constructor
-	 * You have to specify the action and module so we know what to do with this instance
-	 *
-	 * @param	string $action	The action.
-	 * @param	string $module	The module.
-	 */
-	public function __construct($action, $module)
-	{
-		// set properties
-		$this->setModule((string) $module);
-		$this->setAction((string) $action);
+    /**
+     * Default constructor
+     * You have to specify the action and module so we know what to do with this instance
+     *
+     * @param	string $action	The action.
+     * @param	string $module	The module.
+     */
+    public function __construct($action, $module)
+    {
+        // set properties
+        $this->setModule((string) $module);
+        $this->setAction((string) $action);
 
-		// require the model if it exists
-		if(SpoonFile::exists(PATH_WWW . '/modules/' . $this->getModule() . '/model/model.php')) {
-			require_once PATH_WWW . '/modules/' . $this->getModule() . '/model/model.php';
-		}
+        // require the model if it exists
+        if (SpoonFile::exists(PATH_WWW . '/modules/' . $this->getModule() . '/model/model.php')) {
+            require_once PATH_WWW . '/modules/' . $this->getModule() . '/model/model.php';
+        }
 
-		// execute the action
-		$this->execute();
-	}
+        // execute the action
+        $this->execute();
+    }
 
-	/**
-	 * Execute the action
-	 * We will build the class name, require the class and call the execute method.
-	 */
-	public function execute()
-	{
-		// build action-class-name
-		$actionClassName = SpoonFilter::toCamelCase('ajax_' . $this->getModule() . '_' . $this->getAction());
+    /**
+     * Execute the action
+     * We will build the class name, require the class and call the execute method.
+     */
+    public function execute()
+    {
+        // build action-class-name
+        $actionClassName = SpoonFilter::toCamelCase('ajax_' . $this->getModule() . '_' . $this->getAction());
 
-		if($this->getModule() == 'core') $path = PATH_WWW . '/core/ajax/' . $this->getAction() . '.php';
-		else $path = PATH_WWW . '/modules/' . $this->getModule() . '/ajax/' . $this->getAction() . '.php';
+        if ($this->getModule() == 'core') {
+            $path = PATH_WWW . '/core/ajax/' . $this->getAction() . '.php';
+        } else {
+            $path = PATH_WWW . '/modules/' . $this->getModule() . '/ajax/' . $this->getAction() . '.php';
+        }
 
-		// check if this is a possible action
-		if(!SpoonFile::exists($path))
-		{
-			// set headers
-			SpoonHTTP::setHeadersByCode(404);
+        // check if this is a possible action
+        if (!SpoonFile::exists($path)) {
+            // set headers
+            SpoonHTTP::setHeadersByCode(404);
 
-			// return
-			$response['code'] = 500;
-			$response['message'] = 'file not found';
+            // return
+            $response['code'] = 500;
+            $response['message'] = 'file not found';
 
-			// output
-			echo json_encode($response);
-			exit;
-		}
+            // output
+            echo json_encode($response);
+            exit;
+        }
 
-		// require the config file, we know it is there because we validated it before (possible actions are defined by existence off the file).
-		require_once $path;
+        // require the config file, we know it is there because we validated it before (possible actions are defined by existence off the file).
+        require_once $path;
 
-		// validate if class exists (aka has correct name)
-		if(!class_exists($actionClassName)) throw new Exception('The action file is present, but the class name should be: ' . $actionClassName . '.');
+        // validate if class exists (aka has correct name)
+        if (!class_exists($actionClassName)) {
+            throw new Exception('The action file is present, but the class name should be: ' . $actionClassName . '.');
+        }
 
-		// create action-object
-		$object = new $actionClassName();
+        // create action-object
+        $object = new $actionClassName();
 
-		// call the execute method of the real action (defined in the module)
-		$object->execute();
-	}
+        // call the execute method of the real action (defined in the module)
+        $object->execute();
+    }
 
-	/**
-	 * Get the current action
-	 * REMARK: You should not use this method from your code, but it has to be public so we can access it later on in the core-code
-	 *
-	 * @return string
-	 */
-	public function getAction()
-	{
-		return (string) $this->action;
-	}
+    /**
+     * Get the current action
+     * REMARK: You should not use this method from your code, but it has to be public so we can access it later on in the core-code
+     *
+     * @return string
+     */
+    public function getAction()
+    {
+        return (string) $this->action;
+    }
 
-	/**
-	 * Get the current module
-	 * REMARK: You should not use this method from your code, but it has to be public so we can access it later on in the core-code
-	 *
-	 * @return string
-	 */
-	public function getModule()
-	{
-		return (string) $this->module;
-	}
+    /**
+     * Get the current module
+     * REMARK: You should not use this method from your code, but it has to be public so we can access it later on in the core-code
+     *
+     * @return string
+     */
+    public function getModule()
+    {
+        return (string) $this->module;
+    }
 
-	/**
-	 * Set the action
-	 *
-	 * @param	string $action	The action.
-	 */
-	private function setAction($action)
-	{
-		$this->action = (string) $action;
-	}
+    /**
+     * Set the action
+     *
+     * @param	string $action	The action.
+     */
+    private function setAction($action)
+    {
+        $this->action = (string) $action;
+    }
 
-	/**
-	 * Set the module
-	 *
-	 * @param	string $module	The module.
-	 */
-	private function setModule($module)
-	{
-		$this->module = (string) $module;
-	}
+    /**
+     * Set the module
+     *
+     * @param	string $module	The module.
+     */
+    private function setModule($module)
+    {
+        $this->module = (string) $module;
+    }
 }
 
 /**
@@ -145,40 +149,42 @@ class AjaxAction
  */
 class AjaxBaseAction
 {
-	const OK = 200;
-	const BAD_REQUEST = 400;
-	const FORBIDDEN = 403;
-	const ERROR = 500;
+    const OK = 200;
+    const BAD_REQUEST = 400;
+    const FORBIDDEN = 403;
+    const ERROR = 500;
 
-	/**
-	 * Execute the action
-	 */
-	public function execute()
-	{
-	}
+    /**
+     * Execute the action
+     */
+    public function execute()
+    {
+    }
 
-	/**
-	 * Output an answer to the browser
-	 *
-	 * @param int $statusCode The status code for the response, use the available constants. (self::OK, self::BAD_REQUEST, self::FORBIDDEN, self::ERROR).
-	 * @param mixed[optional] $data The data to output.
-	 * @param string[optional] $message The text-message to send.
-	 */
-	public function output($statusCode, $data = null, $message = null)
-	{
-		// redefine
-		$statusCode = (int) $statusCode;
-		if($message !== null) $message = (string) $message;
+    /**
+     * Output an answer to the browser
+     *
+     * @param int $statusCode The status code for the response, use the available constants. (self::OK, self::BAD_REQUEST, self::FORBIDDEN, self::ERROR).
+     * @param mixed[optional] $data The data to output.
+     * @param string[optional] $message The text-message to send.
+     */
+    public function output($statusCode, $data = null, $message = null)
+    {
+        // redefine
+        $statusCode = (int) $statusCode;
+        if ($message !== null) {
+            $message = (string) $message;
+        }
 
-		// create response array
-		$response = array('code' => $statusCode, 'data' => $data, 'message' => $message);
+        // create response array
+        $response = array('code' => $statusCode, 'data' => $data, 'message' => $message);
 
-		// set correct headers
-		SpoonHTTP::setHeadersByCode($statusCode);
-		SpoonHTTP::setHeaders('content-type: application/json');
+        // set correct headers
+        SpoonHTTP::setHeadersByCode($statusCode);
+        SpoonHTTP::setHeaders('content-type: application/json');
 
-		// output JSON to the browser
-		echo json_encode($response);
-		exit;
-	}
+        // output JSON to the browser
+        echo json_encode($response);
+        exit;
+    }
 }

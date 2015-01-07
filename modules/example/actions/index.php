@@ -11,12 +11,12 @@
  */
 class ExampleIndex extends SiteBaseAction
 {
-	/**
-	 * Execute the action
-	 */
-	public function execute()
-	{
-		$this->parseReports();
-		$this->display();
-	}
+    /**
+     * Execute the action
+     */
+    public function execute()
+    {
+        $this->parseReports();
+        $this->display();
+    }
 }
