@@ -64,9 +64,9 @@ class SiteForm extends SpoonForm
         $this->addDropdown($name . '_year', array_combine($years, $years), (int) $birthYear);
 
         return array(
-            $this->getField($name . '_day'),
-            $this->getField($name . '_month'),
-            $this->getField($name . '_year'),
+            'day' => $this->getField($name . '_day'),
+            'month' => $this->getField($name . '_month'),
+            'year' => $this->getField($name . '_year'),
         );
     }
 
