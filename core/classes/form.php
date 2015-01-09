@@ -30,6 +30,15 @@ class SiteForm extends SpoonForm
      * easier for a user to select a date in the past. Note that you still have to
      * fetch values from these three dropdowns to save the date.
      *
+     * For a field with the name date_of_birth, you can create a DateTime object like this:
+     * $fields = $this->frm->getFields();
+     * $date = DateTime::createFromFormat(
+     *      'j-n-Y',
+     *     $fields['date_of_birth_day']->getValue() . '-'
+     *     . $fields['date_of_birth_month']->getValue() . '-'
+     *     . $fields['date_of_birth_year']->getValue()
+     * );
+     *
      * @param  string   $name       The name.
      * @param  DateTime $value      The initial value.
      * @param  string   $class      The CSS-class to be used.
