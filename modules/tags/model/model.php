@@ -101,7 +101,7 @@ class Tag extends DefaultEntity
             'SELECT t.*, UNIX_TIMESTAMP(t.created_on) AS created_on
              FROM tags AS t
              WHERE t.name = ?',
-            array((int) $name)
+            array($name)
         );
 
         if (empty($data)) {
@@ -109,6 +109,29 @@ class Tag extends DefaultEntity
         }
 
         return self::createFromData($data);
+    }
+
+    /**
+     * Get tags that start with a certain term
+     *
+     * @param  int $term The term of the tag.
+     * @return array
+     */
+    public static function getStartsWith($term)
+    {
+        // get data
+        $tags = (array) Site::getDB()->getRecords(
+            'SELECT t.*, UNIX_TIMESTAMP(t.created_on) AS created_on
+             FROM tags AS t
+             WHERE t.name LIKE ?',
+            array($term . '%')
+        );
+
+        foreach ($tags as &$tag) {
+            $tag = self::createFromData($tag);
+        }
+
+        return $tags;
     }
 
     /**

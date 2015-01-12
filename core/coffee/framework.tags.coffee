@@ -42,6 +42,7 @@ class TagBox
     $('.js-tags-wrapper[data-id="' + @id + '"]').remove()
     $('input[id="' + @id + '"]').hide().after(html);
 
+    @_initAutocomplete()
     @_save()
 
   # Adds a new tag
@@ -63,5 +64,31 @@ class TagBox
   # Saves the tags in the hidden field
   _save: ->
     @item.val(@elements.join(','))
+
+  # Autocompletes tags
+  _initAutocomplete: (e) =>
+    $('#' + @id + 'Add').autocomplete(
+      source: (request, response) ->
+        $.ajax
+          url: '/ajax.php?module=tags&action=autocomplete&language=' + Data.get('core.language')
+          data: { term: request.term }
+          success: (data) ->
+            items = []
+            for value in data.data
+              items.push(
+                  {
+                    label: "#{value.name}"
+                    value: value
+                  }
+              )
+            response(items)
+      select: (e, ui) ->
+        e.preventDefault()
+        $(e.target).val(ui.item.value.name);
+
+      focus: (e, ui) ->
+        e.preventDefault()
+        $(e.target).val(ui.item.value.name)
+    )
 
 window.TagBox = TagBox
