@@ -166,6 +166,7 @@ class SiteTemplate extends SpoonTemplate
         $this->mapModifier('url', array('SiteTemplateModifiers', 'buildUrl'));
         $this->mapModifier('sprintf', 'sprintf');
         $this->mapModifier('urlise', array('SpoonFilter', 'urlise'));
+        $this->mapModifier('toTimestamp', array('SiteTemplateModifiers', 'toTimestamp'));
     }
 
     /**
@@ -409,6 +410,18 @@ class SiteTemplateModifiers
         $timeAgo = SpoonDate::getTimeAgo($var, $url->getLanguage());
 
         return '<abbr title="' . $date . '">' . $timeAgo . '</abbr>';
+    }
+
+    /**
+     * Converts a datetime object to a timestamp
+     *    syntax: {$var|toTimestamp}
+     *
+     * @param  DateTime $var
+     * @return string
+     */
+    public static function toTimestamp(DateTime $var)
+    {
+        return $var->getTimeStamp();
     }
 
     /**
