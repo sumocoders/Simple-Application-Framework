@@ -12,7 +12,6 @@ class TagBox
 
   # Autocompletes tags
   _initAutocomplete: =>
-    console.log $('#addValue-' + @item.attr('id'))
     @initialized = true
     $('#addValue-' + @item.attr('id')).autocomplete(
       source: (request, response) ->
