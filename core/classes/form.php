@@ -218,17 +218,17 @@ class SiteForm extends SpoonForm
         $name,
         $value = null,
         $maxlength = null,
-        $class = 'inputText js-tags form-control',
-        $classError = 'inputTextError js-tags',
+        $class = 'inputText tag-box form-control',
+        $classError = 'inputTextError tag-box',
         $HTML = false
     ) {
         $tagsString = '';
 
         foreach ($value as $tag) {
-            $tagsString .= ',' . $tag->getName();
+            $tagsString .= '|' . $tag->getName();
         }
 
-        $tagsString = rtrim($tagsString, ',');
+        $tagsString = rtrim($tagsString, '|');
 
         // add element
         $this->add(new SiteFormTags($name, $tagsString, $maxlength, $class, $classError, $HTML));
@@ -828,7 +828,7 @@ class SiteFormTags extends SpoonFormText
     public function getValue($allowHTML = null)
     {
         if ($allowHTML === true) {
-            $tags = explode(',', parent::getValue());
+            $tags = explode('|', parent::getValue());
 
             // get the existing tag or fallback to a new one
             foreach ($tags as $key => $tag) {

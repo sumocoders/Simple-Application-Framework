@@ -151,7 +151,7 @@ class Form
 
   # converts tagboxes fields
   _tagBoxes: ->
-    $('.js-tags', @form).each((i, el) =>
+    $('.tag-box', @form).each((i, el) =>
       $el = $(el)
       tagBox = new TagBox($el)
     )
