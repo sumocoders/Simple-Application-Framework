@@ -57,6 +57,7 @@
 	<script src="/core/js/sumo_plugins.js?m={$LAST_MODIFIED}"></script>
 	<script src="/core/js/framework.data.js?m={$LAST_MODIFIED}"></script>
 	<script src="/core/js/framework.locale.js?m={$LAST_MODIFIED}"></script>
+	<script src="/core/js/framework.tags.js?m={$LAST_MODIFIED}"></script>
 	<script src="/core/js/framework.form.js?m={$LAST_MODIFIED}"></script>
 	<script src="/core/js/framework.js?m={$LAST_MODIFIED}"></script>
 	<script src="/core/js/framework.form.search.js?m={$LAST_MODIFIED}"></script>

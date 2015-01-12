@@ -7,6 +7,7 @@ class Form
     @_dateFields()
     @_colourPickers()
     @_editors()
+    @_tagBoxes()
     @_fixPlaceholders()
     @_hijackSubmit()
 
@@ -145,6 +146,14 @@ class Form
         $el.datepicker('option', 'defaultDate', startDate)
       if new Date() > endDate
         $el.datepicker('option', 'defaultDate', endDate)
+    )
+    return
+
+  # converts tagboxes fields
+  _tagBoxes: ->
+    $('.js-tags', @form).each((i, el) =>
+      $el = $(el)
+      tagBox = new TagBox($el)
     )
     return
 

@@ -204,6 +204,40 @@ class SiteForm extends SpoonForm
     }
 
     /**
+     * Adds a tags field
+     *
+     * @param  string       $name  The name.
+     * @param  array        $value            The initial value.
+     * @param  int          $maxlength        The maximum-length the value can be.
+     * @param  string       $class            The CSS-class to be used.
+     * @param  string       $classError       The CSS-class to be used when there is an error.
+     * @param  bool         $HTML             Is HTML allowed?
+     * @return SiteFormTags
+     */
+    public function addTags(
+        $name,
+        $value = null,
+        $maxlength = null,
+        $class = 'inputText js-tags form-control',
+        $classError = 'inputTextError js-tags',
+        $HTML = false
+    ) {
+        $tagsString = '';
+
+        foreach ($value as $tag) {
+            $tagsString .= ',' . $tag->getName();
+        }
+
+        $tagsString = rtrim($tagsString, ',');
+
+        // add element
+        $this->add(new SiteFormTags($name, $tagsString, $maxlength, $class, $classError, $HTML));
+
+        // return element
+        return $this->getField($name);
+    }
+
+    /**
      * Adds a single textfield.
      *
      * @return    SpoonFormText
@@ -775,5 +809,46 @@ class SiteFormEditor extends SpoonFormTextarea
         );
 
         return $output;
+    }
+}
+
+/**
+ * @author Wouter Sioen <wouter@sumocoders.be>
+ *
+ * A Custom textfield containing comma seperated tags
+ */
+class SiteFormTags extends SpoonFormText
+{
+    /**
+     * Note that the variable name is only allowHTML to be compliant with the parent.
+     * It should be named "returnObjects" or something similar.
+     *
+     * @param bool $allowHTML Will objects be returned?
+     */
+    public function getValue($allowHTML = null)
+    {
+        if ($allowHTML === true) {
+            $tags = explode(',', parent::getValue());
+
+            // get the existing tag or fallback to a new one
+            foreach ($tags as $key => $tag) {
+                if (empty($tag)) {
+                    unset($tags[$key]);
+                }
+
+                try {
+                    $tags[$key] = Tag::getByName($tag);
+                } catch (\InvalidArgumentException $ex) {
+                    $tagObject = new Tag();
+                    $tagObject->setName($tag);
+
+                    $tags[$key] = $tagObject;
+                }
+            }
+
+            return $tags;
+        }
+
+        return parent::getValue();
     }
 }
