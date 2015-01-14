@@ -263,6 +263,10 @@ class SiteBaseAction
      */
     protected function userIs($possibleRoles)
     {
+        if ($this->currentUser === null) {
+            return false;
+        }
+
         return in_array($this->currentUser->getType(), (array) $possibleRoles);
     }
 
