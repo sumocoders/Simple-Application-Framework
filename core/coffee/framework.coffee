@@ -67,7 +67,6 @@ class Framework extends DefaultObject
 #    'functionname'
     '_initAjax'
     '_initForm'
-    '_initSearchBox'
     '_initTabs'
     '_initTagBox'
     '_initDragAndDrop'
@@ -125,9 +124,6 @@ class Framework extends DefaultObject
       throw className + ' is not defined' unless window[className]
       formClass = window[className]
       new formClass(this)
-
-  _initSearchBox: ->
-    new SearchForm
 
   _initTabs: ->
     url = document.location.toString()
