@@ -194,7 +194,7 @@ class Site
     public static function getFilename()
     {
         do {
-            $filename = md5(microtime(true));
+            $filename = md5(uniqid());
         } while (!self::isFilenameValid($filename));
         $path = substr($filename, 0, 2) . '/' . substr($filename, 2, 2);
 
