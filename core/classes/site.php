@@ -193,7 +193,9 @@ class Site
      */
     public static function getFilename()
     {
-        $filename = md5(microtime(true));
+        do {
+            $filename = md5(microtime(true));
+        } while (!self::isFilenameValid($filename));
         $path = substr($filename, 0, 2) . '/' . substr($filename, 2, 2);
 
         // create the path if needed
@@ -202,6 +204,22 @@ class Site
         }
 
         return $path . '/' . $filename;
+    }
+
+    /**
+     * Check if the given filename is valid.
+     *
+     * @param string $filename
+     * @return bool
+     */
+    public static function isFilenameValid($filename)
+    {
+        # When the filename has "ad" in its path, it will be blocked by ad blockers
+        if (substr($filename, 0, 2) === 'ad' || substr($filename, 2, 2) === 'ad') {
+            return false;
+        }
+
+        return true;
     }
 
     /**
