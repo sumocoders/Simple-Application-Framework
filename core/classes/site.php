@@ -16,7 +16,7 @@ use Monolog\Handler\StreamHandler;
  * @author         Jelmer Prins <jelmer@sumocoders.be>
  * @since          1.0
  */
-class Site
+class site
 {
     /**
      * The settings holder

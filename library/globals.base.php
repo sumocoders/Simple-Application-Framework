@@ -37,7 +37,7 @@ define('DB_PASSWORD', '<database_password>');
  * Site configuration
  */
 // the domain (without http)
-define('SITE_DOMAIN', isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : '<url>');	// @todo provide correct url
+define('SITE_DOMAIN', isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : '<url>');    // @todo provide correct url
 // the default title
 define('SITE_DEFAULT_TITLE', '<name>'); // @todo	correct title
 // the url
