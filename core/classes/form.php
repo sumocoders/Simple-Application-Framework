@@ -26,6 +26,60 @@ class SiteForm extends SpoonForm
     }
 
     /**
+     * Adds a datefield fields made out of three dropdowns. This makes it
+     * easier for a user to select a date in the past. Note that you still have to
+     * fetch values from these three dropdowns to save the date.
+     *
+     * For a field with the name date_of_birth, you can create a DateTime object like this:
+     * $fields = $this->frm->getFields();
+     * $date = DateTime::createFromFormat(
+     *      'j-n-Y',
+     *     $fields['date_of_birth_day']->getValue() . '-'
+     *     . $fields['date_of_birth_month']->getValue() . '-'
+     *     . $fields['date_of_birth_year']->getValue()
+     * );
+     *
+     * @param  string   $name       The name.
+     * @param  DateTime $value      The initial value.
+     * @param  string   $class      The CSS-class to be used.
+     * @param  string   $classError The CSS-class to be used when there is an error.
+     * @return array
+     */
+    public function addBirthDate(
+        $name,
+        $value = null,
+        $class = 'inputDatefieldNormal form-control',
+        $classError = 'inputDateError'
+    ) {
+        // birthdate dropdown values
+        $days = range(1, 31);
+        $months = \SpoonLocale::getMonths(SiteLocale::getLanguage());
+        $years = range(date('Y'), 1900);
+
+        // default: no birth date setting
+        $birthDay = '';
+        $birthMonth = '';
+        $birthYear = '';
+
+        // get day, month and year
+        if ($value !== null) {
+            $birthDay = $value->format('j');
+            $birthMonth = $value->format('n');
+            $birthYear = $value->format('Y');
+        }
+
+        $this->addDropdown($name . '_day', array_combine($days, $days), $birthDay);
+        $this->addDropdown($name . '_month', $months, $birthMonth);
+        $this->addDropdown($name . '_year', array_combine($years, $years), (int) $birthYear);
+
+        return array(
+            'day' => $this->getField($name . '_day'),
+            'month' => $this->getField($name . '_month'),
+            'year' => $this->getField($name . '_year'),
+        );
+    }
+
+    /**
      * Adds a single button.
      *
      * @param string $name  The name of the button.
