@@ -239,7 +239,7 @@ class SiteURL
 
 				// array
 				case 'array':
-					return (string) $this->parameters[$key];
+					return (array) $this->parameters[$key];
 
 				// invalid type
 				default:
