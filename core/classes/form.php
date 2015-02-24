@@ -216,7 +216,7 @@ class SiteForm extends SpoonForm
      */
     public function addTags(
         $name,
-        $value = null,
+        array $tags = null,
         $maxlength = null,
         $class = 'inputText tag-box form-control',
         $classError = 'inputTextError tag-box',
@@ -224,7 +224,7 @@ class SiteForm extends SpoonForm
     ) {
         $tagsString = '';
 
-        foreach ($value as $tag) {
+        foreach ((array) $tags as $tag) {
             $tagsString .= '|' . $tag->getName();
         }
 
