@@ -838,7 +838,7 @@ class SiteFormTags extends SpoonFormText
 
                 try {
                     $tags[$key] = Tag::getByName($tag);
-                } catch (\InvalidArgumentException $ex) {
+                } catch (InvalidArgumentException $e) {
                     $tagObject = new Tag();
                     $tagObject->setName($tag);
 
