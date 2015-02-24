@@ -152,8 +152,8 @@ class Form
   # converts tagboxes fields
   _tagBoxes: ->
     $('.tag-box', @form).each((i, el) =>
-      $el = $(el)
-      tagBox = new TagBox($el)
+      $el = $ el
+      tagBox = new TagBox $el
     )
     return
 
