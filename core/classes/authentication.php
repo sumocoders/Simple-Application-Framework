@@ -49,6 +49,9 @@ class Authentication
 		// reset session
 		SpoonSession::destroy();
 		session_regenerate_id(true);
+		
+		// we don't need to write session data: avoid session lock
+		session_write_close();
 
 		$url = Spoon::get('url');
 
