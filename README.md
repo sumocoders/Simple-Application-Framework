@@ -1,3 +1,7 @@
+
+!!! THIS REPO IS NOT MAINTAINED ANYMORE, USE [sumocoders/Framework](https://github.com/sumocoders/Framework).
+
+
 # README
 
 This is the SumoCoders mini-framework, it should allow you to build applications without much hassle.
